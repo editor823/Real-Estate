@@ -24,6 +24,8 @@ import {
   Percent,
   Database,
   ShieldAlert,
+  ChevronDown,
+  HelpCircle,
 } from "lucide-react";
 
 interface DistrictPageProps {
@@ -207,8 +209,73 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
     }
   })();
 
+  // Q3용 남은 예상 소요기간 계산
+  const remainingYearsByStage: Record<number, string> = {
+    1: "약 8~10년",
+    2: "약 7~8년",
+    3: "약 5~6년",
+    4: "약 3.5~4.5년",
+    5: "약 2.5~3년 (이주·착공 임박)",
+    6: "약 1.5~2년 (준공 가시권)",
+    7: "약 6개월~1년 (입주 및 청산)",
+  };
+  const estimatedRemainingYears = remainingYearsByStage[props.stage_seq] || "약 4~6년";
+
+  // 4대 자주 묻는 질문(FAQ) 데이터 구성
+  const faqList = [
+    {
+      question: `${props.name} 매수 시 입주권 승계와 현금청산 기준은 어떻게 되나요?`,
+      answer: `「도시 및 주거환경정비법」 제39조에 따라 현재 ${props.name}은(는) [${props.stage_label || props.stage_raw}] 단계입니다. ${
+        props.is_transferable
+          ? "현행 법률상 조합원 지위양도가 합법적으로 가능한 [안전 구간]에 속해 있어 매수 시 아파트 입주권을 안정적으로 승계받으실 수 있습니다. 다만 향후 관리처분계획인가(재개발) 또는 조합설립인가(재건축) 시점에 도달하면 원칙적으로 전매가 전면 금지되므로 인허가 고시 일정을 면밀히 모니터링해야 합니다."
+          : "이미 투기과열지구 조합원 지위양도 제한 단계에 진입하였으므로, 일반 매수 시 원칙적으로 입주권이 박탈되고 감정평가액 기준 강제 현금청산 대상이 됩니다. 단, 양도인이 1세대 1주택자로서 10년 이상 소유하고 5년 이상 실제 거주한 법정 특례 요건을 충족한 경우에 한하여 예외적으로 승계가 인정됩니다."
+      } 아울러 신축 다세대 빌라 분양 매물의 경우 고시된 권리산정기준일 이후 건축허가된 물건은 단독 입주권이 나오지 않으므로 건축물대장 사용승인일자 조회가 필수적입니다.`,
+    },
+    {
+      question: "조합원 지위양도 제한 시점과 예외 거래 인정 조건은 무엇인가요?",
+      answer: `투기과열지구 내 정비사업은 재건축의 경우 '조합설립인가일', 재개발의 경우 '관리처분계획인가일'부터 소유권이전등기 시점까지 조합원 지위양도(전매)가 전면 금지됩니다. 다만 도정법 시행령 제37조에 따른 법정 예외 거래 인정 기준은 다음과 같습니다: ① 1세대 1주택자로서 10년 이상 보유하고 5년 이상 실제 거주한 조합원의 물건 매수, ② 세대원의 근무·생업·취학·질병 치료로 타 시·군으로 세대 전원 이전, ③ 상속으로 취득한 주택으로 전원 이전 또는 해외 이주(2년 이상 체류), ④ 사업 지연 특례(조합설립인가 후 3년 내 사업시행인가 미신청 또는 사업시행인가 후 3년 내 미착공 등). 위 요건 충족 여부는 매매 계약 전 관할 구청 및 조합의 확인서를 필수 확인해야 합니다.`,
+    },
+    {
+      question: `현재 단계(${props.stage_label || props.stage_raw})에서 최종 입주까지 얼마나 소요되나요?`,
+      answer: `현재 ${props.name}은(는) 정비사업 표준 7단계 중 제${props.stage_seq}단계인 [${props.stage_label || props.stage_raw}]에 위치해 있습니다. 서울시 도시정비사업 평균 통계상 본 단계에서 최종 준공 및 입주까지는 ${estimatedRemainingYears}이 추가 소요되는 것으로 추산됩니다. ${
+        props.biz_type === "SINTHONG"
+          ? "다만 본 구역은 서울시 신속통합기획 패스트트랙이 적용되어 건축·교통 통합심의 및 인허가 절차가 일반 정비구역 대비 약 1.5~2년가량 단축될 수 있습니다."
+          : props.biz_type === "MOA"
+          ? "다만 본 구역은 모아타운 소규모주택정비 관리지역 특례로 정비계획 수립 절차가 간소화되어 대규모 재개발 구역 대비 신속한 사업 진행이 가능합니다."
+          : "다만 구역 내 주민 동의율 징구 속도, 시공사 본계약 체결 및 공사비 증액 협상, 지자체 인허가 심의 과정에 따라 실제 입주 시점은 단축되거나 지연될 수 있습니다."
+      }`,
+    },
+    {
+      question: "재개발·재건축 추가분담금 리스크는 어떻게 확인하나요?",
+      answer: `추가분담금은 [조합원 분양가 - 권리가액(종전자산 감정평가액 × 비례율)] 공식으로 산정됩니다. 본 ${props.name}의 경우 신축 건립 예정 규모가 ${
+        totalH > 0 ? `${totalH.toLocaleString()}세대` : "계획 단계"
+      }이며, 기존 멸실 가구수는 ${
+        existH > 0 ? `${existH.toLocaleString()}가구` : "산정 중"
+      }입니다. 일반분양 세대수가 많을수록 분양 수입이 증가하여 비례율이 상승하고 조합원 분담금 부담이 합리적으로 분산됩니다. 최근 원자재 가격 및 공사비 인상 기조에서는 사업시행인가 및 관리처분총회 책자를 통해 3.3㎡당 공사비와 비례율 변동 추이를 정기적으로 확인하는 것이 안전합니다.`,
+    },
+  ];
+
+  // 구글 검색엔진 최적화 FAQPage JSON-LD 스키마
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqList.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F2EB] text-[#2B261F] selection:bg-blue-600 selection:text-white">
+      {/* 구글 검색엔진 최적화: FAQPage 구조화 데이터 (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* 1. 상단 Breadcrumb & 액션 바 */}
       <div className="bg-[#FFFFFF] border-b border-[#E6E0D2] px-4 sm:px-8 py-3 flex items-center justify-between shadow-2xs">
         <div className="flex items-center gap-3">
@@ -578,7 +645,41 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           </div>
         </section>
 
-        {/* F. 하단 가로형 애드센스 광고 슬롯 */}
+        {/* F. [단락 4] 자주 묻는 질문 (FAQ) - 아코디언 토글 형태 */}
+        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-[#EFECE4]">
+            <div className="flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-blue-600" />
+              <h2 className="text-base sm:text-lg font-bold text-[#2B261F]">
+                ❓ 4. {props.name} 정비사업 자주 묻는 질문 (FAQ)
+              </h2>
+            </div>
+            <span className="text-[11px] text-[#827A6D] hidden sm:inline">질문 클릭 시 상세 답변 열람</span>
+          </div>
+
+          <div className="space-y-3">
+            {faqList.map((faq, idx) => (
+              <details
+                key={idx}
+                open={idx < 2}
+                className="group p-4 sm:p-5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] transition-all open:bg-[#FFFFFF] open:shadow-xs"
+              >
+                <summary className="flex items-center justify-between gap-3 font-bold text-xs sm:text-sm text-[#2B261F] cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
+                  <span className="flex items-start gap-2.5 text-left">
+                    <span className="text-blue-600 font-extrabold shrink-0">Q{idx + 1}.</span>
+                    <span className="group-hover:text-blue-600 transition-colors">{faq.question}</span>
+                  </span>
+                  <ChevronDown className="w-4 h-4 text-[#827A6D] shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <div className="mt-3 pt-3 border-t border-[#EFECE4] text-xs leading-relaxed text-[#4A4439] space-y-2">
+                  <p>{faq.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* G. 하단 가로형 애드센스 광고 슬롯 */}
         <section aria-label="스폰서 광고">
           <AdSenseBanner format="horizontal" slotId={`district-bottom-${props.master_uid}`} />
         </section>
