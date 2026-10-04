@@ -141,14 +141,14 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
   const saleH = props.sale_households || 0;
   const rentH = props.rent_households || 0;
 
-  // 동일 자치구 인근 추천 구역 4개 추출
+  // 동일 자치구 인근 추천 구역 최대 6개 추출
   const nearbyDistricts = DISTRICTS_GEOJSON.features
     .filter(
       (f) =>
         f.properties.gu === props.gu &&
         f.properties.master_uid !== props.master_uid
     )
-    .slice(0, 4);
+    .slice(0, 6);
 
   // 정비사업 표준 7단계 정의
   const allStages = [
@@ -163,8 +163,8 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-600 selection:text-white">
-      {/* 1. 상단 네비게이션 헤더 */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      {/* 1. 상단 Breadcrumb & 액션 바 */}
+      <div className="bg-slate-900/60 border-b border-slate-800/80 px-4 sm:px-8 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           {/* ← 메인 지도로 돌아가기 버튼 */}
           <Link
@@ -175,24 +175,27 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
             <span>← 메인 지도로 돌아가기</span>
           </Link>
           <span className="text-slate-700 hidden sm:inline">|</span>
-          <nav className="text-xs text-slate-400 hidden sm:flex items-center gap-1.5">
-            <Link href="/" className="hover:text-blue-400">서울시</Link>
+          <nav className="text-xs text-slate-400 flex items-center gap-1.5" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-blue-400">홈</Link>
             <span>›</span>
-            <span className="text-slate-300">{props.gu}</span>
+            <Link href="/districts/" className="hover:text-blue-400 text-slate-300 font-medium">
+              {props.gu}
+            </Link>
             <span>›</span>
-            <span className="text-blue-400 font-bold truncate max-w-xs">{props.name}</span>
+            <span className="text-blue-400 font-bold truncate max-w-[130px] sm:max-w-xs">{props.name}</span>
           </nav>
         </div>
 
         {/* 상단 지도 바로가기 버튼 */}
         <Link
           href={`/?id=${props.master_uid}`}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/30 transition-all hover:scale-105 active:scale-95"
+          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
         >
           <Map className="w-3.5 h-3.5" />
-          <span>지도에서 바로 보기</span>
+          <span>🗺️ 지도에서 이 구역 보기</span>
         </Link>
-      </header>
+      </div>
+
 
       {/* 2. 본문 컨테이너 */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-8">
@@ -482,36 +485,38 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           </Link>
         </div>
 
-        {/* H. 동일 자치구 인근 구역 추천 */}
+        {/* H. 동일 자치구 인근 구역 추천: 관련 구역 리포트 */}
         {nearbyDistricts.length > 0 && (
           <section className="p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
             <div className="flex items-center justify-between pb-2 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <Compass className="w-5 h-5 text-blue-400" />
-                <h2 className="text-base font-bold text-white">{props.gu} 인근 주요 정비구역 함께 보기</h2>
+                <h2 className="text-base font-bold text-white">📑 관련 구역 리포트: {props.gu} 내 다른 정비구역</h2>
               </div>
-              <Link href="/" className="text-xs text-blue-400 hover:underline">
-                전체 496개 구역 보기 →
+              <Link href="/districts/" className="text-xs text-blue-400 hover:underline">
+                전체 496개 구역 색인 보기 →
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {nearbyDistricts.map((item) => (
                 <Link
                   key={item.properties.master_uid}
                   href={`/districts/${item.properties.master_uid}/`}
-                  className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-blue-500/50 hover:bg-slate-800/40 transition-all group"
+                  className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-blue-500/50 hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
                 >
-                  <div className="flex items-center justify-between gap-1 mb-1.5">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">
-                      {item.properties.gu}
-                    </span>
-                    <StageBadge stageCode={item.properties.stage_code} className="text-[10px]" />
+                  <div>
+                    <div className="flex items-center justify-between gap-1 mb-1.5">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">
+                        {item.properties.gu}
+                      </span>
+                      <StageBadge stageCode={item.properties.stage_code} className="text-[10px]" />
+                    </div>
+                    <h3 className="text-xs font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1">
+                      {item.properties.name}
+                    </h3>
                   </div>
-                  <h3 className="text-xs font-bold text-white group-hover:text-blue-400 transition-colors">
-                    {item.properties.name}
-                  </h3>
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 mt-2 pt-2 border-t border-slate-800/60">
+                  <div className="flex items-center justify-between text-[11px] text-slate-400 mt-2.5 pt-2 border-t border-slate-800/60">
                     <span>{item.properties.legal_dong}</span>
                     <strong className="text-slate-300">
                       {item.properties.total_households ? `${item.properties.total_households.toLocaleString()}세대` : "계획중"}
@@ -522,6 +527,7 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
             </div>
           </section>
         )}
+
       </main>
 
       {/* 3. 푸터 */}

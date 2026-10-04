@@ -97,10 +97,13 @@ export default function MainPage() {
     }
   }, []);
 
-  // URL 쿼리 파라미터(?id=구역ID 또는 ?district=구역ID)로 접근 시 해당 구역 자동 선택 및 포커스
+  // URL 쿼리 파라미터(?id=구역ID 또는 ?tab=timeline 등) 접근 시 자동 처리
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
+      if (params.get("tab") === "timeline") {
+        setIsSidebarOpen(true);
+      }
       const targetId = params.get("id") || params.get("district") || params.get("uid");
       if (targetId) {
         const found = features.find(
@@ -118,8 +121,9 @@ export default function MainPage() {
   }, [features, setSelectedUid, setSelectedDistrict, setFlyToTarget]);
 
   return (
-    <main className="relative w-full h-screen overflow-hidden flex bg-slate-950">
+    <main className="relative w-full h-[calc(100vh-3.5rem)] overflow-hidden flex bg-slate-950">
       {/* 1. 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
+
       <LeftFilterPanel
         features={features}
         isOpen={isSidebarOpen}

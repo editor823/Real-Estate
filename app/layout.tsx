@@ -44,6 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { GlobalNavBar } from "@/components/navigation/GlobalNavBar";
+
 export default function RootLayout({
   children,
 }: {
@@ -59,8 +61,12 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full h-full flex flex-col bg-slate-950 text-slate-100 font-sans"
       >
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <GlobalNavBar />
+          <div className="flex-1 min-h-0 flex flex-col">{children}</div>
+        </QueryProvider>
       </body>
     </html>
   );
 }
+

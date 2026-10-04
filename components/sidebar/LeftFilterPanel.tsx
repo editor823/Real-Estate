@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useFilterStore, SortOption, InvestmentPersona } from "@/lib/store/useFilterStore";
 import { useMapStore } from "@/lib/store/useMapStore";
 import { useCompareStore } from "@/lib/store/useCompareStore";
@@ -42,6 +42,23 @@ export function LeftFilterPanel({
   onOpenPrivacy,
 }: LeftFilterPanelProps) {
   const [activeTab, setActiveTab] = useState<"list" | "timeline">("list");
+
+  // URL ?tab=timeline 쿼리 감지
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const checkTab = () => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("tab") === "timeline") {
+          setActiveTab("timeline");
+        } else if (params.get("tab") === "list") {
+          setActiveTab("list");
+        }
+      };
+      checkTab();
+      window.addEventListener("popstate", checkTab);
+      return () => window.removeEventListener("popstate", checkTab);
+    }
+  }, []);
 
   const {
     searchQuery,

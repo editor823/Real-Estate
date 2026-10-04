@@ -24,12 +24,19 @@ const urls = [
     <priority>1.0</priority>
   </url>`,
   `  <url>
-    <loc>${DOMAIN}/privacy</loc>
+    <loc>${DOMAIN}/districts/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>`,
+  `  <url>
+    <loc>${DOMAIN}/privacy/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>`
 ];
+
 
 features.forEach((feat) => {
   const props = feat.properties || {};
