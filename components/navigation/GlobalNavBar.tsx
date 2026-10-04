@@ -80,20 +80,20 @@ export function GlobalNavBar() {
             <span>📑 구역별 분석 리포트</span>
           </Link>
 
-          {/* 메뉴 3: 실시간 고시 */}
+          {/* 메뉴 3: 실시간 고시 알림 */}
           <Link
             href="/?tab=timeline"
             onClick={() => setIsTimelineActive(true)}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
+              "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
               isTimelineActive
-                ? "bg-amber-500 text-white shadow-md shadow-amber-500/30 font-bold"
+                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold"
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
             )}
+            title="실시간 고시 알림 피드"
           >
             <Zap className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isTimelineActive ? "text-white" : "text-amber-500")} />
-            <span className="hidden xs:inline">⚡ 실시간 고시</span>
-            <span className="xs:hidden">⚡ 고시</span>
+            <span>⚡ 실시간 고시 알림</span>
           </Link>
         </nav>
       </div>
