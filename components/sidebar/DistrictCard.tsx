@@ -145,6 +145,17 @@ export function DistrictCard() {
         </div>
       </div>
 
+      {/* [강조] 구역 정밀 분석 리포트 전문 보기 상단 버튼 */}
+      <Link
+        href={`/districts/${selectedDistrict.master_uid}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-500/25 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+      >
+        <span>📘 구역 정밀 분석 리포트 전문 보기</span>
+        <ExternalLink className="w-3.5 h-3.5" />
+      </Link>
+
       {/* 2. 주소 및 고시 정보 */}
       <div className="space-y-1 text-xs text-slate-500 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
         <div className="flex items-center gap-1.5">

@@ -476,23 +476,37 @@ export function LeftFilterPanel({
                         </strong>
                       </div>
 
-                      {/* [+ 비교담기] 버튼 */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          addToCompare(props);
-                        }}
-                        className={cn(
-                          "px-2 py-0.5 rounded-lg text-[10px] font-bold border transition-all cursor-pointer flex items-center gap-1 shrink-0",
-                          inCompare
-                            ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                            : "bg-slate-50 hover:bg-slate-100 text-slate-600 border-slate-200"
-                        )}
-                      >
-                        <ArrowLeftRight className="w-2.5 h-2.5" />
-                        <span>{inCompare ? "담김 ✓" : "+ 비교"}</span>
-                      </button>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <Link
+                          href={`/districts/${props.master_uid}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="px-2 py-0.5 rounded-lg text-[10px] font-bold border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 transition-all flex items-center gap-0.5 cursor-pointer shadow-2xs"
+                          title="정밀 분석 리포트 새 창으로 열기"
+                        >
+                          <span>리포트</span>
+                          <ExternalLink className="w-2.5 h-2.5" />
+                        </Link>
+
+                        {/* [+ 비교담기] 버튼 */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            addToCompare(props);
+                          }}
+                          className={cn(
+                            "px-2 py-0.5 rounded-lg text-[10px] font-bold border transition-all cursor-pointer flex items-center gap-1 shrink-0",
+                            inCompare
+                              ? "bg-blue-600 text-white border-blue-600 shadow-xs"
+                              : "bg-slate-50 hover:bg-slate-100 text-slate-600 border-slate-200"
+                          )}
+                        >
+                          <ArrowLeftRight className="w-2.5 h-2.5" />
+                          <span>{inCompare ? "담김 ✓" : "+ 비교"}</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );

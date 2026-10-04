@@ -121,10 +121,10 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-xs font-bold text-white transition-all shadow-sm active:scale-95 cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>지도 메인으로</span>
+            <ArrowLeft className="w-4 h-4 text-blue-400" />
+            <span>← 메인 지도로 돌아가기</span>
           </Link>
           <span className="text-slate-700">|</span>
           <nav className="text-xs text-slate-400 flex items-center gap-1.5">
