@@ -10,7 +10,8 @@ import { useMapStore } from "@/lib/store/useMapStore";
 import { DistrictCard } from "@/components/sidebar/DistrictCard";
 import { CompareFloatingBar } from "@/components/compare/CompareFloatingBar";
 import { CompareModal } from "@/components/compare/CompareModal";
-import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { PrivacyPolicyModal } from "@/components/legal/PrivacyPolicyModal";
+import { ChevronLeft, ChevronRight, Loader2, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Leaflet 지도는 브라우저 전용 라이브러리이므로 SSR(서버 렌더링)을 비활성화합니다.
@@ -29,6 +30,7 @@ const InteractiveLeafletMap = dynamic(
 
 export default function MainPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   // 정적 모듈에서 496개 전체 구역 데이터를 즉시 로드 (로딩 지연 0초 및 네트워크 의존성 제거)
   const [features, setFeatures] = useState<DistrictFeature[]>(DISTRICTS_GEOJSON.features || []);
   const [isLoading, setIsLoading] = useState(false);
@@ -97,6 +99,7 @@ export default function MainPage() {
         features={features}
         isOpen={isSidebarOpen}
         onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
+        onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
       />
 
       {/* 2. 패널 접기/펼치기 토글 버튼 (데스크톱 및 모바일 접힘 시) */}
@@ -136,6 +139,15 @@ export default function MainPage() {
             <DistrictCard />
           </aside>
         )}
+
+        {/* 지도 우측 하단 미니 개인정보처리방침 링크 (데스크톱 패널 닫힘 시 노출) */}
+        <button
+          onClick={() => setIsPrivacyModalOpen(true)}
+          className="hidden sm:flex items-center gap-1 absolute bottom-2 right-14 z-[400] text-[10px] text-slate-400 hover:text-white bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md px-2 py-0.5 rounded-md border border-slate-800 transition-colors cursor-pointer shadow-md"
+        >
+          <Shield className="w-2.5 h-2.5 text-blue-400" />
+          <span>개인정보처리방침</span>
+        </button>
       </section>
 
       {/* 4. 모바일 화면 하단 플로팅 전환 바 (모바일 UX 최적화) */}
@@ -151,6 +163,12 @@ export default function MainPage() {
       {/* 5. 구역 비교 하단 플로팅 바 & 비교 모달 */}
       <CompareFloatingBar />
       <CompareModal />
+
+      {/* 6. 구글 애드센스 필수 개인정보처리방침 안내 모달 */}
+      <PrivacyPolicyModal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+      />
     </main>
   );
 }

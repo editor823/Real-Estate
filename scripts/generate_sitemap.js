@@ -22,6 +22,12 @@ const urls = [
     <lastmod>${today}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>`,
+  `  <url>
+    <loc>${DOMAIN}/privacy</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>`
 ];
 

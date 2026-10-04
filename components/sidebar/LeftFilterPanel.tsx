@@ -23,16 +23,24 @@ import {
   Sprout,
   Trophy,
   X,
+  ExternalLink,
 } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface LeftFilterPanelProps {
   features: DistrictFeature[];
   isOpen: boolean;
   onToggle: () => void;
+  onOpenPrivacy?: () => void;
 }
 
-export function LeftFilterPanel({ features, isOpen, onToggle }: LeftFilterPanelProps) {
+export function LeftFilterPanel({
+  features,
+  isOpen,
+  onToggle,
+  onOpenPrivacy,
+}: LeftFilterPanelProps) {
   const [activeTab, setActiveTab] = useState<"list" | "timeline">("list");
 
   const {
@@ -493,6 +501,23 @@ export function LeftFilterPanel({ features, isOpen, onToggle }: LeftFilterPanelP
           </div>
         </div>
       )}
+
+      {/* 4. 하단 서비스 푸터 & 개인정보처리방침 안내 링크 (애드센스 필수) */}
+      <div className="p-2.5 px-3.5 border-t border-slate-100 bg-slate-50 text-[11px] text-slate-500 flex items-center justify-between shrink-0">
+        <span>© 2026 서울시 정비사업</span>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onOpenPrivacy}
+            className="text-slate-600 hover:text-blue-600 underline font-semibold cursor-pointer"
+          >
+            개인정보처리방침
+          </button>
+          <Link href="/privacy" className="text-slate-400 hover:text-blue-600" title="전체 페이지 보기">
+            <ExternalLink className="w-3 h-3" />
+          </Link>
+        </div>
+      </div>
     </aside>
   );
 }
