@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { LeftFilterPanel } from "@/components/sidebar/LeftFilterPanel";
 import { DistrictFeature, DistrictFeatureCollection } from "@/lib/types/district";
+import { DISTRICTS_GEOJSON } from "@/lib/constants/districtsData";
 import { useFilterStore } from "@/lib/store/useFilterStore";
 import { useMapStore } from "@/lib/store/useMapStore";
 import { DistrictCard } from "@/components/sidebar/DistrictCard";
@@ -28,8 +29,9 @@ const InteractiveLeafletMap = dynamic(
 
 export default function MainPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [features, setFeatures] = useState<DistrictFeature[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // 정적 모듈에서 496개 전체 구역 데이터를 즉시 로드 (로딩 지연 0초 및 네트워크 의존성 제거)
+  const [features, setFeatures] = useState<DistrictFeature[]>(DISTRICTS_GEOJSON.features || []);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     searchQuery,
@@ -42,19 +44,19 @@ export default function MainPage() {
   } = useFilterStore();
   const { selectedDistrict } = useMapStore();
 
-  // 1. 초기 GeoJSON 데이터 로드 (정적 배포 지원을 위해 /data/districts.geojson 직접 로드)
+  // 최신 정적 GeoJSON 파일이 있을 경우 비동기 보정 동기화
   useEffect(() => {
     async function loadDistricts() {
       try {
-        const response = await fetch("/data/districts.geojson");
+        const response = await fetch("/data/districts.json");
         if (response.ok) {
           const data: DistrictFeatureCollection = await response.json();
-          setFeatures(data.features || []);
+          if (data.features && data.features.length > 0) {
+            setFeatures(data.features);
+          }
         }
-      } catch (error) {
-        console.error("GeoJSON 로드 실패:", error);
-      } finally {
-        setIsLoading(false);
+      } catch {
+        // 이미 DISTRICTS_GEOJSON으로 초기화되어 있으므로 오류 무시
       }
     }
     loadDistricts();

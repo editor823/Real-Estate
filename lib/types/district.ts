@@ -48,5 +48,6 @@ export interface DistrictFeatureCollection {
   type: "FeatureCollection";
   name?: string;
   total_count?: number;
+  crs?: any;
   features: DistrictFeature[];
 }
