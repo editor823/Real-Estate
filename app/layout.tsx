@@ -15,21 +15,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://seoul-redevelopment.pages.dev"),
-  title: "서울시 정비사업 & 신통·모아 통합 모니터링 플랫폼",
+  title: "서울시 재개발·신통기획 모니터링 지도 | 입주권 안전 진단",
   description:
-    "서울시 496개 정비구역과 신통기획·모아타운 공간 경계 및 실시간 인허가 단계 변화를 추적하는 통합 모니터링 플랫폼",
+    "서울시 496개 정비구역 실시간 현황, 신통기획·모아타운 후보지, 지위양도/현금청산 안전성 진단 및 예상 준공 타임라인",
   openGraph: {
-    title: "서울시 정비사업 & 신통·모아 통합 모니터링 플랫폼",
+    title: "서울시 재개발·신통기획 모니터링 지도 | 입주권 안전 진단",
     description:
-      "서울시 496개 정비구역과 신통기획·모아타운 공간 경계 및 실시간 인허가 단계 변화를 추적하는 통합 모니터링 플랫폼",
+      "서울시 496개 정비구역 실시간 현황, 신통기획·모아타운 후보지, 지위양도/현금청산 안전성 진단 및 예상 준공 타임라인",
     url: "https://seoul-redevelopment.pages.dev",
-    siteName: "서울시 정비사업 모니터링",
+    siteName: "서울시 재개발 모니터링",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "서울시 정비사업 & 신통·모아 통합 모니터링 플랫폼",
+        alt: "서울시 재개발·신통기획 모니터링 지도 | 입주권 안전 진단",
       },
     ],
     locale: "ko_KR",
@@ -37,10 +37,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "서울시 정비사업 & 신통·모아 통합 모니터링 플랫폼",
+    title: "서울시 재개발·신통기획 모니터링 지도 | 입주권 안전 진단",
     description:
-      "서울시 496개 정비구역과 신통기획·모아타운 공간 경계 및 실시간 인허가 단계 변화를 추적하는 통합 모니터링 플랫폼",
-    images: ["/og-image.jpg"],
+      "서울시 496개 정비구역 실시간 현황, 신통기획·모아타운 후보지, 지위양도/현금청산 안전성 진단 및 예상 준공 타임라인",
+    images: ["/og-image.png"],
   },
 };
 

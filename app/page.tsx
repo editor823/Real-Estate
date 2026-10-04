@@ -83,6 +83,13 @@ export default function MainPage() {
     return true;
   });
 
+  // 모바일 화면 초기 진입 시 지도가 먼저 보이도록 처리
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      setIsSidebarOpen(false);
+    }
+  }, []);
+
   return (
     <main className="relative w-full h-screen overflow-hidden flex bg-slate-950">
       {/* 1. 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
@@ -92,17 +99,24 @@ export default function MainPage() {
         onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
       />
 
-      {/* 2. 패널 접기/펼치기 토글 버튼 */}
+      {/* 2. 패널 접기/펼치기 토글 버튼 (데스크톱 및 모바일 접힘 시) */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         className={cn(
-          "absolute top-6 z-[650] p-2 rounded-r-xl bg-white/95 backdrop-blur-md border-r border-y border-slate-200/90 shadow-lg text-slate-600 hover:text-blue-600 transition-all cursor-pointer",
-          isSidebarOpen ? "left-[430px]" : "left-0"
+          "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-white/95 backdrop-blur-md border-r border-y border-slate-200/90 shadow-xl text-slate-700 hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1.5",
+          isSidebarOpen ? "hidden sm:flex left-[430px]" : "left-0"
         )}
         title={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
         aria-label={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
       >
-        {isSidebarOpen ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+        {isSidebarOpen ? (
+          <ChevronLeft className="w-4 h-4" />
+        ) : (
+          <>
+            <ChevronRight className="w-4 h-4 text-blue-600" />
+            <span className="text-xs font-bold text-slate-800 pr-0.5">목록 & 필터</span>
+          </>
+        )}
       </button>
 
       {/* 3. 우측 인터랙티브 지도 영역 */}
@@ -116,15 +130,25 @@ export default function MainPage() {
           <InteractiveLeafletMap features={filteredFeatures} />
         )}
 
-        {/* 선택된 구역이 있을 때 우측 상단에 표시되는 퀵 상세 정보 카드 */}
+        {/* 선택된 구역이 있을 때 표시되는 퀵 상세 정보 카드 (모바일 바텀시트 & 데스크톱 플로팅) */}
         {selectedDistrict && (
-          <aside className="absolute top-16 left-6 z-[500] w-[390px] max-w-[calc(100vw-3rem)] max-h-[calc(100vh-5.5rem)] rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-top-4 duration-200">
+          <aside className="absolute inset-x-3 bottom-16 sm:bottom-auto sm:top-16 sm:left-6 z-[500] sm:w-[390px] max-w-full max-h-[70vh] sm:max-h-[calc(100vh-5.5rem)] rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-200">
             <DistrictCard />
           </aside>
         )}
       </section>
 
-      {/* 4. 구역 비교 하단 플로팅 바 & 비교 모달 */}
+      {/* 4. 모바일 화면 하단 플로팅 전환 바 (모바일 UX 최적화) */}
+      <div className="sm:hidden absolute bottom-5 left-1/2 -translate-x-1/2 z-[550]">
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900/95 backdrop-blur-md text-white text-xs font-bold shadow-2xl border border-slate-700/80 hover:bg-slate-800 transition-all active:scale-95 cursor-pointer"
+        >
+          {isSidebarOpen ? "🗺️ 지도로 보기" : "📋 구역 목록 / 고시 피드"}
+        </button>
+      </div>
+
+      {/* 5. 구역 비교 하단 플로팅 바 & 비교 모달 */}
       <CompareFloatingBar />
       <CompareModal />
     </main>

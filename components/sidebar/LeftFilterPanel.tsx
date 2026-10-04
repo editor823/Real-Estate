@@ -22,6 +22,7 @@ import {
   ArrowUpDown,
   Sprout,
   Trophy,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -151,7 +152,7 @@ export function LeftFilterPanel({ features, isOpen, onToggle }: LeftFilterPanelP
     <aside
       className={cn(
         "relative z-[600] h-full bg-white border-r border-slate-200/90 shadow-2xl flex flex-col transition-all duration-300 ease-in-out shrink-0",
-        isOpen ? "w-[430px]" : "w-0 overflow-hidden border-r-0"
+        isOpen ? "w-full sm:w-[430px] max-w-[100vw] sm:max-w-[430px]" : "w-0 overflow-hidden border-r-0"
       )}
     >
       {/* 1. 상단 서비스 헤더 */}
@@ -168,9 +169,20 @@ export function LeftFilterPanel({ features, isOpen, onToggle }: LeftFilterPanelP
               </p>
             </div>
           </div>
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">
-            총 496개소
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">
+              총 496개소
+            </span>
+            {/* 모바일 패널 닫기 버튼 */}
+            <button
+              onClick={onToggle}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors sm:hidden cursor-pointer"
+              title="지도 보기 (패널 닫기)"
+              aria-label="지도 보기 (패널 닫기)"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -206,7 +218,7 @@ export function LeftFilterPanel({ features, isOpen, onToggle }: LeftFilterPanelP
       {activeTab === "timeline" ? (
         <div className="flex-1 overflow-y-auto">
           {/* 전체 구역 데이터를 전달하여 고시일자 최신순 정렬 피드 렌더링 */}
-          <TimelineFeed features={features} />
+          <TimelineFeed features={features} onSelectMobile={onToggle} />
         </div>
       ) : (
         <div className="flex-1 flex flex-col min-h-0">
@@ -411,6 +423,9 @@ export function LeftFilterPanel({ features, isOpen, onToggle }: LeftFilterPanelP
                       setSelectedDistrict(props);
                       if (props.centroid) {
                         setFlyToTarget([props.centroid[1], props.centroid[0]]);
+                      }
+                      if (typeof window !== "undefined" && window.innerWidth < 768) {
+                        onToggle();
                       }
                     }}
                     className={cn(

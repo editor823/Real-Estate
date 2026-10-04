@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 
 interface TimelineFeedProps {
   features: DistrictFeature[];
+  onSelectMobile?: () => void;
 }
 
-export function TimelineFeed({ features }: TimelineFeedProps) {
+export function TimelineFeed({ features, onSelectMobile }: TimelineFeedProps) {
   const { selectedUid, setSelectedUid, setSelectedDistrict, setFlyToTarget } = useMapStore();
 
   // 최신 고시일자 기준 내림차순 정렬 (최신순)
@@ -32,6 +33,9 @@ export function TimelineFeed({ features }: TimelineFeedProps) {
     if (props.centroid) {
       // Leaflet 좌표 순서: [lat(위도), lng(경도)]
       setFlyToTarget([props.centroid[1], props.centroid[0]]);
+    }
+    if (typeof window !== "undefined" && window.innerWidth < 768 && onSelectMobile) {
+      onSelectMobile();
     }
   };
 
