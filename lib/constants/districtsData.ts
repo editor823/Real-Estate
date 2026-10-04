@@ -340,9 +340,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "사직로62-2",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "BIZ_PLAN",
-        "stage_seq": 5,
-        "stage_raw": "사업시행",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "신통 자문",
         "sido_sugg_code": "11110",
         "approval_date": "2012-09-21",
         "existing_households": 250,
@@ -359,7 +359,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.976329,
           37.581279
-        ]
+        ],
+        "stage_label": "신통 자문"
       },
       "geometry": {
         "type": "Polygon",
@@ -655,9 +656,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "돈화문로15",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "MGMT_DISP",
-        "stage_seq": 6,
-        "stage_raw": "관리처분",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11110",
         "approval_date": "2026-05-15",
         "existing_households": 32,
@@ -674,7 +675,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.984629,
           37.562975
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -1537,9 +1539,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "세종대로10-2",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "DESIGNATED",
-        "stage_seq": 2,
-        "stage_raw": "구역지정",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "신통 착수",
         "sido_sugg_code": "11140",
         "approval_date": "2025-05-29",
         "existing_households": 0,
@@ -1556,7 +1558,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.002026,
           37.568611
-        ]
+        ],
+        "stage_label": "신통 착수"
       },
       "geometry": {
         "type": "Polygon",
@@ -2798,8 +2801,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11140",
         "approval_date": "2023-12-27",
         "existing_households": 899,
@@ -2816,7 +2819,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.002019,
           37.547424
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -3742,13 +3746,13 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "한강대로98나길26",
         "biz_type": "RECONSTRUCTION",
         "biz_type_label": "재건축",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "신통 착수",
         "sido_sugg_code": "11170",
         "approval_date": "2026-03-01",
         "existing_households": 704,
-        "total_households": 0,
+        "total_households": 2081,
         "sale_households": 0,
         "rent_households": 0,
         "consent_rate": 72.5,
@@ -3761,7 +3765,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.990919,
           37.527369
-        ]
+        ],
+        "stage_label": "신통 착수"
       },
       "geometry": {
         "type": "Polygon",
@@ -4876,9 +4881,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "청파로71나길23-4",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11170",
         "approval_date": "2026-06-23",
         "existing_households": 1408,
@@ -4895,7 +4900,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.989555,
           37.54754
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -5317,11 +5323,11 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11200",
-        "approval_date": "2017-07-18",
+        "approval_date": "2025-03-27",
         "existing_households": 3121,
         "total_households": 3014,
         "sale_households": 2475,
@@ -5336,7 +5342,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.033703,
           37.565864
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -5380,9 +5387,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "2025-03-27",
         "sido_sugg_code": "11200",
         "approval_date": "2020-03-06",
         "existing_households": 2339,
@@ -5399,7 +5406,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.037319,
           37.558569
-        ]
+        ],
+        "stage_label": "2025-03-27"
       },
       "geometry": {
         "type": "Polygon",
@@ -5443,9 +5451,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "2025-03-27",
         "sido_sugg_code": "11200",
         "approval_date": "2019-02-27",
         "existing_households": 2005,
@@ -5462,7 +5470,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.041226,
           37.568311
-        ]
+        ],
+        "stage_label": "2025-03-27"
       },
       "geometry": {
         "type": "Polygon",
@@ -5506,9 +5515,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "건축심의",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "2025-03-27",
         "sido_sugg_code": "11200",
         "approval_date": "2016-07-25",
         "existing_households": 1602,
@@ -5525,7 +5534,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.028528,
           37.562281
-        ]
+        ],
+        "stage_label": "2025-03-27"
       },
       "geometry": {
         "type": "Polygon",
@@ -5948,8 +5958,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11200",
         "approval_date": "2024-10-18",
         "existing_households": 1741,
@@ -5966,7 +5976,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.040969,
           37.574576
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -6010,9 +6021,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "살곶이2길37",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11200",
         "approval_date": "2025-08-28",
         "existing_households": 125,
@@ -6029,7 +6040,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.024212,
           37.557421
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -6136,9 +6148,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "DESIGNATED",
-        "stage_seq": 2,
-        "stage_raw": "구역지정",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "심의",
         "sido_sugg_code": "11200",
         "approval_date": "2026-06-25",
         "existing_households": 511,
@@ -6155,7 +6167,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.027762,
           37.574214
-        ]
+        ],
+        "stage_label": "심의"
       },
       "geometry": {
         "type": "Polygon",
@@ -6640,9 +6653,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "긴고랑로1길55",
         "biz_type": "RECONSTRUCTION",
         "biz_type_label": "재건축",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "건축심의",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "후보지선정",
         "sido_sugg_code": "11215",
         "approval_date": "2022-07-19",
         "existing_households": 276,
@@ -6659,7 +6672,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.077278,
           37.530282
-        ]
+        ],
+        "stage_label": "후보지선정"
       },
       "geometry": {
         "type": "Polygon",
@@ -7522,9 +7536,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "양천구중앙로45길27-19",
         "biz_type": "RECONSTRUCTION",
         "biz_type_label": "재건축",
-        "stage_code": "MGMT_DISP",
-        "stage_seq": 6,
-        "stage_raw": "관리처분",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "신통 착수",
         "sido_sugg_code": "11470",
         "approval_date": "2025-09-25",
         "existing_households": 1592,
@@ -7541,7 +7555,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.863403,
           37.519364
-        ]
+        ],
+        "stage_label": "신통 착수"
       },
       "geometry": {
         "type": "Polygon",
@@ -7963,9 +7978,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "천호대로43길46",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "DESIGNATED",
+        "stage_code": "PROMOTION_COMMITTEE",
         "stage_seq": 2,
-        "stage_raw": "구역지정",
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11230",
         "approval_date": "2026-03-26",
         "existing_households": 409,
@@ -7982,7 +7997,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.05243,
           37.563925
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -8783,8 +8799,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11260",
         "approval_date": "2024-09-11",
         "existing_households": 1543,
@@ -8801,7 +8817,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.090129,
           37.614579
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -8845,9 +8862,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "동일로607",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11260",
         "approval_date": "2026-01-15",
         "existing_households": 946,
@@ -8864,7 +8881,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.087678,
           37.598082
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -9034,9 +9052,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "봉우재로229",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11260",
         "approval_date": "2025-03-27",
         "existing_households": 934,
@@ -9053,7 +9071,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.098429,
           37.596275
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -10231,9 +10250,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "한천로69길27",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "DESIGNATED",
+        "stage_code": "PROMOTION_COMMITTEE",
         "stage_seq": 2,
-        "stage_raw": "구역지정",
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11290",
         "approval_date": "2025-04-10",
         "existing_households": 1298,
@@ -10250,7 +10269,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.029547,
           37.598422
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -10546,9 +10566,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "월곡로6길5-10",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11290",
         "approval_date": "2025-05-29",
         "existing_households": 397,
@@ -10565,7 +10585,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.035775,
           37.591538
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -10609,9 +10630,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "종암로19라길14",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11290",
         "approval_date": "2025-08-21",
         "existing_households": 440,
@@ -10628,7 +10649,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.00053,
           37.598777
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -10672,9 +10694,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "오패산로17길21-19",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11290",
         "approval_date": "2025-05-01",
         "existing_households": 467,
@@ -10691,7 +10713,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.021119,
           37.573024
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -11239,9 +11262,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "도봉로78길75",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11305",
         "approval_date": "2025-08-28",
         "existing_households": 547,
@@ -11258,7 +11281,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.036659,
           37.643196
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -11302,9 +11326,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "강북구오현로25길22",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11305",
         "approval_date": "2026-05-28",
         "existing_households": 2643,
@@ -11321,7 +11345,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.013853,
           37.643807
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -11365,9 +11390,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "방학로2가길25",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11320",
         "approval_date": "2026-06-15",
         "existing_households": 384,
@@ -11384,7 +11409,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.044003,
           37.671164
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -11555,8 +11581,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11320",
         "approval_date": "2025-09-26",
         "existing_households": 194,
@@ -11573,7 +11599,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.038828,
           37.667581
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -11869,11 +11896,11 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "덕릉로115나길25",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "건축심의",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11350",
-        "approval_date": "2009-06-23",
+        "approval_date": "2025-04-17",
         "existing_households": 1174,
         "total_households": 2042,
         "sale_households": 1693,
@@ -11888,7 +11915,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.056919,
           37.649269
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -14705,8 +14733,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11410",
         "approval_date": "2026-03-20",
         "existing_households": 1360,
@@ -14723,7 +14751,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.94943,
           37.568625
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -14830,9 +14859,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "세무서10길27-1",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11410",
         "approval_date": "2025-12-26",
         "existing_households": 587,
@@ -14849,7 +14878,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.924765,
           37.567083
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -15145,11 +15175,11 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "백범로1길8",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "MGMT_DISP",
-        "stage_seq": 6,
-        "stage_raw": "관리처분",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11440",
-        "approval_date": "2022-09-01",
+        "approval_date": "2026-05-14",
         "existing_households": 29,
         "total_households": 288,
         "sale_households": 237,
@@ -15164,7 +15194,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.900328,
           37.565081
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -15902,8 +15933,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11440",
         "approval_date": "2026-01-30",
         "existing_households": 453,
@@ -15920,7 +15951,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.921447,
           37.575322
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -15964,9 +15996,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "만리재로12나길20",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11440",
         "approval_date": "2024-12-05",
         "existing_households": 973,
@@ -15983,7 +16015,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.891298,
           37.566897
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -16468,9 +16501,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "양천구목동중앙본로18가길16",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11470",
         "approval_date": "2025-09-25",
         "existing_households": 302,
@@ -16487,7 +16520,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.874424,
           37.512799
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -18169,9 +18203,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "초원로38-14",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
+        "stage_code": "BUSINESS_AUTH",
         "stage_seq": 4,
-        "stage_raw": "건축심의",
+        "stage_raw": "통심완료",
         "sido_sugg_code": "11500",
         "approval_date": "2024-08-16",
         "existing_households": 495,
@@ -18188,7 +18222,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.857424,
           37.546799
-        ]
+        ],
+        "stage_label": "사업시행 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -18799,9 +18834,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "구로동로5길23-21",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11530",
         "approval_date": "2026-05-28",
         "existing_households": 610,
@@ -18818,7 +18853,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.875353,
           37.499407
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -18862,9 +18898,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "고척로41가길21",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11530",
         "approval_date": "2025-04-24",
         "existing_households": 1738,
@@ -18881,7 +18917,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.892629,
           37.485375
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -19429,9 +19466,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "시흥대로106길38일대",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11545",
         "approval_date": "2026-06-25",
         "existing_households": 393,
@@ -19448,7 +19485,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.901126,
           37.461611
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -19492,9 +19530,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "시흥대로88가길52일대",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11545",
         "approval_date": "2026-03-12",
         "existing_households": 445,
@@ -19511,7 +19549,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.888428,
           37.455581
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -19556,8 +19595,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(신탁)",
         "sido_sugg_code": "11545",
         "approval_date": "2025-08-21",
         "existing_households": 917,
@@ -19574,7 +19613,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.904624,
           37.452599
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -21508,9 +21548,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "당산로52길23",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11560",
         "approval_date": "2025-04-10",
         "existing_households": 764,
@@ -21527,7 +21567,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.874056,
           37.531288
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -21697,9 +21738,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "영중로3길7",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "신통 통보",
         "sido_sugg_code": "11560",
         "approval_date": "2023-07-28",
         "existing_households": 165,
@@ -21716,7 +21757,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.900327,
           37.545913
-        ]
+        ],
+        "stage_label": "신통 통보"
       },
       "geometry": {
         "type": "Polygon",
@@ -21886,9 +21928,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "디지털로69나길7",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PROMOTION_COMMITTEE",
+        "stage_seq": 2,
+        "stage_raw": "추진위구성",
         "sido_sugg_code": "11560",
         "approval_date": "2025-03-27",
         "existing_households": 213,
@@ -21905,7 +21947,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.879429,
           37.541601
-        ]
+        ],
+        "stage_label": "추진위 승인"
       },
       "geometry": {
         "type": "Polygon",
@@ -22390,9 +22433,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "가마산로61길8-7",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "DESIGNATED",
-        "stage_seq": 2,
-        "stage_raw": "구역지정",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "심의",
         "sido_sugg_code": "11560",
         "approval_date": "2026-06-12",
         "existing_households": 264,
@@ -22409,7 +22452,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.922552,
           37.532392
-        ]
+        ],
+        "stage_label": "심의"
       },
       "geometry": {
         "type": "Polygon",
@@ -22705,9 +22749,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "서울시립대로57",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "BIZ_PLAN",
-        "stage_seq": 5,
-        "stage_raw": "사업시행",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "신통 착수",
         "sido_sugg_code": "11230",
         "approval_date": "2024-12-26",
         "existing_households": 474,
@@ -22724,7 +22768,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.05924,
           37.566913
-        ]
+        ],
+        "stage_label": "신통 착수"
       },
       "geometry": {
         "type": "Polygon",
@@ -23146,9 +23191,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "-",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "신통 착수",
         "sido_sugg_code": "11590",
         "approval_date": "2022-03-31",
         "existing_households": 493,
@@ -23165,7 +23210,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.927553,
           37.516407
-        ]
+        ],
+        "stage_label": "신통 착수"
       },
       "geometry": {
         "type": "Polygon",
@@ -23651,8 +23697,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(신탁)",
         "sido_sugg_code": "11590",
         "approval_date": "2025-10-02",
         "existing_households": 775,
@@ -23669,7 +23715,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.921898,
           37.512997
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -23713,9 +23760,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "성대로10길44",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
+        "stage_code": "BUSINESS_AUTH",
         "stage_seq": 4,
-        "stage_raw": "건축심의",
+        "stage_raw": "통심완료",
         "sido_sugg_code": "11590",
         "approval_date": "2025-06-05",
         "existing_households": 2572,
@@ -23732,7 +23779,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.95183,
           37.501925
-        ]
+        ],
+        "stage_label": "사업시행 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -23839,9 +23887,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "양지길94",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "BIZ_PLAN",
-        "stage_seq": 5,
-        "stage_raw": "사업시행",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "인가 완료",
         "sido_sugg_code": "11620",
         "approval_date": "2025-03-11",
         "existing_households": 4410,
@@ -23858,7 +23906,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.952019,
           37.473469
-        ]
+        ],
+        "stage_label": "인가 완료"
       },
       "geometry": {
         "type": "Polygon",
@@ -24343,9 +24392,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11620",
         "approval_date": "2026-06-04",
         "existing_households": 5044,
@@ -24362,7 +24411,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.939853,
           37.482407
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -24532,9 +24582,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11620",
         "approval_date": "2026-02-26",
         "existing_households": 2195,
@@ -24551,7 +24601,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           126.938912,
           37.472321
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -25477,9 +25528,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "CONSTRUCTION",
-        "stage_seq": 7,
-        "stage_raw": "착공",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "후보지선정",
         "sido_sugg_code": "11200",
         "approval_date": "2023-10-24",
         "existing_households": 1844,
@@ -25496,7 +25547,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.049647,
           37.572522
-        ]
+        ],
+        "stage_label": "후보지선정"
       },
       "geometry": {
         "type": "Polygon",
@@ -28186,11 +28238,11 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "마천로51길16-15",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "PLAN_DESIGNATION",
+        "stage_seq": 1,
+        "stage_raw": "구역지정",
         "sido_sugg_code": "11710",
-        "approval_date": "2012-07-26",
+        "approval_date": "2025-05-15",
         "existing_households": 1592,
         "total_households": 1729,
         "sale_households": 1273,
@@ -28205,7 +28257,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.113724,
           37.510299
-        ]
+        ],
+        "stage_label": "구역지정 고시"
       },
       "geometry": {
         "type": "Polygon",
@@ -29006,8 +29059,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11710",
         "approval_date": "2026-01-08",
         "existing_households": 1618,
@@ -29024,7 +29077,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.088498,
           37.515097
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -30454,9 +30508,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "PROMOT_COMM",
-        "stage_seq": 3,
-        "stage_raw": "추진위",
+        "stage_code": "BUSINESS_AUTH",
+        "stage_seq": 4,
+        "stage_raw": "통심완료",
         "sido_sugg_code": "11740",
         "approval_date": "2025-09-04",
         "existing_households": 285,
@@ -30473,7 +30527,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.114762,
           37.540814
-        ]
+        ],
+        "stage_label": "사업시행 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -30517,9 +30572,9 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "address_doro": "구천면로244-10",
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
-        "stage_code": "UNION_AUTH",
+        "stage_code": "BUSINESS_AUTH",
         "stage_seq": 4,
-        "stage_raw": "건축심의",
+        "stage_raw": "통심완료",
         "sido_sugg_code": "11740",
         "approval_date": "2024-04-26",
         "existing_households": 307,
@@ -30536,7 +30591,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.121709,
           37.516657
-        ]
+        ],
+        "stage_label": "사업시행 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -30581,8 +30637,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11740",
         "approval_date": "2024-12-02",
         "existing_households": 193,
@@ -30599,7 +30655,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.136647,
           37.539122
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -30707,8 +30764,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "biz_type": "REDEVELOPMENT",
         "biz_type_label": "재개발",
         "stage_code": "UNION_AUTH",
-        "stage_seq": 4,
-        "stage_raw": "조합설립",
+        "stage_seq": 3,
+        "stage_raw": "시행자지정(조합)",
         "sido_sugg_code": "11740",
         "approval_date": "2025-09-15",
         "existing_households": 630,
@@ -30725,7 +30782,8 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         "centroid": [
           127.13643,
           37.519625
-        ]
+        ],
+        "stage_label": "조합설립 인가"
       },
       "geometry": {
         "type": "Polygon",
@@ -31259,5 +31317,6 @@ export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {
         ]
       }
     }
-  ]
+  ],
+  "last_crawled_at": "2026-10-04 21:21:20"
 };

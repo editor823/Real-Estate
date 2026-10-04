@@ -15,6 +15,7 @@ export interface DistrictProperties {
   stage_code: string;
   stage_seq: number;
   stage_raw?: string; // 엑셀 원본 단계명
+  stage_label?: string; // 단계 라벨명 (예: 조합설립 인가)
   sido_sugg_code: string;
   legal_dong: string;
   address_jibun?: string;
@@ -48,6 +49,7 @@ export interface DistrictFeatureCollection {
   type: "FeatureCollection";
   name?: string;
   total_count?: number;
+  last_crawled_at?: string;
   crs?: any;
   features: DistrictFeature[];
 }

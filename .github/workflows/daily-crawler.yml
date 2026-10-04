@@ -1,0 +1,46 @@
+name: 서울시 정비사업 일일 무키(Keyless) 크롤러
+
+on:
+  schedule:
+    # 매일 한국 시간 오전 6시 (UTC 기준 21시)
+    - cron: '0 21 * * *'
+  # GitHub Actions 탭에서 [Run workflow] 버튼으로 언제든지 수동 실행 가능
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  crawl-and-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 파이썬(Python) 환경 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 필수 라이브러리 설치 (requests, beautifulsoup4)
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: 서울시 정비사업 정보몽땅 크롤러 실행
+        run: |
+          python scripts/crawler.py
+
+      - name: 데이터 변경사항이 있을 때만 자동 커밋 및 푸시
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/ lib/constants/
+          if git diff --staged --quiet; then
+            echo "✨ 새로운 데이터 변경사항이 없습니다. 커밋을 건너뜁니다."
+          else
+            echo "🎉 변경된 구역 데이터를 감지했습니다. GitHub에 푸시합니다."
+            git commit -m "chore(data): 서울시 정비사업 최신 고시 및 추진단계 자동 업데이트"
+            git push
+          fi
