@@ -33,6 +33,15 @@ export interface DistrictProperties {
   source_type: string;
   is_active: boolean;
   centroid: [number, number]; // [lng, lat]
+  // 신속통합기획 및 모아타운 정책 플래그 & 태그
+  isShinTong?: boolean;
+  is_shintong?: boolean;
+  isMoa?: boolean;
+  is_moa?: boolean;
+  businessType?: string;
+  raw_biz_type?: string;
+  remark?: string;
+  tags?: string[];
 }
 
 export interface DistrictFeature {

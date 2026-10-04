@@ -112,10 +112,26 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
     0
   );
 
-  // 사업 유형별 집계
-  const sinthongCount = guDistricts.filter((f) => f.properties.biz_type === "SINTHONG").length;
-  const moaCount = guDistricts.filter((f) => f.properties.biz_type === "MOA").length;
-  const normalCount = totalDistricts - sinthongCount - moaCount;
+  // 사업 유형별 집계 (신속통합기획 및 모아타운 플래그/키워드 연동)
+  const isSinthong = (props: any) =>
+    props.isShinTong === true ||
+    props.is_shintong === true ||
+    props.biz_type === "SINTHONG" ||
+    props.businessType === "신속통합기획" ||
+    /신속통합|신통|기획/.test(props.name || "") ||
+    /신속통합|신통|기획/.test(props.remark || "");
+
+  const isMoa = (props: any) =>
+    props.isMoa === true ||
+    props.is_moa === true ||
+    props.biz_type === "MOA" ||
+    props.businessType === "모아타운" ||
+    /모아|소규모|모아타운/.test(props.name || "") ||
+    /모아|소규모|모아타운/.test(props.remark || "");
+
+  const sinthongCount = guDistricts.filter((f) => isSinthong(f.properties)).length;
+  const moaCount = guDistricts.filter((f) => isMoa(f.properties)).length;
+  const normalCount = Math.max(0, totalDistricts - sinthongCount - moaCount);
 
   // 법정동 목록 추출
   const dongs = Array.from(

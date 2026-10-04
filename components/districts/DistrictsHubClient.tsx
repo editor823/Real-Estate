@@ -72,7 +72,7 @@ export function DistrictsHubClient() {
 
   const allFeatures = DISTRICTS_GEOJSON.features || [];
 
-  // 각 사업 유형별 통계 카운트
+  // 각 사업 유형별 통계 카운트 (신통/모아 플래그 및 키워드 연동)
   const stats = useMemo(() => {
     let sinthong = 0;
     let moa = 0;
@@ -80,11 +80,27 @@ export function DistrictsHubClient() {
     let rcon = 0;
 
     allFeatures.forEach((f) => {
-      const bt = f.properties.biz_type;
-      if (bt === "SINTHONG") sinthong++;
-      else if (bt === "MOA") moa++;
-      else if (bt === "REDEVELOPMENT") rdev++;
-      else if (bt === "RECONSTRUCTION") rcon++;
+      const p = f.properties;
+      const isSt =
+        p.isShinTong === true ||
+        p.is_shintong === true ||
+        p.biz_type === "SINTHONG" ||
+        p.businessType === "신속통합기획" ||
+        /신속통합|신통|기획/.test(p.name || "") ||
+        /신속통합|신통|기획/.test(p.remark || "");
+
+      const isM =
+        p.isMoa === true ||
+        p.is_moa === true ||
+        p.biz_type === "MOA" ||
+        p.businessType === "모아타운" ||
+        /모아|소규모|모아타운/.test(p.name || "") ||
+        /모아|소규모|모아타운/.test(p.remark || "");
+
+      if (isSt) sinthong++;
+      if (isM) moa++;
+      if (p.biz_type === "REDEVELOPMENT" || p.biz_type_label?.includes("재개발") || p.raw_biz_type?.includes("재개발")) rdev++;
+      if (p.biz_type === "RECONSTRUCTION" || p.biz_type_label?.includes("재건축") || p.raw_biz_type?.includes("재건축")) rcon++;
     });
 
     return { total: allFeatures.length, sinthong, moa, rdev, rcon };
@@ -114,10 +130,45 @@ export function DistrictsHubClient() {
         return false;
       }
 
-
-      // 3. 사업 유형 필터
-      if (selectedBizType !== "ALL" && props.biz_type !== selectedBizType) {
-        return false;
+      // 3. 사업 유형 필터 (신속통합기획 / 모아타운 조건 완벽 매칭)
+      if (selectedBizType !== "ALL") {
+        if (selectedBizType === "SINTHONG") {
+          const isSt =
+            props.isShinTong === true ||
+            props.is_shintong === true ||
+            props.biz_type === "SINTHONG" ||
+            props.biz_type_label === "신속통합기획" ||
+            props.businessType === "신속통합기획" ||
+            /신속통합|신통|기획/.test(props.name || "") ||
+            /신속통합|신통|기획/.test(props.raw_name || "") ||
+            /신속통합|신통|기획/.test(props.remark || "") ||
+            (props.tags && props.tags.some((t: string) => /신속통합|신통|기획/.test(t)));
+          if (!isSt) return false;
+        } else if (selectedBizType === "MOA") {
+          const isM =
+            props.isMoa === true ||
+            props.is_moa === true ||
+            props.biz_type === "MOA" ||
+            props.biz_type_label === "모아타운" ||
+            props.businessType === "모아타운" ||
+            /모아|소규모|모아타운/.test(props.name || "") ||
+            /모아|소규모|모아타운/.test(props.raw_name || "") ||
+            /모아|소규모|모아타운/.test(props.remark || "") ||
+            (props.tags && props.tags.some((t: string) => /모아|소규모/.test(t)));
+          if (!isM) return false;
+        } else if (selectedBizType === "REDEVELOPMENT") {
+          const isRdev =
+            props.biz_type === "REDEVELOPMENT" ||
+            props.biz_type_label?.includes("재개발") ||
+            props.raw_biz_type?.includes("재개발");
+          if (!isRdev) return false;
+        } else if (selectedBizType === "RECONSTRUCTION") {
+          const isRcon =
+            props.biz_type === "RECONSTRUCTION" ||
+            props.biz_type_label?.includes("재건축") ||
+            props.raw_biz_type?.includes("재건축");
+          if (!isRcon) return false;
+        }
       }
 
       return true;

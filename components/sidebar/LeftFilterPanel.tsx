@@ -112,8 +112,46 @@ export function LeftFilterPanel({
       // (2) 자치구 필터
       if (selectedGu !== "ALL" && props.gu !== selectedGu) return false;
 
-      // (3) 사업 유형 필터
-      if (bizType !== "ALL" && props.biz_type !== bizType) return false;
+      // (3) 사업 유형 필터 (신속통합기획/모아타운/재개발/재건축 키워드 및 플래그 연동)
+      if (bizType !== "ALL") {
+        if (bizType === "SINTHONG") {
+          const isSt =
+            props.isShinTong === true ||
+            props.is_shintong === true ||
+            props.biz_type === "SINTHONG" ||
+            props.biz_type_label === "신속통합기획" ||
+            props.businessType === "신속통합기획" ||
+            /신속통합|신통|기획/.test(props.name || "") ||
+            /신속통합|신통|기획/.test(props.raw_name || "") ||
+            /신속통합|신통|기획/.test(props.remark || "") ||
+            (props.tags && props.tags.some((t: string) => /신속통합|신통|기획/.test(t)));
+          if (!isSt) return false;
+        } else if (bizType === "MOA") {
+          const isM =
+            props.isMoa === true ||
+            props.is_moa === true ||
+            props.biz_type === "MOA" ||
+            props.biz_type_label === "모아타운" ||
+            props.businessType === "모아타운" ||
+            /모아|소규모|모아타운/.test(props.name || "") ||
+            /모아|소규모|모아타운/.test(props.raw_name || "") ||
+            /모아|소규모|모아타운/.test(props.remark || "") ||
+            (props.tags && props.tags.some((t: string) => /모아|소규모/.test(t)));
+          if (!isM) return false;
+        } else if (bizType === "REDEVELOPMENT") {
+          const isRdev =
+            props.biz_type === "REDEVELOPMENT" ||
+            props.biz_type_label?.includes("재개발") ||
+            props.raw_biz_type?.includes("재개발");
+          if (!isRdev) return false;
+        } else if (bizType === "RECONSTRUCTION") {
+          const isRcon =
+            props.biz_type === "RECONSTRUCTION" ||
+            props.biz_type_label?.includes("재건축") ||
+            props.raw_biz_type?.includes("재건축");
+          if (!isRcon) return false;
+        }
+      }
 
       // (4) 투자 성향별 퀵 필터 칩
       if (investmentPersona === "EARLY_SEED" && props.stage_seq > 3) {
@@ -172,6 +210,43 @@ export function LeftFilterPanel({
     sortBy,
     investmentPersona,
   ]);
+
+  // 사업 유형별 개수 집계
+  const bizCounts = useMemo(() => {
+    let sinthong = 0;
+    let moa = 0;
+    let rdev = 0;
+    let rcon = 0;
+    features.forEach((f) => {
+      const p = f.properties;
+      const isSt =
+        p.isShinTong === true ||
+        p.is_shintong === true ||
+        p.biz_type === "SINTHONG" ||
+        p.businessType === "신속통합기획" ||
+        /신속통합|신통|기획/.test(p.name || "") ||
+        /신속통합|신통|기획/.test(p.remark || "");
+      const isM =
+        p.isMoa === true ||
+        p.is_moa === true ||
+        p.biz_type === "MOA" ||
+        p.businessType === "모아타운" ||
+        /모아|소규모|모아타운/.test(p.name || "") ||
+        /모아|소규모|모아타운/.test(p.remark || "");
+
+      if (isSt) sinthong++;
+      if (isM) moa++;
+      if (p.biz_type === "REDEVELOPMENT" || p.biz_type_label?.includes("재개발") || p.raw_biz_type?.includes("재개발")) rdev++;
+      if (p.biz_type === "RECONSTRUCTION" || p.biz_type_label?.includes("재건축") || p.raw_biz_type?.includes("재건축")) rcon++;
+    });
+    return {
+      ALL: features.length,
+      SINTHONG: sinthong,
+      MOA: moa,
+      REDEVELOPMENT: rdev,
+      RECONSTRUCTION: rcon,
+    };
+  }, [features]);
 
   return (
     <aside
@@ -334,21 +409,33 @@ export function LeftFilterPanel({
                 )}
               </div>
               <div className="grid grid-cols-3 gap-1.5">
-                {BIZ_TYPES.map((type) => (
-                  <button
-                    key={type.value}
-                    type="button"
-                    onClick={() => setBizType(type.value)}
-                    className={cn(
-                      "py-1 px-1.5 rounded-lg text-xs font-medium text-center border transition-all cursor-pointer truncate",
-                      bizType === type.value
-                        ? "bg-blue-600 border-blue-600 text-white shadow-xs font-semibold"
-                        : "bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700"
-                    )}
-                  >
-                    {type.label}
-                  </button>
-                ))}
+                {BIZ_TYPES.map((type) => {
+                  const count = bizCounts[type.value as keyof typeof bizCounts] ?? 0;
+                  return (
+                    <button
+                      key={type.value}
+                      type="button"
+                      onClick={() => setBizType(type.value)}
+                      className={cn(
+                        "py-1 px-1.5 rounded-lg text-xs font-medium text-center border transition-all cursor-pointer flex items-center justify-center gap-1",
+                        bizType === type.value
+                          ? "bg-blue-600 border-blue-600 text-white shadow-xs font-semibold"
+                          : "bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700"
+                      )}
+                      title={`${type.label}: ${count}개 구역`}
+                    >
+                      <span className="truncate">{type.label}</span>
+                      <span
+                        className={cn(
+                          "text-[10px] px-1 py-0.2 rounded-full font-bold shrink-0",
+                          bizType === type.value ? "bg-white/25 text-white" : "bg-gray-200 text-gray-600"
+                        )}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

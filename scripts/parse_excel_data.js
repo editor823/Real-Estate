@@ -55,13 +55,67 @@ function mapStageCode(stageName) {
   return { code: 'DESIGNATED', seq: 2 };
 }
 
-// 4. 사업유형 매핑
-function mapBizType(rawType, name) {
-  if (name.includes('신통') || name.includes('신속통합')) return { type: 'SINTHONG', label: '신속통합기획' };
-  if (name.includes('모아')) return { type: 'MOA', label: '모아타운' };
-  if (!rawType) return { type: 'REDEVELOPMENT', label: '재개발' };
-  if (rawType.includes('재건축')) return { type: 'RECONSTRUCTION', label: '재건축' };
-  return { type: 'REDEVELOPMENT', label: '재개발' };
+// 4. 사업유형 및 신통/모아 정책 플래그 매핑
+function mapBizTypeAndPolicies(rawType, name, rawStage) {
+  const target = (name + ' ' + (rawStage || '')).trim();
+
+  // (1) 신속통합기획 판별 (서울시 신통기획 대상지 및 패스트트랙 구역)
+  const isShinTong =
+    /신통|신속통합|기획/.test(rawStage || '') ||
+    /압구정|여의도|시범|목동\d|상계5|상계주공5|하중|사직2|창신동23|숭인동56|가리봉|자양4동A|신림1|신림5|마장동382|마장세림|청량리6|청량리미주|청량리8|공덕7|공덕8|아현1|대치미도|성산시영|방학3|쌍문3|쌍문2|중화5|중화6/.test(target);
+
+  // (2) 모아타운 판별 (서울시 모아타운 대상지 및 소규모 관리지역, 신통 제외)
+  let isMoa = false;
+  if (!isShinTong) {
+    if (!/신월곡/.test(target)) {
+      isMoa = /모아|소규모|번동441|번동148|면목\d|면목동|시흥동|시흥무지개|독산시흥|시흥1|시흥현대|염리동 488|독산\d|화곡|망우1|중곡아파트|고척동|개봉3|개봉 7|오류동|신도림동293|신월5동|신월7동|신월시영|석관4|종암\d|역촌역세권|응암동|홍은5|홍은15|도림1|거여새마을|풍납미성/.test(target);
+    }
+  }
+
+  const rawBizType = rawType && rawType.includes('재건축') ? '재건축' : '재개발';
+
+  if (isShinTong) {
+    return {
+      biz_type: 'SINTHONG',
+      biz_type_label: '신속통합기획',
+      businessType: '신속통합기획',
+      raw_biz_type: rawBizType,
+      isShinTong: true,
+      is_shintong: true,
+      isMoa: false,
+      is_moa: false,
+      remark: '서울시 신속통합기획(신통) 패스트트랙 정비구역',
+      tags: ['신속통합기획', '신통', '기획', '패스트트랙', rawBizType],
+    };
+  }
+
+  if (isMoa) {
+    return {
+      biz_type: 'MOA',
+      biz_type_label: '모아타운',
+      businessType: '모아타운',
+      raw_biz_type: rawBizType,
+      isShinTong: false,
+      is_shintong: false,
+      isMoa: true,
+      is_moa: true,
+      remark: '서울시 모아타운·소규모주택정비 관리지역',
+      tags: ['모아타운', '모아', '소규모', '소규모주택정비', rawBizType],
+    };
+  }
+
+  return {
+    biz_type: rawBizType === '재건축' ? 'RECONSTRUCTION' : 'REDEVELOPMENT',
+    biz_type_label: rawBizType,
+    businessType: rawBizType,
+    raw_biz_type: rawBizType,
+    isShinTong: false,
+    is_shintong: false,
+    isMoa: false,
+    is_moa: false,
+    remark: `서울시 주택${rawBizType}정비구역`,
+    tags: [rawBizType],
+  };
 }
 
 // 5. 엑셀 날짜 일련번호 변환
@@ -99,9 +153,12 @@ function runParser() {
     const saleHouseholds = parseInt(row[24]) || 0;
     const rentHouseholds = parseInt(row[25]) || 0;
 
+    const masterUid = `SEOUL_RDEV_${GU_CODES[gu] || '11000'}_${code}`;
+    const displayName = rawName.includes(gu) ? rawName : `${gu} ${rawName}`;
+
     // 단계 및 인허가일 파싱
     const { code: stage_code, seq: stage_seq } = mapStageCode(rawStage);
-    const { type: biz_type, label: biz_type_label } = mapBizType(rawType, rawName);
+    const policy = mapBizTypeAndPolicies(rawType, displayName, rawStage);
 
     // 구역 인허가일 (착공 > 관리처분 > 사업시행 > 조합설립 > 구역지정 순 탐색)
     let approvalDate = null;
@@ -141,9 +198,6 @@ function runParser() {
     const isTransferable = stage_seq <= 4 || (totalHouseholds > 1000 && stage_seq === 5);
     const consentRate = Math.min(95, Math.max(55, 60 + (stage_seq * 4.5) + ((idx % 11) - 5)));
 
-    const masterUid = `SEOUL_RDEV_${GU_CODES[gu] || '11000'}_${code}`;
-    const displayName = rawName.includes(gu) ? rawName : `${gu} ${rawName}`;
-
     return {
       type: 'Feature',
       id: masterUid,
@@ -156,8 +210,16 @@ function runParser() {
         legal_dong: `${gu} ${jibun.split(/\d/)[0] || ''}`.trim(),
         address_jibun: jibun,
         address_doro: doro,
-        biz_type: biz_type,
-        biz_type_label: biz_type_label,
+        biz_type: policy.biz_type,
+        biz_type_label: policy.biz_type_label,
+        businessType: policy.businessType,
+        raw_biz_type: policy.raw_biz_type,
+        isShinTong: policy.isShinTong,
+        is_shintong: policy.is_shintong,
+        isMoa: policy.isMoa,
+        is_moa: policy.is_moa,
+        remark: policy.remark,
+        tags: policy.tags,
         stage_code: stage_code,
         stage_seq: stage_seq,
         stage_raw: rawStage,
