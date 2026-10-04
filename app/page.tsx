@@ -42,11 +42,11 @@ export default function MainPage() {
   } = useFilterStore();
   const { selectedDistrict } = useMapStore();
 
-  // 1. 초기 GeoJSON 데이터 로드 (API 엔드포인트 호출)
+  // 1. 초기 GeoJSON 데이터 로드 (정적 배포 지원을 위해 /data/districts.geojson 직접 로드)
   useEffect(() => {
     async function loadDistricts() {
       try {
-        const response = await fetch("/api/districts");
+        const response = await fetch("/data/districts.geojson");
         if (response.ok) {
           const data: DistrictFeatureCollection = await response.json();
           setFeatures(data.features || []);
