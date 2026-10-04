@@ -222,9 +222,14 @@ def sync_files_with_geojson(geojson_data):
         'import { DistrictFeatureCollection } from "@/lib/types/district";\n\n'
         f"export const DISTRICTS_GEOJSON: DistrictFeatureCollection = {geojson_str};\n"
     )
-    with open(TS_DATA_PATH, "w", encoding="utf-8") as f:
-        f.write(ts_content)
-    print(f"[저장] {TS_DATA_PATH} 갱신 완료")
+    # 4. sitemap.xml 갱신
+    try:
+        import subprocess
+        sitemap_script = os.path.join(SCRIPT_DIR, "generate_sitemap.js")
+        if os.path.exists(sitemap_script):
+            subprocess.run(["node", sitemap_script], check=False)
+    except Exception as e:
+        print(f"[경고] sitemap.xml 자동 갱신 실패: {e}")
 
 
 def is_safe_match(name1: str, name2: str) -> bool:

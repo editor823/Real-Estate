@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seoul-redevelopment.pages.dev/sitemap.xml

@@ -5,6 +5,8 @@ import { useCompareStore } from "@/lib/store/useCompareStore";
 import { StageBadge } from "@/components/ui/StageBadge";
 import { ProjectedTimelineWidget } from "./ProjectedTimelineWidget";
 import { SafetyDiagnosisWidget } from "./SafetyDiagnosisWidget";
+import { AdSenseBanner } from "@/components/ads/AdSenseBanner";
+import Link from "next/link";
 import {
   X,
   Building2,
@@ -253,6 +255,9 @@ export function DistrictCard() {
         approvalDate={selectedDistrict.approval_date}
       />
 
+      {/* 6-B. 구글 애드센스 300x250 반응형 슬롯 */}
+      <AdSenseBanner slotId="district-card-slot" />
+
       {/* 7. 주민 동의율 및 호재 연계 */}
       <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
         <div className="flex items-center gap-1.5 text-xs text-slate-500">
@@ -283,16 +288,24 @@ export function DistrictCard() {
         </div>
       )}
 
-      {/* 8. 정비사업 정보몽땅 원문 링크 */}
-      <div className="pt-1 pb-1">
+      {/* 8. 정비사업 정보몽땅 원문 링크 및 구역 전용 정적 페이지 이동 */}
+      <div className="pt-1 pb-1 space-y-2">
+        <Link
+          href={`/districts/${selectedDistrict.master_uid}`}
+          className="flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl transition-all cursor-pointer shadow-xs"
+        >
+          <span>구역 전용 전체 보고서 및 SEO 페이지 보기</span>
+          <ExternalLink className="w-3.5 h-3.5" />
+        </Link>
+
         <a
           href={`https://cleanup.seoul.go.kr`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+          className="flex items-center justify-center gap-1.5 w-full py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
         >
           <span>서울시 정비사업 정보몽땅 원문 확인</span>
-          <ExternalLink className="w-3.5 h-3.5" />
+          <ExternalLink className="w-3 h-3 text-slate-400" />
         </a>
       </div>
     </article>
