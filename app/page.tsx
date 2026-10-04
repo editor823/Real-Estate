@@ -121,8 +121,9 @@ export default function MainPage() {
   }, [features, setSelectedUid, setSelectedDistrict, setFlyToTarget]);
 
   return (
-    <main className="relative w-full h-[calc(100vh-3.5rem)] overflow-hidden flex bg-slate-950">
+    <main className="relative w-full flex-1 min-h-0 overflow-hidden flex bg-slate-950">
       {/* 1. 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
+
 
       <LeftFilterPanel
         features={features}

@@ -180,45 +180,14 @@ export function LeftFilterPanel({
         isOpen ? "w-full sm:w-[430px] max-w-[100vw] sm:max-w-[430px]" : "w-0 overflow-hidden border-r-0"
       )}
     >
-      {/* 1. 상단 서비스 헤더 */}
-      <div className="p-4 border-b border-slate-800 bg-slate-950 text-white">
-        <div className="flex items-center justify-between mb-1">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/30">
-              서
-            </div>
-            <div>
-              <h1 className="text-sm font-bold tracking-tight">서울시 정비사업 모니터링</h1>
-              <p className="text-[11px] text-slate-400">
-                서울시 공식 496개 재개발·재건축 통합 데이터
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">
-              총 496개소
-            </span>
-            {/* 모바일 패널 닫기 버튼 */}
-            <button
-              onClick={onToggle}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors sm:hidden cursor-pointer"
-              title="지도 보기 (패널 닫기)"
-              aria-label="지도 보기 (패널 닫기)"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. 탭 전환 버튼 */}
-      <div className="flex border-b border-slate-800 bg-slate-950 p-1.5 gap-1">
+      {/* 1. 탭 전환 버튼 (사이드바 최상단 바로 노출) */}
+      <div className="flex items-center border-b border-slate-800 bg-slate-950 p-2 gap-1.5 shrink-0">
         <button
           onClick={() => setActiveTab("list")}
           className={cn(
-            "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer",
+            "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer",
             activeTab === "list"
-              ? "bg-slate-850 text-blue-400 shadow-xs border border-slate-700 bg-slate-800"
+              ? "bg-slate-800 text-blue-400 shadow-xs border border-slate-700 font-bold"
               : "text-slate-400 hover:text-white hover:bg-slate-900"
           )}
         >
@@ -228,16 +197,26 @@ export function LeftFilterPanel({
         <button
           onClick={() => setActiveTab("timeline")}
           className={cn(
-            "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer",
+            "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer",
             activeTab === "timeline"
-              ? "bg-slate-850 text-blue-400 shadow-xs border border-slate-700 bg-slate-800"
+              ? "bg-slate-800 text-blue-400 shadow-xs border border-slate-700 font-bold"
               : "text-slate-400 hover:text-white hover:bg-slate-900"
           )}
         >
           <History className="w-3.5 h-3.5" />
           <span>실시간 고시 타임라인</span>
         </button>
+        {/* 모바일 패널 닫기 버튼 */}
+        <button
+          onClick={onToggle}
+          className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors sm:hidden cursor-pointer shrink-0"
+          title="패널 닫기"
+          aria-label="패널 닫기"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
+
 
       {/* 3. 탭 내용 영역 */}
       {activeTab === "timeline" ? (

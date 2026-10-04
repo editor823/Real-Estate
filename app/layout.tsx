@@ -59,13 +59,14 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="min-h-full h-full flex flex-col bg-slate-950 text-slate-100 font-sans"
+        className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans"
       >
         <QueryProvider>
           <GlobalNavBar />
           <div className="flex-1 min-h-0 flex flex-col">{children}</div>
         </QueryProvider>
       </body>
+
     </html>
   );
 }

@@ -26,13 +26,14 @@ export function GlobalNavBar() {
   const isMapActive = pathname === "/" && !isTimelineActive;
 
   return (
-    <header className="sticky top-0 z-[700] w-full h-14 bg-slate-900/95 backdrop-blur-md border-b border-slate-800/90 text-white select-none">
-      <div className="max-w-7xl mx-auto h-full px-3 sm:px-6 flex items-center justify-between gap-2">
-        {/* 서비스 로고 */}
+    <header className="sticky top-0 z-[700] w-full h-14 bg-slate-900/95 backdrop-blur-md border-b border-slate-800/90 text-white select-none shrink-0">
+      <div className="w-full h-full px-3 sm:px-6 flex items-center justify-between gap-3">
+        {/* 서비스 로고: 맨 좌측 사이드바 라인과 일치 */}
         <Link
           href="/"
           className="flex items-center gap-2.5 group cursor-pointer shrink-0"
         >
+
           <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
             서
           </div>
