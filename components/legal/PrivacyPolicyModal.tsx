@@ -113,7 +113,7 @@ export function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyModalProps)
               서비스 이용 관련 제안 또는 개인정보 처리에 관한 문의 사항은 아래로 연락해 주시기 바랍니다:
             </p>
             <p className="font-semibold text-gray-800">
-              📧 이메일: <span className="text-blue-600 font-mono">editer0823@naver.com</span>
+              📧 이메일: <span className="text-blue-600 font-mono">editor823@gmail.com</span>
             </p>
           </section>
         </div>

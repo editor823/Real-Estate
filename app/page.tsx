@@ -121,7 +121,7 @@ export default function MainPage() {
   }, [features, setSelectedUid, setSelectedDistrict, setFlyToTarget]);
 
   return (
-    <main className="relative w-full flex-1 min-h-0 overflow-hidden flex bg-slate-50">
+    <main className="relative w-full h-[calc(100vh-56px)] flex overflow-hidden bg-slate-50">
       {/* 1. 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
       <LeftFilterPanel
         features={features}
@@ -135,7 +135,7 @@ export default function MainPage() {
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         className={cn(
           "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-white/95 backdrop-blur-md border-r border-y border-gray-200 shadow-md text-gray-600 hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1.5",
-          isSidebarOpen ? "hidden sm:flex left-[430px]" : "left-0"
+          isSidebarOpen ? "hidden sm:flex left-[420px]" : "left-0"
         )}
         title={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
         aria-label={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
@@ -151,7 +151,7 @@ export default function MainPage() {
       </button>
 
       {/* 3. 우측 인터랙티브 지도 영역 */}
-      <section className="relative flex-1 w-full h-[calc(100vh-56px)] overflow-hidden">
+      <section className="relative flex-1 h-full w-full overflow-hidden">
         {isLoading ? (
           <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 text-gray-500 gap-3">
             <Loader2 className="w-8 h-8 animate-spin text-blue-600" />

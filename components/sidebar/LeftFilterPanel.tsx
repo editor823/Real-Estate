@@ -176,8 +176,8 @@ export function LeftFilterPanel({
   return (
     <aside
       className={cn(
-        "relative z-[600] h-full bg-white border-r border-gray-200 shadow-xl flex flex-col transition-all duration-300 ease-in-out shrink-0 text-gray-900",
-        isOpen ? "w-full sm:w-[430px] max-w-[100vw] sm:max-w-[430px]" : "w-0 overflow-hidden border-r-0"
+        "relative z-10 h-full bg-white border-r border-gray-200 shadow-xl flex flex-col transition-all duration-300 ease-in-out shrink-0 text-gray-900",
+        isOpen ? "w-full sm:w-[420px] max-w-[100vw] sm:max-w-[420px]" : "w-0 overflow-hidden border-r-0"
       )}
     >
       {/* 1. 탭 전환 버튼 (사이드바 최상단 바로 노출) */}
@@ -226,8 +226,8 @@ export function LeftFilterPanel({
         </div>
       ) : (
         <div className="flex-1 flex flex-col min-h-0 bg-white">
-          {/* 필터 & 정렬 컨트롤 영역 */}
-          <div className="p-3.5 border-b border-gray-200 space-y-2.5 bg-white">
+          {/* 필터 & 정렬 컨트롤 영역 (고정 상단) */}
+          <div className="p-3.5 border-b border-gray-200 space-y-2.5 bg-white shrink-0">
             {/* (1) 검색창 & 자치구 드롭다운 */}
             <div className="flex gap-2">
               <div className="relative flex-1">
@@ -398,8 +398,8 @@ export function LeftFilterPanel({
             </div>
           </div>
 
-          {/* (6) 필터링 및 정렬된 구역 리스트 (스크롤) */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2">
+          {/* (6) 필터링 및 정렬된 구역 리스트 (좌측 패널 독립 스크롤) */}
+          <div className="flex-1 overflow-y-auto p-3 space-y-2 pb-16">
             {filteredAndSortedFeatures.length === 0 ? (
               <div className="py-12 text-center text-gray-400">
                 <Filter className="w-8 h-8 mx-auto mb-2 opacity-40 text-gray-400" />

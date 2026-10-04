@@ -155,7 +155,7 @@ export default function TermsPage() {
               서비스 이용약관, 데이터 정정 요청, 서비스 개선 제안은 아래 공식 이메일로 접수해 주시기 바랍니다:
             </p>
             <p className="font-semibold text-[#2B261F]">
-              📧 공식 문의처: <a href="mailto:editer0823@naver.com" className="text-blue-600 underline font-mono">editer0823@naver.com</a>
+              📧 공식 문의처: <a href="mailto:editor823@gmail.com" className="text-blue-600 underline font-mono">editor823@gmail.com</a>
             </p>
           </div>
         </section>

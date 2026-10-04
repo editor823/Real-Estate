@@ -160,8 +160,8 @@ export default function PrivacyPage() {
               <p><strong>개인정보 보호 책임자</strong>: 서비스 관리팀</p>
               <p>
                 <strong>문의 이메일</strong>:{" "}
-                <a href="mailto:editer0823@naver.com" className="text-blue-600 font-mono font-bold underline">
-                  editer0823@naver.com
+                <a href="mailto:editor823@gmail.com" className="text-blue-600 font-mono font-bold underline">
+                  editor823@gmail.com
                 </a>
               </p>
             </div>
