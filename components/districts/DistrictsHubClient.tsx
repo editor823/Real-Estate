@@ -338,11 +338,21 @@ export function DistrictsHubClient() {
       </section>
 
       {/* 4. 검색 결과 안내 헤더 */}
-      <div className="flex items-center justify-between px-1">
-        <span className="text-sm font-bold text-stone-700">
-          검색 결과 <span className="text-blue-600 font-extrabold">{filteredDistricts.length}</span>개 구역
-          {selectedGu !== "전체" && <span className="text-stone-500 text-xs ml-1">({selectedGu})</span>}
-        </span>
+      <div className="flex flex-wrap items-center justify-between gap-2 px-1">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-bold text-stone-700">
+            검색 결과 <span className="text-blue-600 font-extrabold">{filteredDistricts.length}</span>개 구역
+            {selectedGu !== "전체" && <span className="text-stone-500 text-xs ml-1">({selectedGu})</span>}
+          </span>
+          {selectedGu !== "전체" && (
+            <Link
+              href={`/districts/gu/${selectedGu}/`}
+              className="text-xs text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+            >
+              <span>📑 {selectedGu} 종합 리포트 →</span>
+            </Link>
+          )}
+        </div>
         <span className="text-xs text-stone-500 font-medium">
           페이지 {currentPage} / {totalPages}
         </span>

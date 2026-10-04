@@ -178,7 +178,7 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           <nav className="text-xs text-[#827A6D] flex items-center gap-1.5" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-blue-600 text-[#827A6D]">홈</Link>
             <span>›</span>
-            <Link href="/districts/" className="hover:text-blue-600 text-[#4A4439] font-medium">
+            <Link href={`/districts/gu/${props.gu}/`} className="hover:text-blue-600 text-[#4A4439] font-medium">
               {props.gu}
             </Link>
             <span>›</span>
@@ -494,8 +494,8 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
                 <Compass className="w-5 h-5 text-blue-600" />
                 <h2 className="text-base font-bold text-[#2B261F]">📑 관련 구역 리포트: {props.gu} 내 다른 정비구역</h2>
               </div>
-              <Link href="/districts/" className="text-xs text-blue-600 hover:underline font-medium">
-                전체 496개 구역 색인 보기 →
+              <Link href={`/districts/gu/${props.gu}/`} className="text-xs text-blue-600 hover:underline font-medium">
+                {props.gu} 전체 구역 보기 →
               </Link>
             </div>
 
@@ -538,6 +538,8 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           <span>© 2026 Seoul Redevelopment Monitoring.</span>
           <span>•</span>
           <Link href="/privacy/" className="hover:text-blue-600 underline font-medium">개인정보처리방침</Link>
+          <span>•</span>
+          <Link href="/terms/" className="hover:text-blue-600 underline font-medium">이용약관 및 면책조항</Link>
         </p>
       </footer>
     </div>

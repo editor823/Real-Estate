@@ -19,2977 +19,3133 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1460</loc>
+    <loc>https://seoul-redevelopment.pages.dev/terms/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B0%95%EB%82%A8%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B0%95%EB%8F%99%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B0%95%EB%B6%81%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B0%95%EC%84%9C%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B4%80%EC%95%85%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B4%91%EC%A7%84%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B5%AC%EB%A1%9C%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EA%B8%88%EC%B2%9C%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EB%85%B8%EC%9B%90%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EB%8F%84%EB%B4%89%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EB%8F%99%EB%8C%80%EB%AC%B8%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EB%8F%99%EC%9E%91%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EB%A7%88%ED%8F%AC%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%84%9C%EB%8C%80%EB%AC%B8%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%84%9C%EC%B4%88%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%84%B1%EB%8F%99%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%84%B1%EB%B6%81%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%86%A1%ED%8C%8C%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%96%91%EC%B2%9C%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%98%81%EB%93%B1%ED%8F%AC%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%9A%A9%EC%82%B0%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%9D%80%ED%8F%89%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%A2%85%EB%A1%9C%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%A4%91%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/gu/%EC%A4%91%EB%9E%91%EA%B5%AC/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1460/</loc>
     <lastmod>2010-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1462</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1462/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1449</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1449/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1441</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1441/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1473</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1473/</loc>
     <lastmod>2009-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1475</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1475/</loc>
     <lastmod>2012-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1443</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1443/</loc>
     <lastmod>2025-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1477</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_1477/</loc>
     <lastmod>2020-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1171</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1171/</loc>
     <lastmod>2022-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2723</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2723/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2618</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2618/</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2623</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2623/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2536</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2536/</loc>
     <lastmod>2011-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2598</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2598/</loc>
     <lastmod>2025-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2373</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2373/</loc>
     <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2595</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2595/</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2282</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2282/</loc>
     <lastmod>2022-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2291</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2291/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2292</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2292/</loc>
     <lastmod>2007-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2593</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2593/</loc>
     <lastmod>2025-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2597</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2597/</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2594</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2594/</loc>
     <lastmod>2025-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2510</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2510/</loc>
     <lastmod>2024-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2463</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2463/</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2513</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2513/</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2494</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2494/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1555</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1555/</loc>
     <lastmod>2024-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2458</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2458/</loc>
     <lastmod>2025-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2423</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2423/</loc>
     <lastmod>2025-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2499</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2499/</loc>
     <lastmod>1973-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2500</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2500/</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2504</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2504/</loc>
     <lastmod>2025-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2590</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2590/</loc>
     <lastmod>2017-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2512</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2512/</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2420</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2420/</loc>
     <lastmod>2025-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2421</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2421/</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2422</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2422/</loc>
     <lastmod>2025-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2495</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2495/</loc>
     <lastmod>2025-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2491</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2491/</loc>
     <lastmod>2021-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2492</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2492/</loc>
     <lastmod>2024-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2640</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2640/</loc>
     <lastmod>2006-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2493</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2493/</loc>
     <lastmod>2021-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2459</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2459/</loc>
     <lastmod>2022-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1651</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1651/</loc>
     <lastmod>2024-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2065</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2065/</loc>
     <lastmod>2023-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1503</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1503/</loc>
     <lastmod>2024-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1504</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1504/</loc>
     <lastmod>2018-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2419</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2419/</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2501</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2501/</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2514</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2514/</loc>
     <lastmod>2025-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2498</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2498/</loc>
     <lastmod>1977-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2418</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2418/</loc>
     <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2461</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2461/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1664</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1664/</loc>
     <lastmod>2023-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2724</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2724/</loc>
     <lastmod>2016-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1658</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1658/</loc>
     <lastmod>2023-04-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1661</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_1661/</loc>
     <lastmod>2025-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2393</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11140_2393/</loc>
     <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1351</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1351/</loc>
     <lastmod>2022-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1346</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1346/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1348</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1348/</loc>
     <lastmod>2020-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1350</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1350/</loc>
     <lastmod>2008-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1358</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1358/</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1347</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1347/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1354</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1354/</loc>
     <lastmod>2020-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1357</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1357/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1353</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1353/</loc>
     <lastmod>1993-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1383</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1383/</loc>
     <lastmod>2020-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1389</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1389/</loc>
     <lastmod>2021-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1390</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1390/</loc>
     <lastmod>2020-12-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1391</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1391/</loc>
     <lastmod>2021-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1379</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1379/</loc>
     <lastmod>2006-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1392</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1392/</loc>
     <lastmod>2022-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1959</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_1959/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1008</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1008/</loc>
     <lastmod>2025-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2482</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2482/</loc>
     <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2480</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2480/</loc>
     <lastmod>2023-02-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2481</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2481/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2182</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2182/</loc>
     <lastmod>2012-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2241</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2241/</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2476</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2476/</loc>
     <lastmod>2025-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2477</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2477/</loc>
     <lastmod>2023-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2478</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2478/</loc>
     <lastmod>2025-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2479</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2479/</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1220</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1220/</loc>
     <lastmod>2025-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1221</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1221/</loc>
     <lastmod>2020-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1222</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1222/</loc>
     <lastmod>2019-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1223</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1223/</loc>
     <lastmod>2016-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1227</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1227/</loc>
     <lastmod>2024-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1224</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1224/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1229</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1229/</loc>
     <lastmod>2020-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1225</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1225/</loc>
     <lastmod>2024-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1226</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1226/</loc>
     <lastmod>2020-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1219</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1219/</loc>
     <lastmod>2020-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2063</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2063/</loc>
     <lastmod>2024-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2075</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2075/</loc>
     <lastmod>2025-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1776</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1776/</loc>
     <lastmod>2023-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2339</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2339/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2389</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_2389/</loc>
     <lastmod>2024-02-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2457</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2457/</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2024</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2024/</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2330</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2330/</loc>
     <lastmod>2025-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2025</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2025/</loc>
     <lastmod>2018-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_1079</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_1079/</loc>
     <lastmod>2021-10-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2193</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_2193/</loc>
     <lastmod>2024-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_1080</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11215_1080/</loc>
     <lastmod>2022-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1119</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1119/</loc>
     <lastmod>2024-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1116</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1116/</loc>
     <lastmod>2021-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1311</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1311/</loc>
     <lastmod>2025-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1125</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1125/</loc>
     <lastmod>2022-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1935</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1935/</loc>
     <lastmod>2007-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1936</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1936/</loc>
     <lastmod>2022-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1938</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1938/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1939</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1939/</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1940</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1940/</loc>
     <lastmod>2021-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1108</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1108/</loc>
     <lastmod>2024-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1106</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1106/</loc>
     <lastmod>2022-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1107</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1107/</loc>
     <lastmod>2023-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1113</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1113/</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1423</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1423/</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1114</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1114/</loc>
     <lastmod>2025-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2442</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2442/</loc>
     <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1309</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1309/</loc>
     <lastmod>2025-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2863</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2863/</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2869</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2869/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2520</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2520/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2333</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2333/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1128</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1128/</loc>
     <lastmod>2000-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1129</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1129/</loc>
     <lastmod>2000-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2440</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2440/</loc>
     <lastmod>2024-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2101</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2101/</loc>
     <lastmod>2023-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2202</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2202/</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2076</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2076/</loc>
     <lastmod>2025-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2057</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_2057/</loc>
     <lastmod>2023-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1674</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1674/</loc>
     <lastmod>2015-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1675</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1675/</loc>
     <lastmod>2024-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1673</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1673/</loc>
     <lastmod>2025-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1677</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_1677/</loc>
     <lastmod>2012-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2587</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2587/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2077</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2077/</loc>
     <lastmod>2024-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2456</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2456/</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2116</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2116/</loc>
     <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2455</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2455/</loc>
     <lastmod>2023-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2349</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2349/</loc>
     <lastmod>2025-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2107</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2107/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2582</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2582/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2218</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11260_2218/</loc>
     <lastmod>2023-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1258</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1258/</loc>
     <lastmod>2019-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1272</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1272/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1270</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1270/</loc>
     <lastmod>2012-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1271</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1271/</loc>
     <lastmod>2012-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1275</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1275/</loc>
     <lastmod>2010-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1276</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1276/</loc>
     <lastmod>2022-03-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1274</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1274/</loc>
     <lastmod>2025-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1278</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1278/</loc>
     <lastmod>2008-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1281</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1281/</loc>
     <lastmod>2024-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1283</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1283/</loc>
     <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1267</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1267/</loc>
     <lastmod>2023-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1264</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1264/</loc>
     <lastmod>2008-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1263</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1263/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1262</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1262/</loc>
     <lastmod>2025-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1269</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1269/</loc>
     <lastmod>2024-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2061</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2061/</loc>
     <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2038</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2038/</loc>
     <lastmod>2024-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2486</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2486/</loc>
     <lastmod>1998-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2041</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2041/</loc>
     <lastmod>2024-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2042</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2042/</loc>
     <lastmod>2024-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2326</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2326/</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2526</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2526/</loc>
     <lastmod>2025-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2078</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_2078/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1050</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1050/</loc>
     <lastmod>2016-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1051</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1051/</loc>
     <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1052</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1052/</loc>
     <lastmod>2023-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1054</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1054/</loc>
     <lastmod>2021-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1040</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1040/</loc>
     <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1043</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1043/</loc>
     <lastmod>2022-05-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1045</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1045/</loc>
     <lastmod>2020-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1044</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_1044/</loc>
     <lastmod>2023-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_2165</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_2165/</loc>
     <lastmod>2025-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_2149</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_2149/</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2302</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2302/</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2257</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2257/</loc>
     <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_1105</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_1105/</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2304</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2304/</loc>
     <lastmod>2025-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2260</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2260/</loc>
     <lastmod>2025-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2259</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2259/</loc>
     <lastmod>2025-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1335</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1335/</loc>
     <lastmod>2025-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1095</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1095/</loc>
     <lastmod>2025-12-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1098</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1098/</loc>
     <lastmod>2025-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1101</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1101/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1061</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1061/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1103</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1103/</loc>
     <lastmod>2024-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_2106</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_2106/</loc>
     <lastmod>2025-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_2082</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_2082/</loc>
     <lastmod>2025-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1783</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1783/</loc>
     <lastmod>2024-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1145</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1145/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1424</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1424/</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1425</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1425/</loc>
     <lastmod>2025-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1088</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1088/</loc>
     <lastmod>2022-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1430</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1430/</loc>
     <lastmod>2023-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1434</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1434/</loc>
     <lastmod>2023-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2060</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2060/</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2505</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2505/</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2083</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2083/</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2559</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2559/</loc>
     <lastmod>2010-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2564</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2564/</loc>
     <lastmod>2008-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2561</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2561/</loc>
     <lastmod>2008-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2562</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2562/</loc>
     <lastmod>2008-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2338</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2338/</loc>
     <lastmod>2025-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2336</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2336/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2677</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2677/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2185</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2185/</loc>
     <lastmod>2023-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2117</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2117/</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2801</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2801/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2802</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_2802/</loc>
     <lastmod>2025-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1177</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1177/</loc>
     <lastmod>1979-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1202</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1202/</loc>
     <lastmod>2025-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1191</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1191/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1168</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1168/</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1205</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1205/</loc>
     <lastmod>2021-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1143</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1143/</loc>
     <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1161</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1161/</loc>
     <lastmod>2011-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1204</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1204/</loc>
     <lastmod>2015-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1302</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1302/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1216</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1216/</loc>
     <lastmod>2020-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1170</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1170/</loc>
     <lastmod>2025-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1213</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1213/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1215</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1215/</loc>
     <lastmod>2022-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2777</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2777/</loc>
     <lastmod>2025-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2097</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2097/</loc>
     <lastmod>2024-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2098</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2098/</loc>
     <lastmod>2025-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2179</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2179/</loc>
     <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2096</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2096/</loc>
     <lastmod>2024-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2084</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2084/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2363</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2363/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2439</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2439/</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2825</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_2825/</loc>
     <lastmod>2025-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1887</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1887/</loc>
     <lastmod>2025-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1888</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1888/</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1884</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1884/</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1882</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1882/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1885</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1885/</loc>
     <lastmod>2014-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1881</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1881/</loc>
     <lastmod>2024-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1886</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1886/</loc>
     <lastmod>2025-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1153</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1153/</loc>
     <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1955</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1955/</loc>
     <lastmod>2025-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1873</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1873/</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1878</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1878/</loc>
     <lastmod>2024-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1875</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1875/</loc>
     <lastmod>1979-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1879</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1879/</loc>
     <lastmod>2023-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1877</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_1877/</loc>
     <lastmod>2026-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2011</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2011/</loc>
     <lastmod>2024-06-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2538</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2538/</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2111</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2111/</loc>
     <lastmod>2024-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2022</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2022/</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2015</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2015/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2134</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11440_2134/</loc>
     <lastmod>2024-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1417</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1417/</loc>
     <lastmod>2009-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1421</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1421/</loc>
     <lastmod>2010-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1422</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1422/</loc>
     <lastmod>2010-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1344</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1344/</loc>
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2332</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2332/</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2839</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2839/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2787</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2787/</loc>
     <lastmod>2025-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2803</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2803/</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2667</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2667/</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2668</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2668/</loc>
     <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2669</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2669/</loc>
     <lastmod>2025-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2812</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2812/</loc>
     <lastmod>2026-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2813</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2813/</loc>
     <lastmod>2026-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2814</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2814/</loc>
     <lastmod>2025-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2790</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2790/</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2786</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2786/</loc>
     <lastmod>2025-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2608</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2608/</loc>
     <lastmod>2025-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2722</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2722/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2665</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2665/</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2784</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2784/</loc>
     <lastmod>2025-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1733</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_1733/</loc>
     <lastmod>2024-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2119</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2119/</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2086</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2086/</loc>
     <lastmod>2025-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2103</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2103/</loc>
     <lastmod>2024-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2789</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2789/</loc>
     <lastmod>2025-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2066</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11470_2066/</loc>
     <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1063</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1063/</loc>
     <lastmod>2025-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1038</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1038/</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1062</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1062/</loc>
     <lastmod>2024-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1059</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1059/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1266</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11290_1266/</loc>
     <lastmod>2023-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_2088</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_2088/</loc>
     <lastmod>2024-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_2856</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_2856/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1082</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1082/</loc>
     <lastmod>2019-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1081</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1081/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1084</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1084/</loc>
     <lastmod>2018-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1085</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1085/</loc>
     <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1086</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1086/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1087</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1087/</loc>
     <lastmod>2024-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1284</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1284/</loc>
     <lastmod>2022-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2320</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2320/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2089</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2089/</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2321</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2321/</loc>
     <lastmod>2025-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2664</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2664/</loc>
     <lastmod>2025-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2525</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2525/</loc>
     <lastmod>2024-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2198</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2198/</loc>
     <lastmod>2024-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1089</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_1089/</loc>
     <lastmod>2012-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2345</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2345/</loc>
     <lastmod>2023-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2516</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2516/</loc>
     <lastmod>2023-01-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_1093</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_1093/</loc>
     <lastmod>2021-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_1094</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_1094/</loc>
     <lastmod>2024-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2450</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2450/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2452</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2452/</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2191</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2191/</loc>
     <lastmod>2025-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2031</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11545_2031/</loc>
     <lastmod>2024-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1908</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1908/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1821</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1821/</loc>
     <lastmod>2019-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1820</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1820/</loc>
     <lastmod>2024-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1818</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1818/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1826</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1826/</loc>
     <lastmod>2022-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1813</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1813/</loc>
     <lastmod>2006-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1825</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1825/</loc>
     <lastmod>2006-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1819</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1819/</loc>
     <lastmod>2023-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1822</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1822/</loc>
     <lastmod>2017-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1815</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1815/</loc>
     <lastmod>2023-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1817</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1817/</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1824</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1824/</loc>
     <lastmod>2025-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1918</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1918/</loc>
     <lastmod>2025-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1920</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1920/</loc>
     <lastmod>2019-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1922</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1922/</loc>
     <lastmod>2025-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1911</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1911/</loc>
     <lastmod>2024-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1833</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1833/</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1829</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1829/</loc>
     <lastmod>2021-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1830</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1830/</loc>
     <lastmod>2026-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1832</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1832/</loc>
     <lastmod>2018-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1834</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1834/</loc>
     <lastmod>2024-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1867</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1867/</loc>
     <lastmod>2010-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1831</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1831/</loc>
     <lastmod>2020-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1803</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1803/</loc>
     <lastmod>2023-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1802</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1802/</loc>
     <lastmod>2025-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1812</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1812/</loc>
     <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1827</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1827/</loc>
     <lastmod>2024-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1828</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1828/</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2122</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2122/</loc>
     <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2091</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2091/</loc>
     <lastmod>2025-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1931</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1931/</loc>
     <lastmod>2025-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1426</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1426/</loc>
     <lastmod>2022-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1927</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1927/</loc>
     <lastmod>2023-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1926</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1926/</loc>
     <lastmod>2022-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1925</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1925/</loc>
     <lastmod>2023-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2364</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2364/</loc>
     <lastmod>2025-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2603</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2603/</loc>
     <lastmod>2025-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2730</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2730/</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2728</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2728/</loc>
     <lastmod>2013-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2175</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2175/</loc>
     <lastmod>2023-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2176</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2176/</loc>
     <lastmod>2013-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2104</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2104/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1011</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1011/</loc>
     <lastmod>2025-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2778</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2778/</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2407</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2407/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1947</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_1947/</loc>
     <lastmod>2013-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2610</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2610/</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1336</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1336/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1123</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1123/</loc>
     <lastmod>2024-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1148</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1148/</loc>
     <lastmod>2025-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1147</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1147/</loc>
     <lastmod>2023-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1144</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1144/</loc>
     <lastmod>2025-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1146</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1146/</loc>
     <lastmod>2022-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1150</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1150/</loc>
     <lastmod>2025-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1149</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1149/</loc>
     <lastmod>2024-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1133</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1133/</loc>
     <lastmod>2022-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1141</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1141/</loc>
     <lastmod>2025-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1134</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1134/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1142</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_1142/</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2099</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2099/</loc>
     <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2324</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2324/</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2851</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2851/</loc>
     <lastmod>2026-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2128</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2128/</loc>
     <lastmod>2024-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2112</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2112/</loc>
     <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2323</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2323/</loc>
     <lastmod>2025-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1076</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1076/</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1075</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1075/</loc>
     <lastmod>2025-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1066</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1066/</loc>
     <lastmod>2025-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_2341</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11305_2341/</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1072</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1072/</loc>
     <lastmod>2025-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1067</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1067/</loc>
     <lastmod>2025-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1068</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1068/</loc>
     <lastmod>2020-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1064</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1064/</loc>
     <lastmod>2023-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2430</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2430/</loc>
     <lastmod>2022-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2340</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2340/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2552</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2552/</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2093</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2093/</loc>
     <lastmod>2024-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2551</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_2551/</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1303</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1303/</loc>
     <lastmod>2024-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1057</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11500_1057/</loc>
     <lastmod>2023-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1287</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1287/</loc>
     <lastmod>2018-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1288</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1288/</loc>
     <lastmod>2017-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1016</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1016/</loc>
     <lastmod>2024-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1286</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1286/</loc>
     <lastmod>2024-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1291</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1291/</loc>
     <lastmod>2023-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1299</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1299/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1293</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1293/</loc>
     <lastmod>2023-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1292</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1292/</loc>
     <lastmod>2019-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1297</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1297/</loc>
     <lastmod>2020-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1301</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1301/</loc>
     <lastmod>2024-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1096</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1096/</loc>
     <lastmod>2021-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1100</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_1100/</loc>
     <lastmod>2023-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1230</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11200_1230/</loc>
     <lastmod>2023-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1313</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1313/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1316</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1316/</loc>
     <lastmod>2024-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1319</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1319/</loc>
     <lastmod>2025-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1320</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1320/</loc>
     <lastmod>2020-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1307</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1307/</loc>
     <lastmod>2019-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1321</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1321/</loc>
     <lastmod>2002-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1289</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1289/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2308</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2308/</loc>
     <lastmod>2022-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2643</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2643/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2209</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2209/</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2311</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2311/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2232</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2232/</loc>
     <lastmod>2023-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2312</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_2312/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1308</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11650_1308/</loc>
     <lastmod>2020-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2127</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2127/</loc>
     <lastmod>2024-03-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1001</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1001/</loc>
     <lastmod>2012-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1007</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1007/</loc>
     <lastmod>2023-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1014</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1014/</loc>
     <lastmod>2018-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1015</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1015/</loc>
     <lastmod>2017-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1010</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1010/</loc>
     <lastmod>2022-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1000</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1000/</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1012</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1012/</loc>
     <lastmod>2023-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1006</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1006/</loc>
     <lastmod>2021-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1004</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1004/</loc>
     <lastmod>2021-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1070</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11620_1070/</loc>
     <lastmod>2024-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1005</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1005/</loc>
     <lastmod>2021-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1009</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1009/</loc>
     <lastmod>2024-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1862</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1862/</loc>
     <lastmod>2023-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1864</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1864/</loc>
     <lastmod>2024-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1865</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1865/</loc>
     <lastmod>2024-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1002</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1002/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1003</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1003/</loc>
     <lastmod>2021-04-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1992</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1992/</loc>
     <lastmod>2025-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2000</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2000/</loc>
     <lastmod>2023-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1990</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_1990/</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2001</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2001/</loc>
     <lastmod>2025-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2009</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2009/</loc>
     <lastmod>2002-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2153</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2153/</loc>
     <lastmod>2025-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2427</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2427/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2367</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2367/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2007</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11680_2007/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1326</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1326/</loc>
     <lastmod>2022-05-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1769</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1769/</loc>
     <lastmod>2025-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1327</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1327/</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1328</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1328/</loc>
     <lastmod>2024-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1337</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1337/</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1338</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1338/</loc>
     <lastmod>2020-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1333</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1333/</loc>
     <lastmod>2025-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1435</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11380_1435/</loc>
     <lastmod>2024-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1339</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1339/</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2236</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2236/</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2718</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2718/</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1334</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1334/</loc>
     <lastmod>2025-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2105</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2105/</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1949</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1949/</loc>
     <lastmod>2023-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2094</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2094/</loc>
     <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1160</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11410_1160/</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1948</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1948/</loc>
     <lastmod>2023-05-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2235</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2235/</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1332</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1332/</loc>
     <lastmod>2021-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1115</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1115/</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1342</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1342/</loc>
     <lastmod>2013-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1340</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1340/</loc>
     <lastmod>2020-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2237</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_2237/</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1341</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1341/</loc>
     <lastmod>2020-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1343</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11710_1343/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1736</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1736/</loc>
     <lastmod>2024-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2370</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2370/</loc>
     <lastmod>2025-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2374</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2374/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2384</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2384/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2194</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2194/</loc>
     <lastmod>2025-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1041</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1041/</loc>
     <lastmod>2021-07-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1039</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1039/</loc>
     <lastmod>2021-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1112</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11230_1112/</loc>
     <lastmod>2025-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2483</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2483/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2571</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2571/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2369</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2369/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2368</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2368/</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2070</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2070/</loc>
     <lastmod>2025-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1843</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_1843/</loc>
     <lastmod>2024-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2068</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2068/</loc>
     <lastmod>2024-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2102</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2102/</loc>
     <lastmod>2024-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2095</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11740_2095/</loc>
     <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2126</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11560_2126/</loc>
     <lastmod>2025-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2887</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11320_2887/</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2886</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11110_2886/</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2522</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2522/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2890</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11170_2890/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2891</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11590_2891/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2523</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11530_2523/</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_2896</loc>
+    <loc>https://seoul-redevelopment.pages.dev/districts/SEOUL_RDEV_11350_2896/</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

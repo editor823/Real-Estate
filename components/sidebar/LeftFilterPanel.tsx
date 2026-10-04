@@ -523,8 +523,9 @@ export function LeftFilterPanel({
           >
             개인정보처리방침
           </button>
-          <Link href="/privacy" className="text-gray-400 hover:text-blue-600" title="전체 페이지 보기">
-            <ExternalLink className="w-3 h-3" />
+          <span>•</span>
+          <Link href="/terms" className="text-gray-500 hover:text-blue-600 underline font-semibold">
+            이용약관
           </Link>
         </div>
       </div>
