@@ -44,7 +44,12 @@ export default function MainPage() {
     transferableOnly,
     publicAdjacentOnly,
   } = useFilterStore();
-  const { selectedDistrict } = useMapStore();
+  const {
+    selectedDistrict,
+    setSelectedUid,
+    setSelectedDistrict,
+    setFlyToTarget,
+  } = useMapStore();
 
   // 최신 정적 GeoJSON 파일이 있을 경우 비동기 보정 동기화
   useEffect(() => {
@@ -91,6 +96,26 @@ export default function MainPage() {
       setIsSidebarOpen(false);
     }
   }, []);
+
+  // URL 쿼리 파라미터(?id=구역ID 또는 ?district=구역ID)로 접근 시 해당 구역 자동 선택 및 포커스
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const targetId = params.get("id") || params.get("district") || params.get("uid");
+      if (targetId) {
+        const found = features.find(
+          (f) => f.properties.master_uid === targetId || f.id === targetId
+        );
+        if (found) {
+          setSelectedUid(found.properties.master_uid);
+          setSelectedDistrict(found.properties);
+          if (found.properties.centroid) {
+            setFlyToTarget([found.properties.centroid[1], found.properties.centroid[0]]);
+          }
+        }
+      }
+    }
+  }, [features, setSelectedUid, setSelectedDistrict, setFlyToTarget]);
 
   return (
     <main className="relative w-full h-screen overflow-hidden flex bg-slate-950">

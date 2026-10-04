@@ -294,7 +294,7 @@ export function DistrictCard() {
           href={`/districts/${selectedDistrict.master_uid}`}
           className="flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl transition-all cursor-pointer shadow-xs"
         >
-          <span>구역 전용 전체 보고서 및 SEO 페이지 보기</span>
+          <span>📄 상세 분석 리포트 읽기</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </Link>
 

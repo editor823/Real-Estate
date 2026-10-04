@@ -138,7 +138,7 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
 
         {/* 인터랙티브 지도에서 보기 버튼 */}
         <Link
-          href={`/?district=${props.master_uid}`}
+          href={`/?id=${props.master_uid}`}
           className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/30 transition-all hover:scale-105 active:scale-95"
         >
           <Map className="w-3.5 h-3.5" />
@@ -315,11 +315,11 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           </div>
         </section>
 
-        {/* E. [핵심 텍스트 분량 확보] 입주권 지위양도 제한 및 현금청산 주의사항 종합 가이드 */}
+        {/* E. [핵심 분석 1 & 2] 입주권 승계 및 현금청산 주의사항 자가진단 해설 */}
         <section className="p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-5">
           <div className="flex items-center gap-2 pb-2 border-b border-slate-800">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
-            <h2 className="text-lg font-bold text-white">투자자를 위한 입주권 거래 규제 및 권리산정일 핵심 안내</h2>
+            <h2 className="text-lg font-bold text-white">입주권 승계 및 현금청산 주의사항 자가진단 해설</h2>
           </div>
 
           <div className="space-y-4 text-xs leading-relaxed text-slate-300">
@@ -375,6 +375,17 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           <AdSenseBanner format="horizontal" slotId={`district-bottom-${props.master_uid}`} className="bg-slate-900/60 border-slate-800" />
         </section>
 
+        {/* H. 지도에서 구역 위치 바로보기 대형 CTA 버튼 */}
+        <div className="pt-1">
+          <Link
+            href={`/?id=${props.master_uid}`}
+            className="flex items-center justify-center gap-2.5 w-full py-4 px-6 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-sm shadow-xl shadow-blue-600/30 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+          >
+            <Map className="w-4 h-4" />
+            <span>지도에서 구역 위치 및 마커 포커스 바로보기</span>
+          </Link>
+        </div>
+
         {/* G. 동일 자치구({props.gu}) 인근 주요 정비구역 추천 (SEO 내부 링크 클러스터링) */}
         {nearbyDistricts.length > 0 && (
           <section className="p-6 sm:p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
@@ -420,7 +431,11 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
       {/* 3. 하단 푸터 */}
       <footer className="mt-16 border-t border-slate-800/80 py-8 px-4 text-center text-xs text-slate-500 space-y-2">
         <p>서울시 정비사업 & 신통·모아 통합 모니터링 플랫폼 | 데이터 출처: 서울시 정비사업 정보몽땅 및 서울 열린데이터광장</p>
-        <p>© 2026 Seoul Redevelopment Monitoring. 본 사이트의 데이터는 참고용이며 법적 효력을 갖지 않습니다.</p>
+        <p className="flex items-center justify-center gap-3 text-slate-400">
+          <span>© 2026 Seoul Redevelopment Monitoring.</span>
+          <span>•</span>
+          <Link href="/privacy" className="hover:text-blue-400 underline font-medium">개인정보처리방침</Link>
+        </p>
       </footer>
     </div>
   );
