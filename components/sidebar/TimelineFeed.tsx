@@ -40,14 +40,14 @@ export function TimelineFeed({ features, onSelectMobile }: TimelineFeedProps) {
   };
 
   return (
-    <div className="p-3.5 space-y-3">
+    <div className="p-3.5 space-y-3 bg-slate-900 text-slate-100">
       {/* 1. 피드 헤더 */}
-      <div className="flex items-center justify-between text-xs font-semibold text-slate-600 px-1 pb-1 border-b border-slate-100">
-        <span className="flex items-center gap-1.5 font-bold text-slate-800">
-          <Bell className="w-3.5 h-3.5 text-blue-600" />
+      <div className="flex items-center justify-between text-xs font-semibold text-slate-400 px-1 pb-1 border-b border-slate-800">
+        <span className="flex items-center gap-1.5 font-bold text-white">
+          <Bell className="w-3.5 h-3.5 text-blue-400" />
           서울시 실시간 고시·공고 피드
         </span>
-        <span className="text-[10px] text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
+        <span className="text-[10px] text-blue-300 font-bold bg-blue-500/20 px-2 py-0.5 rounded-full border border-blue-400/30">
           최신순 정렬 ({sortedDistricts.length}건)
         </span>
       </div>
@@ -55,7 +55,7 @@ export function TimelineFeed({ features, onSelectMobile }: TimelineFeedProps) {
       {/* 2. 최신 고시 타임라인 피드 리스트 */}
       <div className="space-y-2.5">
         {sortedDistricts.length === 0 ? (
-          <div className="p-8 text-center text-slate-400 text-xs">
+          <div className="p-8 text-center text-slate-500 text-xs">
             고시·공고 이력 데이터를 불러오는 중입니다...
           </div>
         ) : (
@@ -71,17 +71,17 @@ export function TimelineFeed({ features, onSelectMobile }: TimelineFeedProps) {
                 className={cn(
                   "p-3 rounded-2xl border transition-all cursor-pointer group relative overflow-hidden",
                   isSelected
-                    ? "bg-blue-50/90 border-blue-400 shadow-md ring-1 ring-blue-400/40"
-                    : "bg-white hover:bg-slate-50 border-slate-200/80 hover:border-slate-300 shadow-2xs"
+                    ? "bg-blue-950/70 border-blue-500 shadow-md ring-1 ring-blue-500/40"
+                    : "bg-slate-950/70 hover:bg-slate-800/60 border-slate-800 hover:border-slate-700 shadow-2xs"
                 )}
               >
                 {/* 상단: 자치구 뱃지 + 고시일자 */}
                 <div className="flex items-center justify-between gap-2 mb-1.5">
                   <div className="flex items-center gap-1">
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30">
                       {props.gu}
                     </span>
-                    <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
+                    <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
                       {props.biz_type_label}
                     </span>
                   </div>
@@ -94,27 +94,27 @@ export function TimelineFeed({ features, onSelectMobile }: TimelineFeedProps) {
 
                 {/* 구역명 & 인허가 상태 */}
                 <div className="flex items-start justify-between gap-2">
-                  <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                  <h4 className="text-xs font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
                     {props.name}
                   </h4>
                   <StageBadge stageCode={props.stage_code} className="shrink-0" />
                 </div>
 
                 {/* 지번 주소 및 건립 규모 */}
-                <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-100">
+                <div className="flex items-center justify-between text-[11px] text-slate-400 mt-2 pt-2 border-t border-slate-800/80">
                   <span className="flex items-center gap-1 truncate max-w-[180px]">
-                    <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
+                    <MapPin className="w-3 h-3 text-slate-500 shrink-0" />
                     <span className="truncate">{props.address_jibun || props.legal_dong}</span>
                   </span>
 
-                  <span className="flex items-center gap-1 font-semibold text-slate-700 shrink-0">
-                    <Home className="w-3 h-3 text-indigo-500" />
+                  <span className="flex items-center gap-1 font-semibold text-slate-300 shrink-0">
+                    <Home className="w-3 h-3 text-indigo-400" />
                     <span>{totalH > 0 ? `${totalH.toLocaleString()}세대` : "계획중"}</span>
                   </span>
                 </div>
 
                 {/* 클릭 시 지도 이동 안내 화살표 */}
-                <div className="flex items-center justify-between text-[10px] text-blue-600 font-semibold mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center justify-between text-[10px] text-blue-400 font-semibold mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                   <span>지도에서 구역 위치 보기</span>
                   <ChevronRight className="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-0.5 transition-transform" />
                 </div>
@@ -124,5 +124,6 @@ export function TimelineFeed({ features, onSelectMobile }: TimelineFeedProps) {
         )}
       </div>
     </div>
+
   );
 }

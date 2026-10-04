@@ -135,7 +135,7 @@ export default function MainPage() {
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         className={cn(
-          "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-white/95 backdrop-blur-md border-r border-y border-slate-200/90 shadow-xl text-slate-700 hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1.5",
+          "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-slate-900/95 backdrop-blur-md border-r border-y border-slate-800 shadow-2xl text-slate-300 hover:text-blue-400 transition-all cursor-pointer flex items-center gap-1.5",
           isSidebarOpen ? "hidden sm:flex left-[430px]" : "left-0"
         )}
         title={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
@@ -145,8 +145,8 @@ export default function MainPage() {
           <ChevronLeft className="w-4 h-4" />
         ) : (
           <>
-            <ChevronRight className="w-4 h-4 text-blue-600" />
-            <span className="text-xs font-bold text-slate-800 pr-0.5">목록 & 필터</span>
+            <ChevronRight className="w-4 h-4 text-blue-400" />
+            <span className="text-xs font-bold text-white pr-0.5">목록 & 필터</span>
           </>
         )}
       </button>
@@ -164,10 +164,11 @@ export default function MainPage() {
 
         {/* 선택된 구역이 있을 때 표시되는 퀵 상세 정보 카드 (모바일 바텀시트 & 데스크톱 플로팅) */}
         {selectedDistrict && (
-          <aside className="absolute inset-x-3 bottom-16 sm:bottom-auto sm:top-16 sm:left-6 z-[500] sm:w-[390px] max-w-full max-h-[70vh] sm:max-h-[calc(100vh-5.5rem)] rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-200">
+          <aside className="absolute inset-x-3 bottom-16 sm:bottom-auto sm:top-16 sm:left-6 z-[500] sm:w-[390px] max-w-full max-h-[70vh] sm:max-h-[calc(100vh-5.5rem)] rounded-3xl bg-slate-900/95 backdrop-blur-xl border border-slate-800 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-200">
             <DistrictCard />
           </aside>
         )}
+
 
         {/* 지도 우측 하단 미니 개인정보처리방침 링크 (데스크톱 패널 닫힘 시 노출) */}
         <button

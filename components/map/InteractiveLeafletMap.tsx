@@ -49,8 +49,9 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   const tileLayerRef = useRef<L.TileLayer | null>(null);
 
   const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget } = useMapStore();
-  const [mapTheme, setMapTheme] = useState<"osm" | "dark">("osm");
+  const [mapTheme, setMapTheme] = useState<"osm" | "dark">("dark");
   const [currentZoom, setCurrentZoom] = useState<number>(12);
+
 
   const TILE_URLS = {
     osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -206,49 +207,49 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       const existingH = props.existing_households || 0;
 
       return `
-      <div class="p-3.5 max-w-xs text-slate-800 font-sans">
+      <div class="p-3.5 max-w-xs text-slate-100 font-sans bg-slate-900">
         <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
-          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
+          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30">
             ${props.gu || "서울시"}
           </span>
-          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
-            ${props.biz_type_label}
+          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+            ${props.biz_type_label || props.biz_type}
           </span>
-          <span style="background-color: ${stageHex};" class="text-[10px] font-bold px-2 py-0.5 rounded-full text-white">
+          <span style="background-color: ${stageHex};" class="text-[10px] font-bold px-2 py-0.5 rounded-full text-white shadow-xs">
             ${stageName}
           </span>
         </div>
         
-        <h3 class="text-sm font-bold text-slate-900 leading-snug">${props.name}</h3>
-        <p class="text-[11px] text-slate-500 mb-2">${props.address_jibun ? props.gu + " " + props.address_jibun : props.legal_dong}</p>
+        <h3 class="text-sm font-bold text-white leading-snug">${props.name}</h3>
+        <p class="text-[11px] text-slate-400 mb-2">${props.address_jibun ? props.gu + " " + props.address_jibun : props.legal_dong}</p>
         
         <!-- 건립 세대수 공급량 박스 -->
-        <div class="p-2 rounded-xl bg-blue-50/80 border border-blue-100 mb-2">
-          <div class="flex items-center justify-between text-[11px] font-bold text-blue-900 mb-1">
+        <div class="p-2 rounded-xl bg-slate-950/80 border border-slate-800 mb-2">
+          <div class="flex items-center justify-between text-[11px] font-bold text-slate-200 mb-1">
             <span>건립 예정 세대수</span>
-            <span class="text-blue-600 font-bold">${totalH > 0 ? totalH.toLocaleString() + " 세대" : "계획중"}</span>
+            <span class="text-blue-400 font-bold">${totalH > 0 ? totalH.toLocaleString() + " 세대" : "계획중"}</span>
           </div>
           ${
             totalH > 0
               ? `
-            <div class="grid grid-cols-3 gap-1 pt-1 border-t border-blue-200/50 text-[10px] text-center">
-              <div><span class="text-slate-400 block">분양</span><strong>${saleH.toLocaleString()}</strong></div>
-              <div><span class="text-slate-400 block">임대</span><strong class="text-blue-600">${rentH.toLocaleString()}</strong></div>
-              <div><span class="text-slate-400 block">기존가구</span><span>${existingH > 0 ? existingH.toLocaleString() : "-"}</span></div>
+            <div class="grid grid-cols-3 gap-1 pt-1 border-t border-slate-800 text-[10px] text-center">
+              <div><span class="text-slate-400 block">분양</span><strong class="text-slate-200">${saleH.toLocaleString()}</strong></div>
+              <div><span class="text-slate-400 block">임대</span><strong class="text-blue-400">${rentH.toLocaleString()}</strong></div>
+              <div><span class="text-slate-400 block">기존가구</span><span class="text-slate-400">${existingH > 0 ? existingH.toLocaleString() : "-"}</span></div>
             </div>
           `
               : ""
           }
         </div>
 
-        <div class="grid grid-cols-2 gap-1.5 py-1.5 border-t border-slate-100 text-[11px]">
+        <div class="grid grid-cols-2 gap-1.5 py-1.5 border-t border-slate-800 text-[11px]">
           <div>
             <span class="text-slate-400">주민동의율:</span>
-            <strong class="ml-1 text-slate-800">${props.consent_rate ? props.consent_rate + "%" : "집계중"}</strong>
+            <strong class="ml-1 text-slate-200">${props.consent_rate ? props.consent_rate + "%" : "집계중"}</strong>
           </div>
           <div>
             <span class="text-slate-400">지위양도:</span>
-            <strong class="ml-1 ${props.is_transferable ? "text-emerald-600" : "text-rose-600"}">
+            <strong class="ml-1 ${props.is_transferable ? "text-emerald-400" : "text-amber-400"}">
               ${props.is_transferable ? "가능" : "원칙 금지"}
             </strong>
           </div>
@@ -256,7 +257,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
         ${
           props.transfer_exemption
-            ? `<div class="mt-1 text-[10px] text-slate-500 bg-slate-50 p-1.5 rounded border border-slate-100">
+            ? `<div class="mt-1 text-[10px] text-slate-300 bg-slate-950 p-1.5 rounded border border-slate-800">
                 ⚖️ ${props.transfer_exemption}
               </div>`
             : ""
@@ -264,6 +265,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       </div>
       `;
     };
+
 
     // GeoJSON 폴리곤 레이어 생성
     const geojsonLayer = L.geoJSON(
@@ -378,24 +380,24 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       <div className="absolute top-4 right-4 z-[500] flex items-center gap-2">
         <button
           onClick={() => setMapTheme(mapTheme === "osm" ? "dark" : "osm")}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900/95 backdrop-blur-md border border-slate-800 shadow-xl text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
         >
-          <Layers className="w-3.5 h-3.5 text-blue-600" />
+          <Layers className="w-3.5 h-3.5 text-blue-400" />
           <span>{mapTheme === "osm" ? "다크 맵" : "일반 맵"}</span>
         </button>
 
         <button
           onClick={handleResetView}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900/95 backdrop-blur-md border border-slate-800 shadow-xl text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
         >
-          <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
+          <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
           <span>서울 전역</span>
         </button>
       </div>
 
       {/* 4. 우측 하단 지도 범례 */}
-      <div className="absolute bottom-4 right-4 z-[500] p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-xl max-w-xs text-xs">
-        <div className="font-bold text-slate-800 mb-2 flex items-center justify-between">
+      <div className="absolute bottom-4 right-4 z-[500] p-3 rounded-2xl bg-slate-900/95 backdrop-blur-md border border-slate-800 shadow-2xl max-w-xs text-xs">
+        <div className="font-bold text-white mb-2 flex items-center justify-between">
           <span>정비사업 8단계 범례</span>
           <span className="text-[10px] text-slate-400 font-normal">
             {currentZoom < 13 ? "자치구별 클러스터링" : `${features.length}개 구역 표출`}
@@ -410,11 +412,12 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
                   style={{ backgroundColor: st.hex }}
                   className="w-2.5 h-2.5 rounded-full shrink-0 shadow-xs"
                 />
-                <span className="text-slate-600 truncate">{st.name}</span>
+                <span className="text-slate-300 truncate">{st.name}</span>
               </div>
             ))}
         </div>
       </div>
+
     </div>
   );
 }
