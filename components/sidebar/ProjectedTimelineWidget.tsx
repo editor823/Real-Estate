@@ -56,31 +56,31 @@ export function ProjectedTimelineWidget({
   }, [stageSeq, isSinthong]);
 
   return (
-    <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 text-white border border-slate-750 shadow-xl space-y-3.5">
+    <div className="p-4 rounded-2xl bg-gray-50 text-gray-900 border border-gray-200 shadow-xs space-y-3.5">
       {/* 1. 상단 타이틀 & 속도계 요약 */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/30">
+          <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-200">
             <Clock className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-xs font-bold text-slate-100 flex items-center gap-1.5">
+            <h3 className="text-xs font-bold text-gray-900 flex items-center gap-1.5">
               <span>예상 타임라인 & 속도계</span>
               {isSinthong && (
-                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-0.5">
+                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-0.5">
                   <Zap className="w-2.5 h-2.5" />
                   신통 패스트트랙
                 </span>
               )}
             </h3>
-            <p className="text-[10px] text-slate-400">서울시 정비사업 평균 통계 기준 분석</p>
+            <p className="text-[10px] text-gray-500">서울시 정비사업 평균 통계 기준 분석</p>
           </div>
         </div>
 
         {/* 입주 목표 연도 하이라이트 */}
         <div className="text-right">
-          <span className="text-[10px] text-slate-400 block">목표 입주</span>
-          <span className="text-sm font-extrabold text-blue-400 tracking-tight">
+          <span className="text-[10px] text-gray-500 block">목표 입주</span>
+          <span className="text-sm font-extrabold text-blue-600 tracking-tight">
             {stageSeq >= 8 ? "입주 완료" : `${projectedCompletionYear}년`}
           </span>
         </div>
@@ -88,13 +88,13 @@ export function ProjectedTimelineWidget({
 
       {/* 2. 진행률 게이지 바 (Progress Bar) */}
       <div className="space-y-1">
-        <div className="flex justify-between text-[11px] font-medium text-slate-300">
+        <div className="flex justify-between text-[11px] font-medium text-gray-600">
           <span>사업 진척도</span>
-          <span className="font-bold text-blue-400">{progressPercent}% 진행</span>
+          <span className="font-bold text-blue-600">{progressPercent}% 진행</span>
         </div>
-        <div className="w-full h-2 rounded-full bg-slate-800 overflow-hidden p-0.5 border border-slate-700/60">
+        <div className="w-full h-2 rounded-full bg-gray-200 overflow-hidden p-0.5 border border-gray-200">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-400 transition-all duration-700 shadow-sm shadow-blue-500/50"
+            className="h-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 transition-all duration-700 shadow-xs shadow-blue-500/50"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -112,10 +112,10 @@ export function ProjectedTimelineWidget({
               <div
                 className={cn(
                   "w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold border transition-all mb-1",
-                  isPassed && "bg-blue-600 border-blue-500 text-white",
+                  isPassed && "bg-blue-600 border-blue-600 text-white",
                   isCurrent &&
                     "bg-amber-500 border-white text-white ring-2 ring-amber-400/50 scale-110 animate-pulse",
-                  isUpcoming && "bg-slate-800/80 border-slate-700 text-slate-500"
+                  isUpcoming && "bg-gray-100 border-gray-200 text-gray-400"
                 )}
               >
                 {isPassed ? <CheckCircle2 className="w-3.5 h-3.5" /> : m.seq}
@@ -123,7 +123,7 @@ export function ProjectedTimelineWidget({
               <span
                 className={cn(
                   "text-[9px] font-medium truncate w-full",
-                  isCurrent ? "text-amber-300 font-bold" : isPassed ? "text-slate-200" : "text-slate-500"
+                  isCurrent ? "text-amber-600 font-bold" : isPassed ? "text-gray-800" : "text-gray-400"
                 )}
               >
                 {m.label}
@@ -134,22 +134,22 @@ export function ProjectedTimelineWidget({
       </div>
 
       {/* 4. 예상 잔여 기간 브리핑 안내 */}
-      <div className="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-between text-[11px] text-slate-300">
+      <div className="p-2.5 rounded-xl bg-white border border-gray-200 flex items-center justify-between text-[11px] text-gray-700">
         <div className="flex items-center gap-1.5">
-          <AlertCircle className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+          <AlertCircle className="w-3.5 h-3.5 text-blue-600 shrink-0" />
           <span>
             {stageSeq >= 8 ? (
               "사업이 완료되어 신축 아파트에 입주했습니다."
             ) : (
               <>
                 준공까지 예상 잔여 기간은 약{" "}
-                <strong className="text-white font-bold">{remainingYears}년</strong> 입니다.
+                <strong className="text-gray-900 font-bold">{remainingYears}년</strong> 입니다.
               </>
             )}
           </span>
         </div>
         {isSinthong && stageSeq < 8 && (
-          <span className="text-[10px] text-amber-300/90 font-medium shrink-0">
+          <span className="text-[10px] text-amber-700 font-medium shrink-0">
             약 2.5년 단축효과
           </span>
         )}

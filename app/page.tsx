@@ -121,10 +121,8 @@ export default function MainPage() {
   }, [features, setSelectedUid, setSelectedDistrict, setFlyToTarget]);
 
   return (
-    <main className="relative w-full flex-1 min-h-0 overflow-hidden flex bg-slate-950">
+    <main className="relative w-full flex-1 min-h-0 overflow-hidden flex bg-slate-50">
       {/* 1. 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
-
-
       <LeftFilterPanel
         features={features}
         isOpen={isSidebarOpen}
@@ -136,7 +134,7 @@ export default function MainPage() {
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         className={cn(
-          "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-slate-900/95 backdrop-blur-md border-r border-y border-slate-800 shadow-2xl text-slate-300 hover:text-blue-400 transition-all cursor-pointer flex items-center gap-1.5",
+          "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-white/95 backdrop-blur-md border-r border-y border-gray-200 shadow-md text-gray-600 hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1.5",
           isSidebarOpen ? "hidden sm:flex left-[430px]" : "left-0"
         )}
         title={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
@@ -146,8 +144,8 @@ export default function MainPage() {
           <ChevronLeft className="w-4 h-4" />
         ) : (
           <>
-            <ChevronRight className="w-4 h-4 text-blue-400" />
-            <span className="text-xs font-bold text-white pr-0.5">목록 & 필터</span>
+            <ChevronRight className="w-4 h-4 text-blue-600" />
+            <span className="text-xs font-bold text-gray-800 pr-0.5">목록 & 필터</span>
           </>
         )}
       </button>
@@ -155,8 +153,8 @@ export default function MainPage() {
       {/* 3. 우측 인터랙티브 지도 영역 */}
       <section className="relative flex-1 h-full w-full overflow-hidden">
         {isLoading ? (
-          <div className="w-full h-full flex flex-col items-center justify-center bg-slate-900 text-slate-400 gap-3">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+          <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 text-gray-500 gap-3">
+            <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
             <span className="text-xs font-semibold">서울시 정비구역 공간 데이터를 불러오는 중...</span>
           </div>
         ) : (
@@ -165,7 +163,7 @@ export default function MainPage() {
 
         {/* 선택된 구역이 있을 때 표시되는 퀵 상세 정보 카드 (모바일 바텀시트 & 데스크톱 플로팅) */}
         {selectedDistrict && (
-          <aside className="absolute inset-x-3 bottom-16 sm:bottom-auto sm:top-16 sm:left-6 z-[500] sm:w-[390px] max-w-full max-h-[70vh] sm:max-h-[calc(100vh-5.5rem)] rounded-3xl bg-slate-900/95 backdrop-blur-xl border border-slate-800 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-200">
+          <aside className="absolute inset-x-3 bottom-16 sm:bottom-auto sm:top-16 sm:left-6 z-[500] sm:w-[390px] max-w-full max-h-[70vh] sm:max-h-[calc(100vh-5.5rem)] rounded-3xl bg-white/95 backdrop-blur-xl border border-gray-200 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-200">
             <DistrictCard />
           </aside>
         )}
@@ -174,9 +172,9 @@ export default function MainPage() {
         {/* 지도 우측 하단 미니 개인정보처리방침 링크 (데스크톱 패널 닫힘 시 노출) */}
         <button
           onClick={() => setIsPrivacyModalOpen(true)}
-          className="hidden sm:flex items-center gap-1 absolute bottom-2 right-14 z-[400] text-[10px] text-slate-400 hover:text-white bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md px-2 py-0.5 rounded-md border border-slate-800 transition-colors cursor-pointer shadow-md"
+          className="hidden sm:flex items-center gap-1 absolute bottom-2 right-14 z-[400] text-[10px] text-gray-500 hover:text-gray-900 bg-white/90 hover:bg-gray-100 backdrop-blur-md px-2 py-0.5 rounded-md border border-gray-200 transition-colors cursor-pointer shadow-xs"
         >
-          <Shield className="w-2.5 h-2.5 text-blue-400" />
+          <Shield className="w-2.5 h-2.5 text-blue-600" />
           <span>개인정보처리방침</span>
         </button>
       </section>
@@ -185,7 +183,7 @@ export default function MainPage() {
       <div className="sm:hidden absolute bottom-5 left-1/2 -translate-x-1/2 z-[550]">
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900/95 backdrop-blur-md text-white text-xs font-bold shadow-2xl border border-slate-700/80 hover:bg-slate-800 transition-all active:scale-95 cursor-pointer"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-md text-gray-900 text-xs font-bold shadow-xl border border-gray-200 hover:bg-gray-50 transition-all active:scale-95 cursor-pointer"
         >
           {isSidebarOpen ? "🗺️ 지도로 보기" : "📋 구역 목록 / 고시 피드"}
         </button>

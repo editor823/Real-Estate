@@ -162,27 +162,27 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-gray-900 selection:bg-blue-600 selection:text-white">
       {/* 1. 상단 Breadcrumb & 액션 바 */}
-      <div className="bg-slate-900/60 border-b border-slate-800/80 px-4 sm:px-8 py-3 flex items-center justify-between">
+      <div className="bg-white border-b border-gray-200 px-4 sm:px-8 py-3 flex items-center justify-between shadow-2xs">
         <div className="flex items-center gap-3">
           {/* ← 메인 지도로 돌아가기 버튼 */}
           <Link
             href="/"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-xs font-bold text-white transition-all shadow-sm active:scale-95 cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 text-xs font-bold text-gray-800 transition-all shadow-2xs active:scale-95 cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4 text-blue-400" />
+            <ArrowLeft className="w-4 h-4 text-blue-600" />
             <span>← 메인 지도로 돌아가기</span>
           </Link>
-          <span className="text-slate-700 hidden sm:inline">|</span>
-          <nav className="text-xs text-slate-400 flex items-center gap-1.5" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-blue-400">홈</Link>
+          <span className="text-gray-300 hidden sm:inline">|</span>
+          <nav className="text-xs text-gray-500 flex items-center gap-1.5" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-blue-600">홈</Link>
             <span>›</span>
-            <Link href="/districts/" className="hover:text-blue-400 text-slate-300 font-medium">
+            <Link href="/districts/" className="hover:text-blue-600 text-gray-700 font-medium">
               {props.gu}
             </Link>
             <span>›</span>
-            <span className="text-blue-400 font-bold truncate max-w-[130px] sm:max-w-xs">{props.name}</span>
+            <span className="text-blue-600 font-bold truncate max-w-[130px] sm:max-w-xs">{props.name}</span>
           </nav>
         </div>
 

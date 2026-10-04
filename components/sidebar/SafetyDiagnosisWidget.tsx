@@ -71,33 +71,33 @@ export function SafetyDiagnosisWidget({
   const transferStatus = getTransferStatus();
 
   return (
-    <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-sm space-y-3.5 text-slate-100">
+    <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200 shadow-xs space-y-3.5 text-gray-900">
       {/* 1. 상단 타이틀 */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5">
-          <ShieldAlert className="w-4 h-4 text-emerald-400" />
-          <h3 className="text-xs font-bold text-white">입주권 안전 진단 카드</h3>
+          <ShieldAlert className="w-4 h-4 text-emerald-600" />
+          <h3 className="text-xs font-bold text-gray-900">입주권 안전 진단 카드</h3>
         </div>
-        <span className="text-[10px] text-slate-400">도시정비법 규제 기준</span>
+        <span className="text-[10px] text-gray-500">도시정비법 규제 기준</span>
       </div>
 
       {/* 2. 지위양도(전매) 법적 규제 판정 배너 */}
       <div
         className={cn(
           "p-3 rounded-xl border text-xs space-y-1.5 transition-all",
-          transferStatus.level === "SAFE" && "bg-emerald-950/50 border-emerald-800/80 text-emerald-300",
-          transferStatus.level === "WARNING" && "bg-amber-950/50 border-amber-800/80 text-amber-300",
-          transferStatus.level === "DANGER" && "bg-rose-950/50 border-rose-800/80 text-rose-300"
+          transferStatus.level === "SAFE" && "bg-emerald-50 border-emerald-200 text-emerald-900",
+          transferStatus.level === "WARNING" && "bg-amber-50 border-amber-200 text-amber-900",
+          transferStatus.level === "DANGER" && "bg-rose-50 border-rose-200 text-rose-900"
         )}
       >
         <div className="flex items-center justify-between">
           <span className="font-extrabold text-[12px] flex items-center gap-1">
-            {transferStatus.level === "SAFE" && <ShieldCheck className="w-4 h-4 text-emerald-400" />}
-            {transferStatus.level === "WARNING" && <AlertTriangle className="w-4 h-4 text-amber-400" />}
-            {transferStatus.level === "DANGER" && <ShieldAlert className="w-4 h-4 text-rose-400" />}
+            {transferStatus.level === "SAFE" && <ShieldCheck className="w-4 h-4 text-emerald-600" />}
+            {transferStatus.level === "WARNING" && <AlertTriangle className="w-4 h-4 text-amber-600" />}
+            {transferStatus.level === "DANGER" && <ShieldAlert className="w-4 h-4 text-rose-600" />}
             {transferStatus.label}
           </span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-900/90 font-bold border border-slate-700/60 shadow-2xs">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-white font-bold border border-gray-200 shadow-2xs text-gray-700">
             {bizType === "RECONSTRUCTION" ? "재건축 기준" : "재개발 기준"}
           </span>
         </div>
@@ -106,16 +106,16 @@ export function SafetyDiagnosisWidget({
 
       {/* 3. 권리산정기준일 기반 현금청산 3대 자가진단 체크리스트 */}
       <div className="space-y-2 pt-1">
-        <div className="flex items-center justify-between text-[11px] font-bold text-slate-300">
+        <div className="flex items-center justify-between text-[11px] font-bold text-gray-700">
           <span>현금청산(지분쪼개기) 자가 진단</span>
           <span
             className={cn(
               "px-2 py-0.5 rounded-full text-[10px] font-extrabold",
               checkedCount === 3
-                ? "bg-emerald-950 text-emerald-300 border border-emerald-800"
+                ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
                 : checkedCount === 2
-                ? "bg-amber-950 text-amber-300 border border-amber-800"
-                : "bg-rose-950 text-rose-300 border border-rose-800"
+                ? "bg-amber-100 text-amber-800 border border-amber-300"
+                : "bg-rose-100 text-rose-800 border border-rose-300"
             )}
           >
             {checkedCount === 3
@@ -132,18 +132,18 @@ export function SafetyDiagnosisWidget({
           <button
             type="button"
             onClick={() => toggleCheck("baseDate")}
-            className="w-full flex items-start gap-2 p-2 rounded-xl text-left hover:bg-slate-900 border border-slate-800 transition-colors cursor-pointer bg-slate-900/60"
+            className="w-full flex items-start gap-2 p-2 rounded-xl text-left hover:bg-gray-100 border border-gray-200 transition-colors cursor-pointer bg-white"
           >
             {checkedItems.baseDate ? (
-              <CheckSquare className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <CheckSquare className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
             ) : (
-              <Square className="w-4 h-4 text-slate-500 mt-0.5 shrink-0" />
+              <Square className="w-4 h-4 text-gray-400 mt-0.5 shrink-0" />
             )}
             <div>
-              <p className="text-[11px] font-semibold text-slate-200">
+              <p className="text-[11px] font-semibold text-gray-800">
                 1. 신축 빌라 준공일이 권리산정기준일 이전인가요?
               </p>
-              <p className="text-[10px] text-slate-400 mt-0.5">
+              <p className="text-[10px] text-gray-500 mt-0.5">
                 기준일 이후 신축 다세대는 입주권이 안 나오고 현금청산됩니다.
               </p>
             </div>
@@ -153,18 +153,18 @@ export function SafetyDiagnosisWidget({
           <button
             type="button"
             onClick={() => toggleCheck("singleUnit")}
-            className="w-full flex items-start gap-2 p-2 rounded-xl text-left hover:bg-slate-900 border border-slate-800 transition-colors cursor-pointer bg-slate-900/60"
+            className="w-full flex items-start gap-2 p-2 rounded-xl text-left hover:bg-gray-100 border border-gray-200 transition-colors cursor-pointer bg-white"
           >
             {checkedItems.singleUnit ? (
-              <CheckSquare className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <CheckSquare className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
             ) : (
-              <Square className="w-4 h-4 text-slate-500 mt-0.5 shrink-0" />
+              <Square className="w-4 h-4 text-gray-400 mt-0.5 shrink-0" />
             )}
             <div>
-              <p className="text-[11px] font-semibold text-slate-200">
+              <p className="text-[11px] font-semibold text-gray-800">
                 2. 토지 면적(90㎡ 이상) 또는 단독 입주권 요건 충족
               </p>
-              <p className="text-[10px] text-slate-400 mt-0.5">
+              <p className="text-[10px] text-gray-500 mt-0.5">
                 과소필지나 도로 지분 매입 시 단독 분양권이 안 나올 수 있습니다.
               </p>
             </div>
@@ -174,18 +174,18 @@ export function SafetyDiagnosisWidget({
           <button
             type="button"
             onClick={() => toggleCheck("ownerStatus")}
-            className="w-full flex items-start gap-2 p-2 rounded-xl text-left hover:bg-slate-900 border border-slate-800 transition-colors cursor-pointer bg-slate-900/60"
+            className="w-full flex items-start gap-2 p-2 rounded-xl text-left hover:bg-gray-100 border border-gray-200 transition-colors cursor-pointer bg-white"
           >
             {checkedItems.ownerStatus ? (
-              <CheckSquare className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <CheckSquare className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
             ) : (
-              <Square className="w-4 h-4 text-slate-500 mt-0.5 shrink-0" />
+              <Square className="w-4 h-4 text-gray-400 mt-0.5 shrink-0" />
             )}
             <div>
-              <p className="text-[11px] font-semibold text-slate-200">
+              <p className="text-[11px] font-semibold text-gray-800">
                 3. 매도인이 1세대 1주택(10년 보유·5년 거주) 요건 충족
               </p>
-              <p className="text-[10px] text-slate-400 mt-0.5">
+              <p className="text-[10px] text-gray-500 mt-0.5">
                 조합설립 이후 재건축 구역은 매도인 자격 승계 여부가 핵심입니다.
               </p>
             </div>

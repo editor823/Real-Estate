@@ -49,13 +49,13 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   const tileLayerRef = useRef<L.TileLayer | null>(null);
 
   const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget } = useMapStore();
-  const [mapTheme, setMapTheme] = useState<"osm" | "dark">("dark");
+  const [mapTheme, setMapTheme] = useState<"osm" | "positron">("osm");
   const [currentZoom, setCurrentZoom] = useState<number>(12);
 
-
+  // 무료 오픈 타일 (API 키 불필요)
   const TILE_URLS = {
     osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    dark: "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+    positron: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
   };
 
   // 1. 지도 초기화 (최초 1회 실행)
@@ -161,11 +161,11 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       guClusters.forEach((cluster) => {
         // 자치구 단위 클러스터 뱃지 HTML ('영등포구 18' 등)
         const clusterHtml = `
-          <div class="group relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-115">
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/95 text-white text-xs font-extrabold shadow-xl shadow-black/30 border-2 border-blue-400/90 whitespace-nowrap hover:bg-blue-600 hover:border-white transition-colors">
-              <span class="w-2 h-2 rounded-full bg-blue-400 group-hover:bg-white animate-pulse"></span>
+          <div class="group relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110">
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-slate-800 text-xs font-extrabold shadow-lg border-2 border-blue-500 whitespace-nowrap hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors">
+              <span class="w-2 h-2 rounded-full bg-blue-500 group-hover:bg-white animate-pulse"></span>
               <span class="tracking-tight">${cluster.gu}</span>
-              <span class="px-1.5 py-0.2 rounded-full bg-blue-500/30 text-blue-200 group-hover:bg-white/20 group-hover:text-white font-black text-[11px]">
+              <span class="px-1.5 py-0.2 rounded-full bg-blue-100 text-blue-700 group-hover:bg-white/20 group-hover:text-white font-black text-[11px]">
                 ${cluster.count}
               </span>
             </div>
@@ -207,12 +207,12 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       const existingH = props.existing_households || 0;
 
       return `
-      <div class="p-3.5 max-w-xs text-slate-100 font-sans bg-slate-900">
+      <div class="p-3.5 max-w-xs text-slate-800 font-sans bg-white">
         <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
-          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30">
+          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
             ${props.gu || "서울시"}
           </span>
-          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
             ${props.biz_type_label || props.biz_type}
           </span>
           <span style="background-color: ${stageHex};" class="text-[10px] font-bold px-2 py-0.5 rounded-full text-white shadow-xs">
@@ -220,36 +220,36 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
           </span>
         </div>
         
-        <h3 class="text-sm font-bold text-white leading-snug">${props.name}</h3>
-        <p class="text-[11px] text-slate-400 mb-2">${props.address_jibun ? props.gu + " " + props.address_jibun : props.legal_dong}</p>
+        <h3 class="text-sm font-bold text-slate-900 leading-snug">${props.name}</h3>
+        <p class="text-[11px] text-slate-500 mb-2">${props.address_jibun ? props.gu + " " + props.address_jibun : props.legal_dong}</p>
         
         <!-- 건립 세대수 공급량 박스 -->
-        <div class="p-2 rounded-xl bg-slate-950/80 border border-slate-800 mb-2">
-          <div class="flex items-center justify-between text-[11px] font-bold text-slate-200 mb-1">
+        <div class="p-2 rounded-xl bg-slate-50 border border-slate-200 mb-2">
+          <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
             <span>건립 예정 세대수</span>
-            <span class="text-blue-400 font-bold">${totalH > 0 ? totalH.toLocaleString() + " 세대" : "계획중"}</span>
+            <span class="text-blue-600 font-bold">${totalH > 0 ? totalH.toLocaleString() + " 세대" : "계획중"}</span>
           </div>
           ${
             totalH > 0
               ? `
-            <div class="grid grid-cols-3 gap-1 pt-1 border-t border-slate-800 text-[10px] text-center">
-              <div><span class="text-slate-400 block">분양</span><strong class="text-slate-200">${saleH.toLocaleString()}</strong></div>
-              <div><span class="text-slate-400 block">임대</span><strong class="text-blue-400">${rentH.toLocaleString()}</strong></div>
-              <div><span class="text-slate-400 block">기존가구</span><span class="text-slate-400">${existingH > 0 ? existingH.toLocaleString() : "-"}</span></div>
+            <div class="grid grid-cols-3 gap-1 pt-1 border-t border-slate-200 text-[10px] text-center">
+              <div><span class="text-slate-400 block">분양</span><strong class="text-slate-700">${saleH.toLocaleString()}</strong></div>
+              <div><span class="text-slate-400 block">임대</span><strong class="text-blue-600">${rentH.toLocaleString()}</strong></div>
+              <div><span class="text-slate-400 block">기존가구</span><span class="text-slate-600">${existingH > 0 ? existingH.toLocaleString() : "-"}</span></div>
             </div>
           `
               : ""
           }
         </div>
 
-        <div class="grid grid-cols-2 gap-1.5 py-1.5 border-t border-slate-800 text-[11px]">
+        <div class="grid grid-cols-2 gap-1.5 py-1.5 border-t border-slate-200 text-[11px]">
           <div>
-            <span class="text-slate-400">주민동의율:</span>
-            <strong class="ml-1 text-slate-200">${props.consent_rate ? props.consent_rate + "%" : "집계중"}</strong>
+            <span class="text-slate-500">주민동의율:</span>
+            <strong class="ml-1 text-slate-800">${props.consent_rate ? props.consent_rate + "%" : "집계중"}</strong>
           </div>
           <div>
-            <span class="text-slate-400">지위양도:</span>
-            <strong class="ml-1 ${props.is_transferable ? "text-emerald-400" : "text-amber-400"}">
+            <span class="text-slate-500">지위양도:</span>
+            <strong class="ml-1 ${props.is_transferable ? "text-emerald-600" : "text-amber-600"}">
               ${props.is_transferable ? "가능" : "원칙 금지"}
             </strong>
           </div>
@@ -257,7 +257,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
         ${
           props.transfer_exemption
-            ? `<div class="mt-1 text-[10px] text-slate-300 bg-slate-950 p-1.5 rounded border border-slate-800">
+            ? `<div class="mt-1 text-[10px] text-slate-700 bg-slate-50 p-1.5 rounded border border-slate-200">
                 ⚖️ ${props.transfer_exemption}
               </div>`
             : ""
@@ -370,8 +370,8 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
       {/* 2. 클러스터링 상태 안내 플로팅 배너 */}
       {currentZoom < 13 && (
-        <div className="absolute top-4 left-6 z-[500] px-3.5 py-2 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80 text-white text-xs font-semibold shadow-lg flex items-center gap-2 animate-in fade-in duration-300">
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+        <div className="absolute top-4 left-6 z-[500] px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 text-xs font-semibold shadow-md flex items-center gap-2 animate-in fade-in duration-300">
+          <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
           <span>광역 클러스터 뷰: 자치구 뱃지를 클릭하면 해당 지역으로 확대됩니다.</span>
         </div>
       )}
@@ -379,27 +379,27 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       {/* 3. 우측 상단 플로팅 지도 컨트롤 */}
       <div className="absolute top-4 right-4 z-[500] flex items-center gap-2">
         <button
-          onClick={() => setMapTheme(mapTheme === "osm" ? "dark" : "osm")}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900/95 backdrop-blur-md border border-slate-800 shadow-xl text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
+          onClick={() => setMapTheme(mapTheme === "osm" ? "positron" : "osm")}
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
         >
-          <Layers className="w-3.5 h-3.5 text-blue-400" />
-          <span>{mapTheme === "osm" ? "다크 맵" : "일반 맵"}</span>
+          <Layers className="w-3.5 h-3.5 text-blue-600" />
+          <span>{mapTheme === "osm" ? "미니멀 맵" : "일반 맵"}</span>
         </button>
 
         <button
           onClick={handleResetView}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900/95 backdrop-blur-md border border-slate-800 shadow-xl text-xs font-semibold text-slate-200 hover:bg-slate-800 hover:text-white transition-all cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
         >
-          <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
+          <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
           <span>서울 전역</span>
         </button>
       </div>
 
       {/* 4. 우측 하단 지도 범례 */}
-      <div className="absolute bottom-4 right-4 z-[500] p-3 rounded-2xl bg-slate-900/95 backdrop-blur-md border border-slate-800 shadow-2xl max-w-xs text-xs">
-        <div className="font-bold text-white mb-2 flex items-center justify-between">
+      <div className="absolute bottom-4 right-4 z-[500] p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-xl max-w-xs text-xs">
+        <div className="font-bold text-slate-900 mb-2 flex items-center justify-between">
           <span>정비사업 8단계 범례</span>
-          <span className="text-[10px] text-slate-400 font-normal">
+          <span className="text-[10px] text-slate-500 font-normal">
             {currentZoom < 13 ? "자치구별 클러스터링" : `${features.length}개 구역 표출`}
           </span>
         </div>
@@ -412,7 +412,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
                   style={{ backgroundColor: st.hex }}
                   className="w-2.5 h-2.5 rounded-full shrink-0 shadow-xs"
                 />
-                <span className="text-slate-300 truncate">{st.name}</span>
+                <span className="text-slate-600 truncate">{st.name}</span>
               </div>
             ))}
         </div>

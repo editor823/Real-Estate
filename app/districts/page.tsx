@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function DistrictsHubPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-50 text-gray-900 flex flex-col">
       <DistrictsHubClient />
     </div>
   );
