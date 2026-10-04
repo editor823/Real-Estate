@@ -72,6 +72,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
+      subdomains: ["a", "b", "c"],
     }).addTo(map);
 
     tileLayerRef.current = tileLayer;
@@ -91,13 +92,21 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
     mapRef.current = map;
 
+    // 지도 컨테이너 렌더링 후 리사이즈 강제 갱신 (지도가 접히거나 하얗게 뜨는 문제 방지)
+    const timer = setTimeout(() => {
+      if (mapRef.current) {
+        mapRef.current.invalidateSize();
+      }
+    }, 150);
+
     return () => {
+      clearTimeout(timer);
       map.remove();
       mapRef.current = null;
     };
   }, []);
 
-  // 2. 테마 전환 (일반 / 다크)
+  // 2. 테마 전환 (일반 / 미니멀)
   useEffect(() => {
     if (!mapRef.current || !tileLayerRef.current) return;
     tileLayerRef.current.setUrl(TILE_URLS[mapTheme]);
@@ -364,9 +373,14 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   };
 
   return (
-    <div className="relative w-full h-full min-h-[500px]">
+    <div className="relative w-full h-full" style={{ width: "100%", height: "100%" }}>
       {/* 1. Leaflet 지도 컨테이너 */}
-      <div ref={containerRef} id="leaflet-map" className="w-full h-full select-none" />
+      <div
+        ref={containerRef}
+        id="leaflet-map"
+        className="w-full h-full select-none"
+        style={{ width: "100%", height: "100%" }}
+      />
 
       {/* 2. 클러스터링 상태 안내 플로팅 배너 */}
       {currentZoom < 13 && (

@@ -151,7 +151,7 @@ export default function MainPage() {
       </button>
 
       {/* 3. 우측 인터랙티브 지도 영역 */}
-      <section className="relative flex-1 h-full w-full overflow-hidden">
+      <section className="relative flex-1 w-full h-[calc(100vh-56px)] overflow-hidden">
         {isLoading ? (
           <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 text-gray-500 gap-3">
             <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
