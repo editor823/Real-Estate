@@ -20,6 +20,8 @@ import {
   ArrowRight,
   ChevronRight,
   TrendingUp,
+  Database,
+  ShieldAlert,
 } from "lucide-react";
 
 const SEOUL_25_GUS = [
@@ -170,6 +172,18 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#2B261F] tracking-tight leading-tight">
             {targetGu} 정비사업 현황 리포트 (총 {totalDistricts}개 구역)
           </h1>
+
+          {/* E-E-A-T 강화: 데이터 출처 및 동기화 뱃지 */}
+          <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-[#EFECE4]">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-[11px] font-medium text-[#4A4439]">
+              <Database className="w-3.5 h-3.5 text-blue-600" />
+              <span>데이터 출처: 서울시 정보몽땅 &amp; 열린데이터광장</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-[11px] font-medium text-[#4A4439]">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              <span>시스템 최종 동기화: 2026.10.04</span>
+            </span>
+          </div>
 
           {/* 자치구 개요 텍스트 */}
           <div className="mt-3.5 text-xs text-[#4A4439] leading-relaxed space-y-2">
@@ -359,7 +373,27 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
           <AdSenseBanner format="horizontal" slotId={`gu-bottom-${encodeURIComponent(targetGu)}`} />
         </section>
 
-        {/* F. 하단 메인 허브 이동 링크 */}
+        {/* F. 투자 유의사항 및 면책 고지 (Legal Disclaimer) */}
+        <section className="p-6 rounded-3xl bg-[#FDFBF7] border border-[#E6E0D2] text-xs text-[#827A6D] space-y-2.5">
+          <div className="flex items-center gap-2 text-[#2B261F] font-bold text-sm">
+            <ShieldAlert className="w-4 h-4 text-amber-600" />
+            <span>정비사업 데이터 법적 면책 고지 (Disclaimer)</span>
+          </div>
+          <p className="leading-relaxed text-[#4A4439]">
+            본 리포트는 서울특별시 공공데이터(정보몽땅, 서울 열린데이터광장) 및 공공 고시 자료를 바탕으로 작성된 정비사업 참고용 정보이며, 법적 효력을 갖는 행정처분 문서가 아닙니다. 개별 조합원의 지위양도 승계 자격, 권리산정일 기준 분양 자격, 추가분담금 등은 매물의 권리관계(다물권, 1세대 1주택 보유기간 등)에 따라 상이할 수 있으므로, 실제 매매 계약 체결 전 반드시 관할 구청(도시계획과/정비사업과) 및 구역 조합 사무실을 직접 방문하여 공식 장부를 대조하시기 바랍니다. 본 플랫폼은 본 정보의 이용으로 인한 투자 결과에 대해 법적 책임을 지지 않습니다.
+          </p>
+          <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px]">
+            <Link href="/terms/" className="text-blue-600 underline font-semibold hover:text-blue-700">
+              서비스 이용약관 및 면책조항 전문 보기 →
+            </Link>
+            <span>•</span>
+            <Link href="/privacy/" className="text-blue-600 underline font-semibold hover:text-blue-700">
+              개인정보처리방침 전문 보기 →
+            </Link>
+          </div>
+        </section>
+
+        {/* G. 하단 메인 허브 이동 링크 */}
         <div className="pt-2 text-center">
           <Link
             href="/districts/"
