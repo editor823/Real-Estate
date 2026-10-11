@@ -11,8 +11,9 @@ interface InteractiveLeafletMapProps {
   features: DistrictFeature[];
 }
 
-// 서울시 25개 자치구 중심 대표 좌표 [위도(lat), 경도(lng)]
+// 수도권(서울 25개 자치구 + 경기도 24개 시·군) 중심 대표 좌표 [위도(lat), 경도(lng)]
 const GU_CENTER_COORDS: Record<string, [number, number]> = {
+  // 서울 25개 구
   종로구: [37.573, 126.979],
   중구: [37.5638, 126.9976],
   용산구: [37.5323, 126.9904],
@@ -38,6 +39,31 @@ const GU_CENTER_COORDS: Record<string, [number, number]> = {
   강남구: [37.5172, 127.0473],
   송파구: [37.5145, 127.1058],
   강동구: [37.5301, 127.1238],
+  // 경기도 24개 시·군
+  수원시: [37.2636, 127.0286],
+  성남시: [37.4200, 127.1378],
+  안양시: [37.3943, 126.9568],
+  부천시: [37.5034, 126.7660],
+  안산시: [37.3219, 126.8308],
+  고양시: [37.6584, 126.8320],
+  광명시: [37.4786, 126.8644],
+  평택시: [36.9921, 127.1128],
+  용인시: [37.2410, 127.1775],
+  남양주시: [37.6360, 127.2165],
+  의정부시: [37.7381, 127.0338],
+  시흥시: [37.3802, 126.8031],
+  군포시: [37.3616, 126.9352],
+  의왕시: [37.3448, 126.9682],
+  하남시: [37.5393, 127.2144],
+  파주시: [37.7600, 126.7808],
+  김포시: [37.6153, 126.7157],
+  구리시: [37.5943, 127.1296],
+  과천시: [37.4292, 126.9877],
+  화성시: [37.1995, 126.8315],
+  동두천시: [37.9036, 127.0607],
+  안성시: [37.0080, 127.2798],
+  오산시: [37.1498, 127.0773],
+  이천시: [37.2723, 127.4429],
 };
 
 export default function InteractiveLeafletMap({ features }: InteractiveLeafletMapProps) {
@@ -50,7 +76,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
   const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget } = useMapStore();
   const [mapTheme, setMapTheme] = useState<"osm" | "positron">("osm");
-  const [currentZoom, setCurrentZoom] = useState<number>(12);
+  const [currentZoom, setCurrentZoom] = useState<number>(10);
 
   // 무료 오픈 타일 (API 키 불필요)
   const TILE_URLS = {
@@ -58,13 +84,13 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     positron: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
   };
 
-  // 1. 지도 초기화 (최초 1회 실행)
+  // 1. 지도 초기화 (수도권 전체가 보이도록 중심과 줌 레벨 최적화)
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
     const map = L.map(containerRef.current, {
-      center: [37.5665, 126.978],
-      zoom: 12,
+      center: [37.45, 126.98],
+      zoom: 10,
       zoomControl: false,
     });
 

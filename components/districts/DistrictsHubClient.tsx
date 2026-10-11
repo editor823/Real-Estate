@@ -248,15 +248,15 @@ export function DistrictsHubClient() {
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#eeeae2] border border-[#e0dad0] text-stone-700 text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-            <span>서울시 25개 자치구 정비사업 인덱스</span>
+            <span>수도권(서울·경기) 49개 시·군·구 정비사업 인덱스</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
-            📑 서울시 정비사업 구역별 정밀 분석 리포트
+            📑 수도권 정비사업 구역별 정밀 분석 리포트
           </h1>
 
           <p className="text-sm sm:text-base text-stone-700 max-w-3xl leading-relaxed">
-            서울시 내 추진 중인 <strong>496개 정비구역</strong>의 현재 사업 단계, 권리산정기준일, 
+            수도권(서울·경기) 내 추진 중인 <strong>{stats.total.toLocaleString()}개 정비구역</strong>의 현재 사업 단계, 권리산정기준일, 
             조합원 지위양도/현금청산 안전성 진단, 계획 세대수 및 예상 타임라인 해설 리포트를 한곳에서 검색하고 열람하세요.
           </p>
 

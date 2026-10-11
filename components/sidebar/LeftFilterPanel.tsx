@@ -320,9 +320,9 @@ export function LeftFilterPanel({
               <select
                 value={selectedGu}
                 onChange={(e) => setSelectedGu(e.target.value)}
-                className="text-xs font-semibold px-2 py-1.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800 cursor-pointer max-w-[105px]"
+                className="text-xs font-semibold px-2 py-1.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800 cursor-pointer max-w-[125px]"
               >
-                <option value="ALL">전체 자치구</option>
+                <option value="ALL">전체 지역 ({guList.length})</option>
                 {guList.map((gu) => (
                   <option key={gu} value={gu}>
                     {gu}

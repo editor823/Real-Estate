@@ -33,18 +33,18 @@ export function GlobalNavBar() {
           href="/"
           onClick={() => setIsTimelineActive(false)}
           className="flex items-center gap-2.5 group cursor-pointer shrink-0"
-          aria-label="서울시 정비사업 모니터링 홈으로 이동"
+          aria-label="수도권 정비사업 모니터링 홈으로 이동"
         >
           <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            서
+            수
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <span className="font-extrabold text-sm sm:text-base tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors">
-                서울시 정비사업 모니터링
+                수도권 정비사업 모니터링
               </span>
               <span className="hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                496개소
+                1,029개소
               </span>
             </div>
           </div>
