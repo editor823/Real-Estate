@@ -139,7 +139,7 @@ export async function generateMetadata({ params }: GuPageProps): Promise<Metadat
     : "서울특별시";
 
   return {
-    title: `${targetGu} 정비사업 재개발·신통기획·모아타운 구역 현황 리포트 (${count}개소) | 수도권 정비사업 모니터링`,
+    title: `${targetGu} 정비사업 재개발·신통기획·모아타운 구역 현황 리포트 (${count}개소) | 서울 경기 부동산 정비사업 모니터링`,
     description: `${province} ${targetGu} 정비사업 ${count}개 구역 총 ${totalH.toLocaleString()}세대 공급 계획${maxInfo ? ` ${maxInfo}` : ""}. 구역별 추진단계, 권리산정기준일, 조합원 지위양도 전매제한 안전 진단 종합 분석.`,
     alternates: {
       canonical: `https://seoul-redevelopment.pages.dev/districts/gu/${encodeURIComponent(targetGu)}/`,
@@ -148,7 +148,7 @@ export async function generateMetadata({ params }: GuPageProps): Promise<Metadat
       title: `${targetGu} 정비사업 리포트 | ${count}개 구역 총 ${totalH.toLocaleString()}세대`,
       description: `${province} ${targetGu} 정비사업 구역별 추진단계, 권리산정기준일, 입주권 승계 안전성 상세 분석`,
       url: `https://seoul-redevelopment.pages.dev/districts/gu/${encodeURIComponent(targetGu)}/`,
-      siteName: "수도권 정비사업 모니터링",
+      siteName: "서울 경기 부동산 정비사업 모니터링",
       type: "article",
     },
   };

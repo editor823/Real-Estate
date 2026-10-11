@@ -122,7 +122,7 @@ export async function generateMetadata({
       title,
       description,
       url: canonicalUrl,
-      siteName: "서울시 정비사업 모니터링",
+      siteName: "서울 경기 부동산 정비사업 모니터링",
       images: [
         {
           url: "/og-image.png",
