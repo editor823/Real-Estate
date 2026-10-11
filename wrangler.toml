@@ -1,0 +1,10 @@
+# Cloudflare Pages 배포 및 R2 바인딩 설정
+# 프로젝트 이름: seoul-redevelopment
+name = "seoul-redevelopment"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "out"
+
+# Cloudflare R2 스토리지 바인딩 (규칙: 바인딩 이름은 MY_BUCKET)
+[[r2_buckets]]
+binding = "MY_BUCKET"
+bucket_name = "seoul-redevelopment-images"

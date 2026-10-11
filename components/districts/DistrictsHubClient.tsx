@@ -21,6 +21,7 @@ import {
   FileText,
   ChevronLeft,
   ChevronRight,
+  Compass,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -104,6 +105,17 @@ export function DistrictsHubClient() {
     });
 
     return { total: allFeatures.length, sinthong, moa, rdev, rcon };
+  }, [allFeatures]);
+
+  // 서울 25개 구 및 데이터에 존재하는 모든 시·군·구 동적 추출
+  const availableRegions = useMemo(() => {
+    const dataRegions = Array.from(
+      new Set(allFeatures.map((f: any) => f.properties?.gu).filter(Boolean))
+    );
+    const combined = Array.from(
+      new Set([...SEOUL_GUS.filter((g) => g !== "전체"), ...dataRegions])
+    );
+    return ["전체", ...combined];
   }, [allFeatures]);
 
   // 필터링 및 정렬
@@ -224,6 +236,13 @@ export function DistrictsHubClient() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      {/* 0. 상단 네비게이션 경로 (Breadcrumb) */}
+      <nav className="flex items-center gap-1.5 text-xs text-stone-600 px-1" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-blue-600 transition-colors">홈</Link>
+        <span className="text-stone-400">›</span>
+        <span className="text-stone-900 font-bold" aria-current="page">구역별 분석 리포트 색인</span>
+      </nav>
+
       {/* 1. 히어로 인덱스 타이틀 섹션 */}
       <section className="relative p-6 sm:p-10 rounded-3xl bg-white border border-[#e7e3da] shadow-sm overflow-hidden">
         <div className="relative z-10 space-y-3">
@@ -355,7 +374,7 @@ export function DistrictsHubClient() {
           <div className="flex items-center justify-between text-xs text-stone-500">
             <span className="font-semibold flex items-center gap-1">
               <Filter className="w-3.5 h-3.5 text-blue-600" />
-              자치구 선택 (25개 구):
+              지역 필터 ({availableRegions.length - 1}개 지역):
             </span>
             {(selectedGu !== "전체" || selectedBizType !== "ALL" || searchQuery) && (
               <button
@@ -367,7 +386,7 @@ export function DistrictsHubClient() {
             )}
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {SEOUL_GUS.map((gu) => {
+            {availableRegions.map((gu) => {
               const isSelected = selectedGu === gu;
               return (
                 <button
@@ -384,6 +403,29 @@ export function DistrictsHubClient() {
                 </button>
               );
             })}
+          </div>
+
+          {/* 25개 자치구별 종합 리포트 전용 페이지 바로가기 (크롤러 및 사용자 탐색 경로 강화) */}
+          <div className="pt-3 border-t border-[#e7e3da] space-y-2">
+            <div className="flex items-center justify-between text-xs text-stone-600">
+              <span className="font-bold flex items-center gap-1.5 text-stone-800">
+                <Compass className="w-3.5 h-3.5 text-blue-600" />
+                <span>🏛️ 25개 자치구별 종합 리포트 전용 페이지:</span>
+              </span>
+              <span className="text-[11px] text-stone-500 hidden sm:inline">자치구별 총 세대수 &amp; 단계 종합 현황</span>
+            </div>
+            <nav className="flex flex-wrap gap-1.5" aria-label="25개 자치구별 정비사업 종합 리포트 바로가기">
+              {SEOUL_GUS.filter((g) => g !== "전체").map((gu) => (
+                <Link
+                  key={gu}
+                  href={`/districts/gu/${encodeURIComponent(gu)}/`}
+                  className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#faf8f5] hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-[#e0dad0] text-stone-700 transition-all cursor-pointer"
+                  title={`${gu} 재개발·신통·모아 종합 리포트 보기`}
+                >
+                  {gu} →
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </section>
@@ -477,6 +519,7 @@ export function DistrictsHubClient() {
                   <Link
                     href={targetUrl}
                     className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-xs transition-all cursor-pointer"
+                    aria-label={`${p.name} 정밀 분석 리포트 열람`}
                   >
                     <FileText className="w-3.5 h-3.5" />
                     <span>상세 리포트 보기</span>
@@ -485,7 +528,8 @@ export function DistrictsHubClient() {
                   <Link
                     href={`/?id=${p.master_uid}`}
                     className="py-2 px-3 rounded-xl bg-[#eeeae2] hover:bg-[#e4dfd5] text-stone-700 hover:text-stone-900 font-semibold text-xs border border-[#e0dad0] transition-all cursor-pointer flex items-center gap-1"
-                    title="지도에서 구역 위치 확인"
+                    title={`${p.name} 지도에서 구역 위치 확인`}
+                    aria-label={`${p.name} 지도에서 구역 위치 확인`}
                   >
                     <Map className="w-3.5 h-3.5 text-blue-600" />
                     <span>지도</span>

@@ -52,13 +52,62 @@ const SEOUL_25_GUS = [
   "중랑구",
 ];
 
+// 경기도 31개 시·군 목록
+const GYEONGGI_31_CITIES = [
+  "수원시",
+  "성남시",
+  "의정부시",
+  "안양시",
+  "부천시",
+  "광명시",
+  "평택시",
+  "동두천시",
+  "안산시",
+  "고양시",
+  "과천시",
+  "구리시",
+  "남양주시",
+  "오산시",
+  "시흥시",
+  "군포시",
+  "의왕시",
+  "하남시",
+  "용인시",
+  "파주시",
+  "이천시",
+  "안성시",
+  "김포시",
+  "화성시",
+  "광주시",
+  "양주시",
+  "포천시",
+  "여주시",
+  "연천군",
+  "가평군",
+  "양평군",
+];
+
+// 데이터 파일에 존재하는 모든 고유 지역명 추출
+const DATA_REGIONS = Array.from(
+  new Set(
+    (DISTRICTS_GEOJSON.features as DistrictFeature[])
+      .map((f) => f.properties.gu)
+      .filter(Boolean)
+  )
+);
+
+// 전체 지원 지역 목록 (서울 25개 구 + 실제 데이터 내 지역)
+const ALL_SUPPORTED_REGIONS = Array.from(
+  new Set([...SEOUL_25_GUS, ...DATA_REGIONS])
+);
+
 interface GuPageProps {
   params: Promise<{ gu: string }>;
 }
 
-// 1. Next.js Static HTML Export (SSG) - 25개 자치구 정적 HTML 모두 사전 생성
+// 1. Next.js Static HTML Export (SSG) - 지원 지역 정적 HTML 사전 생성
 export async function generateStaticParams() {
-  return SEOUL_25_GUS.map((gu) => ({
+  return ALL_SUPPORTED_REGIONS.map((gu) => ({
     gu,
   }));
 }
@@ -78,13 +127,28 @@ export async function generateMetadata({ params }: GuPageProps): Promise<Metadat
     0
   );
 
+  const maxDistrict = [...guDistricts].sort(
+    (a, b) => (b.properties.total_households || 0) - (a.properties.total_households || 0)
+  )[0];
+  const maxInfo = maxDistrict
+    ? `(최대: ${maxDistrict.properties.name} ${(maxDistrict.properties.total_households || 0).toLocaleString()}세대)`
+    : "";
+
+  const province = GYEONGGI_31_CITIES.includes(targetGu) || targetGu.endsWith("시") || targetGu.endsWith("군")
+    ? "경기도"
+    : "서울특별시";
+
   return {
-    title: `${targetGu} 정비사업 재개발·신통기획·모아타운 구역 현황 리포트 (${count}개소) | 서울시 정비사업 모니터링`,
-    description: `서울특별시 ${targetGu} 내 추진 중인 정비사업 ${count}개 구역의 총 ${totalH.toLocaleString()}세대 공급 계획, 단계별 추진 현황, 권리산정일 및 입주권 전매 제한 안전 진단 리포트`,
+    title: `${targetGu} 정비사업 재개발·신통기획·모아타운 구역 현황 리포트 (${count}개소) | 수도권 정비사업 모니터링`,
+    description: `${province} ${targetGu} 정비사업 ${count}개 구역 총 ${totalH.toLocaleString()}세대 공급 계획${maxInfo ? ` ${maxInfo}` : ""}. 구역별 추진단계, 권리산정기준일, 조합원 지위양도 전매제한 안전 진단 종합 분석.`,
+    alternates: {
+      canonical: `https://seoul-redevelopment.pages.dev/districts/gu/${encodeURIComponent(targetGu)}/`,
+    },
     openGraph: {
       title: `${targetGu} 정비사업 리포트 | ${count}개 구역 총 ${totalH.toLocaleString()}세대`,
-      description: `서울특별시 ${targetGu} 정비사업 구역별 추진단계, 고시일자, 입주권 승계 안전성 상세 분석`,
+      description: `${province} ${targetGu} 정비사업 구역별 추진단계, 권리산정기준일, 입주권 승계 안전성 상세 분석`,
       url: `https://seoul-redevelopment.pages.dev/districts/gu/${encodeURIComponent(targetGu)}/`,
+      siteName: "수도권 정비사업 모니터링",
       type: "article",
     },
   };
@@ -94,8 +158,12 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
   const resolvedParams = await params;
   const targetGu = decodeURIComponent(resolvedParams.gu);
 
-  // 25개 유효 자치구 검증
-  if (!SEOUL_25_GUS.includes(targetGu)) {
+  // 유효 지역 검증 (서울 25개 구 또는 경기도 시·군 또는 데이터 내 지역)
+  const isValidRegion =
+    ALL_SUPPORTED_REGIONS.includes(targetGu) ||
+    GYEONGGI_31_CITIES.includes(targetGu);
+
+  if (!isValidRegion) {
     notFound();
   }
 
@@ -138,8 +206,57 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
     new Set(guDistricts.map((f) => f.properties.legal_dong).filter(Boolean))
   );
 
+  // 자치구 핵심 동향 자동 분석 지표 계산 (사용자 수동 조사 0건 자동화)
+  // 1) 관내 최대 건립 예정 세대수 구역
+  const maxHouseholdDistrict = [...guDistricts].sort(
+    (a, b) => (b.properties.total_households || 0) - (a.properties.total_households || 0)
+  )[0];
+
+  // 2) 가장 최근 인허가/고시가 승인된 구역
+  const latestApprovalDistrict = [...guDistricts]
+    .filter((f) => f.properties.approval_date)
+    .sort((a, b) =>
+      (b.properties.approval_date || "").localeCompare(a.properties.approval_date || "")
+    )[0];
+
+  // 3) 사업 추진 속도가 가장 앞선 구역 (최고 stage_seq)
+  const fastestStageDistrict = [...guDistricts].sort(
+    (a, b) => (b.properties.stage_seq || 0) - (a.properties.stage_seq || 0)
+  )[0];
+
+  // 구조화 데이터 (BreadcrumbList)
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "홈",
+        item: "https://seoul-redevelopment.pages.dev/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "구역별 분석 리포트",
+        item: "https://seoul-redevelopment.pages.dev/districts/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: targetGu,
+        item: `https://seoul-redevelopment.pages.dev/districts/gu/${encodeURIComponent(targetGu)}/`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F2EB] text-[#2B261F] selection:bg-blue-600 selection:text-white flex flex-col">
+      {/* 구조화 데이터 주입 (BreadcrumbList) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* 1. 상단 Breadcrumb & 액션 바 */}
       <div className="bg-[#FFFFFF] border-b border-[#E6E0D2] px-4 sm:px-8 py-3 flex items-center justify-between shadow-2xs">
         <div className="flex items-center gap-2 sm:gap-3">
@@ -158,7 +275,7 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
               구역별 분석 리포트
             </Link>
             <span>›</span>
-            <span className="text-blue-600 font-bold">{targetGu}</span>
+            <span className="text-blue-600 font-bold" aria-current="page">{targetGu}</span>
           </nav>
         </div>
 
@@ -178,7 +295,7 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm relative overflow-hidden">
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="text-xs font-extrabold px-3 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
-              서울특별시 {targetGu}
+              {GYEONGGI_31_CITIES.includes(targetGu) || targetGu.endsWith("시") || targetGu.endsWith("군") ? "경기도" : "서울특별시"} {targetGu}
             </span>
             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-lg bg-[#FDFBF7] text-[#4A4439] border border-[#E6E0D2]">
               정비사업 집중 모니터링
@@ -247,7 +364,115 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
           </div>
         </section>
 
-        {/* B. 상단 구글 애드센스 300x250 광고 영역 */}
+        {/* B. 자치구 핵심 동향 및 주요 구역 자동 분석 브리핑 */}
+        <section className="p-6 sm:p-7 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[#EFECE4]">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-amber-600" />
+              <h2 className="text-base sm:text-lg font-bold text-[#2B261F]">
+                🎯 {targetGu} 정비사업 핵심 동향 및 주요 구역 브리핑
+              </h2>
+            </div>
+            <span className="text-[11px] text-blue-700 font-bold bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+              실시간 데이터 자동 분석
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {maxHouseholdDistrict && (
+              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2">
+                <div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+                    🏢 최대 공급 대단지
+                  </span>
+                  <h3 className="text-sm font-extrabold text-[#2B261F] mt-1.5">
+                    {maxHouseholdDistrict.properties.name}
+                  </h3>
+                  <p className="text-xs text-[#827A6D] mt-0.5">
+                    {maxHouseholdDistrict.properties.legal_dong} • {maxHouseholdDistrict.properties.stage_label || maxHouseholdDistrict.properties.stage_raw}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-[#EFECE4] text-xs">
+                  <span className="font-extrabold text-blue-700">
+                    {(maxHouseholdDistrict.properties.total_households || 0).toLocaleString()}세대
+                  </span>
+                  <Link
+                    href={`/districts/${maxHouseholdDistrict.properties.master_uid || maxHouseholdDistrict.id}/`}
+                    className="text-[11px] text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+                  >
+                    상세 리포트 →
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {latestApprovalDistrict && (
+              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2">
+                <div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                    ⚡ 최근 인허가 고시 구역
+                  </span>
+                  <h3 className="text-sm font-extrabold text-[#2B261F] mt-1.5">
+                    {latestApprovalDistrict.properties.name}
+                  </h3>
+                  <p className="text-xs text-[#827A6D] mt-0.5">
+                    {latestApprovalDistrict.properties.legal_dong} • {latestApprovalDistrict.properties.stage_label || latestApprovalDistrict.properties.stage_raw}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-[#EFECE4] text-xs">
+                  <span className="font-bold text-emerald-800">
+                    고시: {latestApprovalDistrict.properties.approval_date}
+                  </span>
+                  <Link
+                    href={`/districts/${latestApprovalDistrict.properties.master_uid || latestApprovalDistrict.id}/`}
+                    className="text-[11px] text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+                  >
+                    상세 리포트 →
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {fastestStageDistrict && (
+              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2">
+                <div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">
+                    🚀 사업 추진 선도 구역
+                  </span>
+                  <h3 className="text-sm font-extrabold text-[#2B261F] mt-1.5">
+                    {fastestStageDistrict.properties.name}
+                  </h3>
+                  <p className="text-xs text-[#827A6D] mt-0.5">
+                    {fastestStageDistrict.properties.legal_dong} • {fastestStageDistrict.properties.biz_type_label}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between pt-2 border-t border-[#EFECE4] text-xs">
+                  <span className="font-extrabold text-indigo-700">
+                    {fastestStageDistrict.properties.stage_label || fastestStageDistrict.properties.stage_raw}
+                  </span>
+                  <Link
+                    href={`/districts/${fastestStageDistrict.properties.master_uid || fastestStageDistrict.id}/`}
+                    className="text-[11px] text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+                  >
+                    상세 리포트 →
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* 종합 요약 브리핑 해설 */}
+          <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] text-xs text-[#4A4439] leading-relaxed">
+            <p>
+              💡 <strong>{targetGu} 관내 정비사업 투자 분석:</strong> 관내 최대 공급 규모인 <strong>{maxHouseholdDistrict?.properties.name}</strong>({maxHouseholdDistrict?.properties.total_households?.toLocaleString()}세대)을 중심으로, 
+              최근 <strong>{latestApprovalDistrict?.properties.approval_date}</strong> 고시를 통과한 <strong>{latestApprovalDistrict?.properties.name}</strong>까지 인허가 변경이 꾸준히 이어지고 있습니다. 
+              {sinthongCount > 0 && ` 서울시 통합심의 패스트트랙이 적용되는 신속통합기획이 ${sinthongCount}개소에 달하며, `}
+              {moaCount > 0 && ` 블록형 소규모 주택정비 모아타운 ${moaCount}개소도 활발히 추진 중입니다.`}
+            </p>
+          </div>
+        </section>
+
+        {/* C. 상단 구글 애드센스 300x250 광고 영역 */}
         <section aria-label="스폰서 광고">
           <AdSenseBanner slotId={`gu-top-${encodeURIComponent(targetGu)}`} />
         </section>
@@ -275,6 +500,7 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
                       ? "bg-blue-600 text-white font-bold shadow-xs"
                       : "bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-[#4A4439]"
                   }`}
+                  aria-current={isCurrent ? "page" : undefined}
                 >
                   {guName}
                 </Link>
@@ -366,6 +592,7 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
                     <Link
                       href={`/districts/${uid}/`}
                       className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-xs transition-all active:scale-95 cursor-pointer text-center"
+                      aria-label={`${p.name} 상세 분석 리포트 열람`}
                     >
                       <FileText className="w-3.5 h-3.5" />
                       <span>분석 리포트</span>
@@ -373,6 +600,8 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
                     <Link
                       href={`/?id=${uid}`}
                       className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-[#2B261F] font-bold text-xs transition-all active:scale-95 cursor-pointer text-center"
+                      aria-label={`${p.name} 지도에서 위치 확인`}
+                      title={`${p.name} 지도에서 위치 확인`}
                     >
                       <Map className="w-3.5 h-3.5 text-blue-600" />
                       <span>지도 보기</span>

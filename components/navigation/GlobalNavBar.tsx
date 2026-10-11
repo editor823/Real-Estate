@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, FileText, Zap, Building } from "lucide-react";
+import { Map, FileText, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
@@ -31,7 +31,9 @@ export function GlobalNavBar() {
         {/* 서비스 로고: 맨 좌측 사이드바 라인과 일치 */}
         <Link
           href="/"
+          onClick={() => setIsTimelineActive(false)}
           className="flex items-center gap-2.5 group cursor-pointer shrink-0"
+          aria-label="서울시 정비사업 모니터링 홈으로 이동"
         >
           <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
             서
@@ -49,20 +51,21 @@ export function GlobalNavBar() {
         </Link>
 
         {/* 메인 GNB 메뉴 */}
-        <nav className="flex items-center gap-1 sm:gap-2">
+        <nav className="flex items-center gap-1 sm:gap-2" aria-label="메인 내비게이션">
           {/* 메뉴 1: 정비사업 지도 */}
           <Link
             href="/"
             onClick={() => setIsTimelineActive(false)}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
+              "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
               isMapActive
                 ? "bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold"
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
             )}
+            aria-current={isMapActive ? "page" : undefined}
           >
             <Map className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isMapActive ? "text-white" : "text-blue-600")} />
-            <span>🗺️ 정비사업 지도</span>
+            <span>🗺️ <span className="hidden xs:inline">정비사업 </span>지도</span>
           </Link>
 
           {/* 메뉴 2: 구역별 분석 리포트 */}
@@ -70,14 +73,15 @@ export function GlobalNavBar() {
             href="/districts/"
             onClick={() => setIsTimelineActive(false)}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
+              "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
               isDistrictsActive
                 ? "bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold"
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
             )}
+            aria-current={isDistrictsActive ? "page" : undefined}
           >
             <FileText className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isDistrictsActive ? "text-white" : "text-emerald-600")} />
-            <span>📑 구역별 분석 리포트</span>
+            <span>📑 <span className="hidden xs:inline">구역별 </span>리포트</span>
           </Link>
 
           {/* 메뉴 3: 실시간 고시 알림 */}
@@ -85,15 +89,16 @@ export function GlobalNavBar() {
             href="/?tab=timeline"
             onClick={() => setIsTimelineActive(true)}
             className={cn(
-              "flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
+              "flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer",
               isTimelineActive
                 ? "bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold"
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
             )}
             title="실시간 고시 알림 피드"
+            aria-current={isTimelineActive ? "page" : undefined}
           >
             <Zap className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isTimelineActive ? "text-white" : "text-amber-500")} />
-            <span>⚡ 실시간 고시 알림</span>
+            <span>⚡ <span className="hidden xs:inline">실시간 </span>고시 알림</span>
           </Link>
         </nav>
       </div>

@@ -102,17 +102,27 @@ export async function generateMetadata({
   }
 
   const props = feature.properties;
-  const title = `${props.name} (${props.gu}) 재개발·정비사업 상세 분석 리포트`;
-  const description = `${props.gu} ${props.legal_dong} ${props.name} - 추진단계: ${props.stage_label || props.stage_raw}, 계획 세대수: ${props.total_households ? props.total_households.toLocaleString() + "세대" : "계획중"}. 권리산정일 기준 입주권 승계 안전성 및 준공 타임라인 종합 분석`;
+  const stageDesc = props.stage_label || props.stage_raw || "진행단계 미정";
+  const safetyDesc = props.is_transferable ? "입주권 승계 가능" : "전매제한 주의";
+  const householdsDesc = props.total_households ? `${props.total_households.toLocaleString()}세대` : "세대수 산정중";
+
+  const title = `${props.name} 정비사업 분석 리포트 (${props.gu} ${props.legal_dong}) - ${stageDesc} · ${safetyDesc}`;
+  const description = `${props.gu} ${props.legal_dong} ${props.name}(${props.biz_type_label}) ${stageDesc} 단계 추진 현황. 계획 세대수 ${householdsDesc}, 권리산정기준일 대비 조합원 지위양도·현금청산 안전 진단 및 예상 입주 타임라인 분석.`;
+
+  const canonicalId = props.master_uid || props.code || id;
+  const canonicalUrl = `https://seoul-redevelopment.pages.dev/districts/${canonicalId}/`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
-      url: `https://seoul-redevelopment.pages.dev/districts/${id}/`,
-      siteName: "서울시 재개발 모니터링",
+      url: canonicalUrl,
+      siteName: "서울시 정비사업 모니터링",
       images: [
         {
           url: "/og-image.png",
@@ -221,7 +231,7 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
   };
   const estimatedRemainingYears = remainingYearsByStage[props.stage_seq] || "약 4~6년";
 
-  // 4대 자주 묻는 질문(FAQ) 데이터 구성
+  // 5대 핵심 자주 묻는 질문(FAQ) 데이터 구성 (권리산정기준일, 지위양도 예외, 최신 대법원 판례 반영)
   const faqList = [
     {
       question: `${props.name} 매수 시 입주권 승계와 현금청산 기준은 어떻게 되나요?`,
@@ -232,8 +242,16 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
       } 아울러 신축 다세대 빌라 분양 매물의 경우 고시된 권리산정기준일 이후 건축허가된 물건은 단독 입주권이 나오지 않으므로 건축물대장 사용승인일자 조회가 필수적입니다.`,
     },
     {
-      question: "조합원 지위양도 제한 시점과 예외 거래 인정 조건은 무엇인가요?",
-      answer: `투기과열지구 내 정비사업은 재건축의 경우 '조합설립인가일', 재개발의 경우 '관리처분계획인가일'부터 소유권이전등기 시점까지 조합원 지위양도(전매)가 전면 금지됩니다. 다만 도정법 시행령 제37조에 따른 법정 예외 거래 인정 기준은 다음과 같습니다: ① 1세대 1주택자로서 10년 이상 보유하고 5년 이상 실제 거주한 조합원의 물건 매수, ② 세대원의 근무·생업·취학·질병 치료로 타 시·군으로 세대 전원 이전, ③ 상속으로 취득한 주택으로 전원 이전 또는 해외 이주(2년 이상 체류), ④ 사업 지연 특례(조합설립인가 후 3년 내 사업시행인가 미신청 또는 사업시행인가 후 3년 내 미착공 등). 위 요건 충족 여부는 매매 계약 전 관할 구청 및 조합의 확인서를 필수 확인해야 합니다.`,
+      question: "조합원 지위양도 제한 시점과 1세대 1주택 법정 예외 거래 인정 조건은 무엇인가요?",
+      answer: `투기과열지구 내 정비사업은 재건축의 경우 '조합설립인가일', 재개발의 경우 '관리처분계획인가일'부터 소유권이전등기 시점까지 조합원 지위양도(전매)가 전면 금지됩니다. 다만 도정법 시행령 제37조에 따른 법정 예외 거래 인정 기준은 다음과 같습니다: ① 1세대 1주택자로서 10년 이상 보유하고 5년 이상 실제 거주한 조합원의 물건 매수, ② 세대원의 근무·생업·취학·질병 치료로 타 시·군으로 세대 전원 이전, ③ 상속으로 취득한 주택으로 전원 이전 또는 해외 이주(2년 이상 체류), ④ 사업 지연 특례(조합설립인가 후 3년 내 사업시행인가 미신청 또는 사업시행인가 후 3년 내 미착공 등). 특히 최근 대법원 판례에 따라 부부 공동명의 등 공유 지분 매물의 경우 대표자뿐 아니라 '공유자 전원'이 각각 10년 보유·5년 거주 요건을 충족해야 입주권이 온전히 승계되므로 계약 전 조합의 확인서 발급이 필수적입니다.`,
+    },
+    {
+      question: `${props.name}의 권리산정기준일과 '신축 지분쪼개기' 현금청산 주의사항은 무엇인가요?`,
+      answer: `권리산정기준일은 신축 빌라 분양이나 토지 분할을 통해 인위적으로 입주권을 늘리는 행위(지분쪼개기)를 차단하기 위해 지정된 날짜입니다. ${
+        props.biz_type === "SINTHONG" || props.biz_type === "MOA"
+          ? "본 구역은 서울시 신속통합기획 및 모아타운 특례 공모지로 지정되어 있어, 공모 공고일 또는 고시된 권리산정기준일 다음 날 이후 신축 건축허가를 득하였거나 지분이 분할된 다세대 주택은 단독 입주권이 박탈되고 감정평가액 기준 강제 현금청산(물딱지) 대상이 됩니다."
+          : "재개발 구역의 경우 기본계획 수립 또는 정비구역 지정 고시일 다음 날 이후 지분 분할이나 다세대 신축이 이루어진 경우 대표 조합원 1인만 분양권이 주어지거나 현금청산됩니다."
+      } 따라서 매매 계약 전 등기부등본상의 등기일자만 믿지 마시고, 반드시 [건축물대장상 착공허가일 및 사용승인일자]가 해당 구역 권리산정기준일 이전인지 관할 구청(정비사업과)을 통해 서류상으로 명확히 교차 검증해야 합니다.`,
     },
     {
       question: `현재 단계(${props.stage_label || props.stage_raw})에서 최종 입주까지 얼마나 소요되나요?`,
@@ -269,12 +287,49 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
     })),
   };
 
+  // 탐색 경로 BreadcrumbList JSON-LD 스키마
+  const canonicalId = props.master_uid || props.code || id;
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "홈",
+        item: "https://seoul-redevelopment.pages.dev/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "구역별 분석 리포트",
+        item: "https://seoul-redevelopment.pages.dev/districts/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: props.gu || "자치구",
+        item: `https://seoul-redevelopment.pages.dev/districts/gu/${encodeURIComponent(props.gu || "")}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: props.name || "구역 상세",
+        item: `https://seoul-redevelopment.pages.dev/districts/${canonicalId}/`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F2EB] text-[#2B261F] selection:bg-blue-600 selection:text-white">
-      {/* 구글 검색엔진 최적화: FAQPage 구조화 데이터 (JSON-LD) */}
+      {/* 구글 검색엔진 최적화: 구조화 데이터 (FAQPage & BreadcrumbList) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {/* 1. 상단 Breadcrumb & 액션 바 */}
       <div className="bg-[#FFFFFF] border-b border-[#E6E0D2] px-4 sm:px-8 py-3 flex items-center justify-between shadow-2xs">
@@ -290,6 +345,10 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           <span className="text-[#827A6D] opacity-40 hidden sm:inline">|</span>
           <nav className="text-xs text-[#827A6D] flex items-center gap-1.5" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-blue-600 text-[#827A6D]">홈</Link>
+            <span>›</span>
+            <Link href="/districts/" className="hover:text-blue-600 text-[#827A6D]">
+              구역 리포트
+            </Link>
             <span>›</span>
             <Link href={`/districts/gu/${props.gu}/`} className="hover:text-blue-600 text-[#4A4439] font-medium">
               {props.gu}
@@ -566,7 +625,7 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
               </ul>
             </div>
 
-            {/* (3) 지분쪼개기 경고 박스: bg-[#FDF3E7] / border-[#F5D5B8] / text-[#8D3B00] */}
+            {/* (3) 지분쪼개기 경고 박스 */}
             <div className="p-4 rounded-2xl bg-[#FDF3E7] border border-[#F5D5B8] text-[#8D3B00] space-y-2">
               <h3 className="text-sm font-bold flex items-center gap-1.5">
                 <AlertTriangle className="w-4 h-4 text-[#8D3B00]" />
@@ -575,9 +634,43 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
               <p className="text-[#4A4439]">
                 서울시 신속통합기획 및 모아타운 후보지 매수 시 가장 유의해야 할 함정은 <strong className="text-[#8D3B00]">권리산정기준일</strong>입니다. 
                 단독주택이나 다가구를 헐고 신축 다세대 빌라로 쪼개기 분양한 물건의 경우, 건축허가 접수일 또는 건축물대장상 
-                사용승인일자가 해당 구역의 고시된 권리산정기준일보다 늦으면 <strong className="text-[#8D3B00]">단독 아파트 입주권이 박탈되고 감정평가액 기준으로 강제 현금청산</strong>됩니다. 
+                사용승인일자가 해당 구역의 고시된 권리산정기준일보다 늦으면 <strong className="text-[#8D3B00]">단독 아파트 입주권이 박탈되고 감정평가액 기준으로 강제 현금청산</strong>(일명 물딱지)됩니다. 
                 따라서 계약 전 등기부등본뿐 아니라 건축물대장 착공일·사용승인일을 반드시 대조 확인해야 안전합니다.
               </p>
+            </div>
+
+            {/* (4) 부부 공동명의 등 공유 지분 매물 최신 법률 유의사항 */}
+            <div className="p-4 rounded-2xl bg-[#F7F5EE] border border-[#E6E0D2] text-[#2B261F] space-y-2">
+              <h3 className="text-sm font-bold flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-blue-600" />
+                (4) 부부 공동명의 등 공유 지분 매물 최신 판례 주의사항
+              </h3>
+              <p className="text-[#4A4439]">
+                최근 대법원 판례 및 국토교통부 유권해석에 따라, 투기과열지구 내 지위양도 제한 구역에서 <strong>공유 지분(예: 부부 5:5 공동명의)</strong>으로 된 물건을 매수할 때는 
+                대표 조합원뿐만 아니라 <strong className="text-blue-700 font-bold">공유자 전원이 각각 10년 보유·5년 거주 요건을 충족</strong>해야 온전한 조합원 지위가 승계됩니다. 
+                공유자 중 1인이라도 요건을 미충족할 경우 분양권이 박탈되고 현금청산될 위험이 있으므로 계약 특약에 명확한 손해배상 조항을 기재해야 합니다.
+              </p>
+            </div>
+
+            {/* (5) 안전한 계약을 위한 3대 필수 확인 서류 */}
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] space-y-2">
+              <h3 className="text-sm font-bold text-[#2B261F]">
+                📋 매매 계약 전 구청·조합 방문 시 필수 대조 서류 3가지
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-xs text-[#4A4439]">
+                <div className="p-2.5 rounded-xl bg-white border border-[#EFECE4]">
+                  <strong className="block text-blue-700 font-bold mb-1">1. 토지이용계획확인원</strong>
+                  <span>해당 번지가 정비구역 및 토지거래허가구역에 공식 포함되어 있는지 확인</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-white border border-[#EFECE4]">
+                  <strong className="block text-blue-700 font-bold mb-1">2. 건축물대장 (갑/을구)</strong>
+                  <span>착공허가일 및 사용승인일자가 권리산정기준일 이전인지 팩트 대조</span>
+                </div>
+                <div className="p-2.5 rounded-xl bg-white border border-[#EFECE4]">
+                  <strong className="block text-blue-700 font-bold mb-1">3. 조합원 자격확인서</strong>
+                  <span>매도인의 다물권 여부 및 1주택 보유·거주 기간 충족 여부를 조합 직인으로 확인</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -654,14 +747,14 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
                 ❓ 4. {props.name} 정비사업 자주 묻는 질문 (FAQ)
               </h2>
             </div>
-            <span className="text-[11px] text-[#827A6D] hidden sm:inline">질문 클릭 시 상세 답변 열람</span>
+            <span className="text-[11px] text-[#827A6D] hidden sm:inline">질문 클릭 시 접기/펼치기 가능</span>
           </div>
 
           <div className="space-y-3">
             {faqList.map((faq, idx) => (
               <details
                 key={idx}
-                open={idx < 2}
+                open
                 className="group p-4 sm:p-5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] transition-all open:bg-[#FFFFFF] open:shadow-xs"
               >
                 <summary className="flex items-center justify-between gap-3 font-bold text-xs sm:text-sm text-[#2B261F] cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
@@ -714,6 +807,7 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
                   key={item.properties.master_uid}
                   href={`/districts/${item.properties.master_uid}/`}
                   className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] hover:border-blue-500 hover:bg-white transition-all group flex flex-col justify-between shadow-2xs"
+                  aria-label={`${item.properties.name} 상세 리포트 열람`}
                 >
                   <div>
                     <div className="flex items-center justify-between gap-1 mb-1.5">
@@ -757,6 +851,22 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
             </Link>
           </div>
         </section>
+
+        {/* J. 하단 상위 탐색 경로 복귀 네비게이션 */}
+        <nav className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3" aria-label="상위 탐색 경로 복귀">
+          <Link
+            href={`/districts/gu/${props.gu}/`}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-[#FFFFFF] hover:bg-[#FDFBF7] border border-[#E6E0D2] text-xs font-bold text-[#2B261F] shadow-2xs transition-all hover:scale-102 cursor-pointer"
+          >
+            <span>📑 {props.gu} 전체 구역 현황 보기 →</span>
+          </Link>
+          <Link
+            href="/districts/"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-xs font-bold text-[#4A4439] shadow-2xs transition-all hover:scale-102 cursor-pointer"
+          >
+            <span>← 서울시 496개 전체 구역 리포트 색인</span>
+          </Link>
+        </nav>
 
       </main>
 

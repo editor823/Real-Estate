@@ -33,10 +33,11 @@
 
 ## 2. 기술 스택 (Tech Stack)
 
-* **Frontend**: Next.js 15+ (App Router), TypeScript, Tailwind CSS, shadcn/ui, Zustand (클라이언트 상태 관리), TanStack Query v5
+* **Frontend**: Next.js 16+ (App Router, Static Export), TypeScript, Tailwind CSS, Pretendard 다이나믹 서브셋, Zustand, TanStack Query v5
 * **WebGIS / Mapping**: Mapbox GL JS (v3) / Leaflet, Supercluster (광역 마커 클러스터링), Turf.js (클라이언트 지오메트리 보조 연산)
 * **Backend & Database**: Supabase (PostgreSQL 16 + PostGIS 3.4), Edge Functions
-* **Data Pipeline & Automation**: Python 3.11, GeoPandas, Shapely, PyProj, Playwright (JS 렌더링 크롤링), GitHub Actions / Cron 배치
+* **Storage & Hosting**: Cloudflare Pages (정적 호스팅), Cloudflare R2 (이미지 스토리지, WebP 압축 저장, DB엔 키만 매핑)
+* **Data Pipeline & Automation**: Python 3.11, GeoPandas, Shapely, PyProj, Playwright, GitHub Actions / Cron 배치
 * **Vector Tile Engine**: Tippecanoe (GeoJSON ➔ PMTiles/MBTiles 변환)
 
 

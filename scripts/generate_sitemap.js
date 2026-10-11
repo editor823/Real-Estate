@@ -49,8 +49,12 @@ const urls = [
   </url>`
 ];
 
-// 25개 자치구별 모아보기 페이지 sitemap 등록
-SEOUL_25_GUS.forEach((gu) => {
+// 서울 25개 구 및 GeoJSON 데이터에 존재하는 모든 시·군·구 추출
+const dataGus = features.map((f) => f.properties && f.properties.gu).filter(Boolean);
+const allRegions = Array.from(new Set([...SEOUL_25_GUS, ...dataGus]));
+
+// 지역별(구/시/군) 모아보기 페이지 sitemap 등록
+allRegions.forEach((gu) => {
   urls.push(`  <url>
     <loc>${DOMAIN}/districts/gu/${encodeURIComponent(gu)}/</loc>
     <lastmod>${today}</lastmod>
@@ -82,4 +86,4 @@ ${urls.join('\n')}
 `;
 
 fs.writeFileSync(sitemapPath, sitemapXml, 'utf-8');
-console.log(`[SUCCESS] sitemap.xml 갱신 완료: 총 ${urls.length}개 URL (기본 4 + 자치구 25 + 구역 ${features.length}개)`);
+console.log(`[SUCCESS] sitemap.xml 갱신 완료: 총 ${urls.length}개 URL (기본 4 + 지역 ${allRegions.length}개 + 구역 ${features.length}개)`);

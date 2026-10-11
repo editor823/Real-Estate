@@ -11,8 +11,15 @@ import { DistrictCard } from "@/components/sidebar/DistrictCard";
 import { CompareFloatingBar } from "@/components/compare/CompareFloatingBar";
 import { CompareModal } from "@/components/compare/CompareModal";
 import { PrivacyPolicyModal } from "@/components/legal/PrivacyPolicyModal";
-import { ChevronLeft, ChevronRight, Loader2, Shield } from "lucide-react";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, Loader2, Shield, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const SEOUL_25_GUS = [
+  "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구",
+  "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구",
+  "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"
+];
 
 // Leaflet 지도는 브라우저 전용 라이브러리이므로 SSR(서버 렌더링)을 비활성화합니다.
 const InteractiveLeafletMap = dynamic(
@@ -122,6 +129,32 @@ export default function MainPage() {
 
   return (
     <main className="relative w-full h-[calc(100vh-56px)] flex overflow-hidden bg-slate-50">
+      {/* 0. 접근성 및 검색엔진(SEO) 크롤러를 위한 시맨틱 구조와 25개 자치구 내부링크 네트워크 */}
+      <header className="sr-only">
+        <h1>서울시 정비사업 &amp; 신속통합기획·모아타운 모니터링 지도</h1>
+        <p>
+          서울시 25개 자치구 내 496개 법정 정비구역(재개발·재건축)과 신통기획·모아타운 후보지의 
+          인허가 단계 변화, 권리산정기준일, 조합원 지위양도 승계 안전성 및 세대수 데이터를 실시간 통합 제공합니다.
+        </p>
+        <nav aria-label="서울시 25개 자치구 정비사업 현황 리포트 바로가기">
+          <h2>서울시 25개 자치구별 정비사업 리포트</h2>
+          <ul>
+            {SEOUL_25_GUS.map((gu) => (
+              <li key={gu}>
+                <Link href={`/districts/gu/${encodeURIComponent(gu)}/`}>
+                  {gu} 재개발·신통기획·모아타운 구역 현황 리포트
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <nav aria-label="구역별 분석 리포트 색인">
+          <Link href="/districts/">
+            서울시 496개 정비사업 구역별 정밀 분석 리포트 전체 색인
+          </Link>
+        </nav>
+      </header>
+
       {/* 1. 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
       <LeftFilterPanel
         features={features}
@@ -151,7 +184,7 @@ export default function MainPage() {
       </button>
 
       {/* 3. 우측 인터랙티브 지도 영역 */}
-      <section className="relative flex-1 h-full w-full overflow-hidden">
+      <section className="relative flex-1 h-full w-full overflow-hidden" aria-label="서울시 정비사업 공간 지도">
         {isLoading ? (
           <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 text-gray-500 gap-3">
             <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
@@ -161,13 +194,25 @@ export default function MainPage() {
           <InteractiveLeafletMap features={filteredFeatures} />
         )}
 
+        {/* 지도 우측 상단: 구역별 리포트 허브 빠른 바로가기 링크 버튼 */}
+        <div className="absolute top-4 right-4 z-[400] flex items-center gap-2">
+          <Link
+            href="/districts/"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-gray-200 shadow-md text-xs font-bold text-gray-800 hover:text-blue-600 hover:bg-white transition-all cursor-pointer"
+            title="496개 정비사업 구역별 상세 리포트 색인 페이지로 이동"
+          >
+            <FileText className="w-3.5 h-3.5 text-blue-600" />
+            <span className="hidden sm:inline">496개 구역 </span>
+            <span>분석 리포트 색인 →</span>
+          </Link>
+        </div>
+
         {/* 선택된 구역이 있을 때 표시되는 퀵 상세 정보 카드 (모바일 바텀시트 & 데스크톱 플로팅) */}
         {selectedDistrict && (
           <aside className="absolute inset-x-3 bottom-16 sm:bottom-auto sm:top-16 sm:left-6 z-[500] sm:w-[390px] max-w-full max-h-[70vh] sm:max-h-[calc(100vh-5.5rem)] rounded-3xl bg-white/95 backdrop-blur-xl border border-gray-200 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-200">
             <DistrictCard />
           </aside>
         )}
-
 
         {/* 지도 우측 하단 미니 개인정보처리방침 링크 (데스크톱 패널 닫힘 시 노출) */}
         <button
