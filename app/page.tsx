@@ -12,7 +12,7 @@ import { CompareFloatingBar } from "@/components/compare/CompareFloatingBar";
 import { CompareModal } from "@/components/compare/CompareModal";
 import { PrivacyPolicyModal } from "@/components/legal/PrivacyPolicyModal";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Loader2, Shield, FileText } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SEOUL_25_GUS = [
@@ -58,14 +58,14 @@ export default function MainPage() {
     setFlyToTarget,
   } = useMapStore();
 
-  // 최신 정적 GeoJSON 파일이 있을 경우 비동기 보정 동기화
+  // 최신 정적 GeoJSON 파일이 있을 경우 비동기 보정 동기화 (기존 데이터보다 적은 옛날 캐시 데이터로 축소되는 것 원천 방지)
   useEffect(() => {
     async function loadDistricts() {
       try {
-        const response = await fetch("/data/districts.json");
+        const response = await fetch("/data/districts.geojson");
         if (response.ok) {
           const data: DistrictFeatureCollection = await response.json();
-          if (data.features && data.features.length > 0) {
+          if (data.features && data.features.length >= DISTRICTS_GEOJSON.features.length) {
             setFeatures(data.features);
           }
         }
@@ -193,19 +193,6 @@ export default function MainPage() {
         ) : (
           <InteractiveLeafletMap features={filteredFeatures} />
         )}
-
-        {/* 지도 우측 상단: 구역별 리포트 허브 빠른 바로가기 링크 버튼 */}
-        <div className="absolute top-4 right-4 z-[400] flex items-center gap-2">
-          <Link
-            href="/districts/"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-gray-200 shadow-md text-xs font-bold text-gray-800 hover:text-blue-600 hover:bg-white transition-all cursor-pointer"
-            title="496개 정비사업 구역별 상세 리포트 색인 페이지로 이동"
-          >
-            <FileText className="w-3.5 h-3.5 text-blue-600" />
-            <span className="hidden sm:inline">496개 구역 </span>
-            <span>분석 리포트 색인 →</span>
-          </Link>
-        </div>
 
         {/* 선택된 구역이 있을 때 표시되는 퀵 상세 정보 카드 (모바일 바텀시트 & 데스크톱 플로팅) */}
         {selectedDistrict && (

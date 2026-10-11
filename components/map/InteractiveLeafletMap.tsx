@@ -390,10 +390,10 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     geojsonLayerRef.current = geojsonLayer;
   }, [features, selectedUid, currentZoom, guClusters]);
 
-  // 서울 중심 리셋 핸들러
+  // 수도권 전체 리셋 핸들러
   const handleResetView = () => {
     if (!mapRef.current) return;
-    mapRef.current.flyTo([37.5665, 126.978], 12, { duration: 0.8 });
+    mapRef.current.flyTo([37.45, 126.98], 10, { duration: 0.8 });
     setSelectedUid(null);
     setSelectedDistrict(null);
   };
@@ -429,9 +429,10 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         <button
           onClick={handleResetView}
           className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
+          title="수도권 전체 보기로 지도 위치를 초기화합니다"
         >
           <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
-          <span>서울 전역</span>
+          <span>수도권 전역</span>
         </button>
       </div>
 
