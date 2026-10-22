@@ -160,9 +160,9 @@ export default function MainPage() {
             서울시 496개 정비사업 구역별 정밀 분석 리포트 전체 색인
           </Link>
         </nav>
-        <nav aria-label="수도권 청약 & 공모주 라운지">
+        <nav aria-label="수도권 아파트 분양 & 청약 라운지">
           <Link href="/subscription">
-            수도권 청약 &amp; 공모주 라운지 (아파트 분양 캘린더, 공모주 청약 캘린더, 84점 만점 가점 진단기, 실익 계산기)
+            수도권 아파트 분양 &amp; 청약 라운지 (신축 분양 캘린더, 장기전세 미리내집, 84점 만점 가점 진단기)
           </Link>
         </nav>
       </header>
@@ -206,15 +206,15 @@ export default function MainPage() {
           <InteractiveLeafletMap features={filteredFeatures} />
         )}
 
-        {/* 수도권 청약 & 공모주 라운지 퀵 링크 플로팅 배너 */}
+        {/* 수도권 아파트 분양 & 청약 라운지 퀵 링크 플로팅 배너 */}
         <aside className="hidden lg:flex items-center gap-2.5 absolute bottom-4 left-6 z-[450] bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-2xl p-2.5 pr-3 hover:shadow-lg hover:border-blue-300 transition-all group">
           <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs shadow-xs group-hover:scale-105 transition-transform shrink-0">
-            🎯
+            🏢
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <span className="text-xs font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                수도권 청약 &amp; 공모주 라운지
+                수도권 아파트 분양 &amp; 청약 라운지
               </span>
               <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-blue-100 text-blue-700">NEW</span>
             </div>

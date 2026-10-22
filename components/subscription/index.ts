@@ -4,16 +4,10 @@ export type { FeatureTabId, FeatureHubProps } from './FeatureHub';
 export { SubscriptionCalendar } from './SubscriptionCalendar';
 export type { SubscriptionCalendarProps } from './SubscriptionCalendar';
 
-export { IpoCalendar } from './IpoCalendar';
-export type { IpoCalendarProps } from './IpoCalendar';
-
 export { ScoreCalculator } from './ScoreCalculator';
-export { IpoProfitCalculator } from './IpoProfitCalculator';
-export type { IpoProfitCalculatorProps } from './IpoProfitCalculator';
 
 export {
-  SUBSCRIPTION_MOCK_DATA,
-  IPO_MOCK_DATA,
+  REAL_SUBSCRIPTION_DATA,
   SCORE_TIER_GUIDES,
   calculateDDayInfo,
 } from './mockData';
@@ -22,6 +16,5 @@ export type {
   DealType,
   SubscriptionStatus,
   SubscriptionItem,
-  IpoItem,
   ScoreTierGuide,
 } from './mockData';

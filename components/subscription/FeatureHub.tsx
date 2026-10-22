@@ -3,22 +3,15 @@
 import React, { useState } from 'react';
 import {
   Building2,
-  TrendingUp,
   Award,
-  Calculator,
   Layers,
 } from 'lucide-react';
 import { SubscriptionCalendar } from './SubscriptionCalendar';
-import { IpoCalendar } from './IpoCalendar';
 import { ScoreCalculator } from './ScoreCalculator';
-import { IpoProfitCalculator } from './IpoProfitCalculator';
-import { IpoItem } from './mockData';
 
 export type FeatureTabId =
   | 'SUBSCRIPTION_CALENDAR'
-  | 'IPO_CALENDAR'
-  | 'SCORE_CALCULATOR'
-  | 'IPO_PROFIT_CALCULATOR';
+  | 'SCORE_CALCULATOR';
 
 export interface FeatureHubProps {
   defaultTab?: FeatureTabId;
@@ -35,27 +28,15 @@ interface TabConfig {
 const FEATURE_TABS: TabConfig[] = [
   {
     id: 'SUBSCRIPTION_CALENDAR',
-    label: '아파트 청약 캘린더',
-    shortDesc: '수도권 분양·장기전세 일정',
+    label: '수도권 아파트 청약 캘린더',
+    shortDesc: '서울·경기 분양 및 장기전세 일정',
     icon: Building2,
-  },
-  {
-    id: 'IPO_CALENDAR',
-    label: '공모주 청약 캘린더',
-    shortDesc: '기관경쟁률·핵심용어 가이드',
-    icon: TrendingUp,
   },
   {
     id: 'SCORE_CALCULATOR',
     label: '청약 가점 계산기',
-    shortDesc: '84점 만점 서울 당첨권 진단',
+    shortDesc: '84점 만점 서울 당첨권 정밀 진단',
     icon: Award,
-  },
-  {
-    id: 'IPO_PROFIT_CALCULATOR',
-    label: '공모주 실익 계산기',
-    shortDesc: '비례배정 이자 차감 순이익',
-    icon: Calculator,
   },
 ];
 
@@ -64,12 +45,6 @@ export const FeatureHub: React.FC<FeatureHubProps> = ({
   className = '',
 }) => {
   const [activeTab, setActiveTab] = useState<FeatureTabId>(defaultTab);
-  const [selectedIpoForCalc, setSelectedIpoForCalc] = useState<IpoItem | null>(null);
-
-  const handleSelectIpoForCalc = (ipo: IpoItem) => {
-    setSelectedIpoForCalc(ipo);
-    setActiveTab('IPO_PROFIT_CALCULATOR');
-  };
 
   return (
     <div className={`w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6 ${className}`}>
@@ -77,27 +52,27 @@ export const FeatureHub: React.FC<FeatureHubProps> = ({
       <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm">
+            <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm">
               <Layers className="w-5 h-5" />
             </div>
             <div>
               <h1 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
-                수도권 청약 · 공모주 실전 라운지
+                수도권 아파트 분양 & 청약 실전 라운지
               </h1>
               <p className="text-xs text-slate-500">
-                서울·경기·인천 정비사업 분양 일정부터 가점 진단, 대기자금 공모주 실익 계산까지 원스톱 지원
+                서울·경기·인천 재개발·재건축 신축 분양 일정부터 84점 만점 가점 진단까지 100% 부동산 원스톱 지원
               </p>
             </div>
           </div>
-          <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold self-start sm:self-auto">
-            독립 모듈 v1.0 · 로컬 실시간 연산
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold self-start sm:self-auto">
+            부동산 전용 분석 센터
           </span>
         </div>
 
-        {/* 4대 기능 탭 네비게이션: [아파트 청약 캘린더] | [공모주 청약 캘린더] | [청약 가점 계산기] | [공모주 실익 계산기] */}
+        {/* 부동산 2대 핵심 기능 탭: [아파트 청약 캘린더] | [청약 가점 계산기] */}
         <nav
-          aria-label="청약 및 공모주 도구 탭"
-          className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 pt-1"
+          aria-label="청약 도구 탭"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1"
         >
           {FEATURE_TABS.map((tab) => {
             const Icon = tab.icon;
@@ -107,23 +82,23 @@ export const FeatureHub: React.FC<FeatureHubProps> = ({
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all ${
+                className={`flex items-center gap-3.5 p-4 rounded-xl border text-left transition-all cursor-pointer ${
                   isActive
                     ? 'bg-slate-900 text-white border-slate-900 shadow-md'
                     : 'bg-slate-50/80 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
                 }`}
               >
                 <div
-                  className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
-                    isActive ? 'bg-white/15 text-white' : 'bg-white text-slate-700 border border-slate-200'
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                    isActive ? 'bg-white/15 text-white' : 'bg-white text-blue-600 border border-slate-200 shadow-2xs'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs sm:text-sm font-bold truncate">{tab.label}</p>
+                  <p className="text-sm font-bold truncate">{tab.label}</p>
                   <p
-                    className={`text-[11px] truncate mt-0.5 ${
+                    className={`text-xs truncate mt-0.5 ${
                       isActive ? 'text-slate-300' : 'text-slate-500'
                     }`}
                   >
@@ -144,15 +119,7 @@ export const FeatureHub: React.FC<FeatureHubProps> = ({
           />
         )}
 
-        {activeTab === 'IPO_CALENDAR' && (
-          <IpoCalendar onSelectIpoForCalc={handleSelectIpoForCalc} />
-        )}
-
         {activeTab === 'SCORE_CALCULATOR' && <ScoreCalculator />}
-
-        {activeTab === 'IPO_PROFIT_CALCULATOR' && (
-          <IpoProfitCalculator initialIpo={selectedIpoForCalc} />
-        )}
       </main>
     </div>
   );
