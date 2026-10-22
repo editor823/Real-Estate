@@ -230,6 +230,25 @@ export function TaxCalculator() {
 
   return (
     <div className="space-y-6">
+      {/* 안내 배너 (굵은 바) */}
+      <div className="bg-gradient-to-r from-blue-900 to-indigo-950 text-white p-5 sm:p-6 rounded-3xl shadow-lg relative overflow-hidden">
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-blue-200 text-xs font-bold mb-3 backdrop-blur-xs">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>2026 개정 세법 &amp; 1세대 1주택 비과세 기준 완벽 적용</span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-black tracking-tight">
+            부동산 취득세 &amp; 양도소득세 시뮬레이터
+          </h2>
+          <p className="text-sm text-blue-100 mt-1 max-w-2xl font-medium">
+            주택 취득 시 내야 할 생애최초 감면 및 다주택 중과 취득세부터, 1세대 1주택 12억 비과세와 장기보유특별공제가 적용된 실질 양도세를 정밀 계산해 드립니다.
+          </p>
+        </div>
+        <div className="absolute -right-8 -bottom-10 opacity-10 pointer-events-none text-9xl">
+          🧾
+        </div>
+      </div>
+
       {/* 계산기 모드 전환 탭 */}
       <div className="flex items-center p-1.5 rounded-2xl bg-gray-100 border border-gray-200">
         <button
