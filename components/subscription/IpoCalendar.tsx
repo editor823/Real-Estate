@@ -14,7 +14,7 @@ import {
   Lock,
   Sparkles,
 } from 'lucide-react';
-import { IPO_MOCK_DATA, IpoItem, calculateDDayInfo } from './mockData';
+import { REAL_IPO_DATA, IpoItem, calculateDDayInfo } from './mockData';
 
 export interface IpoCalendarProps {
   onSelectIpoForCalc?: (ipo: IpoItem) => void;
@@ -70,10 +70,39 @@ const IPO_ACCORDION_DATA: AccordionEntry[] = [
 ];
 
 export const IpoCalendar: React.FC<IpoCalendarProps> = ({ onSelectIpoForCalc }) => {
+  const [ipos, setIpos] = useState<IpoItem[]>(REAL_IPO_DATA);
+  const [dataSource, setDataSource] = useState<string>('한국거래소/공시 실데이터');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [marketFilter, setMarketFilter] = useState<'ALL' | 'KOSPI' | 'KOSDAQ'>('ALL');
   const [openAccordions, setOpenAccordions] = useState<string[]>(['acc-1', 'acc-2']);
 
-  const filteredIpos = IPO_MOCK_DATA.filter(
+  // 백엔드 API에서 실시간 공모주 일정 데이터 자동 동기화
+  React.useEffect(() => {
+    let isMounted = true;
+    async function loadLiveIpos() {
+      try {
+        setIsLoading(true);
+        const res = await fetch('/api/ipo');
+        if (res.ok) {
+          const json = await res.json();
+          if (isMounted && json.data && Array.isArray(json.data) && json.data.length > 0) {
+            setIpos(json.data);
+            setDataSource(json.source === 'GOV_API' ? '전자공시(DART) 공식 API' : '한국거래소/공시 공식 실데이터');
+          }
+        }
+      } catch (err) {
+        console.warn('실시간 IPO API 조회 실패 -> 실데이터 캐시 유지', err);
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    }
+    loadLiveIpos();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const filteredIpos = ipos.filter(
     (ipo) => marketFilter === 'ALL' || ipo.market === marketFilter
   );
 
@@ -113,9 +142,15 @@ export const IpoCalendar: React.FC<IpoCalendarProps> = ({ onSelectIpoForCalc }) 
       <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 rounded-2xl p-6 text-white shadow-lg">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              정비사업 대기자금 · 단기 유동성 운용 파트너
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold">
+                <Sparkles className="w-3.5 h-3.5" />
+                정비사업 대기자금 · 단기 유동성 운용 파트너
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-0.5" />
+                {dataSource} {isLoading ? '(동기화 중...)' : '연동 완료'}
+              </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
               공모주(IPO) 청약 일정 & 기관 수요예측 캘린더

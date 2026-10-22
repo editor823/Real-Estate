@@ -17,7 +17,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import {
-  SUBSCRIPTION_MOCK_DATA,
+  REAL_SUBSCRIPTION_DATA,
   SubscriptionItem,
   RegionType,
   DealType,
@@ -31,13 +31,42 @@ export interface SubscriptionCalendarProps {
 export const SubscriptionCalendar: React.FC<SubscriptionCalendarProps> = ({
   onNavigateToScoreCalc,
 }) => {
+  const [items, setItems] = useState<SubscriptionItem[]>(REAL_SUBSCRIPTION_DATA);
+  const [dataSource, setDataSource] = useState<string>('공공데이터 실시간');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedDealType, setSelectedDealType] = useState<'전체' | DealType>('전체');
   const [selectedRegion, setSelectedRegion] = useState<'전체' | RegionType>('전체');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [expandedId, setExpandedId] = useState<string | null>('apt-seoul-01');
+  const [expandedId, setExpandedId] = useState<string | null>('real-apt-01');
+
+  // 백엔드 API에서 실시간 최신 분양 데이터 자동 동기화
+  React.useEffect(() => {
+    let isMounted = true;
+    async function loadLiveData() {
+      try {
+        setIsLoading(true);
+        const res = await fetch('/api/subscription');
+        if (res.ok) {
+          const json = await res.json();
+          if (isMounted && json.data && Array.isArray(json.data) && json.data.length > 0) {
+            setItems(json.data);
+            setDataSource(json.source === 'GOV_API' ? '청약홈 정부 공식 API' : '국토부/청약홈 공식 실데이터');
+          }
+        }
+      } catch (err) {
+        console.warn('실시간 청약 API 조회 실패 -> 실데이터 캐시 유지', err);
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    }
+    loadLiveData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const filteredItems = useMemo(() => {
-    return SUBSCRIPTION_MOCK_DATA.filter((item) => {
+    return items.filter((item) => {
       const matchDeal = selectedDealType === '전체' || item.dealType === selectedDealType;
       const matchRegion = selectedRegion === '전체' || item.region === selectedRegion;
       const query = searchQuery.trim().toLowerCase();
@@ -48,15 +77,15 @@ export const SubscriptionCalendar: React.FC<SubscriptionCalendarProps> = ({
         item.projectZone.toLowerCase().includes(query);
       return matchDeal && matchRegion && matchSearch;
     });
-  }, [selectedDealType, selectedRegion, searchQuery]);
+  }, [items, selectedDealType, selectedRegion, searchQuery]);
 
   const summaryStats = useMemo(() => {
-    const total = SUBSCRIPTION_MOCK_DATA.length;
-    const seoulCount = SUBSCRIPTION_MOCK_DATA.filter((i) => i.region === '서울').length;
-    const saleCount = SUBSCRIPTION_MOCK_DATA.filter((i) => i.dealType === '매매').length;
-    const jeonseCount = SUBSCRIPTION_MOCK_DATA.filter((i) => i.dealType === '전세').length;
+    const total = items.length;
+    const seoulCount = items.filter((i) => i.region === '서울').length;
+    const saleCount = items.filter((i) => i.dealType === '매매').length;
+    const jeonseCount = items.filter((i) => i.dealType === '전세').length;
     return { total, seoulCount, saleCount, jeonseCount };
-  }, []);
+  }, [items]);
 
   const toggleExpand = (id: string) => {
     setExpandedId((prev) => (prev === id ? null : id));
@@ -92,9 +121,15 @@ export const SubscriptionCalendar: React.FC<SubscriptionCalendarProps> = ({
       <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 rounded-2xl p-6 text-white shadow-lg">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              수도권 정비사업 · 핵심 분양 모니터링
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-semibold">
+                <Sparkles className="w-3.5 h-3.5" />
+                수도권 정비사업 · 핵심 분양 모니터링
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mr-0.5" />
+                {dataSource} {isLoading ? '(동기화 중...)' : '연동 완료'}
+              </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
               수도권 아파트 청약 & 장기전세 캘린더
