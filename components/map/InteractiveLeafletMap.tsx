@@ -7,6 +7,7 @@ import { DistrictFeature, DistrictProperties } from "@/lib/types/district";
 import { useMapStore } from "@/lib/store/useMapStore";
 import { Layers, RotateCcw, MapPin, ZoomIn, ZoomOut, GraduationCap, Train } from "lucide-react";
 import { MAJOR_SCHOOLS, MAJOR_STATIONS } from "@/lib/constants/schoolsAndStations";
+import { getDistrictEstimatedPrice } from "@/lib/utils/priceEstimator";
 
 interface InteractiveLeafletMapProps {
   features: DistrictFeature[];
@@ -320,17 +321,21 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     }
 
     // =========================================================================
-    // 모드 A-2: 자치구 단위 클러스터 레벨 (11.5 <= currentZoom < 14.5) ➔ 자치구별 깔끔한 알약 뱃지
+    // 모드 A-2: 자치구 단위 클러스터 레벨 (11.5 <= currentZoom < 14.5) ➔ 자치구별 시세 포함 알약 뱃지
     // =========================================================================
     if (currentZoom < 14.5 && clusterLayerRef.current) {
       guClusters.forEach((cluster) => {
+        const priceEst = getDistrictEstimatedPrice(cluster.gu);
         const clusterHtml = `
           <div class="cursor-pointer transition-transform duration-150 active:scale-95">
-            <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900/90 text-white text-[11px] font-extrabold shadow-lg border border-emerald-400/80 whitespace-nowrap backdrop-blur-xs">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/95 text-white text-[11px] font-extrabold shadow-xl border border-emerald-400/90 whitespace-nowrap backdrop-blur-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               <span class="tracking-tight">${cluster.gu}</span>
               <span class="px-1.5 py-0.2 rounded-full bg-emerald-500/30 text-emerald-300 font-bold text-[10px]">
                 ${cluster.count}
+              </span>
+              <span class="text-amber-300 font-black text-[11px] pl-0.5">
+                시세 ${priceEst.marketPrice}
               </span>
             </div>
           </div>
@@ -339,8 +344,8 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         const clusterIcon = L.divIcon({
           html: clusterHtml,
           className: "gu-cluster-marker",
-          iconSize: [100, 28],
-          iconAnchor: [50, 14],
+          iconSize: [140, 32],
+          iconAnchor: [70, 16],
         });
 
         const marker = L.marker([cluster.lat, cluster.lng], { icon: clusterIcon });
@@ -350,8 +355,8 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         });
 
         marker.bindTooltip(
-          `<div class="p-1"><strong>${cluster.gu}</strong>: <strong>${cluster.count}개 구역</strong><br/><span class="text-[10px] text-slate-500">터치하면 상세 구역으로 확대됩니다</span></div>`,
-          { direction: "top", offset: [0, -14] }
+          `<div class="p-1"><strong>${cluster.gu}</strong>: <strong>${cluster.count}개 구역</strong><br/><span class="text-blue-600 font-bold">84㎡ 신축 평균: ${priceEst.marketPrice}</span><br/><span class="text-[10px] text-slate-500">터치하면 상세 구역으로 확대됩니다</span></div>`,
+          { direction: "top", offset: [0, -16] }
         );
 
         clusterLayerRef.current?.addLayer(marker);
@@ -360,13 +365,14 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     }
 
     // =========================================================================
-    // 모드 B: 지도 확대 레벨 (currentZoom >= 14.5) ➔ 개별 구역 폴리곤 및 상세 마커
+    // 모드 B: 지도 확대 레벨 (currentZoom >= 14.5) ➔ 개별 구역 폴리곤 및 네이버 부동산 스타일 시세 핀 마커
     // =========================================================================
     const createPopupHtml = (props: DistrictProperties, stageHex: string, stageName: string) => {
       const totalH = props.total_households || 0;
       const saleH = props.sale_households || 0;
       const rentH = props.rent_households || 0;
       const existingH = props.existing_households || 0;
+      const priceInfo = getDistrictEstimatedPrice(props.gu, props.name);
 
       return `
       <div class="p-3.5 max-w-xs text-slate-800 font-sans bg-white">
@@ -385,6 +391,18 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         <h3 class="text-sm font-bold text-slate-900 leading-snug">${props.name}</h3>
         <p class="text-[11px] text-slate-500 mb-2">${props.address_jibun ? props.gu + " " + props.address_jibun : props.legal_dong}</p>
         
+        <!-- 네이버 부동산 스타일 직관적 시세 & 조합원 분양가 핵심 지표 -->
+        <div class="p-2.5 rounded-xl bg-blue-50/80 border border-blue-200/80 mb-2 flex items-center justify-between text-xs">
+          <div>
+            <span class="text-[10px] text-blue-600 font-bold block">84㎡ 신축 완공 시세</span>
+            <strong class="text-sm font-black text-slate-900">${priceInfo.marketPrice}</strong>
+          </div>
+          <div class="text-right">
+            <span class="text-[10px] text-slate-500 font-medium block">조합원 예상 분양가</span>
+            <strong class="text-xs font-bold text-blue-700">${priceInfo.unionPrice}</strong>
+          </div>
+        </div>
+
         <!-- 건립 세대수 공급량 박스 -->
         <div class="p-2 rounded-xl bg-slate-50 border border-slate-200 mb-2">
           <div class="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1">
@@ -481,22 +499,42 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
             }
           });
 
-          // 개별 마커 라벨 추가 (확대 뷰에서만 표출)
+          // 네이버 부동산 스타일 직관적 시세 카드 핀 마커 추가 (확대 뷰에서만 표출)
           if (props.centroid && markersLayerRef.current) {
+            const priceInfo = getDistrictEstimatedPrice(props.gu, props.name);
+            const isSelected = selectedUid === props.master_uid;
+
             const markerHtml = `
-              <div class="relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110">
-                <div style="background-color: ${stage.hex};" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-lg shadow-black/30 border-2 border-white whitespace-nowrap">
-                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                  <span>${props.name}</span>
+              <div class="naver-price-marker flex flex-col items-center cursor-pointer transition-transform duration-200 hover:scale-115 active:scale-95 group">
+                <!-- 1. 상단 뱃지: 사업유형 및 84㎡ 평형 태그 -->
+                <div style="background-color: ${stage.hex};" class="px-2 py-0.5 rounded-t-lg text-[10px] font-bold text-white shadow-xs whitespace-nowrap leading-none flex items-center gap-1 border-x border-t border-black/10">
+                  <span>${props.biz_type_label || props.biz_type}</span>
+                  <span class="text-[9px] opacity-90">· 84㎡</span>
                 </div>
+                <!-- 2. 메인 시세 박스 (네이버 부동산 정밀 싱크) -->
+                <div class="bg-white/95 backdrop-blur-xs rounded-b-lg px-2.5 py-1 border-2 ${
+                  isSelected ? "border-blue-600 shadow-xl shadow-blue-500/30 ring-2 ring-blue-400" : "border-slate-800 shadow-md"
+                } text-center flex flex-col min-w-[76px] transition-all">
+                  <div class="text-[12px] sm:text-[13px] font-black text-slate-900 leading-tight flex items-center justify-center gap-0.5">
+                    <span class="text-[10px] font-bold text-rose-600">시세</span>
+                    <span>${priceInfo.marketPrice}</span>
+                  </div>
+                  <div class="text-[10px] font-bold text-slate-600 truncate max-w-[85px] leading-tight mt-0.5">
+                    ${props.name}
+                  </div>
+                </div>
+                <!-- 3. 하단 핀 포인터 침 -->
+                <div class="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] ${
+                  isSelected ? "border-t-blue-600" : "border-t-slate-800"
+                } -mt-[1px]"></div>
               </div>
             `;
 
             const customIcon = L.divIcon({
               html: markerHtml,
               className: "custom-district-marker",
-              iconSize: [120, 32],
-              iconAnchor: [60, 16],
+              iconSize: [95, 48],
+              iconAnchor: [47.5, 48],
             });
 
             itemMarker = L.marker([props.centroid[1], props.centroid[0]], { icon: customIcon });
