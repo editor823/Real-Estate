@@ -110,6 +110,15 @@ export function LeftFilterPanel({
   // 2. 대량 카드 렌더링 렉 방지: 한 번에 30개씩 가볍게 렌더링
   const [visibleCount, setVisibleCount] = useState(30);
 
+  // 모바일 화면에서는 상세 필터를 기본 접어 구역 카드가 바로 보이도록 하고, 데스크톱에서는 펼침
+  const [isDetailedFilterOpen, setIsDetailedFilterOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setIsDetailedFilterOpen(true);
+    }
+  }, []);
+
   // 자치구 고유 목록 추출
   const guList = useMemo(() => {
     const set = new Set<string>();
@@ -481,8 +490,8 @@ export function LeftFilterPanel({
             </div>
           ) : (
             <div className="flex-1 flex flex-col min-h-0 bg-white">
-              {/* 필터 & 정렬 컨트롤 영역 (고정 상단) */}
-              <div className="p-4 border-b border-gray-200 space-y-3 bg-white shrink-0">
+              {/* 필터 & 정렬 컨트롤 영역 (상단 슬림 고정: 검색창 & 자치구 & 정렬 & 필터토글) */}
+              <div className="p-3 sm:p-4 border-b border-gray-200 space-y-2.5 bg-white shrink-0">
                 {/* (1) 검색창 & 자치구 드롭다운 */}
                 <div className="flex gap-2">
                   <div className="relative flex-1">
@@ -492,7 +501,7 @@ export function LeftFilterPanel({
                       value={localSearch}
                       onChange={(e) => setLocalSearch(e.target.value)}
                       placeholder="구역명/지번 검색 (예: 한남3, 사직)"
-                      className="w-full pl-10 pr-3.5 py-2.5 text-sm bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-all text-gray-900 placeholder:text-gray-400 font-medium"
+                      className="w-full pl-10 pr-3.5 py-2 text-sm bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-all text-gray-900 placeholder:text-gray-400 font-medium"
                     />
                   </div>
 
@@ -500,7 +509,7 @@ export function LeftFilterPanel({
                   <select
                     value={selectedGu}
                     onChange={(e) => setSelectedGu(e.target.value)}
-                    className="text-sm font-bold px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 cursor-pointer max-w-[135px]"
+                    className="text-xs sm:text-sm font-bold px-2.5 sm:px-3 py-2 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 cursor-pointer max-w-[130px]"
                   >
                     <option value="ALL">전체 지역 ({guList.length})</option>
                     {guList.map((gu) => (
@@ -511,208 +520,37 @@ export function LeftFilterPanel({
                   </select>
                 </div>
 
-                {/* (2) 목록 정렬 옵션 드롭다운 */}
+                {/* (2) 목록 정렬 옵션 & 상세 필터 접기/열기 버튼 */}
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5 text-xs font-extrabold text-gray-600">
-                    <ArrowUpDown className="w-4 h-4 text-blue-600" />
-                    <span>목록 정렬</span>
-                  </div>
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as SortOption)}
-                    className="text-sm font-extrabold px-3 py-1.5 bg-gray-50 hover:bg-gray-100 border border-gray-300 rounded-xl text-gray-800 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
-                  >
-                    <option value="LATEST">📅 최신 고시순</option>
-                    <option value="HOUSEHOLDS">🏢 계획 세대수 큰 순</option>
-                    <option value="PROGRESS">⚡ 사업 진척도 빠른 순</option>
-                  </select>
-                </div>
-
-                {/* (3) 투자 성향별 퀵 필터 칩 */}
-                <div className="space-y-1.5">
-                  <span className="text-xs font-extrabold text-gray-600 block">투자 성향별 퀵 필터</span>
-                  <div className="grid grid-cols-2 gap-2">
-                    {/* 칩 1: 초기 소액/후보지 */}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setInvestmentPersona(investmentPersona === "EARLY_SEED" ? "ALL" : "EARLY_SEED")
-                      }
-                      className={cn(
-                        "flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-sm font-extrabold border transition-all cursor-pointer shadow-2xs",
-                        investmentPersona === "EARLY_SEED"
-                          ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                          : "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-200"
-                      )}
+                    <ArrowUpDown className="w-3.5 h-3.5 text-blue-600" />
+                    <span>정렬:</span>
+                    <select
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value as SortOption)}
+                      className="text-xs sm:text-sm font-extrabold px-2 py-1 bg-gray-50 hover:bg-gray-100 border border-gray-300 rounded-lg text-gray-800 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                     >
-                      <Sprout className="w-4 h-4 text-emerald-600" />
-                      <span>🌱 초기 소액/후보지</span>
-                    </button>
-
-                    {/* 칩 2: 입주 임박/안전 구역 */}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setInvestmentPersona(investmentPersona === "IMMINENT_SAFE" ? "ALL" : "IMMINENT_SAFE")
-                      }
-                      className={cn(
-                        "flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-sm font-extrabold border transition-all cursor-pointer shadow-2xs",
-                        investmentPersona === "IMMINENT_SAFE"
-                          ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
-                          : "bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border-indigo-200"
-                      )}
-                    >
-                      <Trophy className="w-4 h-4 text-indigo-600" />
-                      <span>🏆 입주 임박/안전 구역</span>
-                    </button>
+                      <option value="LATEST">📅 최신 고시순</option>
+                      <option value="HOUSEHOLDS">🏢 세대수 큰 순</option>
+                      <option value="PROGRESS">⚡ 진척도 빠른 순</option>
+                    </select>
                   </div>
-                </div>
 
-                {/* (4) 사업 유형 필터 탭 */}
-                <div>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-xs font-extrabold text-gray-600">사업 유형</span>
-                    {(bizType !== "ALL" ||
-                      selectedGu !== "ALL" ||
-                      investmentPersona !== "ALL" ||
-                      isConsentFilterActive ||
-                      transferableOnly ||
-                      publicAdjacentOnly ||
-                      minHouseholds > 0) && (
-                      <button
-                        onClick={resetFilters}
-                        className="flex items-center gap-1 text-xs text-blue-600 font-bold hover:underline cursor-pointer"
-                      >
-                        <RotateCcw className="w-3.5 h-3.5" />
-                        <span>초기화</span>
-                      </button>
-                    )}
-                  </div>
-                  <div className="grid grid-cols-3 gap-1.5">
-                    {BIZ_TYPES.map((type) => {
-                      const count = bizCounts[type.value as keyof typeof bizCounts] ?? 0;
-                      return (
-                        <button
-                          key={type.value}
-                          type="button"
-                          onClick={() => setBizType(type.value)}
-                          className={cn(
-                            "py-2 px-2 rounded-xl text-xs sm:text-sm font-bold text-center border transition-all cursor-pointer flex items-center justify-center gap-1.5",
-                            bizType === type.value
-                              ? "bg-blue-600 border-blue-600 text-white shadow-xs font-extrabold"
-                              : "bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700"
-                          )}
-                          title={`${type.label}: ${count}개 구역`}
-                        >
-                          <span className="truncate">{type.label}</span>
-                          <span
-                            className={cn(
-                              "text-xs px-1.5 py-0.2 rounded-full font-black shrink-0",
-                              bizType === type.value ? "bg-white/30 text-white" : "bg-gray-200 text-gray-700"
-                            )}
-                          >
-                            {count}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* (5) 추가 조건 토글 버튼 */}
-                <div className="flex flex-wrap gap-2 pt-1">
+                  {/* 상세 필터 접기/열기 토글 버튼 */}
                   <button
                     type="button"
-                    onClick={() => setMinHouseholds(minHouseholds === 1000 ? 0 : 1000)}
-                    className={cn(
-                      "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer shadow-2xs",
-                      minHouseholds === 1000
-                        ? "bg-indigo-600 border-indigo-600 text-white font-extrabold shadow-xs"
-                        : "bg-gray-50 hover:bg-gray-100 border-gray-300 text-gray-700"
-                    )}
+                    onClick={() => setIsDetailedFilterOpen(!isDetailedFilterOpen)}
+                    className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold border border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700 transition-colors cursor-pointer"
                   >
-                    <Home className="w-3.5 h-3.5 text-indigo-500" />
-                    1,000세대↑ 대단지
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setIsConsentFilterActive(!isConsentFilterActive)}
-                    className={cn(
-                      "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer shadow-2xs",
-                      isConsentFilterActive
-                        ? "bg-blue-600 border-blue-600 text-white font-extrabold shadow-xs"
-                        : "bg-gray-50 hover:bg-gray-100 border-gray-300 text-gray-700"
-                    )}
-                  >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
-                    동의율 ≥ 70%
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setTransferableOnly(!transferableOnly)}
-                    className={cn(
-                      "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer shadow-2xs",
-                      transferableOnly
-                        ? "bg-emerald-600 border-emerald-600 text-white font-extrabold shadow-xs"
-                        : "bg-gray-50 hover:bg-gray-100 border-gray-300 text-gray-700"
-                    )}
-                  >
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                    지위양도 가능
+                    <Filter className="w-3 h-3 text-blue-600" />
+                    <span>{isDetailedFilterOpen ? "필터 접기 ▲" : "필터 펼치기 ▼"}</span>
                   </button>
                 </div>
               </div>
 
-              {/* 퀵 링크 배너 2종 (분양 캘린더 & 부동산 계산기) */}
-              <div className="px-3.5 pt-2.5 space-y-2 shrink-0">
-                {/* 1. 분양 캘린더 & 가점 배너 */}
-                <Link
-                  href="/subscription"
-                  className="p-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 hover:border-blue-400 flex items-center justify-between transition-all shadow-2xs group"
-                  title="수도권 아파트 분양 일정 및 청약 가점 계산기로 이동"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                      🏢
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-extrabold text-slate-900 group-hover:text-blue-600 flex items-center gap-1.5 text-xs sm:text-sm">
-                        <span className="truncate">이달의 분양 캘린더 &amp; 가점 계산</span>
-                        <span className="text-[10px] px-1.5 py-0.2 bg-blue-600 text-white rounded-full font-black shrink-0">청약</span>
-                      </div>
-                      <div className="text-[11px] text-slate-500 font-medium truncate">84점 만점 당첨 진단 · 수도권 분양 일정</div>
-                    </div>
-                  </div>
-                  <span className="text-blue-600 font-black text-sm group-hover:translate-x-1 transition-transform pl-1 shrink-0">→</span>
-                </Link>
-
-                {/* 2. 신규: 부동산 계산기 허브 배너 */}
-                <Link
-                  href="/calculators"
-                  className="p-3 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 hover:border-amber-400 flex items-center justify-between transition-all shadow-2xs group"
-                  title="재개발 분담금, 취득세·양도세, DSR 대출한도 계산기"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                      🧮
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-extrabold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5 text-xs sm:text-sm">
-                        <span className="truncate">부동산 계산기 (분담금·세금·대출)</span>
-                        <span className="text-[10px] px-1.5 py-0.2 bg-amber-600 text-white rounded-full font-black shrink-0">HOT</span>
-                      </div>
-                      <div className="text-[11px] text-slate-500 font-medium truncate">재개발 분담금 · 취득세/양도세 · 스트레스 DSR</div>
-                    </div>
-                  </div>
-                  <span className="text-amber-600 font-black text-sm group-hover:translate-x-1 transition-transform pl-1 shrink-0">→</span>
-                </Link>
-              </div>
-
-              {/* (6) 필터링 및 정렬된 구역 리스트 (네이버 스타일 시원한 폰트 & 가독성 극대화) */}
+              {/* 3. 일체형 통합 스크롤 영역 (상세 필터 + 배너 + 구역 카드가 모바일에서도 시원하게 아래로 스크롤됨!) */}
               <div
-                className="flex-1 overflow-y-auto p-3.5 space-y-3 pb-16"
+                className="flex-1 overflow-y-auto p-3 sm:p-3.5 space-y-3 pb-16"
                 onScroll={(e) => {
                   const target = e.currentTarget;
                   if (target.scrollHeight - target.scrollTop <= target.clientHeight + 250) {
@@ -722,6 +560,197 @@ export function LeftFilterPanel({
                   }
                 }}
               >
+                {/* (A) 상세 필터 영역 (펼쳐졌을 때 스크롤 컨테이너 상단에 매끄럽게 렌더링) */}
+                {isDetailedFilterOpen && (
+                  <div className="p-3.5 rounded-2xl bg-gray-50/80 border border-gray-200 space-y-3 shrink-0">
+                    {/* (3) 투자 성향별 퀵 필터 칩 */}
+                    <div className="space-y-1.5">
+                      <span className="text-xs font-extrabold text-gray-600 block">투자 성향별 퀵 필터</span>
+                      <div className="grid grid-cols-2 gap-2">
+                        {/* 칩 1: 초기 소액/후보지 */}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setInvestmentPersona(investmentPersona === "EARLY_SEED" ? "ALL" : "EARLY_SEED")
+                          }
+                          className={cn(
+                            "flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-2.5 rounded-xl text-xs sm:text-sm font-extrabold border transition-all cursor-pointer shadow-2xs",
+                            investmentPersona === "EARLY_SEED"
+                              ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
+                              : "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-200"
+                          )}
+                        >
+                          <Sprout className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>🌱 초기 소액/후보지</span>
+                        </button>
+
+                        {/* 칩 2: 입주 임박/안전 구역 */}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setInvestmentPersona(investmentPersona === "IMMINENT_SAFE" ? "ALL" : "IMMINENT_SAFE")
+                          }
+                          className={cn(
+                            "flex items-center justify-center gap-1.5 py-1.5 sm:py-2 px-2.5 rounded-xl text-xs sm:text-sm font-extrabold border transition-all cursor-pointer shadow-2xs",
+                            investmentPersona === "IMMINENT_SAFE"
+                              ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
+                              : "bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border-indigo-200"
+                          )}
+                        >
+                          <Trophy className="w-3.5 h-3.5 text-indigo-600" />
+                          <span>🏆 입주 임박/안전</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* (4) 사업 유형 필터 탭 */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-xs font-extrabold text-gray-600">사업 유형</span>
+                        {(bizType !== "ALL" ||
+                          selectedGu !== "ALL" ||
+                          investmentPersona !== "ALL" ||
+                          isConsentFilterActive ||
+                          transferableOnly ||
+                          publicAdjacentOnly ||
+                          minHouseholds > 0) && (
+                          <button
+                            onClick={resetFilters}
+                            className="flex items-center gap-1 text-xs text-blue-600 font-bold hover:underline cursor-pointer"
+                          >
+                            <RotateCcw className="w-3.5 h-3.5" />
+                            <span>초기화</span>
+                          </button>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-3 gap-1.5">
+                        {BIZ_TYPES.map((type) => {
+                          const count = bizCounts[type.value as keyof typeof bizCounts] ?? 0;
+                          return (
+                            <button
+                              key={type.value}
+                              type="button"
+                              onClick={() => setBizType(type.value)}
+                              className={cn(
+                                "py-1.5 px-1.5 rounded-xl text-xs font-bold text-center border transition-all cursor-pointer flex items-center justify-center gap-1",
+                                bizType === type.value
+                                  ? "bg-blue-600 border-blue-600 text-white shadow-xs font-extrabold"
+                                  : "bg-white hover:bg-gray-100 border-gray-200 text-gray-700"
+                              )}
+                              title={`${type.label}: ${count}개 구역`}
+                            >
+                              <span className="truncate">{type.label}</span>
+                              <span
+                                className={cn(
+                                  "text-[10px] px-1 py-0.2 rounded-full font-black shrink-0",
+                                  bizType === type.value ? "bg-white/30 text-white" : "bg-gray-200 text-gray-700"
+                                )}
+                              >
+                                {count}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* (5) 추가 조건 토글 버튼 */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => setMinHouseholds(minHouseholds === 1000 ? 0 : 1000)}
+                        className={cn(
+                          "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer shadow-2xs",
+                          minHouseholds === 1000
+                            ? "bg-indigo-600 border-indigo-600 text-white font-extrabold shadow-xs"
+                            : "bg-white hover:bg-gray-100 border-gray-300 text-gray-700"
+                        )}
+                      >
+                        <Home className="w-3.5 h-3.5 text-indigo-500" />
+                        1,000세대↑
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setIsConsentFilterActive(!isConsentFilterActive)}
+                        className={cn(
+                          "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer shadow-2xs",
+                          isConsentFilterActive
+                            ? "bg-blue-600 border-blue-600 text-white font-extrabold shadow-xs"
+                            : "bg-white hover:bg-gray-100 border-gray-300 text-gray-700"
+                        )}
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
+                        동의율 ≥ 70%
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setTransferableOnly(!transferableOnly)}
+                        className={cn(
+                          "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer shadow-2xs",
+                          transferableOnly
+                            ? "bg-emerald-600 border-emerald-600 text-white font-extrabold shadow-xs"
+                            : "bg-white hover:bg-gray-100 border-gray-300 text-gray-700"
+                        )}
+                      >
+                        <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                        지위양도 가능
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* (B) 퀵 링크 배너 2종 (분양 캘린더 & 부동산 계산기) */}
+                <div className="space-y-2 shrink-0">
+                  {/* 1. 분양 캘린더 & 가점 배너 */}
+                  <Link
+                    href="/subscription"
+                    className="p-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 hover:border-blue-400 flex items-center justify-between transition-all shadow-2xs group"
+                    title="수도권 아파트 분양 일정 및 청약 가점 계산기로 이동"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                        🏢
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-extrabold text-slate-900 group-hover:text-blue-600 flex items-center gap-1.5 text-xs sm:text-sm">
+                          <span className="truncate">이달의 분양 캘린더 &amp; 가점 계산</span>
+                          <span className="text-[10px] px-1.5 py-0.2 bg-blue-600 text-white rounded-full font-black shrink-0">청약</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 font-medium truncate">84점 만점 당첨 진단 · 수도권 분양 일정</div>
+                      </div>
+                    </div>
+                    <span className="text-blue-600 font-black text-sm group-hover:translate-x-1 transition-transform pl-1 shrink-0">→</span>
+                  </Link>
+
+                  {/* 2. 신규: 부동산 계산기 허브 배너 */}
+                  <Link
+                    href="/calculators"
+                    className="p-3 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 hover:border-amber-400 flex items-center justify-between transition-all shadow-2xs group"
+                    title="재개발 분담금, 취득세·양도세, DSR 대출한도 계산기"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                        🧮
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-extrabold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5 text-xs sm:text-sm">
+                          <span className="truncate">부동산 계산기 (분담금·세금·대출)</span>
+                          <span className="text-[10px] px-1.5 py-0.2 bg-amber-600 text-white rounded-full font-black shrink-0">HOT</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 font-medium truncate">재개발 분담금 · 취득세/양도세 · 스트레스 DSR</div>
+                      </div>
+                    </div>
+                    <span className="text-amber-600 font-black text-sm group-hover:translate-x-1 transition-transform pl-1 shrink-0">→</span>
+                  </Link>
+                </div>
+
+                {/* (C) 구역 목록 카운트 바 */}
+                <div className="flex items-center justify-between px-1 pt-1 text-xs font-bold text-gray-500">
+                  <span>추천 정비구역 목록 ({filteredAndSortedFeatures.length}개)</span>
+                  <span className="text-[11px] text-gray-400">터치 시 지도가 해당 구역으로 이동합니다</span>
+                </div>
                 {filteredAndSortedFeatures.length === 0 ? (
                   <div className="py-12 text-center text-gray-400">
                     <Filter className="w-10 h-10 mx-auto mb-2 opacity-40 text-gray-400" />
