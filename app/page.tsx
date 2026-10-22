@@ -11,8 +11,10 @@ import { DistrictCard } from "@/components/sidebar/DistrictCard";
 import { CompareFloatingBar } from "@/components/compare/CompareFloatingBar";
 import { CompareModal } from "@/components/compare/CompareModal";
 import { PrivacyPolicyModal } from "@/components/legal/PrivacyPolicyModal";
+import { HomeLandingSection } from "@/components/home/HomeLandingSection";
+import { GlobalFooter } from "@/components/navigation/GlobalFooter";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Loader2, Shield } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2, Shield, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SEOUL_25_GUS = [
@@ -146,7 +148,7 @@ export default function MainPage() {
   }, [selectedDistrict]);
 
   return (
-    <main className="relative w-full h-[calc(100vh-56px)] flex overflow-hidden bg-slate-50">
+    <div className="w-full min-h-screen bg-slate-50 flex flex-col">
       {/* 0. 접근성 및 검색엔진(SEO) 크롤러를 위한 시맨틱 구조와 25개 자치구 내부링크 네트워크 */}
       <header className="sr-only">
         <h1>서울시 정비사업 &amp; 신속통합기획·모아타운 모니터링 지도</h1>
@@ -178,96 +180,122 @@ export default function MainPage() {
         </nav>
       </header>
 
-      {/* 1. 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
-      <LeftFilterPanel
-        features={features}
-        isOpen={isSidebarOpen}
-        onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
-        onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
-      />
-
-      {/* 2. 패널 접기/펼치기 토글 버튼 (데스크톱 및 모바일 접힘 시) */}
-      <button
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={cn(
-          "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-white/95 backdrop-blur-md border-r border-y border-gray-200 shadow-md text-gray-600 hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1.5",
-          isSidebarOpen ? "hidden sm:flex left-[502px]" : "left-0 sm:left-[72px]"
-        )}
-        title={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
-        aria-label={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
-      >
-        {isSidebarOpen ? (
-          <ChevronLeft className="w-4 h-4" />
-        ) : (
-          <>
-            <ChevronRight className="w-4 h-4 text-blue-600" />
-            <span className="text-xs font-bold text-gray-800 pr-0.5">목록 & 필터</span>
-          </>
-        )}
-      </button>
-
-      {/* 3. 우측 인터랙티브 지도 영역 */}
-      <section className="relative flex-1 h-full w-full overflow-hidden" aria-label="서울시 정비사업 공간 지도">
-        {isLoading ? (
-          <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 text-gray-500 gap-3">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-            <span className="text-xs font-semibold">서울시 정비구역 공간 데이터를 불러오는 중...</span>
-          </div>
-        ) : (
-          <InteractiveLeafletMap features={filteredFeatures} />
-        )}
-
-        {/* 수도권 아파트 분양 & 청약 라운지 퀵 링크 플로팅 배너 */}
-        <aside className="hidden lg:flex items-center gap-2.5 absolute bottom-4 left-6 z-[450] bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-2xl p-2.5 pr-3 hover:shadow-lg hover:border-blue-300 transition-all group">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs shadow-xs group-hover:scale-105 transition-transform shrink-0">
-            🏢
-          </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                수도권 아파트 분양 &amp; 청약 라운지
-              </span>
-              <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-blue-100 text-blue-700">NEW</span>
-            </div>
-            <span className="text-[10px] text-gray-500">84점 가점 진단 · 분양 캘린더</span>
-          </div>
-          <Link
-            href="/subscription"
-            className="ml-1 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold transition-all shadow-xs"
-          >
-            열기 →
-          </Link>
-        </aside>
-
-        {/* 지도 우측 하단 미니 개인정보처리방침 링크 (데스크톱 패널 닫힘 시 노출) */}
+      {/* 1. 상단 웰컴 가이드 배너: 첫 방문자에게 사이트 정체성과 가이드를 알리는 슬림 바 */}
+      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white px-3 sm:px-6 py-2 flex items-center justify-between gap-3 text-xs border-b border-slate-800 shrink-0 select-none shadow-xs">
+        <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+          <span className="px-1.5 py-0.5 rounded bg-blue-600 text-white text-[10px] font-bold">안내</span>
+          <span className="font-semibold text-slate-200 text-[11px] sm:text-xs truncate">
+            서울·경기 {features.length}개 재개발·재건축 실시간 인허가 공간 지도 &amp; 분석 플랫폼
+          </span>
+        </div>
         <button
-          onClick={() => setIsPrivacyModalOpen(true)}
-          className="hidden sm:flex items-center gap-1 absolute bottom-2 right-14 z-[400] text-[10px] text-gray-500 hover:text-gray-900 bg-white/90 hover:bg-gray-100 backdrop-blur-md px-2 py-0.5 rounded-md border border-gray-200 transition-colors cursor-pointer shadow-xs"
+          type="button"
+          onClick={() => {
+            const landingElem = document.getElementById("home-landing-guide");
+            landingElem?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="shrink-0 text-[11px] sm:text-xs font-bold text-blue-300 hover:text-white flex items-center gap-1 underline decoration-blue-400 cursor-pointer transition-colors"
         >
-          <Shield className="w-2.5 h-2.5 text-blue-600" />
-          <span>개인정보처리방침</span>
-        </button>
-      </section>
-
-      {/* 4. 모바일 화면 하단 플로팅 전환 바 (모바일 UX 최적화) */}
-      <div className="sm:hidden absolute bottom-5 left-1/2 -translate-x-1/2 z-[550]">
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-md text-gray-900 text-xs font-bold shadow-xl border border-gray-200 hover:bg-gray-50 transition-all active:scale-95 cursor-pointer"
-        >
-          {isSidebarOpen ? "🗺️ 지도로 보기" : "📋 구역 목록 / 고시 피드"}
+          <span>서비스 소개 &amp; 가이드 보기 ↓</span>
         </button>
       </div>
 
-      {/* 5. 구역 비교 하단 플로팅 바 & 비교 모달 */}
-      <CompareFloatingBar />
-      <CompareModal />
+      {/* 2. 메인 지도 작업 영역 (기존 인터랙티브 지도 유지) */}
+      <main className="relative w-full h-[calc(100vh-92px)] min-h-[580px] flex overflow-hidden bg-slate-50 shrink-0">
+        {/* 좌측 필터 & 구역 목록 & 실시간 타임라인 패널 */}
+        <LeftFilterPanel
+          features={features}
+          isOpen={isSidebarOpen}
+          onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
+          onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
+        />
 
-      {/* 6. 구글 애드센스 필수 개인정보처리방침 안내 모달 */}
-      <PrivacyPolicyModal
-        isOpen={isPrivacyModalOpen}
-        onClose={() => setIsPrivacyModalOpen(false)}
-      />
-    </main>
+        {/* 패널 접기/펼치기 토글 버튼 (데스크톱 및 모바일 접힘 시) */}
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className={cn(
+            "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-white/95 backdrop-blur-md border-r border-y border-gray-200 shadow-md text-gray-600 hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1.5",
+            isSidebarOpen ? "hidden sm:flex left-[502px]" : "left-0 sm:left-[72px]"
+          )}
+          title={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
+          aria-label={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
+        >
+          {isSidebarOpen ? (
+            <ChevronLeft className="w-4 h-4" />
+          ) : (
+            <>
+              <ChevronRight className="w-4 h-4 text-blue-600" />
+              <span className="text-xs font-bold text-gray-800 pr-0.5">목록 & 필터</span>
+            </>
+          )}
+        </button>
+
+        {/* 우측 인터랙티브 지도 영역 */}
+        <section className="relative flex-1 h-full w-full overflow-hidden" aria-label="서울시 정비사업 공간 지도">
+          {isLoading ? (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 text-gray-500 gap-3">
+              <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+              <span className="text-xs font-semibold">서울시 정비구역 공간 데이터를 불러오는 중...</span>
+            </div>
+          ) : (
+            <InteractiveLeafletMap features={filteredFeatures} />
+          )}
+
+          {/* 데스크톱: 지도 하단 서비스 소개 가이드 스크롤 퀵버튼 */}
+          <button
+            type="button"
+            onClick={() => {
+              const landingElem = document.getElementById("home-landing-guide");
+              landingElem?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="hidden sm:flex items-center gap-1.5 absolute bottom-4 right-14 z-[450] bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-2xl px-3 py-2 text-slate-800 text-xs font-bold hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
+          >
+            <span>📖 서비스 소개 및 가이드 보기 ↓</span>
+          </button>
+        </section>
+
+        {/* 모바일 화면 하단 플로팅 전환 바 (모바일 UX 최적화) */}
+        <div className="sm:hidden absolute bottom-5 left-1/2 -translate-x-1/2 z-[550] flex items-center gap-2">
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/95 backdrop-blur-md text-gray-900 text-xs font-bold shadow-xl border border-gray-200 hover:bg-gray-50 transition-all active:scale-95 cursor-pointer"
+          >
+            {isSidebarOpen ? "🗺️ 지도로 보기" : "📋 구역 목록 / 고시 피드"}
+          </button>
+          <button
+            onClick={() => {
+              const landingElem = document.getElementById("home-landing-guide");
+              landingElem?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="flex items-center gap-1 px-3.5 py-2.5 rounded-full bg-slate-900 text-white text-xs font-bold shadow-xl hover:bg-slate-800 transition-all active:scale-95 cursor-pointer"
+          >
+            <span>소개 ↓</span>
+          </button>
+        </div>
+
+        {/* 구역 비교 하단 플로팅 바 & 비교 모달 */}
+        <CompareFloatingBar />
+        <CompareModal />
+
+        {/* 구글 애드센스 필수 개인정보처리방침 안내 모달 */}
+        <PrivacyPolicyModal
+          isOpen={isPrivacyModalOpen}
+          onClose={() => setIsPrivacyModalOpen(false)}
+        />
+      </main>
+
+      {/* 3. 하단 풍부한 서비스 소개 및 구글 애드센스 승인용 랜딩 섹션 */}
+      <div id="home-landing-guide">
+        <HomeLandingSection
+          totalDistrictCount={features.length}
+          onScrollToTopMap={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      </div>
+
+      {/* 4. 글로벌 푸터 */}
+      <GlobalFooter />
+    </div>
   );
 }
