@@ -74,6 +74,10 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   const clusterLayerRef = useRef<L.LayerGroup | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
 
+  // 구역 선택 시 전체 지도를 다시 그리지 않고 해당 구역만 즉시 하이라이트하기 위한 레이어 참조 맵
+  const layersByUidRef = useRef<Map<string, { layer: L.Path; defaultHex: string; marker?: L.Marker }>>(new Map());
+  const prevSelectedUidRef = useRef<string | null>(null);
+
   const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget } = useMapStore();
   const [mapTheme, setMapTheme] = useState<"osm" | "positron">("osm");
   const [currentZoom, setCurrentZoom] = useState<number>(10);
@@ -84,7 +88,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     positron: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
   };
 
-  // 1. 지도 초기화 (수도권 전체가 보이도록 중심과 줌 레벨 최적화)
+  // 1. 지도 초기화 (수도권 전체가 보이도록 중심과 줌 레벨 최적화, Canvas 가속 활성화)
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
@@ -92,6 +96,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       center: [37.45, 126.98],
       zoom: 10,
       zoomControl: false,
+      preferCanvas: true, // 브라우저 DOM 과부하를 막는 고성능 HTML5 Canvas 가속 렌더링
     });
 
     const tileLayer = L.tileLayer(TILE_URLS.osm, {
@@ -175,7 +180,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     if (!mapRef.current) return;
     const map = mapRef.current;
 
-    // 기존 레이어 정리
+    // 기존 레이어 및 참조 정리
     if (geojsonLayerRef.current) {
       map.removeLayer(geojsonLayerRef.current);
       geojsonLayerRef.current = null;
@@ -186,6 +191,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     if (clusterLayerRef.current) {
       clusterLayerRef.current.clearLayers();
     }
+    layersByUidRef.current.clear();
 
     if (features.length === 0) return;
 
@@ -301,8 +307,9 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       `;
     };
 
+    // 고성능 Canvas 렌더러로 수백 개 구역 폴리곤 일괄 드로잉 (렉 원천 차단)
+    const canvasRenderer = L.canvas({ padding: 0.5 });
 
-    // GeoJSON 폴리곤 레이어 생성
     const geojsonLayer = L.geoJSON(
       {
         type: "FeatureCollection",
@@ -312,14 +319,13 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         style: (feature) => {
           const props = feature?.properties as DistrictProperties;
           const stage = STAGES[props.stage_code] || { hex: "#3B82F6" };
-          const isSelected = selectedUid === props.master_uid;
-
           return {
+            renderer: canvasRenderer,
             color: stage.hex,
-            weight: isSelected ? 3.5 : 2,
-            opacity: 1,
+            weight: 2,
+            opacity: 0.9,
             fillColor: stage.hex,
-            fillOpacity: isSelected ? 0.6 : 0.35,
+            fillOpacity: 0.35,
           };
         },
         onEachFeature: (feature, layer) => {
@@ -328,6 +334,8 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
           const popupContent = createPopupHtml(props, stage.hex, stage.name);
           layer.bindPopup(popupContent);
+
+          let itemMarker: L.Marker | undefined;
 
           layer.on("click", () => {
             setSelectedUid(props.master_uid);
@@ -339,25 +347,25 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
           layer.on("mouseover", (e) => {
             const target = e.target as L.Path;
-            target.setStyle({ weight: 3.5, fillOpacity: 0.65 });
+            if (selectedUid !== props.master_uid) {
+              target.setStyle({ weight: 3.5, fillOpacity: 0.65 });
+            }
           });
 
           layer.on("mouseout", (e) => {
             const target = e.target as L.Path;
-            const isSelected = selectedUid === props.master_uid;
-            target.setStyle({
-              weight: isSelected ? 3.5 : 2,
-              fillOpacity: isSelected ? 0.6 : 0.35,
-            });
+            if (selectedUid !== props.master_uid) {
+              target.setStyle({
+                weight: 2,
+                fillOpacity: 0.35,
+              });
+            }
           });
 
           // 개별 마커 라벨 추가 (확대 뷰에서만 표출)
           if (props.centroid && markersLayerRef.current) {
-            const isSelected = selectedUid === props.master_uid;
             const markerHtml = `
-              <div class="relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110 ${
-                isSelected ? "scale-115 ring-2 ring-white ring-offset-2 rounded-full" : ""
-              }">
+              <div class="relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110">
                 <div style="background-color: ${stage.hex};" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-lg shadow-black/30 border-2 border-white whitespace-nowrap">
                   <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                   <span>${props.name}</span>
@@ -372,23 +380,62 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
               iconAnchor: [60, 16],
             });
 
-            const marker = L.marker([props.centroid[1], props.centroid[0]], { icon: customIcon });
-            marker.bindPopup(popupContent);
+            itemMarker = L.marker([props.centroid[1], props.centroid[0]], { icon: customIcon });
+            itemMarker.bindPopup(popupContent);
 
-            marker.on("click", () => {
+            itemMarker.on("click", () => {
               setSelectedUid(props.master_uid);
               setSelectedDistrict(props);
               map.flyTo([props.centroid[1], props.centroid[0]], 14, { duration: 0.8 });
             });
 
-            markersLayerRef.current.addLayer(marker);
+            markersLayerRef.current.addLayer(itemMarker);
           }
+
+          // 빠른 스타일 업데이트를 위해 참조 등록
+          layersByUidRef.current.set(props.master_uid, {
+            layer: layer as L.Path,
+            defaultHex: stage.hex,
+            marker: itemMarker,
+          });
         },
       }
     ).addTo(map);
 
     geojsonLayerRef.current = geojsonLayer;
-  }, [features, selectedUid, currentZoom, guClusters]);
+  }, [features, currentZoom, guClusters]);
+
+  // 6. 구역 선택(selectedUid) 시 지도를 다시 그리지 않고 해당 구역만 즉시 하이라이트 (0.001초 초고속 반응)
+  useEffect(() => {
+    // 1) 이전 선택 구역 스타일 원래대로 복구
+    if (prevSelectedUidRef.current) {
+      const prevData = layersByUidRef.current.get(prevSelectedUidRef.current);
+      if (prevData?.layer) {
+        prevData.layer.setStyle({
+          color: prevData.defaultHex,
+          weight: 2,
+          fillColor: prevData.defaultHex,
+          fillOpacity: 0.35,
+        });
+      }
+    }
+
+    // 2) 새로 선택된 구역만 강조 하이라이트
+    if (selectedUid) {
+      const currData = layersByUidRef.current.get(selectedUid);
+      if (currData?.layer) {
+        currData.layer.setStyle({
+          color: "#2563EB",
+          weight: 4,
+          fillColor: "#3B82F6",
+          fillOpacity: 0.7,
+        });
+        currData.layer.bringToFront();
+      }
+    }
+
+    prevSelectedUidRef.current = selectedUid;
+  }, [selectedUid]);
 
   // 수도권 전체 리셋 핸들러
   const handleResetView = () => {

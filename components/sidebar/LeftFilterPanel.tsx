@@ -85,6 +85,23 @@ export function LeftFilterPanel({
   const { selectedUid, setSelectedUid, setSelectedDistrict, setFlyToTarget } = useMapStore();
   const { addToCompare, isInCompare } = useCompareStore();
 
+  // 1. 검색창 디바운스 최적화: 타이핑할 때 렉 없이 부드럽게 반응하도록 처리
+  const [localSearch, setLocalSearch] = useState(searchQuery);
+
+  useEffect(() => {
+    setLocalSearch(searchQuery);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(localSearch);
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [localSearch, setSearchQuery]);
+
+  // 2. 대량 카드 렌더링 렉 방지: 한 번에 30개씩 가볍게 렌더링
+  const [visibleCount, setVisibleCount] = useState(30);
+
   // 자치구 고유 목록 추출
   const guList = useMemo(() => {
     const set = new Set<string>();
@@ -211,6 +228,11 @@ export function LeftFilterPanel({
     investmentPersona,
   ]);
 
+  // 필터나 검색어가 바뀔 때 보이는 개수를 처음 30개로 깔끔하게 초기화
+  useEffect(() => {
+    setVisibleCount(30);
+  }, [searchQuery, selectedGu, bizType, minHouseholds, isConsentFilterActive, transferableOnly, publicAdjacentOnly, sortBy, investmentPersona]);
+
   // 사업 유형별 개수 집계
   const bizCounts = useMemo(() => {
     let sinthong = 0;
@@ -309,8 +331,8 @@ export function LeftFilterPanel({
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  value={localSearch}
+                  onChange={(e) => setLocalSearch(e.target.value)}
                   placeholder="구역명/지번 검색 (예: 한남3, 사직)"
                   className="w-full pl-9 pr-3 py-1.5 text-xs bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-all text-gray-900 placeholder:text-gray-400"
                 />
@@ -485,8 +507,41 @@ export function LeftFilterPanel({
             </div>
           </div>
 
-          {/* (6) 필터링 및 정렬된 구역 리스트 (좌측 패널 독립 스크롤) */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2 pb-16">
+          {/* 청약 가점 & 분양 캘린더 퀵 링크 배너 */}
+          <div className="px-3 pt-2 shrink-0">
+            <Link
+              href="/subscription"
+              className="p-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 hover:border-blue-400 flex items-center justify-between text-xs transition-all shadow-2xs group"
+              title="수도권 아파트 분양 일정 및 청약 가점 계산기로 이동"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-xs shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                  🎯
+                </div>
+                <div className="min-w-0">
+                  <div className="font-bold text-gray-900 group-hover:text-blue-600 flex items-center gap-1.5">
+                    <span className="truncate">이달의 분양 캘린더 &amp; 가점 계산</span>
+                    <span className="text-[9px] px-1.5 py-0.2 bg-blue-600 text-white rounded-full font-bold shrink-0">NEW</span>
+                  </div>
+                  <div className="text-[11px] text-gray-500 truncate">84점 만점 당첨 진단 · 공모주 실익 계산</div>
+                </div>
+              </div>
+              <span className="text-blue-600 font-bold text-xs group-hover:translate-x-0.5 transition-transform pl-1 shrink-0">→</span>
+            </Link>
+          </div>
+
+          {/* (6) 필터링 및 정렬된 구역 리스트 (좌측 패널 독립 스크롤 - 렉 방지 점진적 렌더링) */}
+          <div
+            className="flex-1 overflow-y-auto p-3 space-y-2 pb-16"
+            onScroll={(e) => {
+              const target = e.currentTarget;
+              if (target.scrollHeight - target.scrollTop <= target.clientHeight + 250) {
+                if (visibleCount < filteredAndSortedFeatures.length) {
+                  setVisibleCount((prev) => Math.min(prev + 30, filteredAndSortedFeatures.length));
+                }
+              }
+            }}
+          >
             {filteredAndSortedFeatures.length === 0 ? (
               <div className="py-12 text-center text-gray-400">
                 <Filter className="w-8 h-8 mx-auto mb-2 opacity-40 text-gray-400" />
@@ -500,100 +555,118 @@ export function LeftFilterPanel({
                 </button>
               </div>
             ) : (
-              filteredAndSortedFeatures.map((f) => {
-                const props = f.properties;
-                const isSelected = selectedUid === props.master_uid;
-                const inCompare = isInCompare(props.master_uid);
-                const totalH = props.total_households || 0;
+              <>
+                {filteredAndSortedFeatures.slice(0, visibleCount).map((f) => {
+                  const props = f.properties;
+                  const isSelected = selectedUid === props.master_uid;
+                  const inCompare = isInCompare(props.master_uid);
+                  const totalH = props.total_households || 0;
 
-                return (
-                  <div
-                    key={props.master_uid}
-                    onClick={() => {
-                      setSelectedUid(props.master_uid);
-                      setSelectedDistrict(props);
-                      if (props.centroid) {
-                        setFlyToTarget([props.centroid[1], props.centroid[0]]);
-                      }
-                      if (typeof window !== "undefined" && window.innerWidth < 768) {
-                        onToggle();
-                      }
-                    }}
-                    className={cn(
-                      "p-3 rounded-xl border transition-all cursor-pointer group pt-3",
-                      isSelected
-                        ? "bg-blue-50 border-blue-500 shadow-sm"
-                        : "bg-white hover:bg-slate-50 border-gray-200 hover:border-blue-300 shadow-2xs"
-                    )}
+                  return (
+                    <div
+                      key={props.master_uid}
+                      onClick={() => {
+                        setSelectedUid(props.master_uid);
+                        setSelectedDistrict(props);
+                        if (props.centroid) {
+                          setFlyToTarget([props.centroid[1], props.centroid[0]]);
+                        }
+                        if (typeof window !== "undefined" && window.innerWidth < 768) {
+                          onToggle();
+                        }
+                      }}
+                      className={cn(
+                        "p-3 rounded-xl border transition-all cursor-pointer group pt-3",
+                        isSelected
+                          ? "bg-blue-50 border-blue-500 shadow-sm"
+                          : "bg-white hover:bg-slate-50 border-gray-200 hover:border-blue-300 shadow-2xs"
+                      )}
+                    >
+                      <div className="flex items-center justify-between gap-1.5 mb-1.5 flex-wrap">
+                        <div className="flex items-center gap-1">
+                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                            {props.gu}
+                          </span>
+                          <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 border border-gray-200">
+                            {props.biz_type_label}
+                          </span>
+                        </div>
+                        <StageBadge stageCode={props.stage_code} />
+                      </div>
+
+                      <h3 className="text-xs font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug">
+                        {props.name}
+                      </h3>
+
+                      <div className="flex items-center gap-1 text-[11px] text-gray-500 mt-1">
+                        <MapPin className="w-3 h-3 text-gray-400 shrink-0" />
+                        <span className="truncate">{props.address_jibun || props.legal_dong}</span>
+                        <span className="text-gray-300">•</span>
+                        <span>{props.approval_date}</span>
+                      </div>
+
+                      {/* 세대수 및 비교담기 버튼 영역 */}
+                      <div className="flex items-center justify-between gap-2 mt-2 pt-2 border-t border-gray-100 text-[11px]">
+                        <div className="flex items-center gap-1 text-gray-700">
+                          <Home className="w-3 h-3 text-indigo-500" />
+                          <span className="text-gray-400">공급:</span>
+                          <strong className="text-gray-800 font-bold">
+                            {totalH > 0 ? `${totalH.toLocaleString()}세대` : "계획중"}
+                          </strong>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <Link
+                            href={`/districts/${props.master_uid}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="px-2 py-0.5 rounded-lg text-[10px] font-bold border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 transition-all flex items-center gap-0.5 cursor-pointer shadow-2xs"
+                            title="정밀 분석 리포트 새 창으로 열기"
+                          >
+                            <span>리포트</span>
+                            <ExternalLink className="w-2.5 h-2.5" />
+                          </Link>
+
+                          {/* [+ 비교담기] 버튼 */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              addToCompare(props);
+                            }}
+                            className={cn(
+                              "px-2 py-0.5 rounded-lg text-[10px] font-bold border transition-all cursor-pointer flex items-center gap-1 shrink-0",
+                              inCompare
+                                ? "bg-blue-600 text-white border-blue-600 shadow-xs"
+                                : "bg-gray-100 hover:bg-gray-200 text-gray-700 border-gray-200"
+                            )}
+                          >
+                            <ArrowLeftRight className="w-2.5 h-2.5" />
+                            <span>{inCompare ? "담김 ✓" : "+ 비교"}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* 남은 구역이 있을 때 더보기 버튼 */}
+                {visibleCount < filteredAndSortedFeatures.length && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setVisibleCount((prev) => Math.min(prev + 30, filteredAndSortedFeatures.length))
+                    }
+                    className="w-full py-2.5 px-3 rounded-xl border border-blue-200 bg-blue-50/80 hover:bg-blue-100 text-blue-700 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs active:scale-[0.99]"
                   >
-                    <div className="flex items-center justify-between gap-1.5 mb-1.5 flex-wrap">
-                      <div className="flex items-center gap-1">
-                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
-                          {props.gu}
-                        </span>
-                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 border border-gray-200">
-                          {props.biz_type_label}
-                        </span>
-                      </div>
-                      <StageBadge stageCode={props.stage_code} />
-                    </div>
-
-                    <h3 className="text-xs font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug">
-                      {props.name}
-                    </h3>
-
-                    <div className="flex items-center gap-1 text-[11px] text-gray-500 mt-1">
-                      <MapPin className="w-3 h-3 text-gray-400 shrink-0" />
-                      <span className="truncate">{props.address_jibun || props.legal_dong}</span>
-                      <span className="text-gray-300">•</span>
-                      <span>{props.approval_date}</span>
-                    </div>
-
-                    {/* 세대수 및 비교담기 버튼 영역 */}
-                    <div className="flex items-center justify-between gap-2 mt-2 pt-2 border-t border-gray-100 text-[11px]">
-                      <div className="flex items-center gap-1 text-gray-700">
-                        <Home className="w-3 h-3 text-indigo-500" />
-                        <span className="text-gray-400">공급:</span>
-                        <strong className="text-gray-800 font-bold">
-                          {totalH > 0 ? `${totalH.toLocaleString()}세대` : "계획중"}
-                        </strong>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        <Link
-                          href={`/districts/${props.master_uid}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="px-2 py-0.5 rounded-lg text-[10px] font-bold border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 transition-all flex items-center gap-0.5 cursor-pointer shadow-2xs"
-                          title="정밀 분석 리포트 새 창으로 열기"
-                        >
-                          <span>리포트</span>
-                          <ExternalLink className="w-2.5 h-2.5" />
-                        </Link>
-
-                        {/* [+ 비교담기] 버튼 */}
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            addToCompare(props);
-                          }}
-                          className={cn(
-                            "px-2 py-0.5 rounded-lg text-[10px] font-bold border transition-all cursor-pointer flex items-center gap-1 shrink-0",
-                            inCompare
-                              ? "bg-blue-600 text-white border-blue-600 shadow-xs"
-                              : "bg-gray-100 hover:bg-gray-200 text-gray-700 border-gray-200"
-                          )}
-                        >
-                          <ArrowLeftRight className="w-2.5 h-2.5" />
-                          <span>{inCompare ? "담김 ✓" : "+ 비교"}</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
+                    <span>더보기 (+30개)</span>
+                    <span className="text-[10px] text-blue-500 font-medium">
+                      ({visibleCount} / {filteredAndSortedFeatures.length}개 표시 중)
+                    </span>
+                  </button>
+                )}
+              </>
             )}
           </div>
         </div>

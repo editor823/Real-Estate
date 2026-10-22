@@ -36,6 +36,12 @@ const urls = [
     <priority>0.9</priority>
   </url>`,
   `  <url>
+    <loc>${DOMAIN}/subscription/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>`,
+  `  <url>
     <loc>${DOMAIN}/privacy/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
