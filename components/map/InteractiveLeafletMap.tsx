@@ -82,15 +82,19 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   const prevSelectedUidRef = useRef<string | null>(null);
 
   const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget, selectedDistrict } = useMapStore();
-  const [mapTheme, setMapTheme] = useState<"osm" | "positron">("positron");
+  const [mapTheme, setMapTheme] = useState<"vworld" | "vworld_white" | "osm">("vworld");
   const [currentZoom, setCurrentZoom] = useState<number>(10);
   const [showSchools, setShowSchools] = useState<boolean>(false);
   const [showWalkRadius, setShowWalkRadius] = useState<boolean>(false);
 
-  // 무료 오픈 타일 (네이버 스타일의 깔끔한 미니멀 카토 타일)
+  // 100% 영구 무료 공식 지도 타일 (API 키 및 결제 전혀 불필요, 워터마크 0개)
   const TILE_URLS = {
+    // 대한민국 국토교통부 공식 브이월드(VWorld) 한글 배경지도 (네이버/카카오급 선명한 국내 지형)
+    vworld: "https://xdworld.vworld.kr/2d/Base/service/{z}/{x}/{y}.png",
+    // 국토교통부 브이월드 미니멀 화이트 백지도
+    vworld_white: "https://xdworld.vworld.kr/2d/white/service/{z}/{x}/{y}.png",
+    // 오픈스트리트맵 글로벌 표준 타일
     osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    positron: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
   };
 
   // 1. 지도 초기화 (수도권 전체가 보이도록 중심과 줌 레벨 최적화, Canvas 가속 활성화)
@@ -104,11 +108,14 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       preferCanvas: true, // 브라우저 DOM 과부하를 막는 고성능 HTML5 Canvas 가속 렌더링
     });
 
-    const tileLayer = L.tileLayer(TILE_URLS.positron, {
+    // 타일 깨짐 및 하얀 사각형 빈 공간 방지 옵션 적용 (버퍼링 최적화)
+    const tileLayer = L.tileLayer(TILE_URLS.vworld, {
       attribution:
-        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        '&copy; <a href="https://www.vworld.kr/">국토교통부 VWorld</a> 공간정보오픈플랫폼',
       maxZoom: 19,
-      subdomains: ["a", "b", "c", "d"],
+      minZoom: 8,
+      keepBuffer: 6, // 화면 밖 타일 6개를 미리 캐싱하여 하얀 빈 박스 방지
+      updateWhenIdle: false, // 이동 중에도 부드럽게 타일 유지
     }).addTo(map);
 
     tileLayerRef.current = tileLayer;
@@ -574,10 +581,10 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       />
 
       {/* 2. 클러스터링 상태 안내 플로팅 배너 */}
-      {currentZoom < 13 && (
+      {currentZoom < 14.5 && (
         <div className="absolute top-4 left-6 z-[500] px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 text-xs font-semibold shadow-md flex items-center gap-2 animate-in fade-in duration-300">
-          <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
-          <span>광역 클러스터 뷰: 자치구 뱃지를 클릭하면 해당 지역으로 확대됩니다.</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>광역 클러스터 뷰: 자치구 뱃지를 클릭하면 동네 상세 구역으로 줌인됩니다.</span>
         </div>
       )}
 
@@ -611,13 +618,14 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
           <span>역세권 500m</span>
         </button>
 
-        {/* 미니멀/일반 테마 */}
+        {/* 국토교통부 브이월드 일반/백지도 테마 전환 (100% 무료 공식 지도) */}
         <button
-          onClick={() => setMapTheme(mapTheme === "osm" ? "positron" : "osm")}
+          onClick={() => setMapTheme(mapTheme === "vworld" ? "vworld_white" : "vworld")}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-all cursor-pointer"
+          title="국토교통부 일반 지도와 미니멀 백지도를 전환합니다"
         >
           <Layers className="w-3.5 h-3.5 text-blue-600" />
-          <span>{mapTheme === "osm" ? "미니멀" : "일반"}</span>
+          <span>{mapTheme === "vworld" ? "백지도 뷰" : "일반 지도"}</span>
         </button>
 
         {/* 전역 리셋 */}
