@@ -85,7 +85,7 @@ export function GlobalNavBar() {
             <span>📑 <span className="hidden sm:inline">구역별 </span>리포트</span>
           </Link>
 
-          {/* 메뉴 3: 청약·공모주 (신규 탭) */}
+          {/* 메뉴 3: 아파트 분양·청약 (구 청약·공모주에서 부동산 전용으로 리브랜딩) */}
           <Link
             href="/subscription"
             onClick={() => setIsTimelineActive(false)}
@@ -98,7 +98,7 @@ export function GlobalNavBar() {
             aria-current={isSubscriptionActive ? "page" : undefined}
           >
             <Calendar className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isSubscriptionActive ? "text-white" : "text-violet-600")} />
-            <span>🎯 <span className="hidden sm:inline">청약·</span>공모주</span>
+            <span>🎯 <span className="hidden sm:inline">아파트 </span>분양·청약</span>
           </Link>
 
           {/* 메뉴 4: 실시간 고시 알림 */}

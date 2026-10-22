@@ -298,35 +298,35 @@ export const SubscriptionCalendar: React.FC<SubscriptionCalendarProps> = ({
                               {item.region}
                             </span>
                           </div>
-                          <p className="text-xs text-slate-500 mt-1">{item.district}</p>
+                          <p className="text-xs sm:text-sm text-slate-600 font-semibold mt-1">{item.district}</p>
                         </td>
                         <td className="py-4 px-4">
-                          <p className="font-bold text-slate-900">{item.complexName}</p>
-                          <p className="text-xs text-slate-500 mt-0.5">{item.projectZone}</p>
+                          <p className="text-sm sm:text-base font-black text-slate-900 leading-snug">{item.complexName}</p>
+                          <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">{item.projectZone}</p>
                         </td>
                         <td className="py-4 px-4 text-right whitespace-nowrap">
-                          <p className="font-bold text-slate-900">{item.priceDisplay}</p>
-                          <p className="text-xs text-slate-500 mt-0.5">
-                            일반공급 {item.generalSupplyHouseholds.toLocaleString()}세대 / 총{' '}
+                          <p className="text-sm sm:text-base font-black text-slate-900">{item.priceDisplay}</p>
+                          <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
+                            일반 {item.generalSupplyHouseholds.toLocaleString()}세대 / 총{' '}
                             {item.totalHouseholds.toLocaleString()}세대
                           </p>
                         </td>
                         <td className="py-4 px-4 whitespace-nowrap">
-                          <div className="inline-flex items-center gap-1.5 text-slate-700 font-medium">
-                            <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-slate-800 font-bold">
+                            <Calendar className="w-4 h-4 text-blue-600" />
                             {item.applicationPeriod}
                           </div>
-                          <p className="text-xs text-slate-500 mt-0.5">
-                            발표: {item.winnerAnnouncementDate}
+                          <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
+                            당첨발표: {item.winnerAnnouncementDate}
                           </p>
                         </td>
                         <td className="py-4 px-4 text-right whitespace-nowrap">
-                          <span className="inline-flex items-center gap-1 font-bold text-blue-700">
-                            <TrendingUp className="w-3.5 h-3.5" />
+                          <span className="inline-flex items-center gap-1 text-sm sm:text-base font-black text-blue-700">
+                            <TrendingUp className="w-4 h-4" />
                             {item.competitionRate}
                           </span>
-                          <p className="text-xs text-slate-500 mt-0.5">
-                            안정가점: {item.minSafeScore}점+
+                          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-bold">
+                            안정가점: <span className="text-blue-600">{item.minSafeScore}점+</span>
                           </p>
                         </td>
                         <td className="py-4 px-4 text-center whitespace-nowrap">
