@@ -151,15 +151,47 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
     mapRef.current = map;
 
-    // 지도 컨테이너 렌더링 후 리사이즈 강제 갱신 (지도가 접히거나 하얗게 뜨는 문제 방지)
-    const timer = setTimeout(() => {
+    // 지도 컨테이너 렌더링 후 리사이즈 강제 갱신 및 라우팅 전환/사이드바 접힘 대응 다중 보정
+    const timers = [
+      setTimeout(() => mapRef.current?.invalidateSize(), 50),
+      setTimeout(() => mapRef.current?.invalidateSize(), 150),
+      setTimeout(() => mapRef.current?.invalidateSize(), 350),
+      setTimeout(() => mapRef.current?.invalidateSize(), 600),
+      setTimeout(() => mapRef.current?.invalidateSize(), 1000),
+    ];
+
+    // 화면 회전 및 브라우저 창 크기 변경 감지
+    const handleWindowResize = () => {
       if (mapRef.current) {
         mapRef.current.invalidateSize();
       }
-    }, 150);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    window.addEventListener("orientationchange", handleWindowResize);
+
+    // 사이드바 토글 및 CSS 애니메이션 중 컨테이너 크기 변화를 실시간 감지하여 타일 빈 공간 방지
+    let resizeObserver: ResizeObserver | null = null;
+    let rAFId: number | null = null;
+    if (typeof ResizeObserver !== "undefined" && containerRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        if (rAFId) cancelAnimationFrame(rAFId);
+        rAFId = requestAnimationFrame(() => {
+          if (mapRef.current) {
+            mapRef.current.invalidateSize();
+          }
+        });
+      });
+      resizeObserver.observe(containerRef.current);
+    }
 
     return () => {
-      clearTimeout(timer);
+      timers.forEach(clearTimeout);
+      if (rAFId) cancelAnimationFrame(rAFId);
+      window.removeEventListener("resize", handleWindowResize);
+      window.removeEventListener("orientationchange", handleWindowResize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
       map.remove();
       mapRef.current = null;
     };

@@ -36,7 +36,8 @@ const InteractiveLeafletMap = dynamic(
 );
 
 export default function MainPage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  // 모바일에서는 지도가 처음부터 100% 꽉 차도록 기본 false로 시작, 데스크톱에서만 펼침
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   // 정적 모듈에서 496개 전체 구역 데이터를 즉시 로드 (로딩 지연 0초 및 네트워크 의존성 제거)
   const [features, setFeatures] = useState<DistrictFeature[]>(DISTRICTS_GEOJSON.features || []);
@@ -97,12 +98,22 @@ export default function MainPage() {
     return true;
   });
 
-  // 모바일 화면 초기 진입 시 지도가 먼저 보이도록 처리
+  // 데스크톱(768px 이상)에서는 사이드바 기본 열림 처리
   useEffect(() => {
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
-      setIsSidebarOpen(false);
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setIsSidebarOpen(true);
     }
   }, []);
+
+  // 사이드바 개폐 애니메이션 완료(300ms) 시 지도 크기 동기화 트리거
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new Event("resize"));
+      }
+    }, 320);
+    return () => clearTimeout(timer);
+  }, [isSidebarOpen]);
 
   // URL 쿼리 파라미터(?id=구역ID 또는 ?tab=timeline 등) 접근 시 자동 처리
   useEffect(() => {
