@@ -26,6 +26,12 @@ import {
   X,
   ExternalLink,
   ChevronLeft,
+  Star,
+  Zap,
+  Building2,
+  Calculator,
+  FileText,
+  Shield,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -85,7 +91,7 @@ export function LeftFilterPanel({
   } = useFilterStore();
 
   const { selectedUid, setSelectedUid, selectedDistrict, setSelectedDistrict, setFlyToTarget } = useMapStore();
-  const { addToCompare, isInCompare } = useCompareStore();
+  const { addToCompare, isInCompare, compareList, setIsModalOpen } = useCompareStore();
 
   // 1. 검색창 디바운스 최적화: 타이핑할 때 렉 없이 부드럽게 반응하도록 처리
   const [localSearch, setLocalSearch] = useState(searchQuery);
@@ -273,12 +279,131 @@ export function LeftFilterPanel({
   }, [features]);
 
   return (
-    <aside
-      className={cn(
-        "relative z-10 h-full bg-white border-r border-gray-200 shadow-xl flex flex-col transition-all duration-300 ease-in-out shrink-0 text-gray-900",
-        isOpen ? "w-full sm:w-[440px] max-w-[100vw] sm:max-w-[440px]" : "w-0 overflow-hidden border-r-0"
-      )}
-    >
+    <aside className="relative z-20 h-full flex shrink-0 text-gray-900 select-none">
+      {/* 1. 네이버 스타일 맨 좌측 세로 레일 메뉴 (LNB) - 데스크톱 상시 고정 */}
+      <nav
+        className="hidden sm:flex w-[72px] h-full bg-white border-r border-gray-200 flex-col items-center justify-between py-3 px-1 shrink-0 z-30 shadow-2xs"
+        aria-label="네이버 스타일 메인 내비게이션"
+      >
+        {/* 상단 메인 메뉴 그룹 */}
+        <div className="flex flex-col items-center gap-1.5 w-full">
+          {/* (1) 홈 (지도) */}
+          <button
+            type="button"
+            onClick={() => {
+              if (!isOpen) onToggle();
+              setActiveTab("list");
+              setSelectedDistrict(null);
+              setSelectedUid(null);
+            }}
+            className={cn(
+              "w-[60px] py-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all cursor-pointer group",
+              activeTab === "list" && !selectedDistrict && isOpen
+                ? "bg-[#03C75A] text-white font-black shadow-md shadow-[#03C75A]/25"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 font-bold"
+            )}
+            title="정비사업 지도 홈"
+          >
+            <Home className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            <span className="text-[11px] font-bold tracking-tight">홈</span>
+          </button>
+
+          {/* (2) 관심·비교 (비교함) */}
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+            className="w-[60px] py-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-gray-600 hover:text-gray-900 hover:bg-gray-100 font-bold transition-all cursor-pointer relative group"
+            title="관심 구역 비교함 열기"
+          >
+            <Star className="w-5 h-5 text-amber-500 group-hover:scale-110 transition-transform fill-amber-400/20" />
+            <span className="text-[11px] font-bold tracking-tight">관심·비교</span>
+            {compareList.length > 0 && (
+              <span className="absolute top-1.5 right-2 px-1.5 py-0.2 rounded-full text-[10px] font-black bg-blue-600 text-white shadow-2xs">
+                {compareList.length}
+              </span>
+            )}
+          </button>
+
+          {/* (3) 분양·청약 라운지 */}
+          <Link
+            href="/subscription"
+            className="w-[60px] py-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-gray-600 hover:text-blue-600 hover:bg-gray-100 font-bold transition-all cursor-pointer relative group"
+            title="아파트 분양 캘린더 & 청약 라운지"
+          >
+            <Building2 className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
+            <span className="text-[11px] font-bold tracking-tight">분양·청약</span>
+            <span className="absolute top-1.5 right-2.5 w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+          </Link>
+
+          {/* (4) 구역별 분석 리포트 */}
+          <Link
+            href="/districts/"
+            className="w-[60px] py-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-gray-600 hover:text-emerald-700 hover:bg-gray-100 font-bold transition-all cursor-pointer group"
+            title="구역별 심층 분석 리포트 전체 색인"
+          >
+            <FileText className="w-5 h-5 text-emerald-600 group-hover:scale-110 transition-transform" />
+            <span className="text-[11px] font-bold tracking-tight">구역리포트</span>
+          </Link>
+
+          {/* (5) 부동산 계산기 */}
+          <Link
+            href="/calculators"
+            className="w-[60px] py-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 text-gray-600 hover:text-amber-700 hover:bg-gray-100 font-bold transition-all cursor-pointer relative group"
+            title="분담금·취득세/양도세·DSR 대출 계산기"
+          >
+            <Calculator className="w-5 h-5 text-amber-600 group-hover:scale-110 transition-transform" />
+            <span className="text-[11px] font-bold tracking-tight">계산기</span>
+            <span className="absolute top-1.5 right-1 px-1 py-0.2 rounded text-[9px] font-black bg-amber-100 text-amber-800">HOT</span>
+          </Link>
+
+          {/* (6) 실시간 고시 피드 */}
+          <button
+            type="button"
+            onClick={() => {
+              if (!isOpen) onToggle();
+              setActiveTab("timeline");
+              setSelectedDistrict(null);
+            }}
+            className={cn(
+              "w-[60px] py-2.5 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all cursor-pointer group relative",
+              activeTab === "timeline" && isOpen
+                ? "bg-indigo-600 text-white font-black shadow-md shadow-indigo-600/25"
+                : "text-gray-600 hover:text-indigo-600 hover:bg-gray-100 font-bold"
+            )}
+            title="실시간 인허가 고시 타임라인 피드"
+          >
+            <Zap className={cn("w-5 h-5 group-hover:scale-110 transition-transform", activeTab === "timeline" && isOpen ? "text-white" : "text-indigo-600")} />
+            <span className="text-[11px] font-bold tracking-tight">고시피드</span>
+          </button>
+        </div>
+
+        {/* 하단 약관 & 정보 링크 */}
+        <div className="flex flex-col items-center gap-2 w-full pt-3 border-t border-gray-100">
+          <button
+            type="button"
+            onClick={onOpenPrivacy}
+            className="text-[10px] text-gray-500 hover:text-gray-900 font-semibold p-1 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+            title="개인정보처리방침"
+          >
+            개인정보
+          </button>
+          <Link
+            href="/terms"
+            className="text-[10px] text-gray-500 hover:text-gray-900 font-semibold p-1 hover:bg-gray-100 rounded-lg transition-colors"
+            title="이용약관"
+          >
+            이용약관
+          </Link>
+        </div>
+      </nav>
+
+      {/* 2. 우측 컨텐츠 패널 (기존 필터/목록/구역상세) */}
+      <div
+        className={cn(
+          "relative h-full bg-white border-r border-gray-200 shadow-xl flex flex-col transition-all duration-300 ease-in-out shrink-0 overflow-hidden",
+          isOpen ? "w-full sm:w-[430px] max-w-[100vw] sm:max-w-[430px]" : "w-0 border-r-0"
+        )}
+      >
       {/* A. 구역이 선택되었을 때: 네이버 부동산 스타일 단일 패널 전환 (DistrictCard 렌더링) */}
       {selectedDistrict ? (
         <div className="flex-1 flex flex-col min-h-0 bg-white">
@@ -749,6 +874,7 @@ export function LeftFilterPanel({
           </Link>
         </div>
       </div>
-    </aside>
+    </div>
+  </aside>
   );
 }

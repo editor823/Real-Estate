@@ -180,7 +180,7 @@ export default function MainPage() {
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         className={cn(
           "absolute top-4 sm:top-6 z-[650] py-2 px-2.5 rounded-r-2xl bg-white/95 backdrop-blur-md border-r border-y border-gray-200 shadow-md text-gray-600 hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1.5",
-          isSidebarOpen ? "hidden sm:flex left-[420px]" : "left-0"
+          isSidebarOpen ? "hidden sm:flex left-[502px]" : "left-0 sm:left-[72px]"
         )}
         title={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
         aria-label={isSidebarOpen ? "좌측 패널 접기" : "좌측 패널 펼치기"}
