@@ -7,6 +7,7 @@ import { StageBadge } from "@/components/ui/StageBadge";
 import { AdSenseBanner } from "@/components/ads/AdSenseBanner";
 import { PriceTrendChart } from "@/components/district/PriceTrendChart";
 import { DistrictCommunityFeed } from "@/components/district/DistrictCommunityFeed";
+import { GlobalFooter } from "@/components/navigation/GlobalFooter";
 import {
   Building2,
   MapPin,
@@ -899,16 +900,7 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
       </main>
 
       {/* 3. 푸터 */}
-      <footer className="mt-16 border-t border-[#E6E0D2] py-8 px-4 text-center text-xs text-[#827A6D] space-y-2 bg-[#F5F2EB]">
-        <p>서울시 정비사업 & 신통·모아 통합 모니터링 플랫폼 | 데이터 출처: 서울시 정비사업 정보몽땅 및 서울 열린데이터광장</p>
-        <p className="flex items-center justify-center gap-3 text-[#827A6D]">
-          <span>© 2026 Seoul Redevelopment Monitoring.</span>
-          <span>•</span>
-          <Link href="/privacy/" className="hover:text-blue-600 underline font-medium">개인정보처리방침</Link>
-          <span>•</span>
-          <Link href="/terms/" className="hover:text-blue-600 underline font-medium">이용약관 및 면책조항</Link>
-        </p>
-      </footer>
+      <GlobalFooter />
     </div>
   );
 }

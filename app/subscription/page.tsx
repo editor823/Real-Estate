@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { FeatureHub } from "@/components/subscription";
+import { GlobalFooter } from "@/components/navigation/GlobalFooter";
 
 export const metadata: Metadata = {
   title: "수도권 아파트 분양 & 청약 라운지 | 서울·경기 정비사업 모니터링",
@@ -50,27 +51,8 @@ export default function SubscriptionPage() {
         <FeatureHub />
       </main>
 
-      {/* 푸터 영역: 구글 애드센스 규정 준수 및 면책 고지 */}
-      <footer className="mt-auto border-t border-gray-200 bg-white py-8 px-4 text-center text-xs text-gray-500 space-y-2">
-        <p className="max-w-3xl mx-auto leading-relaxed">
-          수도권 아파트 분양 및 장기전세 일정, 청약 가점 계산 시뮬레이션 결과는 참고용 정보이며 실제 청약 신청 전 한국부동산원 청약홈(Applyhome)의 공식 입주자모집공고문을 반드시 확인하시기 바랍니다.
-        </p>
-        <div className="flex items-center justify-center gap-3 pt-2 text-gray-500 font-medium">
-          <span>© 2026 Seoul Redevelopment Monitoring.</span>
-          <span>•</span>
-          <Link href="/privacy/" className="hover:text-blue-600 underline">
-            개인정보처리방침
-          </Link>
-          <span>•</span>
-          <Link href="/terms/" className="hover:text-blue-600 underline">
-            이용약관 및 면책조항
-          </Link>
-          <span>•</span>
-          <Link href="/" className="hover:text-blue-600 underline">
-            정비사업 지도 홈
-          </Link>
-        </div>
-      </footer>
+      {/* 푸터 영역 */}
+      <GlobalFooter />
     </div>
   );
 }

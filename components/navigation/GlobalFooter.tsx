@@ -33,11 +33,47 @@ export function GlobalFooter() {
             <ul className="space-y-1.5 text-[11px]">
               <li>
                 <Link
+                  href="/"
+                  className="hover:text-blue-600 transition-colors flex items-center gap-1 font-medium"
+                >
+                  <Building2 className="w-3 h-3 text-blue-500" />
+                  <span>수도권 정비사업 공간 지도</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/districts/"
+                  className="hover:text-blue-600 transition-colors flex items-center gap-1 font-medium"
+                >
+                  <FileText className="w-3 h-3 text-emerald-500" />
+                  <span>1,029개 구역별 분석 리포트</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/subscription"
+                  className="hover:text-blue-600 transition-colors flex items-center gap-1 font-medium"
+                >
+                  <Building2 className="w-3 h-3 text-violet-500" />
+                  <span>수도권 아파트 분양 &amp; 청약 라운지</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/calculators"
+                  className="hover:text-blue-600 transition-colors flex items-center gap-1 font-medium"
+                >
+                  <Info className="w-3 h-3 text-amber-500" />
+                  <span>부동산 금융·세무 계산기 3종</span>
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/about"
                   className="hover:text-blue-600 transition-colors flex items-center gap-1 font-medium"
                 >
                   <Info className="w-3 h-3 text-blue-500" />
-                  <span>서비스 소개 & 편집 정책</span>
+                  <span>서비스 소개 &amp; 편집 원칙</span>
                 </Link>
               </li>
               <li>
@@ -46,16 +82,7 @@ export function GlobalFooter() {
                   className="hover:text-blue-600 transition-colors flex items-center gap-1 font-medium"
                 >
                   <Mail className="w-3 h-3 text-emerald-500" />
-                  <span>문의하기 & 데이터 제보</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/districts"
-                  className="hover:text-blue-600 transition-colors flex items-center gap-1"
-                >
-                  <Building2 className="w-3 h-3 text-gray-400" />
-                  <span>1,029개 구역별 분석 리포트</span>
+                  <span>문의하기 &amp; 데이터 제보</span>
                 </Link>
               </li>
             </ul>

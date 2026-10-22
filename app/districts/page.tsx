@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { DistrictsHubClient } from "@/components/districts/DistrictsHubClient";
+import { GlobalFooter } from "@/components/navigation/GlobalFooter";
 
 export const metadata: Metadata = {
   title: "서울시 496개 정비사업 구역별 분석 리포트 색인 | 재개발·신통기획·모아타운",
@@ -49,16 +50,7 @@ export default function DistrictsHubPage() {
       </div>
 
       {/* 푸터 */}
-      <footer className="mt-16 border-t border-[#E6E0D2] py-8 px-4 text-center text-xs text-[#827A6D] space-y-2 bg-[#F5F2EB]">
-        <p>서울시 정비사업 &amp; 신통·모아 통합 모니터링 플랫폼 | 데이터 출처: 서울시 정비사업 정보몽땅 및 서울 열린데이터광장</p>
-        <p className="flex items-center justify-center gap-3 text-[#827A6D]">
-          <span>© 2026 Seoul Redevelopment Monitoring.</span>
-          <span>•</span>
-          <Link href="/privacy/" className="hover:text-blue-600 underline font-medium">개인정보처리방침</Link>
-          <span>•</span>
-          <Link href="/terms/" className="hover:text-blue-600 underline font-medium">이용약관 및 면책조항</Link>
-        </p>
-      </footer>
+      <GlobalFooter />
     </div>
   );
 }

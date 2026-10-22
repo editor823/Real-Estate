@@ -1,26 +1,33 @@
 # 서울시 정비사업 모니터링 robots.txt
-# 모든 검색엔진 및 AI 검색 인덱싱 봇 접근 허용
+# 모든 검색엔진 및 AI 검색 인덱싱 봇 접근 허용 (API 경로 제외)
 
 User-agent: *
 Allow: /
+Disallow: /api/
 
 # 검색 및 AI 인덱싱 봇 명시적 허용
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
 
 User-agent: Yeti
 Allow: /
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /api/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
 
 Sitemap: https://seoul-redevelopment.pages.dev/sitemap.xml

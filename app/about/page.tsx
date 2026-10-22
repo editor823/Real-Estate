@@ -130,7 +130,52 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 3. 사이트 운영자 정보 및 소통 창구 */}
+        {/* 3. 부동산 금융·세무 계산기 산출 알고리즘 및 법적 산식 기준 */}
+        <section className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm space-y-5">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg">
+              🧮
+            </div>
+            <div>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">금융·세무 계산기 산출 알고리즘 및 법적 산식 기준</h2>
+              <p className="text-xs text-gray-500">도정법 제76조, 지방세법, 소득세법 및 금융위원회 스트레스 DSR 기준을 준용합니다</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm text-gray-600">
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-2">
+              <strong className="text-gray-900 block font-bold text-sm">재개발·재건축 추가분담금</strong>
+              <p className="text-xs text-gray-600 leading-relaxed font-mono bg-white p-2.5 rounded-xl border border-gray-200">
+                분담금 = 조합원분양가 - (종전자산평가액 × 비례율)
+              </p>
+              <p className="text-[11px] text-gray-500 leading-relaxed">
+                관리처분인가 시 확정되는 조합원 권리가액 산식과 공사비 변동률에 따른 비례율 변화를 정밀 시뮬레이션합니다.
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-2">
+              <strong className="text-gray-900 block font-bold text-sm">취득세 &amp; 양도소득세 감면 산식</strong>
+              <p className="text-xs text-gray-600 leading-relaxed font-mono bg-white p-2.5 rounded-xl border border-gray-200">
+                1주택(1~3%) · 생애최초 200만 감면 · 12억 초과 장특공(최대 80%)
+              </p>
+              <p className="text-[11px] text-gray-500 leading-relaxed">
+                2026년 현행 개정 세법에 맞춘 1세대 1주택 비과세 요건 및 보유·거주기간별 장기보유특별공제를 단계별로 공제합니다.
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-2">
+              <strong className="text-gray-900 block font-bold text-sm">2026 스트레스 DSR 2단계</strong>
+              <p className="text-xs text-gray-600 leading-relaxed font-mono bg-white p-2.5 rounded-xl border border-gray-200">
+                연간 원리금 상환액 ÷ 연소득 ≤ 40% (스트레스 금리 가산)
+              </p>
+              <p className="text-[11px] text-gray-500 leading-relaxed">
+                수도권 은행권 주택담보대출에 적용되는 스트레스 가산 금리를 반영하여 실제 보수적 대출 한도를 산출합니다.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 4. 사이트 운영자 정보 및 소통 창구 */}
         <section className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl border border-blue-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center sm:text-left">
             <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">

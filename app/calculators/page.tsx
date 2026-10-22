@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { CalculatorHub } from "@/components/calculators";
+import { GlobalFooter } from "@/components/navigation/GlobalFooter";
 
 export const metadata: Metadata = {
   title: "부동산 금융·세무 계산기 허브 | 재개발 분담금, 취득세·양도세, DSR 대출한도",
@@ -47,7 +48,32 @@ export default function CalculatorsPage() {
       />
 
       {/* 메인 계산기 허브 영역 (Suspense 적용) */}
-      <main className="flex-1 w-full py-4 sm:py-6">
+      <main className="flex-1 w-full py-6 sm:py-8 space-y-6">
+        {/* 상단 시맨틱 헤더 & 도입부 */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm space-y-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-3 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+                실전 부동산 시뮬레이터
+              </span>
+              <span className="px-3 py-1 rounded-xl bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+                2026 개정 세법 &amp; DSR 2단계 산식
+              </span>
+            </div>
+
+            <h1 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight leading-tight">
+              부동산 금융·세무 계산기 허브
+            </h1>
+
+            <p className="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+              복잡하고 분쟁이 잦은 <strong>재개발·재건축 조합원 예상 분담금(비례율)</strong>, 
+              생애최초 감면 및 1세대 1주택 비과세가 반영된 <strong>취득세·양도소득세</strong>, 
+              그리고 2026년 차주별 규제가 적용된 <strong>스트레스 DSR 2단계 대출 한도와 월 상환액</strong>을 
+              공식 법정 산식에 따라 원클릭으로 정밀 시뮬레이션합니다.
+            </p>
+          </div>
+        </section>
+
         <Suspense
           fallback={
             <div className="max-w-7xl mx-auto px-4 py-16 text-center text-gray-500 font-bold">
@@ -59,27 +85,8 @@ export default function CalculatorsPage() {
         </Suspense>
       </main>
 
-      {/* 하단 푸터: 구글 애드센스 규정 준수 및 면책 고지 */}
-      <footer className="mt-auto border-t border-gray-200 bg-white py-8 px-4 text-center text-xs text-gray-500 space-y-2">
-        <p className="max-w-3xl mx-auto leading-relaxed">
-          본 계산기에서 제공하는 재개발·재건축 분담금, 비례율, 취득세, 양도소득세, DSR·LTV 대출 한도 산출 결과는 관련 세법 및 금융 규제에 기반한 시뮬레이션 참고용이며, 실제 납부 세액 및 대출 승인 금액은 개별 조합 총회 의결 및 금융기관 심사에 따라 달라질 수 있습니다.
-        </p>
-        <div className="flex items-center justify-center gap-3 pt-2 text-gray-500 font-medium">
-          <span>© 2026 Seoul Redevelopment Monitoring.</span>
-          <span>•</span>
-          <Link href="/privacy/" className="hover:text-blue-600 underline">
-            개인정보처리방침
-          </Link>
-          <span>•</span>
-          <Link href="/terms/" className="hover:text-blue-600 underline">
-            이용약관 및 면책조항
-          </Link>
-          <span>•</span>
-          <Link href="/" className="hover:text-blue-600 underline">
-            정비사업 지도 홈
-          </Link>
-        </div>
-      </footer>
+      {/* 하단 글로벌 푸터 */}
+      <GlobalFooter />
     </div>
   );
 }

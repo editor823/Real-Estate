@@ -1,13 +1,31 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { GlobalNavBar } from "@/components/navigation/GlobalNavBar";
+
+export const viewport: Viewport = {
+  themeColor: "#2563EB",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://seoul-redevelopment.pages.dev"),
   title: "서울 경기 부동산 정비사업 모니터링 플랫폼 | 1,029개 구역 지도·입주권 안전 진단",
   description:
     "서울·경기 수도권 1,029개 재개발·재건축·신속통합기획·모아타운 구역의 인허가 단계, 권리산정기준일, 조합원 지위양도 승계 안전성 및 계획 세대수 공간 지도 전수 조회",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "서울 경기 부동산 정비사업 모니터링 플랫폼 | 1,029개 구역 지도·입주권 안전 진단",
     description:
