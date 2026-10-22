@@ -499,42 +499,34 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
             }
           });
 
-          // 네이버 부동산 스타일 직관적 시세 카드 핀 마커 추가 (확대 뷰에서만 표출)
+          // 장소 이름 알약 뱃지 그대로 유지 + 바로 위에 직관적 시세 뱃지 얹기
           if (props.centroid && markersLayerRef.current) {
             const priceInfo = getDistrictEstimatedPrice(props.gu, props.name);
             const isSelected = selectedUid === props.master_uid;
 
             const markerHtml = `
-              <div class="naver-price-marker flex flex-col items-center cursor-pointer transition-transform duration-200 hover:scale-115 active:scale-95 group">
-                <!-- 1. 상단 뱃지: 사업유형 및 84㎡ 평형 태그 -->
-                <div style="background-color: ${stage.hex};" class="px-2 py-0.5 rounded-t-lg text-[10px] font-bold text-white shadow-xs whitespace-nowrap leading-none flex items-center gap-1 border-x border-t border-black/10">
-                  <span>${props.biz_type_label || props.biz_type}</span>
-                  <span class="text-[9px] opacity-90">· 84㎡</span>
+              <div class="relative flex flex-col items-center cursor-pointer transition-transform duration-200 hover:scale-110 active:scale-95 group">
+                <!-- 1. 장소 이름 바로 위에 얹는 시세 뱃지 -->
+                <div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-900/95 text-white text-[10px] font-black shadow-md border border-white/80 mb-0.5 whitespace-nowrap leading-tight">
+                  <span class="text-amber-300 font-bold">시세</span>
+                  <span class="text-white">${priceInfo.marketPrice}</span>
                 </div>
-                <!-- 2. 메인 시세 박스 (네이버 부동산 정밀 싱크) -->
-                <div class="bg-white/95 backdrop-blur-xs rounded-b-lg px-2.5 py-1 border-2 ${
-                  isSelected ? "border-blue-600 shadow-xl shadow-blue-500/30 ring-2 ring-blue-400" : "border-slate-800 shadow-md"
-                } text-center flex flex-col min-w-[76px] transition-all">
-                  <div class="text-[12px] sm:text-[13px] font-black text-slate-900 leading-tight flex items-center justify-center gap-0.5">
-                    <span class="text-[10px] font-bold text-rose-600">시세</span>
-                    <span>${priceInfo.marketPrice}</span>
-                  </div>
-                  <div class="text-[10px] font-bold text-slate-600 truncate max-w-[85px] leading-tight mt-0.5">
-                    ${props.name}
-                  </div>
+
+                <!-- 2. 원래 있던 선명한 장소 이름 알약 뱃지 (그대로 100% 복원 유지) -->
+                <div style="background-color: ${stage.hex};" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-white text-[11px] sm:text-xs font-bold shadow-lg shadow-black/30 border-2 ${
+                  isSelected ? "border-blue-300 ring-2 ring-blue-500 scale-105" : "border-white"
+                } whitespace-nowrap leading-tight">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0"></span>
+                  <span>${props.name}</span>
                 </div>
-                <!-- 3. 하단 핀 포인터 침 -->
-                <div class="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] ${
-                  isSelected ? "border-t-blue-600" : "border-t-slate-800"
-                } -mt-[1px]"></div>
               </div>
             `;
 
             const customIcon = L.divIcon({
               html: markerHtml,
               className: "custom-district-marker",
-              iconSize: [95, 48],
-              iconAnchor: [47.5, 48],
+              iconSize: [130, 46],
+              iconAnchor: [65, 42],
             });
 
             itemMarker = L.marker([props.centroid[1], props.centroid[0]], { icon: customIcon });
