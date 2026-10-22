@@ -156,12 +156,12 @@ export default function PrivacyPage() {
               개인정보 보호와 관련된 문의사항, 구글 애드센스 광고 정책 관련 문의, 권리 침해 신고는 아래 연락처로 접수해 주시면 신속하고 성실하게 조치하겠습니다.
             </p>
             <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] space-y-1 mt-2">
-              <p><strong>서비스명</strong>: 서울시 정비사업 &amp; 신통·모아 통합 모니터링</p>
+              <p><strong>서비스명</strong>: 서울 경기 정비사업 &amp; 신통·모아 통합 모니터링</p>
               <p><strong>개인정보 보호 책임자</strong>: 서비스 관리팀</p>
               <p>
-                <strong>문의 이메일</strong>:{" "}
-                <a href="mailto:editor823@gmail.com" className="text-blue-600 font-mono font-bold underline">
-                  editor823@gmail.com
+                <strong>공식 문의 이메일</strong>:{" "}
+                <a href="mailto:tkdgus8231@gmail.com" className="text-blue-600 font-mono font-bold underline">
+                  tkdgus8231@gmail.com
                 </a>
               </p>
             </div>
@@ -171,13 +171,17 @@ export default function PrivacyPage() {
 
       {/* 3. 푸터 */}
       <footer className="mt-16 border-t border-[#E6E0D2] py-8 px-4 text-center text-xs text-[#827A6D] space-y-2 bg-[#F5F2EB]">
-        <p>서울시 정비사업 &amp; 신통·모아 통합 모니터링 플랫폼 | 데이터 출처: 서울시 정비사업 정보몽땅 및 서울 열린데이터광장</p>
-        <p className="flex items-center justify-center gap-3 text-[#827A6D]">
+        <p>서울 경기 부동산 정비사업 모니터링 플랫폼 | 데이터 출처: 서울시 정비사업 정보몽땅, 경기부동산포털</p>
+        <p className="flex items-center justify-center gap-3 text-[#827A6D] flex-wrap">
           <span>© 2026 Seoul Redevelopment Monitoring.</span>
           <span>•</span>
-          <Link href="/privacy/" className="hover:text-blue-600 underline font-medium">개인정보처리방침</Link>
+          <Link href="/about" className="hover:text-blue-600 underline font-medium">서비스 소개</Link>
           <span>•</span>
-          <Link href="/terms/" className="hover:text-blue-600 underline font-medium">이용약관 및 면책조항</Link>
+          <Link href="/contact" className="hover:text-blue-600 underline font-medium">문의하기</Link>
+          <span>•</span>
+          <Link href="/privacy" className="hover:text-blue-600 underline font-medium">개인정보처리방침</Link>
+          <span>•</span>
+          <Link href="/terms" className="hover:text-blue-600 underline font-medium">이용약관 및 면책조항</Link>
         </p>
       </footer>
     </div>

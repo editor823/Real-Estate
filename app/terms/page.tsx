@@ -155,7 +155,7 @@ export default function TermsPage() {
               서비스 이용약관, 데이터 정정 요청, 서비스 개선 제안은 아래 공식 이메일로 접수해 주시기 바랍니다:
             </p>
             <p className="font-semibold text-[#2B261F]">
-              📧 공식 문의처: <a href="mailto:editor823@gmail.com" className="text-blue-600 underline font-mono">editor823@gmail.com</a>
+              📧 공식 문의처: <a href="mailto:tkdgus8231@gmail.com" className="text-blue-600 underline font-mono">tkdgus8231@gmail.com</a>
             </p>
           </div>
         </section>
@@ -163,13 +163,17 @@ export default function TermsPage() {
 
       {/* 3. 푸터 */}
       <footer className="mt-16 border-t border-[#E6E0D2] py-8 px-4 text-center text-xs text-[#827A6D] space-y-2 bg-[#F5F2EB]">
-        <p>서울시 정비사업 &amp; 신통·모아 통합 모니터링 플랫폼 | 데이터 출처: 서울시 정비사업 정보몽땅 및 서울 열린데이터광장</p>
-        <p className="flex items-center justify-center gap-3 text-[#827A6D]">
+        <p>서울 경기 부동산 정비사업 모니터링 플랫폼 | 데이터 출처: 서울시 정비사업 정보몽땅, 경기부동산포털</p>
+        <p className="flex items-center justify-center gap-3 text-[#827A6D] flex-wrap">
           <span>© 2026 Seoul Redevelopment Monitoring.</span>
           <span>•</span>
-          <Link href="/privacy/" className="hover:text-blue-600 underline font-medium">개인정보처리방침</Link>
+          <Link href="/about" className="hover:text-blue-600 underline font-medium">서비스 소개</Link>
           <span>•</span>
-          <Link href="/terms/" className="hover:text-blue-600 underline font-medium">이용약관 및 면책조항</Link>
+          <Link href="/contact" className="hover:text-blue-600 underline font-medium">문의하기</Link>
+          <span>•</span>
+          <Link href="/privacy" className="hover:text-blue-600 underline font-medium">개인정보처리방침</Link>
+          <span>•</span>
+          <Link href="/terms" className="hover:text-blue-600 underline font-medium">이용약관 및 면책조항</Link>
         </p>
       </footer>
     </div>

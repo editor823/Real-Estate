@@ -45,28 +45,27 @@ export function AdSenseBanner({
         <span>SPONSORED AD (300×250)</span>
       </div>
 
-      {/* 실제 애드센스 스크립트 슬롯 영역 (승인 후 data-ad-client 추가) */}
-      <div className="w-full flex-1 flex flex-col items-center justify-center py-6 px-4">
-        {/* 추후 구글 애드센스 코드 교체 영역 */}
+      {/* 실제 애드센스 스크립트 슬롯 영역 */}
+      <div className="w-full flex-1 flex flex-col items-center justify-center py-4 px-2">
         <ins
           className="adsbygoogle"
           style={{ display: "block", width: "100%", height: "100%" }}
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" // 실제 애드센스 게시자 ID 입력
+          data-ad-client="ca-pub-5767039912569697"
           data-ad-slot={slotId}
-          data-ad-format="auto"
+          data-ad-format={format}
           data-full-width-responsive="true"
         />
 
-        {/* 심사 중 및 개발 시 표시되는 플레이스홀더 안내 */}
-        <div className="flex flex-col items-center justify-center text-[#7A7365] pointer-events-none">
-          <div className="w-10 h-10 rounded-xl bg-[#DDD6C7] flex items-center justify-center text-[#5C5547] font-black text-xs mb-2">
+        {/* 심사 중 및 광고 로드 전 플레이스홀더 안내 */}
+        <div className="flex flex-col items-center justify-center text-[#7A7365] pointer-events-none py-4">
+          <div className="w-9 h-9 rounded-xl bg-[#DDD6C7] flex items-center justify-center text-[#5C5547] font-black text-xs mb-1.5 shadow-2xs">
             AD
           </div>
           <span className="text-xs font-semibold text-[#4A4439]">
-            구글 애드센스 디스플레이 광고 영역
+            구글 맞춤형 후원 광고 영역
           </span>
-          <p className="text-[11px] text-[#7A7365] mt-1 max-w-[240px]">
-            애드센스 승인 완료 후 ca-pub 게시자 번호 입력 시 실제 맞춤형 광고가 노출됩니다.
+          <p className="text-[11px] text-[#7A7365] mt-0.5 max-w-[260px]">
+            본 영역은 구글 애드센스(Google AdSense) 운영 정책을 준수하여 송출됩니다.
           </p>
         </div>
       </div>

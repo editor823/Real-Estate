@@ -60,6 +60,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css"
         />
+        {/* 구글 애드센스 (Google AdSense) 소유권 인증 메타태그 및 자동 광고 스크립트 */}
+        <meta name="google-adsense-account" content="ca-pub-5767039912569697" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5767039912569697"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}

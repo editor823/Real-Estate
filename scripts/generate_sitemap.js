@@ -42,6 +42,18 @@ const urls = [
     <priority>0.9</priority>
   </url>`,
   `  <url>
+    <loc>${DOMAIN}/about/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`,
+  `  <url>
+    <loc>${DOMAIN}/contact/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`,
+  `  <url>
     <loc>${DOMAIN}/privacy/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
