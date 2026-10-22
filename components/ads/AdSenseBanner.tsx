@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
-import { Megaphone } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 interface AdSenseBannerProps {
   className?: string;
@@ -12,63 +10,50 @@ interface AdSenseBannerProps {
 
 /**
  * 구글 애드센스 (Google AdSense) 반응형 광고 배너 컴포넌트
- * - 애드센스 승인 후 client ID 및 slot ID를 주입하면 실제 광고로 동작합니다.
- * - 현재는 승인 심사 및 지면 확보를 위한 표준 300x250 반응형 컨테이너를 제공합니다.
+ * - 애드센스 공식 심사 정책 준수:
+ *   승인 전 빈 광고 상자나 'AD 후원 영역' 같은 플레이스홀더를 노출하면 
+ *   구글 심사관 및 봇이 '준비되지 않은 사이트/콘텐츠 부족'으로 거절하므로,
+ *   승인 전에는 화면을 전혀 차지하지 않고 숨김(return null) 처리합니다.
+ * - 나중에 승인 완료 후 환경변수 NEXT_PUBLIC_ADSENSE_ENABLED=true 가 켜지면 실제 광고가 노출됩니다.
  */
 export function AdSenseBanner({
   className,
   slotId = "default-slot",
   format = "rectangle",
 }: AdSenseBannerProps) {
+  // 실제 구글 애드센스 승인 활성화 여부 확인 (환경변수 또는 배포 설정)
+  const isAdSenseEnabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true);
+    if (!isAdSenseEnabled) return;
+
     try {
-      // 애드센스 스크립트가 로드되었을 경우 광고 푸시
       if (typeof window !== "undefined" && (window as any).adsbygoogle) {
         ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
       }
     } catch {
-      // 개발 환경 에러 무시
+      // 에러 무시
     }
-  }, []);
+  }, [isAdSenseEnabled]);
 
+  // 애드센스 미승인 상태이거나 개발/심사 단계에서는 빈 박스를 전혀 노출하지 않고 숨김
+  if (!isAdSenseEnabled || !isClient) {
+    return null;
+  }
+
+  // 승인 완료 후 실제 광고 컨테이너 렌더링
   return (
-    <div
-      className={cn(
-        "relative w-full overflow-hidden rounded-2xl border border-dashed border-[#D6CFC0] bg-[#EFECE4] p-3 flex flex-col items-center justify-center text-center transition-all",
-        format === "rectangle" ? "min-h-[250px]" : "min-h-[100px]",
-        className
-      )}
-    >
-      {/* 상단 라벨 */}
-      <div className="absolute top-2 left-3 flex items-center gap-1 text-[10px] font-bold text-[#7A7365] uppercase tracking-wider">
-        <Megaphone className="w-3 h-3 text-[#7A7365]" />
-        <span>SPONSORED AD (300×250)</span>
-      </div>
-
-      {/* 실제 애드센스 스크립트 슬롯 영역 */}
-      <div className="w-full flex-1 flex flex-col items-center justify-center py-4 px-2">
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block", width: "100%", height: "100%" }}
-          data-ad-client="ca-pub-5767039912569697"
-          data-ad-slot={slotId}
-          data-ad-format={format}
-          data-full-width-responsive="true"
-        />
-
-        {/* 심사 중 및 광고 로드 전 플레이스홀더 안내 */}
-        <div className="flex flex-col items-center justify-center text-[#7A7365] pointer-events-none py-4">
-          <div className="w-9 h-9 rounded-xl bg-[#DDD6C7] flex items-center justify-center text-[#5C5547] font-black text-xs mb-1.5 shadow-2xs">
-            AD
-          </div>
-          <span className="text-xs font-semibold text-[#4A4439]">
-            구글 맞춤형 후원 광고 영역
-          </span>
-          <p className="text-[11px] text-[#7A7365] mt-0.5 max-w-[260px]">
-            본 영역은 구글 애드센스(Google AdSense) 운영 정책을 준수하여 송출됩니다.
-          </p>
-        </div>
-      </div>
+    <div className={`w-full overflow-hidden my-4 text-center ${className || ""}`}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-5767039912569697"
+        data-ad-slot={slotId}
+        data-ad-format={format}
+        data-full-width-responsive="true"
+      />
     </div>
   );
 }
