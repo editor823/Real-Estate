@@ -5,7 +5,8 @@ import L from "leaflet";
 import { STAGES } from "@/lib/constants/stages";
 import { DistrictFeature, DistrictProperties } from "@/lib/types/district";
 import { useMapStore } from "@/lib/store/useMapStore";
-import { Layers, RotateCcw, MapPin, ZoomIn, ZoomOut } from "lucide-react";
+import { Layers, RotateCcw, MapPin, ZoomIn, ZoomOut, GraduationCap, Train } from "lucide-react";
+import { MAJOR_SCHOOLS, MAJOR_STATIONS } from "@/lib/constants/schoolsAndStations";
 
 interface InteractiveLeafletMapProps {
   features: DistrictFeature[];
@@ -73,14 +74,18 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   const markersLayerRef = useRef<L.LayerGroup | null>(null);
   const clusterLayerRef = useRef<L.LayerGroup | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
+  const schoolsLayerRef = useRef<L.LayerGroup | null>(null);
+  const walkRadiusLayerRef = useRef<L.LayerGroup | null>(null);
 
   // 구역 선택 시 전체 지도를 다시 그리지 않고 해당 구역만 즉시 하이라이트하기 위한 레이어 참조 맵
   const layersByUidRef = useRef<Map<string, { layer: L.Path; defaultHex: string; marker?: L.Marker }>>(new Map());
   const prevSelectedUidRef = useRef<string | null>(null);
 
-  const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget } = useMapStore();
+  const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget, selectedDistrict } = useMapStore();
   const [mapTheme, setMapTheme] = useState<"osm" | "positron">("osm");
   const [currentZoom, setCurrentZoom] = useState<number>(10);
+  const [showSchools, setShowSchools] = useState<boolean>(false);
+  const [showWalkRadius, setShowWalkRadius] = useState<boolean>(false);
 
   // 무료 오픈 타일 (API 키 불필요)
   const TILE_URLS = {
@@ -115,6 +120,14 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     // 개별 구역 마커용 레이어 그룹 (확대 뷰)
     const markersGroup = L.layerGroup().addTo(map);
     markersLayerRef.current = markersGroup;
+
+    // 학군(초품아) 레이어 그룹
+    const schoolsGroup = L.layerGroup().addTo(map);
+    schoolsLayerRef.current = schoolsGroup;
+
+    // 도보권 반경 레이어 그룹
+    const walkGroup = L.layerGroup().addTo(map);
+    walkRadiusLayerRef.current = walkGroup;
 
     // 줌 레벨 변경 감지 이벤트
     map.on("zoomend", () => {
@@ -437,6 +450,111 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     prevSelectedUidRef.current = selectedUid;
   }, [selectedUid]);
 
+  // 7. [네이버 부동산 킬러 기능 2] 초품아 / 학군 지도 레이어 토글 렌더링
+  useEffect(() => {
+    if (!schoolsLayerRef.current) return;
+    schoolsLayerRef.current.clearLayers();
+
+    if (!showSchools) return;
+
+    MAJOR_SCHOOLS.forEach((sch) => {
+      // 학교 위치 마커
+      const schoolHtml = `
+        <div class="group relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-115">
+          <div class="flex items-center gap-1 px-2 py-0.8 rounded-full bg-emerald-600 text-white text-[10px] font-bold shadow-md shadow-emerald-700/30 border border-white whitespace-nowrap">
+            <span>🏫</span>
+            <span>${sch.name}</span>
+          </div>
+        </div>
+      `;
+
+      const schoolIcon = L.divIcon({
+        html: schoolHtml,
+        className: "school-marker",
+        iconSize: [110, 26],
+        iconAnchor: [55, 13],
+      });
+
+      const marker = L.marker([sch.lat, sch.lng], { icon: schoolIcon });
+      marker.bindTooltip(`<strong>${sch.name}</strong> (${sch.type})<br/>안심 통학 구역 반경 300m`, {
+        direction: "top",
+        offset: [0, -10],
+      });
+
+      // 300m 안심 통학권 반경 서클
+      const circle = L.circle([sch.lat, sch.lng], {
+        radius: 300,
+        color: "#059669",
+        weight: 1.5,
+        fillColor: "#10B981",
+        fillOpacity: 0.12,
+        dashArray: "3, 3",
+      });
+
+      schoolsLayerRef.current?.addLayer(circle);
+      schoolsLayerRef.current?.addLayer(marker);
+    });
+  }, [showSchools]);
+
+  // 8. [네이버 부동산 킬러 기능 5] 초역세권 500m 도보권(7분) 서클 레이어 토글
+  useEffect(() => {
+    if (!walkRadiusLayerRef.current) return;
+    walkRadiusLayerRef.current.clearLayers();
+
+    if (!showWalkRadius && !selectedDistrict) return;
+
+    // A) 선택된 구역 중심에서 500m(도보 7분) 원형 링 표출
+    if (selectedDistrict?.centroid) {
+      const circle = L.circle([selectedDistrict.centroid[1], selectedDistrict.centroid[0]], {
+        radius: 500,
+        color: "#4F46E5",
+        weight: 2,
+        fillColor: "#6366F1",
+        fillOpacity: 0.15,
+        dashArray: "4, 4",
+      });
+      circle.bindTooltip(`<strong>${selectedDistrict.name}</strong><br/>도보 7분 생활권 (반경 500m)`, {
+        direction: "top",
+      });
+      walkRadiusLayerRef.current.addLayer(circle);
+    }
+
+    // B) 역세권 토글 활성화 시 수도권 핵심 지하철역 마커 + 500m 원 표출
+    if (showWalkRadius) {
+      MAJOR_STATIONS.forEach((st) => {
+        const stationHtml = `
+          <div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-700 text-white text-[10px] font-bold shadow-md border border-white whitespace-nowrap">
+            <span>🚇</span>
+            <span>${st.name}</span>
+          </div>
+        `;
+        const icon = L.divIcon({
+          html: stationHtml,
+          className: "station-marker",
+          iconSize: [90, 24],
+          iconAnchor: [45, 12],
+        });
+        const marker = L.marker([st.lat, st.lng], { icon });
+        marker.bindTooltip(`<strong>${st.name}</strong> (${st.line})<br/>역세권 기준 반경 500m`, {
+          direction: "top",
+          offset: [0, -10],
+        });
+
+        const stCircle = L.circle([st.lat, st.lng], {
+          radius: 500,
+          color: "#4338CA",
+          weight: 1.5,
+          fillColor: "#4F46E5",
+          fillOpacity: 0.08,
+          dashArray: "3, 3",
+        });
+
+        walkRadiusLayerRef.current?.addLayer(stCircle);
+        walkRadiusLayerRef.current?.addLayer(marker);
+      });
+    }
+  }, [showWalkRadius, selectedDistrict]);
+
   // 수도권 전체 리셋 핸들러
   const handleResetView = () => {
     if (!mapRef.current) return;
@@ -463,19 +581,49 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         </div>
       )}
 
-      {/* 3. 우측 상단 플로팅 지도 컨트롤 */}
-      <div className="absolute top-4 right-4 z-[500] flex items-center gap-2">
+      {/* 3. 우측 상단 플로팅 지도 컨트롤 (네이버 부동산 스타일 레이어 스위처) */}
+      <div className="absolute top-4 right-4 z-[500] flex items-center gap-1.5 flex-wrap justify-end">
+        {/* 학군 지도 토글 */}
         <button
-          onClick={() => setMapTheme(mapTheme === "osm" ? "positron" : "osm")}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
+          onClick={() => setShowSchools(!showSchools)}
+          className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl border shadow-md text-xs font-semibold transition-all cursor-pointer ${
+            showSchools
+              ? "bg-emerald-600 border-emerald-600 text-white font-bold shadow-emerald-600/30"
+              : "bg-white/95 backdrop-blur-md border-slate-200 text-slate-700 hover:bg-slate-50"
+          }`}
+          title="주변 초·중·고교 위치 및 300m 안심 통학권 레이어를 켜고 끕니다"
         >
-          <Layers className="w-3.5 h-3.5 text-blue-600" />
-          <span>{mapTheme === "osm" ? "미니멀 맵" : "일반 맵"}</span>
+          <GraduationCap className="w-3.5 h-3.5" />
+          <span>초품아·학군</span>
         </button>
 
+        {/* 역세권 500m 도보권 토글 */}
+        <button
+          onClick={() => setShowWalkRadius(!showWalkRadius)}
+          className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl border shadow-md text-xs font-semibold transition-all cursor-pointer ${
+            showWalkRadius
+              ? "bg-indigo-600 border-indigo-600 text-white font-bold shadow-indigo-600/30"
+              : "bg-white/95 backdrop-blur-md border-slate-200 text-slate-700 hover:bg-slate-50"
+          }`}
+          title="지하철역 및 구역 중심 반경 500m(도보 7분 역세권) 링을 켜고 끕니다"
+        >
+          <Train className="w-3.5 h-3.5" />
+          <span>역세권 500m</span>
+        </button>
+
+        {/* 미니멀/일반 테마 */}
+        <button
+          onClick={() => setMapTheme(mapTheme === "osm" ? "positron" : "osm")}
+          className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-all cursor-pointer"
+        >
+          <Layers className="w-3.5 h-3.5 text-blue-600" />
+          <span>{mapTheme === "osm" ? "미니멀" : "일반"}</span>
+        </button>
+
+        {/* 전역 리셋 */}
         <button
           onClick={handleResetView}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
+          className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
           title="수도권 전체 보기로 지도 위치를 초기화합니다"
         >
           <RotateCcw className="w-3.5 h-3.5 text-slate-500" />

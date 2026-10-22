@@ -1,11 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { useMapStore } from "@/lib/store/useMapStore";
 import { useCompareStore } from "@/lib/store/useCompareStore";
 import { StageBadge } from "@/components/ui/StageBadge";
 import { ProjectedTimelineWidget } from "./ProjectedTimelineWidget";
 import { SafetyDiagnosisWidget } from "./SafetyDiagnosisWidget";
 import { AdSenseBanner } from "@/components/ads/AdSenseBanner";
+import { PriceTrendChart } from "@/components/district/PriceTrendChart";
+import { DistrictCommunityFeed } from "@/components/district/DistrictCommunityFeed";
+import { getNearestStation, getNearbySchools } from "@/lib/constants/schoolsAndStations";
 import Link from "next/link";
 import {
   X,
@@ -17,12 +21,21 @@ import {
   Home,
   Coins,
   TrendingUp,
+  MessageSquare,
+  Train,
+  GraduationCap,
+  Scale,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function DistrictCard() {
   const { selectedDistrict, setSelectedUid, setSelectedDistrict } = useMapStore();
   const { addToCompare, isInCompare } = useCompareStore();
+
+  // 상단 서브 탭: 핵심 분석 vs 현장 이야기(네이버 이야기 탭)
+  const [activeTab, setActiveTab] = useState<"ANALYZE" | "COMMUNITY">("ANALYZE");
+  // 면적 단위 토글: 평 vs ㎡ (네이버 부동산 단위 변환기)
+  const [unitMode, setUnitMode] = useState<"PYEONG" | "M2">("PYEONG");
 
   if (!selectedDistrict) {
     return (
@@ -156,105 +169,224 @@ export function DistrictCard() {
         <ExternalLink className="w-3.5 h-3.5" />
       </Link>
 
-      {/* 2. 주소 및 고시 정보 */}
-      <div className="space-y-1 text-xs text-gray-600 bg-gray-50 p-2.5 rounded-xl border border-gray-200">
-        <div className="flex items-center gap-1.5">
-          <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-          <span className="truncate">
-            {selectedDistrict.address_jibun
-              ? `${selectedDistrict.gu || ""} ${selectedDistrict.address_jibun}`
-              : selectedDistrict.legal_dong || "서울특별시"}
-          </span>
-        </div>
-        {selectedDistrict.address_doro && (
-          <div className="text-[11px] text-gray-500 pl-5 truncate">
-            도로명: {selectedDistrict.address_doro}
-          </div>
-        )}
+      {/* 1-B. [네이버 부동산 킬러 기능 4] 상단 서브 탭: [📊 핵심 분석 | 💬 현장 이야기] */}
+      <div className="flex items-center p-1 rounded-xl bg-gray-100 border border-gray-200">
+        <button
+          type="button"
+          onClick={() => setActiveTab("ANALYZE")}
+          className={cn(
+            "flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5",
+            activeTab === "ANALYZE"
+              ? "bg-white text-blue-600 shadow-2xs font-extrabold"
+              : "text-gray-600 hover:text-gray-900"
+          )}
+        >
+          <Building2 className="w-3.5 h-3.5" />
+          <span>핵심 종합 분석</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab("COMMUNITY")}
+          className={cn(
+            "flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5",
+            activeTab === "COMMUNITY"
+              ? "bg-white text-blue-600 shadow-2xs font-extrabold"
+              : "text-gray-600 hover:text-gray-900"
+          )}
+        >
+          <MessageSquare className="w-3.5 h-3.5 text-blue-500" />
+          <span>현장 이야기 (소통)</span>
+        </button>
       </div>
 
-      {/* 3. 예상 타임라인 & 속도계 위젯 */}
-      <ProjectedTimelineWidget
-        stageCode={selectedDistrict.stage_code}
-        stageSeq={selectedDistrict.stage_seq}
-        bizType={selectedDistrict.biz_type}
-        approvalDate={selectedDistrict.approval_date}
-      />
-
-      {/* 4. [신규 기능 2] 사업성 분석 지수 (일반분양 비율) */}
-      <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 space-y-2.5">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-amber-600">
-            <Coins className="w-4 h-4 text-amber-600" />
-            <span>사업성 분석 지수 (일반분양 비율)</span>
-          </div>
-        </div>
-
-        {/* 사업성 등급 뱃지 */}
-        <div className="flex items-center justify-between">
-          <span
-            className={cn(
-              "text-[11px] font-extrabold px-2.5 py-1 rounded-xl border shadow-2xs",
-              profitability.badgeClass
+      {activeTab === "COMMUNITY" ? (
+        /* 현장 이야기 탭 활성화 시 */
+        <DistrictCommunityFeed
+          districtUid={selectedDistrict.master_uid}
+          districtName={selectedDistrict.name}
+        />
+      ) : (
+        /* 핵심 종합 분석 탭 활성화 시 */
+        <>
+          {/* 2. 주소 및 [기능 5 & 기능 2] 초역세권 & 학군 접근성 배너 */}
+          <div className="space-y-1.5 text-xs text-gray-600 bg-gray-50 p-3 rounded-2xl border border-gray-200">
+            <div className="flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+              <span className="truncate">
+                {selectedDistrict.address_jibun
+                  ? `${selectedDistrict.gu || ""} ${selectedDistrict.address_jibun}`
+                  : selectedDistrict.legal_dong || "서울특별시"}
+              </span>
+            </div>
+            {selectedDistrict.address_doro && (
+              <div className="text-[11px] text-gray-500 pl-5 truncate">
+                도로명: {selectedDistrict.address_doro}
+              </div>
             )}
-          >
-            {profitability.badgeLabel}
-          </span>
-          <span className="text-xs font-black text-amber-600">{profitability.ratio}%</span>
-        </div>
 
-        {/* 일반분양 비율 게이지 바 */}
-        <div className="w-full h-2 rounded-full bg-gray-200 overflow-hidden">
-          <div
-            className={cn("h-full rounded-full transition-all duration-500", profitability.barClass)}
-            style={{ width: `${Math.min(100, Math.max(5, profitability.ratio))}%` }}
+            {/* 지하철역 & 학교 도보 접근성 뱃지 */}
+            {selectedDistrict.centroid && (() => {
+              const [lng, lat] = selectedDistrict.centroid;
+              const stationInfo = getNearestStation(lat, lng);
+              const schools = getNearbySchools(lat, lng, 600);
+              return (
+                <div className="flex items-center gap-1.5 pt-1.5 border-t border-gray-200 flex-wrap text-[11px]">
+                  {/* 역세권 정보 */}
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 font-semibold">
+                    <Train className="w-3 h-3 text-indigo-600" />
+                    <span>{stationInfo.station.name} 도보 {stationInfo.walkMinutes}분</span>
+                    {stationInfo.isSuperClose && (
+                      <span className="px-1 py-0.2 rounded bg-indigo-600 text-white text-[9px] font-extrabold">초역세권</span>
+                    )}
+                  </span>
+
+                  {/* 학군 정보 */}
+                  {schools.length > 0 && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold">
+                      <GraduationCap className="w-3 h-3 text-emerald-600" />
+                      <span>{schools[0].school.name} 도보 {schools[0].walkMinutes}분</span>
+                      <span className="px-1 py-0.2 rounded bg-emerald-600 text-white text-[9px] font-extrabold">초품아</span>
+                    </span>
+                  )}
+                </div>
+              );
+            })()}
+          </div>
+
+          {/* 3. 예상 타임라인 & 속도계 위젯 */}
+          <ProjectedTimelineWidget
+            stageCode={selectedDistrict.stage_code}
+            stageSeq={selectedDistrict.stage_seq}
+            bizType={selectedDistrict.biz_type}
+            approvalDate={selectedDistrict.approval_date}
           />
-        </div>
 
-        <p className="text-[11px] text-gray-700 leading-relaxed bg-white p-2.5 rounded-xl border border-gray-200 shadow-2xs">
-          {profitability.description}
-        </p>
-      </div>
+          {/* 4. [네이버 부동산 킬러 기능 1] 평형별 주변 시세 추이 & 예상 프리미엄 그래프 */}
+          <PriceTrendChart
+            districtName={selectedDistrict.name}
+            guName={selectedDistrict.gu}
+            totalHouseholds={totalHouseholds}
+          />
 
-      {/* 5. 건립 세대수 공급량 섹션 */}
-      <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-gray-800">
-            <Home className="w-3.5 h-3.5 text-blue-600" />
-            <span>건립 예정 세대수</span>
+          {/* 5. 사업성 분석 지수 (일반분양 비율) */}
+          <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 space-y-2.5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-amber-600">
+                <Coins className="w-4 h-4 text-amber-600" />
+                <span>사업성 분석 지수 (일반분양 비율)</span>
+              </div>
+            </div>
+
+            {/* 사업성 등급 뱃지 */}
+            <div className="flex items-center justify-between">
+              <span
+                className={cn(
+                  "text-[11px] font-extrabold px-2.5 py-1 rounded-xl border shadow-2xs",
+                  profitability.badgeClass
+                )}
+              >
+                {profitability.badgeLabel}
+              </span>
+              <span className="text-xs font-black text-amber-600">{profitability.ratio}%</span>
+            </div>
+
+            {/* 일반분양 비율 게이지 바 */}
+            <div className="w-full h-2 rounded-full bg-gray-200 overflow-hidden">
+              <div
+                className={cn("h-full rounded-full transition-all duration-500", profitability.barClass)}
+                style={{ width: `${Math.min(100, Math.max(5, profitability.ratio))}%` }}
+              />
+            </div>
+
+            <p className="text-[11px] text-gray-700 leading-relaxed bg-white p-2.5 rounded-xl border border-gray-200 shadow-2xs">
+              {profitability.description}
+            </p>
           </div>
-          <span className="text-xs font-bold text-blue-600">
-            총 {totalHouseholds > 0 ? totalHouseholds.toLocaleString() : "계획중"} 세대
-          </span>
-        </div>
 
-        {totalHouseholds > 0 ? (
-          <div className="grid grid-cols-3 gap-2 pt-2 border-t border-gray-200 text-center">
-            <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-2xs">
-              <span className="text-[10px] text-gray-400 block">분양</span>
-              <strong className="text-xs text-gray-800 font-bold">
-                {saleHouseholds.toLocaleString()}
-              </strong>
+          {/* 6. [네이버 부동산 킬러 기능 3] 건립 세대수 공급량 섹션 + ㎡ ⇄ 평 단위 변환기 */}
+          <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 space-y-2.5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-gray-800">
+                <Home className="w-3.5 h-3.5 text-blue-600" />
+                <span>건립 예정 세대수 &amp; 평형 구성</span>
+              </div>
+
+              {/* [㎡ | 평] 원클릭 단위 변환 토글 */}
+              <div className="flex items-center p-0.5 rounded-lg bg-gray-200 text-[10px] font-bold">
+                <button
+                  type="button"
+                  onClick={() => setUnitMode("PYEONG")}
+                  className={cn(
+                    "px-1.5 py-0.5 rounded transition-all cursor-pointer",
+                    unitMode === "PYEONG" ? "bg-white text-blue-600 shadow-2xs font-extrabold" : "text-gray-600"
+                  )}
+                >
+                  평(坪)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setUnitMode("M2")}
+                  className={cn(
+                    "px-1.5 py-0.5 rounded transition-all cursor-pointer",
+                    unitMode === "M2" ? "bg-white text-blue-600 shadow-2xs font-extrabold" : "text-gray-600"
+                  )}
+                >
+                  ㎡
+                </button>
+              </div>
             </div>
-            <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-2xs">
-              <span className="text-[10px] text-gray-400 block">임대</span>
-              <strong className="text-xs text-blue-600 font-bold">
-                {rentHouseholds.toLocaleString()}
-              </strong>
-            </div>
-            <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-2xs">
-              <span className="text-[10px] text-gray-400 block">기존가구</span>
-              <strong className="text-xs text-gray-500 font-medium">
-                {existingHouseholds > 0 ? existingHouseholds.toLocaleString() : "-"}
-              </strong>
-            </div>
+
+            {totalHouseholds > 0 ? (
+              <>
+                <div className="grid grid-cols-3 gap-2 pt-1 border-t border-gray-200 text-center">
+                  <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-2xs">
+                    <span className="text-[10px] text-gray-400 block">분양</span>
+                    <strong className="text-xs text-gray-800 font-bold">
+                      {saleHouseholds.toLocaleString()}
+                    </strong>
+                  </div>
+                  <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-2xs">
+                    <span className="text-[10px] text-gray-400 block">임대</span>
+                    <strong className="text-xs text-blue-600 font-bold">
+                      {rentHouseholds.toLocaleString()}
+                    </strong>
+                  </div>
+                  <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-2xs">
+                    <span className="text-[10px] text-gray-400 block">기존가구</span>
+                    <strong className="text-xs text-gray-500 font-medium">
+                      {existingHouseholds > 0 ? existingHouseholds.toLocaleString() : "-"}
+                    </strong>
+                  </div>
+                </div>
+
+                {/* 평형별(소형/국평/대형) 예상 배분 비율 가이드 바 */}
+                <div className="p-2.5 rounded-xl bg-white border border-gray-200 space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px] font-bold text-gray-700">
+                    <span>
+                      {unitMode === "PYEONG" ? "25평(소형) 40%" : "59㎡ 이하 40%"}
+                    </span>
+                    <span className="text-blue-600">
+                      {unitMode === "PYEONG" ? "34평(국평) 48%" : "84㎡ 기준 48%"}
+                    </span>
+                    <span className="text-indigo-600">
+                      {unitMode === "PYEONG" ? "45평(대형) 12%" : "85㎡ 초과 12%"}
+                    </span>
+                  </div>
+                  <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden flex">
+                    <div className="h-full bg-emerald-400" style={{ width: "40%" }} title="소형 40%" />
+                    <div className="h-full bg-blue-500" style={{ width: "48%" }} title="국평 48%" />
+                    <div className="h-full bg-indigo-600" style={{ width: "12%" }} title="대형 12%" />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <p className="text-[11px] text-gray-500 text-center py-1">
+                정비계획 수립 후 세대수 산정 예정
+              </p>
+            )}
           </div>
-        ) : (
-          <p className="text-[11px] text-gray-500 text-center py-1">
-            정비계획 수립 후 세대수 산정 예정
-          </p>
-        )}
-      </div>
+        </>
+      )}
 
 
       {/* 6. 입주권 안전 진단 카드 위젯 */}

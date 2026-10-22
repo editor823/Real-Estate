@@ -5,6 +5,8 @@ import { DISTRICTS_GEOJSON } from "@/lib/constants/districtsData";
 import { DistrictFeature } from "@/lib/types/district";
 import { StageBadge } from "@/components/ui/StageBadge";
 import { AdSenseBanner } from "@/components/ads/AdSenseBanner";
+import { PriceTrendChart } from "@/components/district/PriceTrendChart";
+import { DistrictCommunityFeed } from "@/components/district/DistrictCommunityFeed";
 import {
   Building2,
   MapPin,
@@ -721,6 +723,23 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
               );
             })}
           </div>
+        </section>
+
+        {/* E-1. 평형별 시세 추이 및 예상 프리미엄 분석 (네이버 부동산 벤치마킹) */}
+        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
+          <PriceTrendChart
+            districtName={props.name}
+            guName={props.gu}
+            totalHouseholds={totalH}
+          />
+        </section>
+
+        {/* E-2. 현장 이야기 및 임장 소통 피드 (네이버 부동산 벤치마킹) */}
+        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
+          <DistrictCommunityFeed
+            districtUid={props.master_uid}
+            districtName={props.name}
+          />
         </section>
 
         {/* F. [단락 4] 자주 묻는 질문 (FAQ) - 아코디언 토글 형태 */}
