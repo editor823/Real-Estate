@@ -37,13 +37,14 @@ export function GlobalNavBar() {
           className="flex items-center gap-2 group cursor-pointer shrink-0"
           aria-label="서울 경기 부동산 정비사업 모니터링 홈으로 이동"
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-xs shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-xs shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform shrink-0">
             서경
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col shrink-0">
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-sm sm:text-base tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors">
-                서울 경기 정비사업
+              <span className="font-extrabold text-xs sm:text-base tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                <span className="sm:hidden">서울경기정비</span>
+                <span className="hidden sm:inline">서울 경기 정비사업</span>
               </span>
               <span className="hidden md:inline-flex px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
                 1,029개소

@@ -86,6 +86,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   const [currentZoom, setCurrentZoom] = useState<number>(10);
   const [showSchools, setShowSchools] = useState<boolean>(false);
   const [showWalkRadius, setShowWalkRadius] = useState<boolean>(false);
+  const [showLegend, setShowLegend] = useState<boolean>(false);
 
   // 100% 영구 무료 공식 지도 타일 (API 키 및 결제 전혀 불필요, 워터마크 0개)
   const TILE_URLS = {
@@ -97,16 +98,23 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   };
 
-  // 1. 지도 초기화 (수도권 전체가 보이도록 중심과 줌 레벨 최적화, Canvas 가속 활성화)
+  // 1. 지도 초기화 (모바일 화면 감지 및 중심/줌 레벨 반응형 최적화)
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
+    // 모바일(화면 폭 640px 미만)에서는 서울 중심 줌 12로 더 확대하여 마커 겹침 방지
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+    const initialCenter: [number, number] = isMobile ? [37.55, 126.98] : [37.53, 126.99];
+    const initialZoom = isMobile ? 12 : 11;
+
     const map = L.map(containerRef.current, {
-      center: [37.53, 126.99],
-      zoom: 11,
+      center: initialCenter,
+      zoom: initialZoom,
       zoomControl: false,
       preferCanvas: true, // 브라우저 DOM 과부하를 막는 고성능 HTML5 Canvas 가속 렌더링
     });
+
+    setCurrentZoom(initialZoom);
 
     // 타일 깨짐 및 하얀 사각형 빈 공간 방지 옵션 적용 (버퍼링 최적화)
     const tileLayer = L.tileLayer(TILE_URLS.vworld, {
@@ -171,14 +179,24 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     mapRef.current.flyTo(flyToTarget, targetZoom, { duration: 0.9 });
   }, [flyToTarget]);
 
-  // 4. 자치구별 통계 집계 (클러스터링용)
-  const guClusters = useMemo(() => {
+  // 4. 자치구별 & 광역 권역별 통계 집계 (반응형 2단계 클러스터링용)
+  const { guClusters, megaClusters } = useMemo(() => {
     const map = new Map<string, { count: number; totalH: number; lat: number; lng: number }>();
+    let seoulCount = 0;
+    let gyeonggiCount = 0;
 
     features.forEach((f) => {
       const gu = f.properties.gu || "기타";
       const totalH = f.properties.total_households || 0;
       const coords = GU_CENTER_COORDS[gu] || [37.5665, 126.978];
+
+      const isSeoul = gu.endsWith("구") && gu !== "처인구" && gu !== "수지구" && gu !== "기흥구" && gu !== "일산동구" && gu !== "일산서구" && gu !== "덕양구" && gu !== "수정구" && gu !== "중원구" && gu !== "분당구" && gu !== "만안구" && gu !== "동안구" && gu !== "상록구" && gu !== "단원구" && gu !== "원미구" && gu !== "소사구" && gu !== "오정구" && gu !== "권선구" && gu !== "팔달구" && gu !== "영통구" && gu !== "장안구";
+
+      if (isSeoul) {
+        seoulCount += 1;
+      } else {
+        gyeonggiCount += 1;
+      }
 
       if (!map.has(gu)) {
         map.set(gu, { count: 0, totalH: 0, lat: coords[0], lng: coords[1] });
@@ -188,16 +206,35 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
       data.totalH += totalH;
     });
 
-    return Array.from(map.entries()).map(([gu, info]) => ({
+    const guList = Array.from(map.entries()).map(([gu, info]) => ({
       gu,
       count: info.count,
       totalH: info.totalH,
       lat: info.lat,
       lng: info.lng,
     }));
+
+    const megaList = [
+      {
+        name: "서울시 전역",
+        count: seoulCount,
+        lat: 37.555,
+        lng: 126.985,
+        targetZoom: 12.5,
+      },
+      {
+        name: "경기도 전역",
+        count: gyeonggiCount,
+        lat: 37.310,
+        lng: 127.120,
+        targetZoom: 12.0,
+      },
+    ];
+
+    return { guClusters: guList, megaClusters: megaList };
   }, [features]);
 
-  // 5. 줌 레벨에 따른 클러스터링(축소 뷰) vs 개별 마커/폴리곤(확대 뷰) 렌더링
+  // 5. 줌 레벨에 따른 스마트 클러스터링(광역 ➔ 자치구 ➔ 개별 구역) 렌더링
   useEffect(() => {
     if (!mapRef.current) return;
     const map = mapRef.current;
@@ -218,17 +255,49 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     if (features.length === 0) return;
 
     // =========================================================================
-    // 모드 A: 지도 축소 레벨 (currentZoom < 14.5) ➔ 자치구 클러스터링 모드 (네이버 부동산 스타일)
+    // 모드 A-1: 극축소 광역 레벨 (currentZoom < 11.5) ➔ 서울/경기 2대 메가 클러스터 (마커 겹침 100% 박멸!)
+    // =========================================================================
+    if (currentZoom < 11.5 && clusterLayerRef.current) {
+      megaClusters.forEach((mega) => {
+        const megaHtml = `
+          <div class="cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95">
+            <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-slate-900/95 text-white shadow-2xl border-2 border-emerald-400 whitespace-nowrap backdrop-blur-md">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span class="text-xs sm:text-sm font-black tracking-tight">${mega.name}</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-black text-xs shadow-xs">
+                ${mega.count}개 구역
+              </span>
+            </div>
+          </div>
+        `;
+
+        const megaIcon = L.divIcon({
+          html: megaHtml,
+          className: "mega-cluster-marker",
+          iconSize: [160, 44],
+          iconAnchor: [80, 22],
+        });
+
+        const marker = L.marker([mega.lat, mega.lng], { icon: megaIcon });
+        marker.on("click", () => {
+          map.flyTo([mega.lat, mega.lng], mega.targetZoom, { duration: 0.8 });
+        });
+        clusterLayerRef.current?.addLayer(marker);
+      });
+      return;
+    }
+
+    // =========================================================================
+    // 모드 A-2: 자치구 단위 클러스터 레벨 (11.5 <= currentZoom < 14.5) ➔ 자치구별 깔끔한 알약 뱃지
     // =========================================================================
     if (currentZoom < 14.5 && clusterLayerRef.current) {
       guClusters.forEach((cluster) => {
-        // 자치구 단위 클러스터 뱃지 HTML ('동대문구 28' 등 네이버 스타일 원형/알약 뱃지)
         const clusterHtml = `
-          <div class="group relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110">
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/95 text-white text-xs font-extrabold shadow-xl border-2 border-emerald-400 whitespace-nowrap hover:bg-emerald-600 hover:border-white transition-all backdrop-blur-md">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 group-hover:bg-white animate-pulse"></span>
-              <span class="tracking-tight text-xs font-extrabold">${cluster.gu}</span>
-              <span class="px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 group-hover:bg-white group-hover:text-emerald-800 font-black text-[11px]">
+          <div class="cursor-pointer transition-transform duration-150 active:scale-95">
+            <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900/90 text-white text-[11px] font-extrabold shadow-lg border border-emerald-400/80 whitespace-nowrap backdrop-blur-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span class="tracking-tight">${cluster.gu}</span>
+              <span class="px-1.5 py-0.2 rounded-full bg-emerald-500/30 text-emerald-300 font-bold text-[10px]">
                 ${cluster.count}
               </span>
             </div>
@@ -238,21 +307,19 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         const clusterIcon = L.divIcon({
           html: clusterHtml,
           className: "gu-cluster-marker",
-          iconSize: [130, 36],
-          iconAnchor: [65, 18],
+          iconSize: [100, 28],
+          iconAnchor: [50, 14],
         });
 
         const marker = L.marker([cluster.lat, cluster.lng], { icon: clusterIcon });
 
-        // 클러스터 클릭 시 해당 자치구로 부드럽게 줌인! (개별 구역이 선명하게 나타나는 15.5 레벨)
         marker.on("click", () => {
           map.flyTo([cluster.lat, cluster.lng], 15.5, { duration: 0.8 });
         });
 
-        // 호버 시 자치구 요약 툴팁 표출
         marker.bindTooltip(
-          `<div class="p-1"><strong>${cluster.gu}</strong>: 정비사업 <strong>${cluster.count}개 구역</strong><br/><span class="text-xs text-slate-500">클릭하면 동네 상세 구역으로 확대됩니다</span></div>`,
-          { direction: "top", offset: [0, -18] }
+          `<div class="p-1"><strong>${cluster.gu}</strong>: <strong>${cluster.count}개 구역</strong><br/><span class="text-[10px] text-slate-500">터치하면 상세 구역으로 확대됩니다</span></div>`,
+          { direction: "top", offset: [0, -14] }
         );
 
         clusterLayerRef.current?.addLayer(marker);
@@ -580,20 +647,20 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         style={{ width: "100%", height: "100%" }}
       />
 
-      {/* 2. 클러스터링 상태 안내 플로팅 배너 */}
+      {/* 2. 클러스터링 상태 안내 플로팅 배너 (PC에서만 표출) */}
       {currentZoom < 14.5 && (
-        <div className="absolute top-4 left-6 z-[500] px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 text-xs font-semibold shadow-md flex items-center gap-2 animate-in fade-in duration-300">
+        <div className="hidden md:flex absolute top-4 left-6 z-[500] px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 text-xs font-semibold shadow-md items-center gap-2 animate-in fade-in duration-300">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          <span>광역 클러스터 뷰: 자치구 뱃지를 클릭하면 동네 상세 구역으로 줌인됩니다.</span>
+          <span>광역 클러스터 뷰: 뱃지를 터치하면 동네 상세 구역으로 줌인됩니다.</span>
         </div>
       )}
 
-      {/* 3. 우측 상단 플로팅 지도 컨트롤 (네이버 부동산 스타일 레이어 스위처) */}
-      <div className="absolute top-4 right-4 z-[500] flex items-center gap-1.5 flex-wrap justify-end">
+      {/* 3. 우측 상단 플로팅 지도 컨트롤 */}
+      <div className="absolute top-2.5 sm:top-4 right-2.5 sm:right-4 z-[500] flex items-center gap-1 sm:gap-1.5 flex-wrap justify-end">
         {/* 학군 지도 토글 */}
         <button
           onClick={() => setShowSchools(!showSchools)}
-          className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl border shadow-md text-xs font-semibold transition-all cursor-pointer ${
+          className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl border shadow-sm text-[11px] sm:text-xs font-semibold transition-all cursor-pointer ${
             showSchools
               ? "bg-emerald-600 border-emerald-600 text-white font-bold shadow-emerald-600/30"
               : "bg-white/95 backdrop-blur-md border-slate-200 text-slate-700 hover:bg-slate-50"
@@ -601,13 +668,13 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
           title="주변 초·중·고교 위치 및 300m 안심 통학권 레이어를 켜고 끕니다"
         >
           <GraduationCap className="w-3.5 h-3.5" />
-          <span>초품아·학군</span>
+          <span>초품아</span>
         </button>
 
         {/* 역세권 500m 도보권 토글 */}
         <button
           onClick={() => setShowWalkRadius(!showWalkRadius)}
-          className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl border shadow-md text-xs font-semibold transition-all cursor-pointer ${
+          className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl border shadow-sm text-[11px] sm:text-xs font-semibold transition-all cursor-pointer ${
             showWalkRadius
               ? "bg-indigo-600 border-indigo-600 text-white font-bold shadow-indigo-600/30"
               : "bg-white/95 backdrop-blur-md border-slate-200 text-slate-700 hover:bg-slate-50"
@@ -615,50 +682,62 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
           title="지하철역 및 구역 중심 반경 500m(도보 7분 역세권) 링을 켜고 끕니다"
         >
           <Train className="w-3.5 h-3.5" />
-          <span>역세권 500m</span>
+          <span>역세권</span>
         </button>
 
-        {/* 국토교통부 브이월드 일반/백지도 테마 전환 (100% 무료 공식 지도) */}
+        {/* 국토교통부 브이월드 일반/백지도 테마 전환 */}
         <button
           onClick={() => setMapTheme(mapTheme === "vworld" ? "vworld_white" : "vworld")}
-          className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-all cursor-pointer"
+          className="flex items-center gap-1 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm text-[11px] sm:text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-all cursor-pointer"
           title="국토교통부 일반 지도와 미니멀 백지도를 전환합니다"
         >
           <Layers className="w-3.5 h-3.5 text-blue-600" />
-          <span>{mapTheme === "vworld" ? "백지도 뷰" : "일반 지도"}</span>
+          <span>{mapTheme === "vworld" ? "백지도" : "일반"}</span>
         </button>
 
         {/* 전역 리셋 */}
         <button
           onClick={handleResetView}
-          className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
+          className="flex items-center gap-1 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm text-[11px] sm:text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
           title="수도권 전체 보기로 지도 위치를 초기화합니다"
         >
           <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
-          <span>수도권 전역</span>
+          <span className="hidden sm:inline">수도권 </span>전역
         </button>
       </div>
 
-      {/* 4. 우측 하단 지도 범례 */}
-      <div className="absolute bottom-4 right-4 z-[500] p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-xl max-w-xs text-xs">
-        <div className="font-bold text-slate-900 mb-2 flex items-center justify-between">
-          <span>정비사업 8단계 범례</span>
-          <span className="text-[10px] text-slate-500 font-normal">
-            {currentZoom < 13 ? "자치구별 클러스터링" : `${features.length}개 구역 표출`}
-          </span>
-        </div>
-        <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]">
-          {Object.values(STAGES)
-            .slice(0, 8)
-            .map((st) => (
-              <div key={st.code} className="flex items-center gap-1.5">
-                <span
-                  style={{ backgroundColor: st.hex }}
-                  className="w-2.5 h-2.5 rounded-full shrink-0 shadow-xs"
-                />
-                <span className="text-slate-600 truncate">{st.name}</span>
-              </div>
-            ))}
+      {/* 4. 우측 하단 지도 범례 (모바일에서는 토글 버튼으로 화면 가림 방지) */}
+      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-[500] flex flex-col items-end">
+        {/* 모바일 토글 버튼 */}
+        <button
+          onClick={() => setShowLegend(!showLegend)}
+          className="md:hidden flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 text-slate-800 text-xs font-bold shadow-md hover:bg-slate-50 mb-1 cursor-pointer"
+        >
+          <span>🎨 범례</span>
+          <span className="text-[10px] text-slate-400">{showLegend ? "▲" : "▼"}</span>
+        </button>
+
+        {/* 범례 본체: PC에서는 상시 표출, 모바일에서는 showLegend가 true일 때만 표출 */}
+        <div className={`${showLegend ? "block" : "hidden md:block"} p-2.5 sm:p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-xl max-w-xs text-xs animate-in fade-in duration-200`}>
+          <div className="font-bold text-slate-900 mb-2 flex items-center justify-between gap-3">
+            <span>정비사업 8단계 범례</span>
+            <span className="text-[10px] text-slate-500 font-normal">
+              {currentZoom < 14.5 ? "광역 클러스터링" : `${features.length}개 구역 표출`}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]">
+            {Object.values(STAGES)
+              .slice(0, 8)
+              .map((st) => (
+                <div key={st.code} className="flex items-center gap-1.5">
+                  <span
+                    style={{ backgroundColor: st.hex }}
+                    className="w-2.5 h-2.5 rounded-full shrink-0 shadow-xs"
+                  />
+                  <span className="text-slate-600 truncate">{st.name}</span>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
 
