@@ -127,6 +127,13 @@ export default function MainPage() {
     }
   }, [features, setSelectedUid, setSelectedDistrict, setFlyToTarget]);
 
+  // 지도에서 마커나 폴리곤을 클릭하여 구역이 선택되면 사이드바를 자동으로 열어 단일 패널로 매끄럽게 상세 정보 표시
+  useEffect(() => {
+    if (selectedDistrict) {
+      setIsSidebarOpen(true);
+    }
+  }, [selectedDistrict]);
+
   return (
     <main className="relative w-full h-[calc(100vh-56px)] flex overflow-hidden bg-slate-50">
       {/* 0. 접근성 및 검색엔진(SEO) 크롤러를 위한 시맨틱 구조와 25개 자치구 내부링크 네트워크 */}
@@ -199,33 +206,27 @@ export default function MainPage() {
           <InteractiveLeafletMap features={filteredFeatures} />
         )}
 
-        {/* 선택된 구역이 있을 때 표시되는 퀵 상세 정보 카드 (모바일 바텀시트 & 데스크톱 플로팅) */}
-        {selectedDistrict ? (
-          <aside className="absolute inset-x-3 bottom-16 sm:bottom-auto sm:top-16 sm:left-6 z-[500] sm:w-[390px] max-w-full max-h-[70vh] sm:max-h-[calc(100vh-5.5rem)] rounded-3xl bg-white/95 backdrop-blur-xl border border-gray-200 shadow-2xl overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-200">
-            <DistrictCard />
-          </aside>
-        ) : (
-          <aside className="hidden lg:flex items-center gap-2.5 absolute bottom-4 left-6 z-[450] bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-2xl p-2.5 pr-3 hover:shadow-lg hover:border-blue-300 transition-all group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs shadow-xs group-hover:scale-105 transition-transform shrink-0">
-              🎯
+        {/* 수도권 청약 & 공모주 라운지 퀵 링크 플로팅 배너 */}
+        <aside className="hidden lg:flex items-center gap-2.5 absolute bottom-4 left-6 z-[450] bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-2xl p-2.5 pr-3 hover:shadow-lg hover:border-blue-300 transition-all group">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs shadow-xs group-hover:scale-105 transition-transform shrink-0">
+            🎯
+          </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                수도권 청약 &amp; 공모주 라운지
+              </span>
+              <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-blue-100 text-blue-700">NEW</span>
             </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="text-xs font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                  수도권 청약 &amp; 공모주 라운지
-                </span>
-                <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-blue-100 text-blue-700">NEW</span>
-              </div>
-              <span className="text-[10px] text-gray-500">84점 가점 진단 · 분양 캘린더</span>
-            </div>
-            <Link
-              href="/subscription"
-              className="ml-1 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold transition-all shadow-xs"
-            >
-              열기 →
-            </Link>
-          </aside>
-        )}
+            <span className="text-[10px] text-gray-500">84점 가점 진단 · 분양 캘린더</span>
+          </div>
+          <Link
+            href="/subscription"
+            className="ml-1 px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold transition-all shadow-xs"
+          >
+            열기 →
+          </Link>
+        </aside>
 
         {/* 지도 우측 하단 미니 개인정보처리방침 링크 (데스크톱 패널 닫힘 시 노출) */}
         <button

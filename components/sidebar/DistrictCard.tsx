@@ -116,20 +116,20 @@ export function DistrictCard() {
   const profitability = getProfitabilityAnalysis();
 
   return (
-    <article className="p-4 sm:p-5 space-y-4 max-h-[85vh] overflow-y-auto text-gray-900 bg-white">
-      {/* 1. 카드 헤더 */}
-      <div className="flex items-start justify-between gap-3">
+    <article className="p-4 space-y-4 text-gray-900 bg-white">
+      {/* 1. 카드 헤더: 네이버 스타일 시원한 타이포그래피 */}
+      <div className="flex items-start justify-between gap-3 pb-2 border-b border-gray-100">
         <div>
           <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+            <span className="text-xs font-bold px-2 py-0.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
               {selectedDistrict.gu || "서울시"}
             </span>
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-gray-100 text-gray-700 border border-gray-200">
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-gray-100 text-gray-700 border border-gray-200">
               {selectedDistrict.biz_type_label || selectedDistrict.biz_type}
             </span>
             <StageBadge stageCode={selectedDistrict.stage_code} />
           </div>
-          <h2 className="text-base font-bold text-gray-900 tracking-tight leading-snug">
+          <h2 className="text-lg font-extrabold text-gray-900 tracking-tight leading-snug">
             {selectedDistrict.name}
           </h2>
         </div>
@@ -139,21 +139,13 @@ export function DistrictCard() {
             type="button"
             onClick={() => addToCompare(selectedDistrict)}
             className={cn(
-              "px-2.5 py-1 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1",
+              "px-2.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center gap-1",
               inCompare
                 ? "bg-blue-600 text-white border-blue-600 shadow-xs"
                 : "bg-gray-100 hover:bg-gray-200 text-gray-700 border-gray-200"
             )}
           >
-            <span>{inCompare ? "비교함 담김 ✓" : "+ 비교담기"}</span>
-          </button>
-
-          <button
-            onClick={handleClose}
-            className="p-1 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
-            aria-label="상세 패널 닫기"
-          >
-            <X className="w-5 h-5" />
+            <span>{inCompare ? "비교함 ✓" : "+ 비교"}</span>
           </button>
         </div>
       </div>

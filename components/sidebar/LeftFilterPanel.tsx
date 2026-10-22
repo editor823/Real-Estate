@@ -8,6 +8,7 @@ import { DistrictFeature } from "@/lib/types/district";
 import { BIZ_TYPES } from "@/lib/constants/stages";
 import { StageBadge } from "@/components/ui/StageBadge";
 import { TimelineFeed } from "./TimelineFeed";
+import { DistrictCard } from "./DistrictCard";
 import {
   Search,
   Filter,
@@ -24,6 +25,7 @@ import {
   Trophy,
   X,
   ExternalLink,
+  ChevronLeft,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -82,7 +84,7 @@ export function LeftFilterPanel({
     resetFilters,
   } = useFilterStore();
 
-  const { selectedUid, setSelectedUid, setSelectedDistrict, setFlyToTarget } = useMapStore();
+  const { selectedUid, setSelectedUid, selectedDistrict, setSelectedDistrict, setFlyToTarget } = useMapStore();
   const { addToCompare, isInCompare } = useCompareStore();
 
   // 1. 검색창 디바운스 최적화: 타이핑할 때 렉 없이 부드럽게 반응하도록 처리
@@ -277,42 +279,74 @@ export function LeftFilterPanel({
         isOpen ? "w-full sm:w-[420px] max-w-[100vw] sm:max-w-[420px]" : "w-0 overflow-hidden border-r-0"
       )}
     >
-      {/* 1. 탭 전환 버튼 (사이드바 최상단 바로 노출) */}
-      <div className="flex items-center border-b border-gray-200 bg-gray-50 p-2 gap-1.5 shrink-0">
-        <button
-          onClick={() => setActiveTab("list")}
-          className={cn(
-            "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer",
-            activeTab === "list"
-              ? "bg-white text-blue-600 shadow-xs border border-gray-200 font-bold"
-              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-          )}
-        >
-          <Building className="w-3.5 h-3.5" />
-          <span>구역 필터 ({filteredAndSortedFeatures.length})</span>
-        </button>
-        <button
-          onClick={() => setActiveTab("timeline")}
-          className={cn(
-            "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer",
-            activeTab === "timeline"
-              ? "bg-white text-blue-600 shadow-xs border border-gray-200 font-bold"
-              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-          )}
-        >
-          <History className="w-3.5 h-3.5" />
-          <span>실시간 고시 타임라인</span>
-        </button>
-        {/* 모바일 패널 닫기 버튼 */}
-        <button
-          onClick={onToggle}
-          className="p-2 rounded-xl text-gray-500 hover:text-gray-800 hover:bg-gray-100 transition-colors sm:hidden cursor-pointer shrink-0"
-          title="패널 닫기"
-          aria-label="패널 닫기"
-        >
-          <X className="w-4 h-4" />
-        </button>
-      </div>
+      {/* A. 구역이 선택되었을 때: 네이버 부동산 스타일 단일 패널 전환 (DistrictCard 렌더링) */}
+      {selectedDistrict ? (
+        <div className="flex-1 flex flex-col min-h-0 bg-white">
+          {/* 상단 뒤로가기 내비게이션 바 */}
+          <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-gray-50/90 backdrop-blur-sm shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedDistrict(null);
+                setSelectedUid(null);
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-gray-200 text-xs font-bold text-gray-800 hover:text-blue-600 hover:border-blue-300 transition-all shadow-2xs cursor-pointer group"
+            >
+              <ChevronLeft className="w-4 h-4 text-blue-600 group-hover:-translate-x-0.5 transition-transform" />
+              <span>← 전체 구역 목록으로</span>
+            </button>
+            <button
+              onClick={onToggle}
+              className="p-1.5 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-200 sm:hidden cursor-pointer"
+              title="패널 닫기"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* 구역 상세 정보 카드 렌더링 (단일 패널 내부 스크롤) */}
+          <div className="flex-1 overflow-y-auto bg-white">
+            <DistrictCard />
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* B. 일반 목록 상태: 탭 전환 버튼 및 필터 목록 */}
+          <div className="flex items-center border-b border-gray-200 bg-gray-50 p-2 gap-1.5 shrink-0">
+            <button
+              onClick={() => setActiveTab("list")}
+              className={cn(
+                "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer",
+                activeTab === "list"
+                  ? "bg-white text-blue-600 shadow-xs border border-gray-200 font-bold"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              )}
+            >
+              <Building className="w-3.5 h-3.5" />
+              <span>구역 필터 ({filteredAndSortedFeatures.length})</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("timeline")}
+              className={cn(
+                "flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer",
+                activeTab === "timeline"
+                  ? "bg-white text-blue-600 shadow-xs border border-gray-200 font-bold"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              )}
+            >
+              <History className="w-3.5 h-3.5" />
+              <span>실시간 고시 타임라인</span>
+            </button>
+            {/* 모바일 패널 닫기 버튼 */}
+            <button
+              onClick={onToggle}
+              className="p-2 rounded-xl text-gray-500 hover:text-gray-800 hover:bg-gray-100 transition-colors sm:hidden cursor-pointer shrink-0"
+              title="패널 닫기"
+              aria-label="패널 닫기"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
 
 
       {/* 3. 탭 내용 영역 */}
@@ -670,6 +704,8 @@ export function LeftFilterPanel({
             )}
           </div>
         </div>
+      )}
+        </>
       )}
 
       {/* 4. 하단 서비스 푸터 & 개인정보처리방침 안내 링크 (애드센스 필수) */}

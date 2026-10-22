@@ -82,15 +82,15 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
   const prevSelectedUidRef = useRef<string | null>(null);
 
   const { selectedUid, setSelectedUid, setSelectedDistrict, flyToTarget, selectedDistrict } = useMapStore();
-  const [mapTheme, setMapTheme] = useState<"osm" | "positron">("osm");
+  const [mapTheme, setMapTheme] = useState<"osm" | "positron">("positron");
   const [currentZoom, setCurrentZoom] = useState<number>(10);
   const [showSchools, setShowSchools] = useState<boolean>(false);
   const [showWalkRadius, setShowWalkRadius] = useState<boolean>(false);
 
-  // 무료 오픈 타일 (API 키 불필요)
+  // 무료 오픈 타일 (네이버 스타일의 깔끔한 미니멀 카토 타일)
   const TILE_URLS = {
     osm: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    positron: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    positron: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
   };
 
   // 1. 지도 초기화 (수도권 전체가 보이도록 중심과 줌 레벨 최적화, Canvas 가속 활성화)
@@ -98,17 +98,17 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     if (!containerRef.current || mapRef.current) return;
 
     const map = L.map(containerRef.current, {
-      center: [37.45, 126.98],
-      zoom: 10,
+      center: [37.53, 126.99],
+      zoom: 11,
       zoomControl: false,
       preferCanvas: true, // 브라우저 DOM 과부하를 막는 고성능 HTML5 Canvas 가속 렌더링
     });
 
-    const tileLayer = L.tileLayer(TILE_URLS.osm, {
+    const tileLayer = L.tileLayer(TILE_URLS.positron, {
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxZoom: 19,
-      subdomains: ["a", "b", "c"],
+      subdomains: ["a", "b", "c", "d"],
     }).addTo(map);
 
     tileLayerRef.current = tileLayer;
@@ -211,17 +211,17 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     if (features.length === 0) return;
 
     // =========================================================================
-    // 모드 A: 지도 축소 레벨 (currentZoom < 13) ➔ 자치구 클러스터링 모드
+    // 모드 A: 지도 축소 레벨 (currentZoom < 14.5) ➔ 자치구 클러스터링 모드 (네이버 부동산 스타일)
     // =========================================================================
-    if (currentZoom < 13 && clusterLayerRef.current) {
+    if (currentZoom < 14.5 && clusterLayerRef.current) {
       guClusters.forEach((cluster) => {
-        // 자치구 단위 클러스터 뱃지 HTML ('영등포구 18' 등)
+        // 자치구 단위 클러스터 뱃지 HTML ('동대문구 28' 등 네이버 스타일 원형/알약 뱃지)
         const clusterHtml = `
           <div class="group relative flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110">
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-slate-800 text-xs font-extrabold shadow-lg border-2 border-blue-500 whitespace-nowrap hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors">
-              <span class="w-2 h-2 rounded-full bg-blue-500 group-hover:bg-white animate-pulse"></span>
-              <span class="tracking-tight">${cluster.gu}</span>
-              <span class="px-1.5 py-0.2 rounded-full bg-blue-100 text-blue-700 group-hover:bg-white/20 group-hover:text-white font-black text-[11px]">
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/95 text-white text-xs font-extrabold shadow-xl border-2 border-emerald-400 whitespace-nowrap hover:bg-emerald-600 hover:border-white transition-all backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 group-hover:bg-white animate-pulse"></span>
+              <span class="tracking-tight text-xs font-extrabold">${cluster.gu}</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 group-hover:bg-white group-hover:text-emerald-800 font-black text-[11px]">
                 ${cluster.count}
               </span>
             </div>
@@ -231,20 +231,20 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
         const clusterIcon = L.divIcon({
           html: clusterHtml,
           className: "gu-cluster-marker",
-          iconSize: [120, 36],
-          iconAnchor: [60, 18],
+          iconSize: [130, 36],
+          iconAnchor: [65, 18],
         });
 
         const marker = L.marker([cluster.lat, cluster.lng], { icon: clusterIcon });
 
-        // 클러스터 클릭 시 해당 자치구로 부드럽게 줌인!
+        // 클러스터 클릭 시 해당 자치구로 부드럽게 줌인! (개별 구역이 선명하게 나타나는 15.5 레벨)
         marker.on("click", () => {
-          map.flyTo([cluster.lat, cluster.lng], 14, { duration: 0.8 });
+          map.flyTo([cluster.lat, cluster.lng], 15.5, { duration: 0.8 });
         });
 
         // 호버 시 자치구 요약 툴팁 표출
         marker.bindTooltip(
-          `<strong>${cluster.gu}</strong>: 정비구역 총 ${cluster.count}개소 (공급 ${cluster.totalH.toLocaleString()}세대)`,
+          `<div class="p-1"><strong>${cluster.gu}</strong>: 정비사업 <strong>${cluster.count}개 구역</strong><br/><span class="text-xs text-slate-500">클릭하면 동네 상세 구역으로 확대됩니다</span></div>`,
           { direction: "top", offset: [0, -18] }
         );
 
@@ -254,7 +254,7 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     }
 
     // =========================================================================
-    // 모드 B: 지도 확대 레벨 (currentZoom >= 13) ➔ 개별 구역 폴리곤 및 상세 마커
+    // 모드 B: 지도 확대 레벨 (currentZoom >= 14.5) ➔ 개별 구역 폴리곤 및 상세 마커
     // =========================================================================
     const createPopupHtml = (props: DistrictProperties, stageHex: string, stageName: string) => {
       const totalH = props.total_households || 0;
