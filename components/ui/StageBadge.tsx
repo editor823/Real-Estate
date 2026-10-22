@@ -8,8 +8,9 @@ interface StageBadgeProps {
 }
 
 export function StageBadge({ stageCode, className, showDot = true }: StageBadgeProps) {
-  const stage = STAGES[stageCode] || {
-    name: stageCode || "미지정",
+  const normalized = (stageCode || "").trim().toUpperCase();
+  const stage = STAGES[normalized] || STAGES[stageCode] || {
+    name: normalized === "PLAN_DESIGNATION" ? "정비구역 지정" : (stageCode || "미지정"),
     bgClass: "bg-slate-200",
     textClass: "text-slate-800",
     hex: "#94A3B8",
@@ -18,7 +19,7 @@ export function StageBadge({ stageCode, className, showDot = true }: StageBadgeP
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold shadow-xs transition-all",
+        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-2xs transition-all",
         stage.bgClass,
         stage.textClass,
         className
@@ -26,11 +27,11 @@ export function StageBadge({ stageCode, className, showDot = true }: StageBadgeP
     >
       {showDot && (
         <span
-          className="w-1.5 h-1.5 rounded-full bg-current opacity-80"
+          className="w-2 h-2 rounded-full bg-current opacity-90 shrink-0"
           aria-hidden="true"
         />
       )}
-      {stage.name}
+      <span>{stage.name}</span>
     </span>
   );
 }

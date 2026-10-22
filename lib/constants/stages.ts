@@ -93,6 +93,52 @@ export const STAGES: Record<string, StageInfo> = {
     textClass: "text-slate-900",
     description: "사업 취소 또는 일몰제 적용 해제",
   },
+  // 공공데이터 원천 코드 별칭(Aliases) 매핑
+  PLAN_DESIGNATION: {
+    code: "PLAN_DESIGNATION",
+    name: "정비구역 지정",
+    weight: 2,
+    hex: "#FB923C",
+    bgClass: "bg-orange-500",
+    textClass: "text-white",
+    description: "정비구역 공식 지정 및 정비계획 수립 고시",
+  },
+  APPROV_PROMOT: {
+    code: "APPROV_PROMOT",
+    name: "추진위 승인",
+    weight: 3,
+    hex: "#F97316",
+    bgClass: "bg-orange-500",
+    textClass: "text-white",
+    description: "공공지원 및 조합설립추진위원회 승인",
+  },
+  APPROV_UNION: {
+    code: "APPROV_UNION",
+    name: "조합설립 인가",
+    weight: 4,
+    hex: "#3B82F6",
+    bgClass: "bg-blue-600",
+    textClass: "text-white",
+    description: "조합설립인가 완료",
+  },
+  APPROV_BIZ: {
+    code: "APPROV_BIZ",
+    name: "사업시행 인가",
+    weight: 5,
+    hex: "#6366F1",
+    bgClass: "bg-indigo-600",
+    textClass: "text-white",
+    description: "사업시행인가 완료",
+  },
+  APPROV_MGMT: {
+    code: "APPROV_MGMT",
+    name: "관리처분 인가",
+    weight: 6,
+    hex: "#8B5CF6",
+    bgClass: "bg-purple-600",
+    textClass: "text-white",
+    description: "관리처분계획인가 완료",
+  },
 };
 
 export const BIZ_TYPES = [
