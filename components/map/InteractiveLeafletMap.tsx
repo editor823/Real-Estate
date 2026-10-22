@@ -143,10 +143,12 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
     tileLayerRef.current.setUrl(TILE_URLS[mapTheme]);
   }, [mapTheme]);
 
-  // 3. 외부에서 요청된 좌표로 카메라 부드럽게 이동
+  // 3. 외부(목록 등)에서 요청된 좌표로 카메라 부드럽게 이동 (이미 확대되어 있다면 줌 아웃되지 않고 현재 줌 유지)
   useEffect(() => {
     if (!mapRef.current || !flyToTarget) return;
-    mapRef.current.flyTo(flyToTarget, 14, { duration: 0.9 });
+    const currentZoomLevel = mapRef.current.getZoom();
+    const targetZoom = Math.max(currentZoomLevel, 14);
+    mapRef.current.flyTo(flyToTarget, targetZoom, { duration: 0.9 });
   }, [flyToTarget]);
 
   // 4. 자치구별 통계 집계 (클러스터링용)
@@ -337,12 +339,10 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
 
           let itemMarker: L.Marker | undefined;
 
+          // 지도에서 구역 클릭 시: 줌 아웃이나 화면 이동 없이 현재 지도 상태를 그대로 유지하고 왼쪽 상세 글만 오픈!
           layer.on("click", () => {
             setSelectedUid(props.master_uid);
             setSelectedDistrict(props);
-            if (props.centroid) {
-              map.flyTo([props.centroid[1], props.centroid[0]], 14, { duration: 0.8 });
-            }
           });
 
           layer.on("mouseover", (e) => {
@@ -383,10 +383,10 @@ export default function InteractiveLeafletMap({ features }: InteractiveLeafletMa
             itemMarker = L.marker([props.centroid[1], props.centroid[0]], { icon: customIcon });
             itemMarker.bindPopup(popupContent);
 
+            // 마커 클릭 시에도 줌 아웃 없이 지도는 그대로 두고 왼쪽 상세 카드만 표시
             itemMarker.on("click", () => {
               setSelectedUid(props.master_uid);
               setSelectedDistrict(props);
-              map.flyTo([props.centroid[1], props.centroid[0]], 14, { duration: 0.8 });
             });
 
             markersLayerRef.current.addLayer(itemMarker);
