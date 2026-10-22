@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Map, FileText, Zap, Calendar } from "lucide-react";
+import { Map, FileText, Zap, Calendar, Calculator } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
@@ -24,6 +24,7 @@ export function GlobalNavBar() {
 
   const isDistrictsActive = pathname?.startsWith("/districts");
   const isSubscriptionActive = pathname?.startsWith("/subscription");
+  const isCalculatorsActive = pathname?.startsWith("/calculators");
   const isMapActive = pathname === "/" && !isTimelineActive;
 
   return (
@@ -85,7 +86,7 @@ export function GlobalNavBar() {
             <span>📑 <span className="hidden sm:inline">구역별 </span>리포트</span>
           </Link>
 
-          {/* 메뉴 3: 아파트 분양·청약 (구 청약·공모주에서 부동산 전용으로 리브랜딩) */}
+          {/* 메뉴 3: 아파트 분양·청약 */}
           <Link
             href="/subscription"
             onClick={() => setIsTimelineActive(false)}
@@ -101,7 +102,23 @@ export function GlobalNavBar() {
             <span>🎯 <span className="hidden sm:inline">아파트 </span>분양·청약</span>
           </Link>
 
-          {/* 메뉴 4: 실시간 고시 알림 */}
+          {/* 메뉴 4: 부동산 금융·세무 계산기 (신규 킬러 기능) */}
+          <Link
+            href="/calculators"
+            onClick={() => setIsTimelineActive(false)}
+            className={cn(
+              "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer shrink-0",
+              isCalculatorsActive
+                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            )}
+            aria-current={isCalculatorsActive ? "page" : undefined}
+          >
+            <Calculator className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isCalculatorsActive ? "text-white" : "text-amber-600")} />
+            <span>🧮 <span className="hidden sm:inline">부동산 </span>계산기</span>
+          </Link>
+
+          {/* 메뉴 5: 실시간 고시 알림 */}
           <Link
             href="/?tab=timeline"
             onClick={() => setIsTimelineActive(true)}

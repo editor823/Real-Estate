@@ -540,26 +540,48 @@ export function LeftFilterPanel({
                 </div>
               </div>
 
-              {/* 청약 가점 & 분양 캘린더 퀵 링크 배너 */}
-              <div className="px-3.5 pt-3 shrink-0">
+              {/* 퀵 링크 배너 2종 (분양 캘린더 & 부동산 계산기) */}
+              <div className="px-3.5 pt-2.5 space-y-2 shrink-0">
+                {/* 1. 분양 캘린더 & 가점 배너 */}
                 <Link
                   href="/subscription"
-                  className="p-3.5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 hover:border-blue-400 flex items-center justify-between transition-all shadow-2xs group"
+                  className="p-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 hover:border-blue-400 flex items-center justify-between transition-all shadow-2xs group"
                   title="수도권 아파트 분양 일정 및 청약 가점 계산기로 이동"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-base shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition-transform shrink-0">
                       🏢
                     </div>
                     <div className="min-w-0">
-                      <div className="font-extrabold text-slate-900 group-hover:text-blue-600 flex items-center gap-2 text-sm sm:text-base">
+                      <div className="font-extrabold text-slate-900 group-hover:text-blue-600 flex items-center gap-1.5 text-xs sm:text-sm">
                         <span className="truncate">이달의 분양 캘린더 &amp; 가점 계산</span>
-                        <span className="text-[11px] px-2 py-0.5 bg-blue-600 text-white rounded-full font-black shrink-0">NEW</span>
+                        <span className="text-[10px] px-1.5 py-0.2 bg-blue-600 text-white rounded-full font-black shrink-0">청약</span>
                       </div>
-                      <div className="text-xs sm:text-sm text-slate-600 font-medium truncate mt-0.5">84점 만점 당첨 진단 · 수도권 아파트 분양 일정</div>
+                      <div className="text-[11px] text-slate-500 font-medium truncate">84점 만점 당첨 진단 · 수도권 분양 일정</div>
                     </div>
                   </div>
-                  <span className="text-blue-600 font-black text-base group-hover:translate-x-1.5 transition-transform pl-1 shrink-0">→</span>
+                  <span className="text-blue-600 font-black text-sm group-hover:translate-x-1 transition-transform pl-1 shrink-0">→</span>
+                </Link>
+
+                {/* 2. 신규: 부동산 계산기 허브 배너 */}
+                <Link
+                  href="/calculators"
+                  className="p-3 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 hover:border-amber-400 flex items-center justify-between transition-all shadow-2xs group"
+                  title="재개발 분담금, 취득세·양도세, DSR 대출한도 계산기"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center text-sm shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                      🧮
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-extrabold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5 text-xs sm:text-sm">
+                        <span className="truncate">부동산 계산기 (분담금·세금·대출)</span>
+                        <span className="text-[10px] px-1.5 py-0.2 bg-amber-600 text-white rounded-full font-black shrink-0">HOT</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500 font-medium truncate">재개발 분담금 · 취득세/양도세 · 스트레스 DSR</div>
+                    </div>
+                  </div>
+                  <span className="text-amber-600 font-black text-sm group-hover:translate-x-1 transition-transform pl-1 shrink-0">→</span>
                 </Link>
               </div>
 

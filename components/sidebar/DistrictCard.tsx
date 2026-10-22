@@ -293,6 +293,20 @@ export function DistrictCard() {
             <p className="text-xs sm:text-sm text-gray-700 leading-relaxed bg-white p-3 rounded-xl border border-gray-200 shadow-2xs font-medium">
               {profitability.description}
             </p>
+
+            {/* 분담금 계산기 퀵 링크 */}
+            <Link
+              href="/calculators?type=contribution"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between w-full p-2.5 px-3.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-xs sm:text-sm font-extrabold text-amber-900 transition-all cursor-pointer group shadow-2xs"
+            >
+              <div className="flex items-center gap-2">
+                <Coins className="w-4 h-4 text-amber-600" />
+                <span>💰 이 구역 예상 분담금 &amp; 비례율 계산해보기</span>
+              </div>
+              <span className="text-amber-700 font-black group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
           </div>
 
           {/* 6. [네이버 부동산 킬러 기능 3] 건립 세대수 공급량 섹션 + ㎡ ⇄ 평 단위 변환기 */}
