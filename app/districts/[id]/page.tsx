@@ -56,32 +56,17 @@ function findDistrict(id: string): DistrictFeature | undefined {
   return undefined;
 }
 
-// 1. Next.js Static HTML Export (SSG) - UID 및 구역 번호별 정적 HTML 모두 사전 생성
+// 1. Next.js Static HTML Export (SSG) - 구역별 고유 master_uid 기준으로 최적 정적 HTML 사전 생성 (중복 빌드 제거로 용량 및 CPU 부하 대폭 절감)
 export async function generateStaticParams() {
   const features = DISTRICTS_GEOJSON.features || [];
   const params: { id: string }[] = [];
   const seen = new Set<string>();
 
-  features.forEach((f, idx) => {
-    // (1) master_uid (예: SEOUL_RDEV_11110_1460)
+  features.forEach((f) => {
     const uid = f.properties.master_uid || f.id;
     if (uid && !seen.has(uid)) {
       seen.add(uid);
       params.push({ id: uid });
-    }
-
-    // (2) 구역 번호 코드 (예: 1460)
-    const code = f.properties.code;
-    if (code && !seen.has(code)) {
-      seen.add(code);
-      params.push({ id: code });
-    }
-
-    // (3) 연번 번호 (예: 1, 2, 3 ... 496)
-    const numStr = String(idx + 1);
-    if (!seen.has(numStr)) {
-      seen.add(numStr);
-      params.push({ id: numStr });
     }
   });
 
