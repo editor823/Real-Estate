@@ -319,163 +319,162 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {/* 1. 상단 Breadcrumb & 액션 바 */}
-      <div className="bg-[#FFFFFF] border-b border-[#E6E0D2] px-4 sm:px-8 py-3 flex items-center justify-between shadow-2xs">
+      <div className="bg-[#FFFFFF] border-b border-[#E6E0D2] px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xs">
         <div className="flex items-center gap-3">
           {/* ← 메인 지도로 돌아가기 버튼 */}
           <Link
             href="/"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-xs font-bold text-[#2B261F] transition-all shadow-2xs active:scale-95 cursor-pointer"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-sm font-extrabold text-[#2B261F] transition-all shadow-2xs active:scale-95 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 text-blue-600" />
             <span>← 메인 지도로 돌아가기</span>
           </Link>
           <span className="text-[#827A6D] opacity-40 hidden sm:inline">|</span>
-          <nav className="text-xs text-[#827A6D] flex items-center gap-1.5" aria-label="Breadcrumb">
+          <nav className="text-xs sm:text-sm text-[#827A6D] flex items-center gap-2 font-medium" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-blue-600 text-[#827A6D]">홈</Link>
             <span>›</span>
             <Link href="/districts/" className="hover:text-blue-600 text-[#827A6D]">
               구역 리포트
             </Link>
             <span>›</span>
-            <Link href={`/districts/gu/${props.gu}/`} className="hover:text-blue-600 text-[#4A4439] font-medium">
+            <Link href={`/districts/gu/${props.gu}/`} className="hover:text-blue-600 text-[#4A4439] font-bold">
               {props.gu}
             </Link>
             <span>›</span>
-            <span className="text-blue-600 font-bold truncate max-w-[130px] sm:max-w-xs">{props.name}</span>
+            <span className="text-blue-600 font-black truncate max-w-[150px] sm:max-w-xs">{props.name}</span>
           </nav>
         </div>
 
         {/* 상단 지도 바로가기 버튼 */}
         <Link
           href={`/?id=${props.master_uid}`}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-extrabold shadow-md shadow-blue-600/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
         >
-          <Map className="w-3.5 h-3.5" />
+          <Map className="w-4 h-4" />
           <span>🗺️ 지도에서 이 구역 보기</span>
         </Link>
       </div>
 
-
       {/* 2. 본문 컨테이너 */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-8">
         {/* A. 히어로 섹션 */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm relative overflow-hidden">
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="text-xs font-bold px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
+        <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm relative overflow-hidden">
+          <div className="flex flex-wrap items-center gap-2 mb-3.5">
+            <span className="text-xs sm:text-sm font-bold px-3 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
               {props.gu}
             </span>
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-lg bg-[#FDFBF7] text-[#4A4439] border border-[#E6E0D2]">
+            <span className="text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg bg-[#FDFBF7] text-[#4A4439] border border-[#E6E0D2]">
               {props.biz_type_label}
             </span>
-            <StageBadge stageCode={props.stage_code} className="text-xs py-0.5 px-2.5" />
+            <StageBadge stageCode={props.stage_code} className="text-xs sm:text-sm py-1 px-3 font-bold" />
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#2B261F] tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-black text-[#2B261F] tracking-tight leading-tight">
             {props.name} 정비사업 상세 리포트
           </h1>
 
-          <div className="flex flex-wrap items-center gap-y-1 gap-x-4 text-xs text-[#827A6D] mt-2.5">
-            <div className="flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-blue-600" />
-              <span className="text-[#4A4439]">{props.legal_dong} {props.address_jibun}</span>
+          <div className="flex flex-wrap items-center gap-y-1.5 gap-x-5 text-sm sm:text-base text-[#615A4E] mt-3 font-medium">
+            <div className="flex items-center gap-1.5">
+              <MapPin className="w-4 h-4 text-blue-600 shrink-0" />
+              <span className="text-[#2B261F] font-bold">{props.legal_dong} {props.address_jibun}</span>
             </div>
             {props.address_doro && (
-              <span className="text-[#827A6D]">({props.address_doro})</span>
+              <span className="text-[#615A4E]">({props.address_doro})</span>
             )}
-            <div className="flex items-center gap-1 text-[#827A6D]">
-              <Calendar className="w-3.5 h-3.5 text-[#827A6D]" />
-              <span>최근 인허가 고시: {props.approval_date}</span>
+            <div className="flex items-center gap-1.5 text-[#615A4E]">
+              <Calendar className="w-4 h-4 text-gray-500 shrink-0" />
+              <span>최근 인허가 고시: <strong className="text-[#2B261F] font-bold">{props.approval_date}</strong></span>
             </div>
           </div>
 
           {/* E-E-A-T 강화: 데이터 출처 및 동기화 뱃지 */}
-          <div className="flex flex-wrap items-center gap-2 mt-3.5 pt-3 border-t border-[#EFECE4]">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-[11px] font-medium text-[#4A4439]">
-              <Database className="w-3.5 h-3.5 text-blue-600" />
+          <div className="flex flex-wrap items-center gap-2.5 mt-4 pt-3.5 border-t border-[#EFECE4]">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-xs font-bold text-[#4A4439]">
+              <Database className="w-4 h-4 text-blue-600" />
               <span>데이터 출처: 서울시 정보몽땅 &amp; 열린데이터광장</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-[11px] font-medium text-[#4A4439]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-xs font-bold text-[#4A4439]">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span>최근 시스템 동기화: 2026.10.04</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-[11px] font-mono text-[#827A6D]">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-xs font-mono font-bold text-[#615A4E]">
               고유코드: {props.sido_sugg_code}-{props.code || "REG"}
             </span>
           </div>
 
           {/* 투자자 관점 맞춤형 3줄 핵심 브리핑 박스 */}
-          <div className="mt-5 p-5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] shadow-2xs space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-[#EFECE4]">
+          <div className="mt-6 p-5 sm:p-6 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] shadow-2xs space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[#EFECE4]">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-600" />
-                <h3 className="text-xs sm:text-sm font-extrabold text-[#2B261F] tracking-tight">
+                <Sparkles className="w-5 h-5 text-amber-600 shrink-0" />
+                <h3 className="text-sm sm:text-base font-black text-[#2B261F] tracking-tight">
                   투자자 관점 3줄 핵심 브리핑 (구역 맞춤 정밀 분석)
                 </h3>
               </div>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+              <span className="text-xs font-black px-2.5 py-1 rounded-full bg-blue-100 text-blue-800">
                 실시간 데이터 분석
               </span>
             </div>
 
-            <div className="space-y-2 text-xs leading-relaxed text-[#4A4439]">
-              <div className="flex items-start gap-2">
-                <span className="shrink-0 w-4 h-4 rounded-full bg-blue-600 text-white font-bold text-[10px] flex items-center justify-center mt-0.5">
+            <div className="space-y-3 text-sm sm:text-base leading-relaxed text-[#332E27]">
+              <div className="flex items-start gap-3">
+                <span className="shrink-0 w-6 h-6 rounded-full bg-blue-600 text-white font-black text-xs flex items-center justify-center mt-0.5 shadow-xs">
                   1
                 </span>
                 <p>
-                  <strong className="text-[#2B261F]">사업 규모 &amp; 공급 임팩트:</strong>{" "}
+                  <strong className="text-[#2B261F] font-black">사업 규모 &amp; 공급 임팩트:</strong>{" "}
                   {briefingLine1}
                 </p>
               </div>
 
-              <div className="flex items-start gap-2">
-                <span className="shrink-0 w-4 h-4 rounded-full bg-indigo-600 text-white font-bold text-[10px] flex items-center justify-center mt-0.5">
+              <div className="flex items-start gap-3">
+                <span className="shrink-0 w-6 h-6 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center mt-0.5 shadow-xs">
                   2
                 </span>
                 <p>
-                  <strong className="text-[#2B261F]">추진 속도 &amp; 다음 관문:</strong>{" "}
+                  <strong className="text-[#2B261F] font-black">추진 속도 &amp; 다음 관문:</strong>{" "}
                   {briefingLine2}
                 </p>
               </div>
 
-              <div className="flex items-start gap-2">
-                <span className={`shrink-0 w-4 h-4 rounded-full font-bold text-[10px] flex items-center justify-center mt-0.5 text-white ${props.is_transferable ? "bg-emerald-600" : "bg-rose-600"}`}>
+              <div className="flex items-start gap-3">
+                <span className={`shrink-0 w-6 h-6 rounded-full font-black text-xs flex items-center justify-center mt-0.5 text-white shadow-xs ${props.is_transferable ? "bg-emerald-600" : "bg-rose-600"}`}>
                   3
                 </span>
                 <p>
-                  <strong className="text-[#2B261F]">입주권 승계 &amp; 매수 안전성:</strong>{" "}
+                  <strong className="text-[#2B261F] font-black">입주권 승계 &amp; 매수 안전성:</strong>{" "}
                   {briefingLine3}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* 핵심 KPI 카드 그리드 */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-[#E6E0D2]">
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">건립 예정 세대</span>
-              <strong className="text-lg font-extrabold text-[#2B261F]">
+          {/* 핵심 KPI 카드 그리드: 수치 대형 볼드화 */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 mt-6 pt-6 border-t border-[#E6E0D2]">
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] shadow-2xs">
+              <span className="text-xs sm:text-sm font-bold text-[#615A4E] block mb-1">건립 예정 세대</span>
+              <strong className="text-xl sm:text-2xl font-black text-[#2B261F]">
                 {totalH > 0 ? `${totalH.toLocaleString()}세대` : "계획중"}
               </strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">기존 가구수 (멸실)</span>
-              <strong className="text-lg font-extrabold text-[#4A4439]">
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] shadow-2xs">
+              <span className="text-xs sm:text-sm font-bold text-[#615A4E] block mb-1">기존 가구수 (멸실)</span>
+              <strong className="text-xl sm:text-2xl font-black text-[#4A4439]">
                 {existH > 0 ? `${existH.toLocaleString()}가구` : "집계중"}
               </strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">주민 동의율</span>
-              <strong className="text-lg font-extrabold text-blue-600">
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] shadow-2xs">
+              <span className="text-xs sm:text-sm font-bold text-[#615A4E] block mb-1">주민 동의율</span>
+              <strong className="text-xl sm:text-2xl font-black text-blue-600">
                 {props.consent_rate ? `${props.consent_rate}%` : "추진중"}
               </strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">입주권 승계 안전성</span>
-              <strong className={`text-base font-extrabold ${props.is_transferable ? "text-[#1B5E20]" : "text-[#8D3B00]"}`}>
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] shadow-2xs">
+              <span className="text-xs sm:text-sm font-bold text-[#615A4E] block mb-1">입주권 승계 안전성</span>
+              <strong className={`text-base sm:text-lg font-black ${props.is_transferable ? "text-[#1B5E20]" : "text-[#B91C1C]"}`}>
                 {props.is_transferable ? "지위양도 가능" : "전매 제한 주의"}
               </strong>
             </div>
@@ -488,71 +487,71 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
         </section>
 
         {/* C. [단락 1] 구역 개요 및 최근 추진 경과 (상세 명세표 포함) */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
-          <div className="flex items-center gap-2 pb-3 border-b border-[#E6E0D2]">
-            <FileText className="w-5 h-5 text-blue-600" />
-            <h2 className="text-lg font-bold text-[#2B261F]">1. 구역 개요 및 최근 추진 경과</h2>
+        <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-6">
+          <div className="flex items-center gap-2.5 pb-4 border-b border-[#E6E0D2]">
+            <FileText className="w-6 h-6 text-blue-600 shrink-0" />
+            <h2 className="text-xl sm:text-2xl font-black text-[#2B261F]">1. 구역 개요 및 최근 추진 경과</h2>
           </div>
 
-          <div className="text-xs text-[#4A4439] leading-relaxed space-y-3">
+          <div className="text-sm sm:text-base text-[#332E27] leading-relaxed space-y-3 font-normal">
             <p>
-              <strong className="text-[#2B261F]">{props.name}</strong>은(는) 서울특별시 <strong className="text-[#2B261F]">{props.gu} {props.legal_dong}</strong> 일대에 위치한 대표적인 {props.biz_type_label} 정비사업 구역입니다. 
-              관할 자치구 고유 구역 코드 <strong className="text-[#2B261F]">{props.code || "미부여"}</strong>(시군구 코드 {props.sido_sugg_code})로 공식 지정되어 서울시 도시계획에 따라 체계적인 주거환경 개선 사업이 추진되고 있습니다.
+              <strong className="text-[#2B261F] font-black">{props.name}</strong>은(는) 서울특별시 <strong className="text-[#2B261F] font-black">{props.gu} {props.legal_dong}</strong> 일대에 위치한 대표적인 {props.biz_type_label} 정비사업 구역입니다. 
+              관할 자치구 고유 구역 코드 <strong className="text-[#2B261F] font-black">{props.code || "미부여"}</strong>(시군구 코드 {props.sido_sugg_code})로 공식 지정되어 서울시 도시계획에 따라 체계적인 주거환경 개선 사업이 추진되고 있습니다.
             </p>
             <p>
-              현재 사업 추진 단계는 <strong className="text-[#2B261F]">{props.stage_label || props.stage_raw}</strong> 단계이며, 가장 최근 공식 인허가 및 변경 고시일자는 <strong className="text-[#2B261F]">{props.approval_date || "미상"}</strong>입니다. 
-              주민 동의율은 <strong className="text-[#2B261F]">{props.consent_rate ? `${props.consent_rate}%` : "현재 활발히 동의서 징구 진행 중"}</strong>으로 집계되며, 
+              현재 사업 추진 단계는 <strong className="text-blue-600 font-black">{props.stage_label || props.stage_raw}</strong> 단계이며, 가장 최근 공식 인허가 및 변경 고시일자는 <strong className="text-[#2B261F] font-black">{props.approval_date || "미상"}</strong>입니다. 
+              주민 동의율은 <strong className="text-[#2B261F] font-black">{props.consent_rate ? `${props.consent_rate}%` : "현재 활발히 동의서 징구 진행 중"}</strong>으로 집계되며, 
               신속통합기획 및 공공지원 제도를 통해 인허가 절차가 가속화되고 있습니다.
             </p>
           </div>
 
-          {/* 구역 기본 정보 표 */}
+          {/* 구역 기본 정보 표 (폰트 대폭 확대) */}
           <div className="overflow-x-auto pt-2">
-            <table className="w-full text-left text-xs text-[#4A4439] border-collapse">
+            <table className="w-full text-left text-sm sm:text-base text-[#332E27] border-collapse">
               <tbody className="divide-y divide-[#EFECE4]">
                 <tr className="border-t border-[#EFECE4]">
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold w-1/4">구역 공식 명칭</th>
-                  <td className="py-3 px-4 font-bold text-[#2B261F]">{props.name}</td>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold w-1/4">사업 유형</th>
-                  <td className="py-3 px-4">{props.biz_type_label} ({props.biz_type})</td>
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold w-1/4">구역 공식 명칭</th>
+                  <td className="py-3.5 px-4 font-black text-[#2B261F]">{props.name}</td>
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold w-1/4">사업 유형</th>
+                  <td className="py-3.5 px-4 font-bold">{props.biz_type_label} ({props.biz_type})</td>
                 </tr>
                 <tr>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">관할 자치구</th>
-                  <td className="py-3 px-4 font-medium text-[#4A4439]">{props.gu} ({props.sido_sugg_code})</td>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">법정동 및 지번</th>
-                  <td className="py-3 px-4">{props.legal_dong} {props.address_jibun}</td>
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">관할 자치구</th>
+                  <td className="py-3.5 px-4 font-bold text-[#4A4439]">{props.gu} ({props.sido_sugg_code})</td>
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">법정동 및 지번</th>
+                  <td className="py-3.5 px-4 font-semibold">{props.legal_dong} {props.address_jibun}</td>
                 </tr>
                 <tr>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">현재 추진 단계</th>
-                  <td className="py-3 px-4">
-                    <span className="font-bold text-blue-600">{props.stage_label || props.stage_raw}</span>
-                    <span className="text-[#827A6D] text-[11px] ml-1.5">({props.stage_seq}단계 진행)</span>
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">현재 추진 단계</th>
+                  <td className="py-3.5 px-4">
+                    <span className="font-black text-blue-600">{props.stage_label || props.stage_raw}</span>
+                    <span className="text-[#615A4E] text-xs sm:text-sm font-bold ml-2">({props.stage_seq}단계 진행)</span>
                   </td>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">최근 인허가 고시일</th>
-                  <td className="py-3 px-4 font-mono">{props.approval_date || "미고시"}</td>
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">최근 인허가 고시일</th>
+                  <td className="py-3.5 px-4 font-mono font-bold">{props.approval_date || "미고시"}</td>
                 </tr>
                 <tr>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">계획 총 건립 세대수</th>
-                  <td className="py-3 px-4 font-bold text-[#2B261F]">
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">계획 총 건립 세대수</th>
+                  <td className="py-3.5 px-4 font-black text-blue-600 text-base sm:text-lg">
                     {totalH > 0 ? `${totalH.toLocaleString()}세대` : "정비계획 확정 예정"}
                   </td>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">일반분양 / 임대 구성</th>
-                  <td className="py-3 px-4">
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">일반분양 / 임대 구성</th>
+                  <td className="py-3.5 px-4 font-bold">
                     분양: {saleH > 0 ? `${saleH.toLocaleString()}세대` : "-"} / 
                     임대: {rentH > 0 ? `${rentH.toLocaleString()}세대` : "-"}
                   </td>
                 </tr>
                 <tr>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">기준 및 상한 용적률</th>
-                  <td className="py-3 px-4 text-emerald-700 font-semibold">
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">기준 및 상한 용적률</th>
+                  <td className="py-3.5 px-4 text-emerald-800 font-extrabold">
                     제2·3종 일반주거 (기준 250% / 법적상한 최대 300%)
                   </td>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">주민 동의율</th>
-                  <td className="py-3 px-4">{props.consent_rate ? `${props.consent_rate}%` : "정보 준비중"}</td>
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">주민 동의율</th>
+                  <td className="py-3.5 px-4 font-bold">{props.consent_rate ? `${props.consent_rate}%` : "정보 준비중"}</td>
                 </tr>
                 <tr>
-                  <th className="py-3 px-4 bg-[#F5F2EB] text-[#2B261F] font-semibold">공공연계 인프라 호재</th>
-                  <td colSpan={3} className="py-3 px-4">
+                  <th className="py-3.5 px-4 bg-[#F5F2EB] text-[#2B261F] font-extrabold">공공연계 인프라 호재</th>
+                  <td colSpan={3} className="py-3.5 px-4 font-medium leading-relaxed">
                     {props.is_adjacent_public
                       ? (props.adjacent_public_note || "역세권·수변 활성화 연계 및 대단지 공공기여 인센티브 적용 구역")
                       : "자율정비 연계 및 관할 구청 도시계획 수립 대상지"}
@@ -563,99 +562,99 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
           </div>
         </section>
 
-        {/* D. [단락 2] 입주권 승계 및 현금청산 주의사항 자가진단 해설 (최소 800자 이상 해설) */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
-          <div className="flex items-center gap-2 pb-3 border-b border-[#E6E0D2]">
-            <ShieldCheck className="w-5 h-5 text-emerald-600" />
-            <h2 className="text-lg font-bold text-[#2B261F]">2. 권리산정일 기준 입주권/현금청산 안전 진단 가이드</h2>
+        {/* D. [단락 2] 입주권 승계 및 현금청산 주의사항 자가진단 해설 (가독성 극대화) */}
+        <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-6">
+          <div className="flex items-center gap-2.5 pb-4 border-b border-[#E6E0D2]">
+            <ShieldCheck className="w-6 h-6 text-emerald-600 shrink-0" />
+            <h2 className="text-xl sm:text-2xl font-black text-[#2B261F]">2. 권리산정일 기준 입주권/현금청산 안전 진단 가이드</h2>
           </div>
 
-          <div className="space-y-4 text-xs leading-relaxed text-[#4A4439]">
-            {/* (1) 전매 승계 안전 박스: bg-[#EBF7EE] / border-[#C7E8CE] / text-[#1B5E20] */}
-            <div className={`p-4 rounded-2xl border space-y-2 ${props.is_transferable ? "bg-[#EBF7EE] border-[#C7E8CE] text-[#1B5E20]" : "bg-[#FDF3E7] border-[#F5D5B8] text-[#8D3B00]"}`}>
-              <h3 className="text-sm font-bold flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4" />
+          <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[#332E27]">
+            {/* (1) 전매 승계 안전 박스 */}
+            <div className={`p-5 rounded-2xl border space-y-2.5 ${props.is_transferable ? "bg-[#EBF7EE] border-[#C7E8CE] text-[#1B5E20]" : "bg-[#FDF3E7] border-[#F5D5B8] text-[#8D3B00]"}`}>
+              <h3 className="text-base sm:text-lg font-black flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 shrink-0" />
                 (1) 본 구역의 조합원 지위양도(전매) 승계 안전성 진단
               </h3>
-              <p>
-                「도시 및 주거환경정비법」 제39조 제2항에 따르면 투기과열지구 내 재개발 구역은 <strong className="font-bold">관리처분계획인가 이후</strong>, 
-                재건축 구역은 <strong className="font-bold">조합설립인가 이후</strong>부터 원칙적으로 조합원 지위양도가 금지되며 매수인은 현금청산 대상이 됩니다.
+              <p className="font-normal text-sm sm:text-base leading-relaxed">
+                「도시 및 주거환경정비법」 제39조 제2항에 따르면 투기과열지구 내 재개발 구역은 <strong className="font-black text-[#2B261F]">관리처분계획인가 이후</strong>, 
+                재건축 구역은 <strong className="font-black text-[#2B261F]">조합설립인가 이후</strong>부터 원칙적으로 조합원 지위양도가 금지되며 매수인은 현금청산 대상이 됩니다.
               </p>
-              <p>
-                현재 <strong>{props.name}</strong>은(는) <strong>{props.stage_label || props.stage_raw}</strong> 단계로, 
+              <p className="font-normal text-sm sm:text-base leading-relaxed">
+                현재 <strong className="font-black">{props.name}</strong>은(는) <strong className="font-black">{props.stage_label || props.stage_raw}</strong> 단계로, 
                 {props.is_transferable ? (
-                  <span className="font-bold">
-                    "현행 법률상 원칙적으로 조합원 지위양도가 합법적으로 가능한 안전 구간에 속해 있습니다. 다만 향후 관리처분인가 또는 조합설립인가가 임박할 경우 시점에 주의해야 합니다."
+                  <span className="font-black text-[#1B5E20] block mt-1">
+                    "현행 법률상 원칙적으로 조합원 지위양도가 합법적으로 가능한 [안전 구간]에 속해 있습니다. 다만 향후 관리처분인가 또는 조합설립인가가 임박할 경우 고시 시점에 각별히 주의해야 합니다."
                   </span>
                 ) : (
-                  <span className="font-bold">
-                    "이미 전매 제한 단계에 진입하였으므로, 1주택 장기보유 특례 요건을 갖춘 원조합원 매물인지 계약 체결 전 반드시 구청 및 조합을 통해 철저히 검증해야 합니다."
+                  <span className="font-black text-[#B91C1C] block mt-1">
+                    "이미 전매 제한 단계에 진입하였으므로, 1주택 장기보유 특례 요건을 갖춘 원조합원 매물인지 계약 체결 전 반드시 관할 구청 및 조합을 통해 철저히 검증해야 합니다."
                   </span>
                 )}
               </p>
             </div>
 
-            {/* (2) 1세대 1주택 경고 박스: bg-[#FDF3E7] / border-[#F5D5B8] / text-[#8D3B00] */}
-            <div className="p-4 rounded-2xl bg-[#FDF3E7] border border-[#F5D5B8] text-[#8D3B00] space-y-2">
-              <h3 className="text-sm font-bold flex items-center gap-1.5">
-                <AlertTriangle className="w-4 h-4 text-[#8D3B00]" />
+            {/* (2) 1세대 1주택 경고 박스 */}
+            <div className="p-5 rounded-2xl bg-[#FDF3E7] border border-[#F5D5B8] text-[#8D3B00] space-y-2.5">
+              <h3 className="text-base sm:text-lg font-black flex items-center gap-2 text-[#8D3B00]">
+                <AlertTriangle className="w-5 h-5 text-[#8D3B00] shrink-0" />
                 (2) 1세대 1주택 장기보유자 법정 예외 거래 인정 기준
               </h3>
-              <p className="text-[#4A4439]">
-                투기과열지구 내 전매 제한 단계에 진입한 구역이라 하더라도 양도인이 다음 4가지 법정 요건 중 하나를 충족하면 매수인은 입주권을 승계받을 수 있습니다:
+              <p className="text-sm sm:text-base text-[#332E27] leading-relaxed">
+                투기과열지구 내 전매 제한 단계에 진입한 구역이라 하더라도 양도인이 다음 4가지 법정 요건 중 하나를 충족하면 매수인은 입주권을 합법적으로 승계받을 수 있습니다:
               </p>
-              <ul className="list-disc pl-5 space-y-1 text-[#4A4439]">
-                <li><strong className="text-[#8D3B00]">1세대 1주택자 특례</strong>: 원조합원이 해당 물건을 <strong>10년 이상 소유</strong>하고 <strong>5년 이상 실제 거주</strong>한 경우 (양도세 비과세 요건과 별개로 도정법상 엄격 심사)</li>
-                <li><strong className="text-[#8D3B00]">생업/질병/이주 특례</strong>: 세대원의 근무, 생업, 취학, 질병 치료, 결혼으로 세대원 전원이 타 특별시·광역시·시·군으로 주거를 이전하는 경우</li>
-                <li><strong className="text-[#8D3B00]">상속/해외이주 특례</strong>: 상속으로 취득한 주택으로 세대원 전원이 이전하거나, 해외로 전원 이주 또는 2년 이상 해외에 체류하는 경우</li>
-                <li><strong className="text-[#8D3B00]">사업 지연 특례</strong>: 조합설립인가일로부터 3년 이상 사업시행인가 미신청 또는 인가일로부터 3년 이상 미착공된 정체 구역의 3년 이상 보유 물건</li>
+              <ul className="list-disc pl-6 space-y-2 text-sm sm:text-base text-[#332E27] font-medium">
+                <li><strong className="text-[#8D3B00] font-black">1세대 1주택자 특례</strong>: 원조합원이 해당 물건을 <strong className="font-black text-[#2B261F]">10년 이상 소유</strong>하고 <strong className="font-black text-[#2B261F]">5년 이상 실제 거주</strong>한 경우 (양도세 비과세 요건과 별개로 도정법상 엄격 심사)</li>
+                <li><strong className="text-[#8D3B00] font-black">생업/질병/이주 특례</strong>: 세대원의 근무, 생업, 취학, 질병 치료, 결혼으로 세대원 전원이 타 특별시·광역시·시·군으로 주거를 이전하는 경우</li>
+                <li><strong className="text-[#8D3B00] font-black">상속/해외이주 특례</strong>: 상속으로 취득한 주택으로 세대원 전원이 이전하거나, 해외로 전원 이주 또는 2년 이상 해외에 체류하는 경우</li>
+                <li><strong className="text-[#8D3B00] font-black">사업 지연 특례</strong>: 조합설립인가일로부터 3년 이상 사업시행인가 미신청 또는 인가일로부터 3년 이상 미착공된 정체 구역의 3년 이상 보유 물건</li>
               </ul>
             </div>
 
             {/* (3) 지분쪼개기 경고 박스 */}
-            <div className="p-4 rounded-2xl bg-[#FDF3E7] border border-[#F5D5B8] text-[#8D3B00] space-y-2">
-              <h3 className="text-sm font-bold flex items-center gap-1.5">
-                <AlertTriangle className="w-4 h-4 text-[#8D3B00]" />
+            <div className="p-5 rounded-2xl bg-[#FDF3E7] border border-[#F5D5B8] text-[#8D3B00] space-y-2.5">
+              <h3 className="text-base sm:text-lg font-black flex items-center gap-2 text-[#8D3B00]">
+                <AlertTriangle className="w-5 h-5 text-[#8D3B00] shrink-0" />
                 (3) 권리산정기준일 이후 신축 지분쪼개기 강제 청산 위험
               </h3>
-              <p className="text-[#4A4439]">
-                서울시 신속통합기획 및 모아타운 후보지 매수 시 가장 유의해야 할 함정은 <strong className="text-[#8D3B00]">권리산정기준일</strong>입니다. 
+              <p className="text-sm sm:text-base text-[#332E27] leading-relaxed">
+                서울시 신속통합기획 및 모아타운 후보지 매수 시 가장 유의해야 할 함정은 <strong className="text-[#8D3B00] font-black">권리산정기준일</strong>입니다. 
                 단독주택이나 다가구를 헐고 신축 다세대 빌라로 쪼개기 분양한 물건의 경우, 건축허가 접수일 또는 건축물대장상 
-                사용승인일자가 해당 구역의 고시된 권리산정기준일보다 늦으면 <strong className="text-[#8D3B00]">단독 아파트 입주권이 박탈되고 감정평가액 기준으로 강제 현금청산</strong>(일명 물딱지)됩니다. 
+                사용승인일자가 해당 구역의 고시된 권리산정기준일보다 늦으면 <strong className="text-[#B91C1C] font-black">단독 아파트 입주권이 박탈되고 감정평가액 기준으로 강제 현금청산</strong>(일명 물딱지)됩니다. 
                 따라서 계약 전 등기부등본뿐 아니라 건축물대장 착공일·사용승인일을 반드시 대조 확인해야 안전합니다.
               </p>
             </div>
 
             {/* (4) 부부 공동명의 등 공유 지분 매물 최신 법률 유의사항 */}
-            <div className="p-4 rounded-2xl bg-[#F7F5EE] border border-[#E6E0D2] text-[#2B261F] space-y-2">
-              <h3 className="text-sm font-bold flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-blue-600" />
+            <div className="p-5 rounded-2xl bg-[#F7F5EE] border border-[#E6E0D2] text-[#2B261F] space-y-2.5">
+              <h3 className="text-base sm:text-lg font-black flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0" />
                 (4) 부부 공동명의 등 공유 지분 매물 최신 판례 주의사항
               </h3>
-              <p className="text-[#4A4439]">
+              <p className="text-sm sm:text-base text-[#332E27] leading-relaxed">
                 최근 대법원 판례 및 국토교통부 유권해석에 따라, 투기과열지구 내 지위양도 제한 구역에서 <strong>공유 지분(예: 부부 5:5 공동명의)</strong>으로 된 물건을 매수할 때는 
-                대표 조합원뿐만 아니라 <strong className="text-blue-700 font-bold">공유자 전원이 각각 10년 보유·5년 거주 요건을 충족</strong>해야 온전한 조합원 지위가 승계됩니다. 
+                대표 조합원뿐만 아니라 <strong className="text-blue-700 font-black">공유자 전원이 각각 10년 보유·5년 거주 요건을 충족</strong>해야 온전한 조합원 지위가 승계됩니다. 
                 공유자 중 1인이라도 요건을 미충족할 경우 분양권이 박탈되고 현금청산될 위험이 있으므로 계약 특약에 명확한 손해배상 조항을 기재해야 합니다.
               </p>
             </div>
 
             {/* (5) 안전한 계약을 위한 3대 필수 확인 서류 */}
-            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] space-y-2">
-              <h3 className="text-sm font-bold text-[#2B261F]">
+            <div className="p-5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] space-y-3">
+              <h3 className="text-base sm:text-lg font-black text-[#2B261F]">
                 📋 매매 계약 전 구청·조합 방문 시 필수 대조 서류 3가지
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-xs text-[#4A4439]">
-                <div className="p-2.5 rounded-xl bg-white border border-[#EFECE4]">
-                  <strong className="block text-blue-700 font-bold mb-1">1. 토지이용계획확인원</strong>
-                  <span>해당 번지가 정비구역 및 토지거래허가구역에 공식 포함되어 있는지 확인</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-sm text-[#332E27]">
+                <div className="p-3.5 rounded-xl bg-white border border-[#EFECE4] space-y-1">
+                  <strong className="block text-blue-700 font-black text-sm sm:text-base">1. 토지이용계획확인원</strong>
+                  <span className="leading-relaxed">해당 번지가 정비구역 및 토지거래허가구역에 공식 포함되어 있는지 확인</span>
                 </div>
-                <div className="p-2.5 rounded-xl bg-white border border-[#EFECE4]">
-                  <strong className="block text-blue-700 font-bold mb-1">2. 건축물대장 (갑/을구)</strong>
-                  <span>착공허가일 및 사용승인일자가 권리산정기준일 이전인지 팩트 대조</span>
+                <div className="p-3.5 rounded-xl bg-white border border-[#EFECE4] space-y-1">
+                  <strong className="block text-blue-700 font-black text-sm sm:text-base">2. 건축물대장 (갑/을구)</strong>
+                  <span className="leading-relaxed">착공허가일 및 사용승인일자가 권리산정기준일 이전인지 팩트 대조</span>
                 </div>
-                <div className="p-2.5 rounded-xl bg-white border border-[#EFECE4]">
-                  <strong className="block text-blue-700 font-bold mb-1">3. 조합원 자격확인서</strong>
-                  <span>매도인의 다물권 여부 및 1주택 보유·거주 기간 충족 여부를 조합 직인으로 확인</span>
+                <div className="p-3.5 rounded-xl bg-white border border-[#EFECE4] space-y-1">
+                  <strong className="block text-blue-700 font-black text-sm sm:text-base">3. 조합원 자격확인서</strong>
+                  <span className="leading-relaxed">매도인의 다물권 여부 및 1주택 보유·거주 기간 충족 여부를 조합 직인으로 확인</span>
                 </div>
               </div>
             </div>
@@ -663,22 +662,22 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
         </section>
 
         {/* E. [단락 3] 계획 세대수 기반 사업성 및 예상 준공 타임라인 안내 */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-[#E6E0D2]">
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-indigo-600" />
-              <h2 className="text-lg font-bold text-[#2B261F]">3. 계획 세대수 기반 사업성 및 예상 준공 타임라인 안내</h2>
+        <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#E6E0D2]">
+            <div className="flex items-center gap-2.5">
+              <Clock className="w-6 h-6 text-indigo-600 shrink-0" />
+              <h2 className="text-xl sm:text-2xl font-black text-[#2B261F]">3. 계획 세대수 기반 사업성 및 예상 준공 타임라인 안내</h2>
             </div>
-            <span className="text-xs text-[#827A6D]">서울시 평균 소요: 약 9.8년</span>
+            <span className="text-xs sm:text-sm font-bold text-[#615A4E]">서울시 평균 소요: 약 9.8년</span>
           </div>
 
-          <div className="text-xs text-[#4A4439] leading-relaxed space-y-2">
+          <div className="text-sm sm:text-base text-[#332E27] leading-relaxed space-y-3 font-normal">
             <p>
-              <strong className="text-[#2B261F]">{props.name}</strong>의 신축 건립 예정 규모는 <strong className="text-[#2B261F]">{totalH > 0 ? `${totalH.toLocaleString()}세대` : "정비계획 확정 단계"}</strong>이며, 
-              기존 멸실 가구수는 <strong className="text-[#2B261F]">{existH > 0 ? `${existH.toLocaleString()}가구` : "산정 중"}</strong>입니다. 
+              <strong className="text-[#2B261F] font-black">{props.name}</strong>의 신축 건립 예정 규모는 <strong className="text-blue-600 font-black">{totalH > 0 ? `${totalH.toLocaleString()}세대` : "정비계획 확정 단계"}</strong>이며, 
+              기존 멸실 가구수는 <strong className="text-[#2B261F] font-black">{existH > 0 ? `${existH.toLocaleString()}가구` : "산정 중"}</strong>입니다. 
               {totalH > 0 && existH > 0 ? (
                 <>
-                  기존 조합원 대비 순증가분은 약 <strong className="text-[#2B261F]">{(totalH - existH).toLocaleString()}세대</strong>로 추산되며, 
+                  기존 조합원 대비 순증가분은 약 <strong className="text-emerald-700 font-black">{(totalH - existH).toLocaleString()}세대</strong>로 추산되며, 
                   일반분양 물량이 확보됨에 따라 조합원 개별 추가분담금 부담이 합리적으로 분산될 수 있는 사업성 구조를 갖추고 있습니다.
                 </>
               ) : (
@@ -689,8 +688,8 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
             </p>
           </div>
 
-          {/* 7단계 타임라인 막대 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          {/* 7단계 타임라인 막대 (폰트 확대) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5">
             {allStages.map((stage) => {
               const isPassed = props.stage_seq > stage.seq;
               const isCurrent = props.stage_seq === stage.seq;
@@ -698,35 +697,60 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
               return (
                 <div
                   key={stage.seq}
-                  className={`p-3.5 rounded-2xl border transition-all ${
+                  className={`p-4 rounded-2xl border transition-all ${
                     isCurrent
-                      ? "bg-blue-50 border-blue-500 shadow-sm ring-1 ring-blue-500/50"
+                      ? "bg-blue-50 border-blue-500 shadow-sm ring-2 ring-blue-500/50"
                       : isPassed
                       ? "bg-[#F7F5EE] border-[#E4DEC9]"
                       : "bg-[#F7F5EE]/60 border-[#E4DEC9]/60 opacity-60"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold text-[#827A6D]">STEP 0{stage.seq}</span>
-                    {isPassed && <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />}
+                    <span className="text-xs font-black text-[#615A4E]">STEP 0{stage.seq}</span>
+                    {isPassed && <CheckCircle2 className="w-4 h-4 text-blue-600" />}
                     {isCurrent && (
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-blue-600 text-white">
+                      <span className="px-2 py-0.5 rounded text-xs font-black bg-blue-600 text-white">
                         현재 진행
                       </span>
                     )}
                   </div>
-                  <h3 className={`text-xs font-bold mb-1 ${isCurrent ? "text-blue-700 font-extrabold" : "text-[#2B261F]"}`}>
+                  <h3 className={`text-sm sm:text-base font-black mb-1.5 ${isCurrent ? "text-blue-700" : "text-[#2B261F]"}`}>
                     {stage.name}
                   </h3>
-                  <p className="text-[11px] text-[#827A6D]">평균 소요: {stage.avgYears}</p>
+                  <p className="text-xs sm:text-sm text-[#615A4E] font-medium">평균 소요: {stage.avgYears}</p>
                 </div>
               );
             })}
           </div>
+
+          {/* 신규: 구역 맞춤형 분담금 & 대출 계산기 바로가기 배너 */}
+          <div className="pt-2">
+            <Link
+              href="/calculators?type=contribution"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 hover:border-amber-400 flex items-center justify-between transition-all shadow-xs group cursor-pointer"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg font-black shadow-xs shrink-0 group-hover:scale-105 transition-transform">
+                  💰
+                </div>
+                <div>
+                  <div className="text-sm sm:text-base font-black text-amber-950 group-hover:text-amber-700 transition-colors">
+                    {props.name} 예상 추가분담금 &amp; 비례율 직접 계산해보기
+                  </div>
+                  <div className="text-xs sm:text-sm text-amber-800 font-medium mt-0.5">
+                    내 감정평가액과 희망 평형을 입력하여 1초 만에 분담금·환급금을 확인하세요
+                  </div>
+                </div>
+              </div>
+              <span className="text-amber-700 font-black text-base group-hover:translate-x-1.5 transition-transform pl-2 shrink-0">→</span>
+            </Link>
+          </div>
         </section>
 
         {/* E-1. 평형별 시세 추이 및 예상 프리미엄 분석 (네이버 부동산 벤치마킹) */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
+        <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-6">
           <PriceTrendChart
             districtName={props.name}
             guName={props.gu}
@@ -735,41 +759,41 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
         </section>
 
         {/* E-2. 현장 이야기 및 임장 소통 피드 (네이버 부동산 벤치마킹) */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
+        <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-6">
           <DistrictCommunityFeed
             districtUid={props.master_uid}
             districtName={props.name}
           />
         </section>
 
-        {/* F. [단락 4] 자주 묻는 질문 (FAQ) - 아코디언 토글 형태 */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
-          <div className="flex items-center justify-between pb-3 border-b border-[#EFECE4]">
-            <div className="flex items-center gap-2">
-              <HelpCircle className="w-5 h-5 text-blue-600" />
-              <h2 className="text-base sm:text-lg font-bold text-[#2B261F]">
+        {/* F. [단락 4] 자주 묻는 질문 (FAQ) - 아코디언 토글 형태 (폰트 대폭 확대) */}
+        <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#EFECE4]">
+            <div className="flex items-center gap-2.5">
+              <HelpCircle className="w-6 h-6 text-blue-600 shrink-0" />
+              <h2 className="text-xl sm:text-2xl font-black text-[#2B261F]">
                 ❓ 4. {props.name} 정비사업 자주 묻는 질문 (FAQ)
               </h2>
             </div>
-            <span className="text-[11px] text-[#827A6D] hidden sm:inline">질문 클릭 시 접기/펼치기 가능</span>
+            <span className="text-xs sm:text-sm text-[#615A4E] font-medium hidden sm:inline">질문 클릭 시 접기/펼치기 가능</span>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {faqList.map((faq, idx) => (
               <details
                 key={idx}
                 open
-                className="group p-4 sm:p-5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] transition-all open:bg-[#FFFFFF] open:shadow-xs"
+                className="group p-5 sm:p-6 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] transition-all open:bg-[#FFFFFF] open:shadow-xs"
               >
-                <summary className="flex items-center justify-between gap-3 font-bold text-xs sm:text-sm text-[#2B261F] cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
-                  <span className="flex items-start gap-2.5 text-left">
-                    <span className="text-blue-600 font-extrabold shrink-0">Q{idx + 1}.</span>
-                    <span className="group-hover:text-blue-600 transition-colors">{faq.question}</span>
+                <summary className="flex items-center justify-between gap-3 font-black text-base sm:text-lg text-[#2B261F] cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
+                  <span className="flex items-start gap-3 text-left">
+                    <span className="text-blue-600 font-black shrink-0">Q{idx + 1}.</span>
+                    <span className="group-hover:text-blue-600 transition-colors leading-snug">{faq.question}</span>
                   </span>
-                  <ChevronDown className="w-4 h-4 text-[#827A6D] shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                  <ChevronDown className="w-5 h-5 text-[#615A4E] shrink-0 transition-transform duration-200 group-open:rotate-180" />
                 </summary>
-                <div className="mt-3 pt-3 border-t border-[#EFECE4] text-xs leading-relaxed text-[#4A4439] space-y-2">
-                  <p>{faq.answer}</p>
+                <div className="mt-4 pt-4 border-t border-[#EFECE4] text-sm sm:text-base leading-relaxed text-[#332E27] space-y-2.5 font-normal">
+                  <p className="leading-relaxed">{faq.answer}</p>
                 </div>
               </details>
             ))}
@@ -794,39 +818,39 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
 
         {/* H. 동일 자치구 인근 구역 추천: 관련 구역 리포트 */}
         {nearbyDistricts.length > 0 && (
-          <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E6E0D2]">
-              <div className="flex items-center gap-2">
-                <Compass className="w-5 h-5 text-blue-600" />
-                <h2 className="text-base font-bold text-[#2B261F]">📑 관련 구역 리포트: {props.gu} 내 다른 정비구역</h2>
+          <section className="p-6 sm:p-9 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-5">
+            <div className="flex items-center justify-between pb-4 border-b border-[#E6E0D2]">
+              <div className="flex items-center gap-2.5">
+                <Compass className="w-6 h-6 text-blue-600 shrink-0" />
+                <h2 className="text-xl sm:text-2xl font-black text-[#2B261F]">📑 관련 구역 리포트: {props.gu} 내 다른 정비구역</h2>
               </div>
-              <Link href={`/districts/gu/${props.gu}/`} className="text-xs text-blue-600 hover:underline font-medium">
+              <Link href={`/districts/gu/${props.gu}/`} className="text-xs sm:text-sm text-blue-600 hover:underline font-extrabold">
                 {props.gu} 전체 구역 보기 →
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {nearbyDistricts.map((item) => (
                 <Link
                   key={item.properties.master_uid}
                   href={`/districts/${item.properties.master_uid}/`}
-                  className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] hover:border-blue-500 hover:bg-white transition-all group flex flex-col justify-between shadow-2xs"
+                  className="p-4 sm:p-5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] hover:border-blue-500 hover:bg-white transition-all group flex flex-col justify-between shadow-2xs"
                   aria-label={`${item.properties.name} 상세 리포트 열람`}
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-1 mb-1.5">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                    <div className="flex items-center justify-between gap-1.5 mb-2">
+                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
                         {item.properties.gu}
                       </span>
-                      <StageBadge stageCode={item.properties.stage_code} className="text-[10px]" />
+                      <StageBadge stageCode={item.properties.stage_code} className="text-xs font-bold" />
                     </div>
-                    <h3 className="text-xs font-bold text-[#2B261F] group-hover:text-blue-600 transition-colors line-clamp-1">
+                    <h3 className="text-sm sm:text-base font-black text-[#2B261F] group-hover:text-blue-600 transition-colors line-clamp-1 leading-snug">
                       {item.properties.name}
                     </h3>
                   </div>
-                  <div className="flex items-center justify-between text-[11px] text-[#827A6D] mt-2.5 pt-2 border-t border-[#E6E0D2]">
+                  <div className="flex items-center justify-between text-xs sm:text-sm text-[#615A4E] mt-3 pt-2.5 border-t border-[#E6E0D2] font-medium">
                     <span>{item.properties.legal_dong}</span>
-                    <strong className="text-[#4A4439]">
+                    <strong className="text-blue-600 font-black">
                       {item.properties.total_households ? `${item.properties.total_households.toLocaleString()}세대` : "계획중"}
                     </strong>
                   </div>
@@ -837,20 +861,20 @@ export default async function DistrictDetailPage({ params }: DistrictPageProps) 
         )}
 
         {/* I. 투자 유의사항 및 면책 고지 (Legal Disclaimer) */}
-        <section className="p-6 rounded-3xl bg-[#FDFBF7] border border-[#E6E0D2] text-xs text-[#827A6D] space-y-2.5">
-          <div className="flex items-center gap-2 text-[#2B261F] font-bold text-sm">
-            <ShieldAlert className="w-4 h-4 text-amber-600" />
+        <section className="p-6 sm:p-8 rounded-3xl bg-[#FDFBF7] border border-[#E6E0D2] text-sm text-[#615A4E] space-y-3">
+          <div className="flex items-center gap-2.5 text-[#2B261F] font-black text-base">
+            <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0" />
             <span>정비사업 데이터 법적 면책 고지 (Disclaimer)</span>
           </div>
-          <p className="leading-relaxed text-[#4A4439]">
+          <p className="leading-relaxed text-[#4A4439] text-xs sm:text-sm font-medium">
             본 리포트는 서울특별시 공공데이터(정보몽땅, 서울 열린데이터광장) 및 공공 고시 자료를 바탕으로 작성된 정비사업 참고용 정보이며, 법적 효력을 갖는 행정처분 문서가 아닙니다. 개별 조합원의 지위양도 승계 자격, 권리산정일 기준 분양 자격, 추가분담금 등은 매물의 권리관계(다물권, 1세대 1주택 보유기간 등)에 따라 상이할 수 있으므로, 실제 매매 계약 체결 전 반드시 관할 구청(도시계획과/정비사업과) 및 구역 조합 사무실을 직접 방문하여 공식 장부를 대조하시기 바랍니다. 본 플랫폼은 본 정보의 이용으로 인한 투자 결과에 대해 법적 책임을 지지 않습니다.
           </p>
-          <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px]">
-            <Link href="/terms/" className="text-blue-600 underline font-semibold hover:text-blue-700">
+          <div className="flex flex-wrap items-center gap-3 pt-1 text-xs">
+            <Link href="/terms/" className="text-blue-600 underline font-bold hover:text-blue-700">
               서비스 이용약관 및 면책조항 전문 보기 →
             </Link>
             <span>•</span>
-            <Link href="/privacy/" className="text-blue-600 underline font-semibold hover:text-blue-700">
+            <Link href="/privacy/" className="text-blue-600 underline font-bold hover:text-blue-700">
               개인정보처리방침 전문 보기 →
             </Link>
           </div>

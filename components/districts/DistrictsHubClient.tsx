@@ -237,7 +237,7 @@ export function DistrictsHubClient() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* 0. 상단 네비게이션 경로 (Breadcrumb) */}
-      <nav className="flex items-center gap-1.5 text-xs text-stone-600 px-1" aria-label="Breadcrumb">
+      <nav className="flex items-center gap-1.5 text-sm font-medium text-stone-600 px-1" aria-label="Breadcrumb">
         <Link href="/" className="hover:text-blue-600 transition-colors">홈</Link>
         <span className="text-stone-400">›</span>
         <span className="text-stone-900 font-bold" aria-current="page">구역별 분석 리포트 색인</span>
@@ -245,42 +245,42 @@ export function DistrictsHubClient() {
 
       {/* 1. 히어로 인덱스 타이틀 섹션 */}
       <section className="relative p-6 sm:p-10 rounded-3xl bg-white border border-[#e7e3da] shadow-sm overflow-hidden">
-        <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#eeeae2] border border-[#e0dad0] text-stone-700 text-xs font-bold">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+        <div className="relative z-10 space-y-3.5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eeeae2] border border-[#e0dad0] text-stone-700 text-sm font-bold">
+            <Sparkles className="w-4 h-4 text-blue-600" />
             <span>수도권(서울·경기) 49개 시·군·구 정비사업 인덱스</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight leading-tight">
             📑 수도권 정비사업 구역별 정밀 분석 리포트
           </h1>
 
-          <p className="text-sm sm:text-base text-stone-700 max-w-3xl leading-relaxed">
-            수도권(서울·경기) 내 추진 중인 <strong>{stats.total.toLocaleString()}개 정비구역</strong>의 현재 사업 단계, 권리산정기준일, 
+          <p className="text-base sm:text-lg text-stone-700 max-w-3xl leading-relaxed font-normal">
+            수도권(서울·경기) 내 추진 중인 <strong className="text-stone-900 font-black">{stats.total.toLocaleString()}개 정비구역</strong>의 현재 사업 단계, 권리산정기준일, 
             조합원 지위양도/현금청산 안전성 진단, 계획 세대수 및 예상 타임라인 해설 리포트를 한곳에서 검색하고 열람하세요.
           </p>
 
           {/* 사업 유형별 요약 카운터 */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 pt-4">
-            <div className="p-3.5 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
-              <span className="text-[11px] text-stone-500 font-medium block">총 정비구역</span>
-              <span className="text-xl font-black text-stone-900">{stats.total}개소</span>
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-4">
+            <div className="p-4 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
+              <span className="text-xs sm:text-sm text-stone-600 font-bold block mb-1">총 정비구역</span>
+              <span className="text-2xl font-black text-stone-900">{stats.total}개소</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
-              <span className="text-[11px] text-blue-700 font-medium block">신속통합기획</span>
-              <span className="text-xl font-black text-blue-700">{stats.sinthong}개소</span>
+            <div className="p-4 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
+              <span className="text-xs sm:text-sm text-blue-700 font-bold block mb-1">신속통합기획</span>
+              <span className="text-2xl font-black text-blue-700">{stats.sinthong}개소</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
-              <span className="text-[11px] text-amber-700 font-medium block">모아타운</span>
-              <span className="text-xl font-black text-amber-700">{stats.moa}개소</span>
+            <div className="p-4 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
+              <span className="text-xs sm:text-sm text-amber-700 font-bold block mb-1">모아타운</span>
+              <span className="text-2xl font-black text-amber-700">{stats.moa}개소</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
-              <span className="text-[11px] text-indigo-700 font-medium block">재개발</span>
-              <span className="text-xl font-black text-indigo-700">{stats.rdev}개소</span>
+            <div className="p-4 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
+              <span className="text-xs sm:text-sm text-indigo-700 font-bold block mb-1">재개발</span>
+              <span className="text-2xl font-black text-indigo-700">{stats.rdev}개소</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
-              <span className="text-[11px] text-emerald-700 font-medium block">재건축</span>
-              <span className="text-xl font-black text-emerald-700">{stats.rcon}개소</span>
+            <div className="p-4 rounded-2xl bg-[#faf8f5] border border-[#e7e3da]">
+              <span className="text-xs sm:text-sm text-emerald-700 font-bold block mb-1">재건축</span>
+              <span className="text-2xl font-black text-emerald-700">{stats.rcon}개소</span>
             </div>
           </div>
         </div>
@@ -292,35 +292,35 @@ export function DistrictsHubClient() {
       </section>
 
       {/* 3. 검색 및 필터 컨트롤 바 */}
-      <section className="p-5 sm:p-6 rounded-3xl bg-white border border-[#e7e3da] shadow-sm space-y-5">
+      <section className="p-5 sm:p-7 rounded-3xl bg-white border border-[#e7e3da] shadow-sm space-y-5">
         {/* 상단: 검색창 & 정렬 */}
         <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+            <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="구역명, 자치구, 법정동, 지번으로 검색 (예: 한남, 성수, 상계, 신림)"
-              className="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-[#faf8f5] border border-[#e7e3da] text-stone-900 placeholder-stone-400 text-sm focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white transition-all"
+              className="w-full pl-12 pr-10 py-3 rounded-2xl bg-[#faf8f5] border border-[#e7e3da] text-stone-900 placeholder-stone-400 text-base font-medium focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white transition-all"
             />
             {searchQuery && (
               <button
                 onClick={() => handleSearchChange("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 cursor-pointer"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 cursor-pointer p-1"
                 title="검색어 지우기"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             )}
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs text-stone-500">정렬:</span>
+            <span className="text-sm text-stone-600 font-bold">정렬:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="py-2.5 px-3 rounded-xl bg-[#faf8f5] border border-[#e7e3da] text-xs font-semibold text-stone-800 focus:outline-hidden focus:border-blue-500 cursor-pointer"
+              className="py-3 px-4 rounded-xl bg-[#faf8f5] border border-[#e7e3da] text-sm font-bold text-stone-800 focus:outline-hidden focus:border-blue-500 cursor-pointer"
             >
               <option value="LATEST">최신 고시순</option>
               <option value="HOUSEHOLDS">계획 세대수 많은 순</option>
@@ -330,7 +330,7 @@ export function DistrictsHubClient() {
         </div>
 
         {/* 사업 유형 탭 */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 border-b border-[#e7e3da] scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1.5 border-b border-[#e7e3da] scrollbar-none">
           {BIZ_TABS.map((tab) => {
             const count =
               tab.id === "ALL"
@@ -349,16 +349,16 @@ export function DistrictsHubClient() {
                 key={tab.id}
                 onClick={() => handleBizTypeChange(tab.id)}
                 className={cn(
-                  "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer",
+                  "flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap cursor-pointer",
                   isActive
-                    ? "bg-blue-600 text-white shadow-xs"
+                    ? "bg-blue-600 text-white shadow-xs font-black"
                     : "bg-[#eeeae2] text-stone-700 hover:bg-[#e4dfd5] border border-[#e0dad0]"
                 )}
               >
                 <span>{tab.label}</span>
                 <span
                   className={cn(
-                    "text-[10px] px-1.5 py-0.2 rounded-full",
+                    "text-xs px-2 py-0.5 rounded-full font-bold",
                     isActive ? "bg-white/25 text-white" : "bg-white text-stone-600"
                   )}
                 >
@@ -370,22 +370,22 @@ export function DistrictsHubClient() {
         </div>
 
         {/* 25개 자치구 카테고리 칩 필터 */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs text-stone-500">
-            <span className="font-semibold flex items-center gap-1">
-              <Filter className="w-3.5 h-3.5 text-blue-600" />
+        <div className="space-y-2.5">
+          <div className="flex items-center justify-between text-sm text-stone-600">
+            <span className="font-bold flex items-center gap-1.5 text-stone-900">
+              <Filter className="w-4 h-4 text-blue-600" />
               지역 필터 ({availableRegions.length - 1}개 지역):
             </span>
             {(selectedGu !== "전체" || selectedBizType !== "ALL" || searchQuery) && (
               <button
                 onClick={handleReset}
-                className="text-blue-600 hover:underline cursor-pointer text-xs font-semibold"
+                className="text-blue-600 hover:underline cursor-pointer text-sm font-bold"
               >
                 필터 초기화
               </button>
             )}
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-2">
             {availableRegions.map((gu) => {
               const isSelected = selectedGu === gu;
               return (
@@ -393,9 +393,9 @@ export function DistrictsHubClient() {
                   key={gu}
                   onClick={() => handleGuChange(gu)}
                   className={cn(
-                    "px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer",
+                    "px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer",
                     isSelected
-                      ? "bg-blue-600 text-white font-bold shadow-xs"
+                      ? "bg-blue-600 text-white font-black shadow-xs"
                       : "bg-[#eeeae2] text-stone-700 hover:bg-[#e4dfd5] border border-[#e0dad0]"
                   )}
                 >
@@ -406,20 +406,20 @@ export function DistrictsHubClient() {
           </div>
 
           {/* 25개 자치구별 종합 리포트 전용 페이지 바로가기 (크롤러 및 사용자 탐색 경로 강화) */}
-          <div className="pt-3 border-t border-[#e7e3da] space-y-2">
-            <div className="flex items-center justify-between text-xs text-stone-600">
-              <span className="font-bold flex items-center gap-1.5 text-stone-800">
-                <Compass className="w-3.5 h-3.5 text-blue-600" />
+          <div className="pt-3.5 border-t border-[#e7e3da] space-y-2.5">
+            <div className="flex items-center justify-between text-sm text-stone-600">
+              <span className="font-bold flex items-center gap-1.5 text-stone-900">
+                <Compass className="w-4 h-4 text-blue-600" />
                 <span>🏛️ 25개 자치구별 종합 리포트 전용 페이지:</span>
               </span>
-              <span className="text-[11px] text-stone-500 hidden sm:inline">자치구별 총 세대수 &amp; 단계 종합 현황</span>
+              <span className="text-xs text-stone-500 hidden sm:inline">자치구별 총 세대수 &amp; 단계 종합 현황</span>
             </div>
-            <nav className="flex flex-wrap gap-1.5" aria-label="25개 자치구별 정비사업 종합 리포트 바로가기">
+            <nav className="flex flex-wrap gap-2" aria-label="25개 자치구별 정비사업 종합 리포트 바로가기">
               {SEOUL_GUS.filter((g) => g !== "전체").map((gu) => (
                 <Link
                   key={gu}
                   href={`/districts/gu/${encodeURIComponent(gu)}/`}
-                  className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#faf8f5] hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-[#e0dad0] text-stone-700 transition-all cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-[#faf8f5] hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-[#e0dad0] text-stone-700 transition-all cursor-pointer"
                   title={`${gu} 재개발·신통·모아 종합 리포트 보기`}
                 >
                   {gu} →
@@ -433,20 +433,20 @@ export function DistrictsHubClient() {
       {/* 4. 검색 결과 안내 헤더 */}
       <div className="flex flex-wrap items-center justify-between gap-2 px-1">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-bold text-stone-700">
-            검색 결과 <span className="text-blue-600 font-extrabold">{filteredDistricts.length}</span>개 구역
-            {selectedGu !== "전체" && <span className="text-stone-500 text-xs ml-1">({selectedGu})</span>}
+          <span className="text-base sm:text-lg font-bold text-stone-800">
+            검색 결과 <span className="text-blue-600 font-black">{filteredDistricts.length}</span>개 구역
+            {selectedGu !== "전체" && <span className="text-stone-600 text-sm ml-1.5">({selectedGu})</span>}
           </span>
           {selectedGu !== "전체" && (
             <Link
               href={`/districts/gu/${selectedGu}/`}
-              className="text-xs text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+              className="text-sm text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
             >
               <span>📑 {selectedGu} 종합 리포트 →</span>
             </Link>
           )}
         </div>
-        <span className="text-xs text-stone-500 font-medium">
+        <span className="text-sm text-stone-600 font-bold">
           페이지 {currentPage} / {totalPages}
         </span>
       </div>
@@ -461,53 +461,53 @@ export function DistrictsHubClient() {
             return (
               <div
                 key={p.master_uid}
-                className="group p-5 rounded-2xl bg-white border border-[#e7e3da] hover:border-blue-500/60 transition-all hover:shadow-md flex flex-col justify-between"
+                className="group p-5 sm:p-6 rounded-3xl bg-white border border-[#e7e3da] hover:border-blue-500/60 transition-all hover:shadow-md flex flex-col justify-between"
               >
                 <div>
                   {/* 상단 뱃지 라인 */}
                   <div className="flex items-center justify-between gap-1 mb-2.5">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                      <span className="text-xs sm:text-sm font-bold px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
                         {p.gu}
                       </span>
-                      <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-[#eeeae2] text-stone-700 border border-[#e0dad0]">
+                      <span className="text-xs sm:text-sm font-medium px-2.5 py-0.5 rounded-lg bg-[#eeeae2] text-stone-700 border border-[#e0dad0]">
                         {p.biz_type_label || p.biz_type}
                       </span>
                     </div>
-                    <StageBadge stageCode={p.stage_code} className="text-[11px] py-0.5 px-2" />
+                    <StageBadge stageCode={p.stage_code} className="text-xs sm:text-sm font-bold py-0.5 px-2.5" />
                   </div>
 
                   {/* 구역명 & 주소 */}
-                  <h2 className="text-base font-extrabold text-stone-900 group-hover:text-blue-600 transition-colors line-clamp-1">
+                  <h2 className="text-lg sm:text-xl font-black text-stone-900 group-hover:text-blue-600 transition-colors line-clamp-1 mt-1">
                     {p.name}
                   </h2>
-                  <div className="flex items-center gap-1 text-xs text-stone-500 mt-1 mb-3">
-                    <MapPin className="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                  <div className="flex items-center gap-1 text-sm text-stone-600 font-medium mt-1.5 mb-3.5">
+                    <MapPin className="w-4 h-4 text-stone-400 shrink-0" />
                     <span className="truncate">{p.legal_dong} {p.address_jibun}</span>
                   </div>
 
                   {/* 주요 지표 표기 */}
-                  <div className="grid grid-cols-3 gap-1.5 p-2.5 rounded-xl bg-[#faf8f5] border border-[#e7e3da] text-center mb-4">
+                  <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-[#faf8f5] border border-[#e7e3da] text-center mb-4">
                     <div>
-                      <span className="text-[10px] text-stone-500 block">계획 세대수</span>
-                      <span className="text-xs font-bold text-stone-900">
+                      <span className="text-xs text-stone-600 font-bold block mb-0.5">계획 세대수</span>
+                      <span className="text-sm sm:text-base font-black text-stone-900">
                         {p.total_households ? `${p.total_households.toLocaleString()}세대` : "미정"}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-stone-500 block">지위양도</span>
+                      <span className="text-xs text-stone-600 font-bold block mb-0.5">지위양도</span>
                       <span
                         className={cn(
-                          "text-xs font-bold flex items-center justify-center gap-0.5",
-                          p.is_transferable ? "text-emerald-700 font-extrabold" : "text-amber-700 font-extrabold"
+                          "text-sm sm:text-base font-black flex items-center justify-center gap-0.5",
+                          p.is_transferable ? "text-emerald-700" : "text-amber-700"
                         )}
                       >
                         {p.is_transferable ? "승계가능" : "양도제한"}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-stone-500 block">최근 고시</span>
-                      <span className="text-xs font-bold text-stone-700 truncate">
+                      <span className="text-xs text-stone-600 font-bold block mb-0.5">최근 고시</span>
+                      <span className="text-sm sm:text-base font-black text-stone-800 truncate block">
                         {p.approval_date ? p.approval_date.slice(0, 10) : "-"}
                       </span>
                     </div>
@@ -515,23 +515,23 @@ export function DistrictsHubClient() {
                 </div>
 
                 {/* 하단 액션 버튼 */}
-                <div className="flex items-center gap-2 pt-2 border-t border-[#e7e3da]">
+                <div className="flex items-center gap-2 pt-3 border-t border-[#e7e3da]">
                   <Link
                     href={targetUrl}
-                    className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-xs transition-all cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xs transition-all cursor-pointer"
                     aria-label={`${p.name} 정밀 분석 리포트 열람`}
                   >
-                    <FileText className="w-3.5 h-3.5" />
+                    <FileText className="w-4 h-4" />
                     <span>상세 리포트 보기</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                   <Link
                     href={`/?id=${p.master_uid}`}
-                    className="py-2 px-3 rounded-xl bg-[#eeeae2] hover:bg-[#e4dfd5] text-stone-700 hover:text-stone-900 font-semibold text-xs border border-[#e0dad0] transition-all cursor-pointer flex items-center gap-1"
+                    className="py-2.5 px-3 rounded-xl bg-[#eeeae2] hover:bg-[#e4dfd5] text-stone-800 hover:text-stone-950 font-bold text-sm border border-[#e0dad0] transition-all cursor-pointer flex items-center gap-1"
                     title={`${p.name} 지도에서 구역 위치 확인`}
                     aria-label={`${p.name} 지도에서 구역 위치 확인`}
                   >
-                    <Map className="w-3.5 h-3.5 text-blue-600" />
+                    <Map className="w-4 h-4 text-blue-600" />
                     <span>지도</span>
                   </Link>
                 </div>
@@ -542,13 +542,13 @@ export function DistrictsHubClient() {
       ) : (
         <div className="p-16 rounded-3xl bg-white border border-[#e7e3da] text-center space-y-3 shadow-xs">
           <Building2 className="w-10 h-10 text-stone-400 mx-auto" />
-          <h3 className="text-base font-bold text-stone-900">일치하는 정비구역을 찾을 수 없습니다.</h3>
-          <p className="text-xs text-stone-500 max-w-sm mx-auto">
+          <h3 className="text-lg font-bold text-stone-900">일치하는 정비구역을 찾을 수 없습니다.</h3>
+          <p className="text-sm text-stone-600 max-w-sm mx-auto">
             검색어 오타가 없는지 확인하거나 자치구 및 사업유형 필터를 '전체'로 변경해 보세요.
           </p>
           <button
             onClick={handleReset}
-            className="mt-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all cursor-pointer"
+            className="mt-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold transition-all cursor-pointer"
           >
             필터 초기화
           </button>
@@ -557,14 +557,14 @@ export function DistrictsHubClient() {
 
       {/* 6. 페이지네이션 컨트롤 */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-1.5 pt-4 pb-8">
+        <div className="flex items-center justify-center gap-2 pt-4 pb-8">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="p-2 rounded-xl bg-white border border-[#e7e3da] text-stone-600 hover:text-stone-900 hover:bg-[#eeeae2] disabled:opacity-40 disabled:pointer-events-none cursor-pointer shadow-2xs"
+            className="p-2.5 rounded-xl bg-white border border-[#e7e3da] text-stone-600 hover:text-stone-900 hover:bg-[#eeeae2] disabled:opacity-40 disabled:pointer-events-none cursor-pointer shadow-2xs"
             aria-label="이전 페이지"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
 
           {Array.from({ length: totalPages }, (_, i) => i + 1)
@@ -575,13 +575,13 @@ export function DistrictsHubClient() {
 
               return (
                 <div key={page} className="flex items-center">
-                  {isEllipsis && <span className="px-2 text-xs text-stone-400">...</span>}
+                  {isEllipsis && <span className="px-2 text-sm text-stone-400">...</span>}
                   <button
                     onClick={() => setCurrentPage(page)}
                     className={cn(
-                      "w-8 h-8 rounded-xl text-xs font-bold transition-all cursor-pointer",
+                      "min-w-9 h-9 px-2 rounded-xl text-sm font-bold transition-all cursor-pointer",
                       currentPage === page
-                        ? "bg-blue-600 text-white shadow-xs"
+                        ? "bg-blue-600 text-white shadow-xs font-black"
                         : "bg-white border border-[#e7e3da] text-stone-700 hover:bg-[#eeeae2]"
                     )}
                   >
@@ -594,10 +594,10 @@ export function DistrictsHubClient() {
           <button
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="p-2 rounded-xl bg-white border border-[#e7e3da] text-stone-600 hover:text-stone-900 hover:bg-[#eeeae2] disabled:opacity-40 disabled:pointer-events-none cursor-pointer shadow-2xs"
+            className="p-2.5 rounded-xl bg-white border border-[#e7e3da] text-stone-600 hover:text-stone-900 hover:bg-[#eeeae2] disabled:opacity-40 disabled:pointer-events-none cursor-pointer shadow-2xs"
             aria-label="다음 페이지"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       )}

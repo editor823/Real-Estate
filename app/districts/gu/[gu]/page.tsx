@@ -258,17 +258,17 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {/* 1. 상단 Breadcrumb & 액션 바 */}
-      <div className="bg-[#FFFFFF] border-b border-[#E6E0D2] px-4 sm:px-8 py-3 flex items-center justify-between shadow-2xs">
+      <div className="bg-[#FFFFFF] border-b border-[#E6E0D2] px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xs">
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/districts/"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-xs font-bold text-[#2B261F] transition-all shadow-2xs active:scale-95 cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-sm font-bold text-[#2B261F] transition-all shadow-2xs active:scale-95 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 text-blue-600" />
             <span>← 전체 구역 색인</span>
           </Link>
           <span className="text-[#827A6D] opacity-40 hidden sm:inline">|</span>
-          <nav className="text-xs text-[#827A6D] flex items-center gap-1.5" aria-label="Breadcrumb">
+          <nav className="text-sm text-[#827A6D] flex items-center gap-1.5" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-blue-600 text-[#827A6D]">홈</Link>
             <span>›</span>
             <Link href="/districts/" className="hover:text-blue-600 text-[#4A4439] font-medium">
@@ -282,9 +282,9 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         {/* 메인 지도 바로가기 버튼 */}
         <Link
           href="/"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-600/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold shadow-md shadow-blue-600/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
         >
-          <Map className="w-3.5 h-3.5" />
+          <Map className="w-4 h-4" />
           <span>🗺️ 지도에서 보기</span>
         </Link>
       </div>
@@ -294,38 +294,38 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         {/* A. 히어로 섹션 */}
         <section className="p-6 sm:p-8 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm relative overflow-hidden">
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="text-xs font-extrabold px-3 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
+            <span className="text-sm font-black px-3.5 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
               {GYEONGGI_31_CITIES.includes(targetGu) || targetGu.endsWith("시") || targetGu.endsWith("군") ? "경기도" : "서울특별시"} {targetGu}
             </span>
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-lg bg-[#FDFBF7] text-[#4A4439] border border-[#E6E0D2]">
+            <span className="text-sm font-bold px-3 py-1 rounded-lg bg-[#FDFBF7] text-[#4A4439] border border-[#E6E0D2]">
               정비사업 집중 모니터링
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#2B261F] tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-black text-[#2B261F] tracking-tight leading-tight">
             {targetGu} 정비사업 현황 리포트 (총 {totalDistricts}개 구역)
           </h1>
 
           {/* E-E-A-T 강화: 데이터 출처 및 동기화 뱃지 */}
-          <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-[#EFECE4]">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-[11px] font-medium text-[#4A4439]">
-              <Database className="w-3.5 h-3.5 text-blue-600" />
+          <div className="flex flex-wrap items-center gap-2.5 mt-4 pt-3.5 border-t border-[#EFECE4]">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-xs sm:text-sm font-bold text-[#4A4439]">
+              <Database className="w-4 h-4 text-blue-600" />
               <span>데이터 출처: 서울시 정보몽땅 &amp; 열린데이터광장</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-[11px] font-medium text-[#4A4439]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F7F5EE] border border-[#E6E0D2] text-xs sm:text-sm font-bold text-[#4A4439]">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span>시스템 최종 동기화: 2026.10.04</span>
             </span>
           </div>
 
           {/* 자치구 개요 텍스트 */}
-          <div className="mt-3.5 text-xs text-[#4A4439] leading-relaxed space-y-2">
+          <div className="mt-4 text-sm sm:text-base text-[#332E27] leading-relaxed space-y-2.5 font-normal">
             <p>
               서울특별시 <strong>{targetGu}</strong>는 현재 총 <strong>{totalDistricts}개소</strong>의 주택 재개발, 재건축, 신속통합기획 및 모아타운 사업이 활발히 추진되고 있는 핵심 도시정비 거점 지역입니다. 
               관내 정비사업을 통해 신축 건립 예정인 총 공급 규모는 <strong>{totalHouseholds > 0 ? `${totalHouseholds.toLocaleString()}세대` : "집계중"}</strong>에 달하며, 
               기존 노후 멸실 가구수 <strong>{totalExistHouseholds > 0 ? `${totalExistHouseholds.toLocaleString()}가구` : "산정중"}</strong> 대비 대규모 신규 양질 주택 공급이 계획되어 있습니다.
             </p>
-            <p className="text-[#827A6D]">
+            <p className="text-[#5C5346]">
               주요 사업 유형으로는 서울시 주도 패스트트랙인 <strong>신속통합기획 {sinthongCount}개 구역</strong>, 소규모 노후 저층 주거지를 블록형으로 묶어 개발하는 <strong>모아타운 {moaCount}개 구역</strong>, 
               일반 재개발·재건축 {normalCount}개 구역이 포함되어 있습니다. 
               {dongs.length > 0 && ` 관할 주요 추진 법정동은 ${dongs.slice(0, 6).join(", ")}${dongs.length > 6 ? ` 등 ${dongs.length}개 법정동` : ""}에 걸쳐 분포하고 있습니다.`}
@@ -333,31 +333,31 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
           </div>
 
           {/* 핵심 KPI 카드 그리드 */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-[#E6E0D2]">
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">총 추진 구역수</span>
-              <strong className="text-lg font-extrabold text-[#2B261F]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 mt-6 pt-6 border-t border-[#E6E0D2]">
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
+              <span className="text-xs sm:text-sm font-bold text-[#6B6255] block mb-1">총 추진 구역수</span>
+              <strong className="text-xl sm:text-2xl font-black text-[#2B261F]">
                 {totalDistricts}개소
               </strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">총 계획 세대수</span>
-              <strong className="text-lg font-extrabold text-blue-600">
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
+              <span className="text-xs sm:text-sm font-bold text-[#6B6255] block mb-1">총 계획 세대수</span>
+              <strong className="text-xl sm:text-2xl font-black text-blue-600">
                 {totalHouseholds > 0 ? `${totalHouseholds.toLocaleString()}세대` : "계획중"}
               </strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">신속통합기획 구역</span>
-              <strong className="text-lg font-extrabold text-indigo-600">
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
+              <span className="text-xs sm:text-sm font-bold text-[#6B6255] block mb-1">신속통합기획 구역</span>
+              <strong className="text-xl sm:text-2xl font-black text-indigo-600">
                 {sinthongCount}개 구역
               </strong>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
-              <span className="text-[11px] font-semibold text-[#827A6D] block mb-1">모아타운(소규모)</span>
-              <strong className="text-lg font-extrabold text-emerald-600">
+            <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
+              <span className="text-xs sm:text-sm font-bold text-[#6B6255] block mb-1">모아타운(소규모)</span>
+              <strong className="text-xl sm:text-2xl font-black text-emerald-600">
                 {moaCount}개 구역
               </strong>
             </div>
@@ -369,36 +369,36 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
           <div className="flex items-center justify-between pb-3 border-b border-[#EFECE4]">
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-amber-600" />
-              <h2 className="text-base sm:text-lg font-bold text-[#2B261F]">
+              <h2 className="text-lg sm:text-xl font-black text-[#2B261F]">
                 🎯 {targetGu} 정비사업 핵심 동향 및 주요 구역 브리핑
               </h2>
             </div>
-            <span className="text-[11px] text-blue-700 font-bold bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+            <span className="text-xs text-blue-700 font-black bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
               실시간 데이터 자동 분석
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
             {maxHouseholdDistrict && (
-              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2">
+              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2.5">
                 <div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded bg-blue-100 text-blue-800">
                     🏢 최대 공급 대단지
                   </span>
-                  <h3 className="text-sm font-extrabold text-[#2B261F] mt-1.5">
+                  <h3 className="text-base font-black text-[#2B261F] mt-2">
                     {maxHouseholdDistrict.properties.name}
                   </h3>
-                  <p className="text-xs text-[#827A6D] mt-0.5">
+                  <p className="text-xs sm:text-sm text-[#6B6255] font-medium mt-1">
                     {maxHouseholdDistrict.properties.legal_dong} • {maxHouseholdDistrict.properties.stage_label || maxHouseholdDistrict.properties.stage_raw}
                   </p>
                 </div>
-                <div className="flex items-center justify-between pt-2 border-t border-[#EFECE4] text-xs">
-                  <span className="font-extrabold text-blue-700">
+                <div className="flex items-center justify-between pt-2.5 border-t border-[#EFECE4] text-sm">
+                  <span className="font-black text-blue-700 text-base">
                     {(maxHouseholdDistrict.properties.total_households || 0).toLocaleString()}세대
                   </span>
                   <Link
                     href={`/districts/${maxHouseholdDistrict.properties.master_uid || maxHouseholdDistrict.id}/`}
-                    className="text-[11px] text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+                    className="text-xs sm:text-sm text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
                   >
                     상세 리포트 →
                   </Link>
@@ -407,25 +407,25 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
             )}
 
             {latestApprovalDistrict && (
-              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2">
+              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2.5">
                 <div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800">
                     ⚡ 최근 인허가 고시 구역
                   </span>
-                  <h3 className="text-sm font-extrabold text-[#2B261F] mt-1.5">
+                  <h3 className="text-base font-black text-[#2B261F] mt-2">
                     {latestApprovalDistrict.properties.name}
                   </h3>
-                  <p className="text-xs text-[#827A6D] mt-0.5">
+                  <p className="text-xs sm:text-sm text-[#6B6255] font-medium mt-1">
                     {latestApprovalDistrict.properties.legal_dong} • {latestApprovalDistrict.properties.stage_label || latestApprovalDistrict.properties.stage_raw}
                   </p>
                 </div>
-                <div className="flex items-center justify-between pt-2 border-t border-[#EFECE4] text-xs">
-                  <span className="font-bold text-emerald-800">
+                <div className="flex items-center justify-between pt-2.5 border-t border-[#EFECE4] text-sm">
+                  <span className="font-black text-emerald-800">
                     고시: {latestApprovalDistrict.properties.approval_date}
                   </span>
                   <Link
                     href={`/districts/${latestApprovalDistrict.properties.master_uid || latestApprovalDistrict.id}/`}
-                    className="text-[11px] text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+                    className="text-xs sm:text-sm text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
                   >
                     상세 리포트 →
                   </Link>
@@ -434,25 +434,25 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
             )}
 
             {fastestStageDistrict && (
-              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2">
+              <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] flex flex-col justify-between space-y-2.5">
                 <div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded bg-indigo-100 text-indigo-800">
                     🚀 사업 추진 선도 구역
                   </span>
-                  <h3 className="text-sm font-extrabold text-[#2B261F] mt-1.5">
+                  <h3 className="text-base font-black text-[#2B261F] mt-2">
                     {fastestStageDistrict.properties.name}
                   </h3>
-                  <p className="text-xs text-[#827A6D] mt-0.5">
+                  <p className="text-xs sm:text-sm text-[#6B6255] font-medium mt-1">
                     {fastestStageDistrict.properties.legal_dong} • {fastestStageDistrict.properties.biz_type_label}
                   </p>
                 </div>
-                <div className="flex items-center justify-between pt-2 border-t border-[#EFECE4] text-xs">
-                  <span className="font-extrabold text-indigo-700">
+                <div className="flex items-center justify-between pt-2.5 border-t border-[#EFECE4] text-sm">
+                  <span className="font-black text-indigo-700 text-base">
                     {fastestStageDistrict.properties.stage_label || fastestStageDistrict.properties.stage_raw}
                   </span>
                   <Link
                     href={`/districts/${fastestStageDistrict.properties.master_uid || fastestStageDistrict.id}/`}
-                    className="text-[11px] text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
+                    className="text-xs sm:text-sm text-blue-600 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
                   >
                     상세 리포트 →
                   </Link>
@@ -462,7 +462,7 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
           </div>
 
           {/* 종합 요약 브리핑 해설 */}
-          <div className="p-4 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] text-xs text-[#4A4439] leading-relaxed">
+          <div className="p-4 sm:p-5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2] text-sm sm:text-base text-[#332E27] leading-relaxed">
             <p>
               💡 <strong>{targetGu} 관내 정비사업 투자 분석:</strong> 관내 최대 공급 규모인 <strong>{maxHouseholdDistrict?.properties.name}</strong>({maxHouseholdDistrict?.properties.total_households?.toLocaleString()}세대)을 중심으로, 
               최근 <strong>{latestApprovalDistrict?.properties.approval_date}</strong> 고시를 통과한 <strong>{latestApprovalDistrict?.properties.name}</strong>까지 인허가 변경이 꾸준히 이어지고 있습니다. 
@@ -478,26 +478,26 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         </section>
 
         {/* C. 25개 자치구 빠른 이동 칩 네비게이션 */}
-        <section className="p-4 sm:p-5 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-3">
+        <section className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm space-y-3.5">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#2B261F] flex items-center gap-1.5">
+            <span className="text-sm font-bold text-[#2B261F] flex items-center gap-1.5">
               <Compass className="w-4 h-4 text-blue-600" />
               <span>다른 자치구 리포트 둘러보기</span>
             </span>
-            <Link href="/districts/" className="text-xs text-blue-600 hover:underline font-semibold">
+            <Link href="/districts/" className="text-sm text-blue-600 hover:underline font-bold">
               전체 496개 구역 색인 →
             </Link>
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-2">
             {SEOUL_25_GUS.map((guName) => {
               const isCurrent = guName === targetGu;
               return (
                 <Link
                   key={guName}
                   href={`/districts/gu/${guName}/`}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                     isCurrent
-                      ? "bg-blue-600 text-white font-bold shadow-xs"
+                      ? "bg-blue-600 text-white font-black shadow-xs"
                       : "bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-[#4A4439]"
                   }`}
                   aria-current={isCurrent ? "page" : undefined}
@@ -512,11 +512,11 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         {/* D. 해당 자치구 구역 목록 카드 그리드 */}
         <section className="space-y-4">
           <div className="flex items-center justify-between px-1">
-            <h2 className="text-base sm:text-lg font-extrabold text-[#2B261F] flex items-center gap-2">
+            <h2 className="text-lg sm:text-xl font-black text-[#2B261F] flex items-center gap-2">
               <Building2 className="w-5 h-5 text-blue-600" />
               <span>{targetGu} 관내 구역 분석 리포트 목록 ({totalDistricts}개)</span>
             </h2>
-            <span className="text-xs text-[#827A6D]">클릭 시 심층 분석 리포트 열람</span>
+            <span className="text-xs sm:text-sm text-[#6B6255] font-medium">클릭 시 심층 분석 리포트 열람</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -527,60 +527,60 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
               return (
                 <article
                   key={uid}
-                  className="p-5 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between group"
+                  className="p-5 sm:p-6 rounded-3xl bg-[#FFFFFF] border border-[#E6E0D2] shadow-sm hover:shadow-md hover:border-blue-400 transition-all flex flex-col justify-between group"
                 >
                   <div>
                     {/* 상단 뱃지 행 */}
                     <div className="flex items-center justify-between gap-1.5 mb-2.5">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-[11px] font-bold px-2 py-0.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
+                        <span className="text-xs sm:text-sm font-bold px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
                           {p.gu}
                         </span>
-                        <span className="text-[11px] font-medium px-2 py-0.5 rounded-lg bg-[#FDFBF7] text-[#4A4439] border border-[#E6E0D2]">
+                        <span className="text-xs sm:text-sm font-medium px-2.5 py-0.5 rounded-lg bg-[#FDFBF7] text-[#4A4439] border border-[#E6E0D2]">
                           {p.biz_type_label}
                         </span>
                       </div>
-                      <StageBadge stageCode={p.stage_code} className="text-xs" />
+                      <StageBadge stageCode={p.stage_code} className="text-xs sm:text-sm font-bold" />
                     </div>
 
                     {/* 구역명 */}
                     <Link href={`/districts/${uid}/`}>
-                      <h3 className="text-base font-extrabold text-[#2B261F] group-hover:text-blue-600 transition-colors line-clamp-1">
+                      <h3 className="text-lg sm:text-xl font-black text-[#2B261F] group-hover:text-blue-600 transition-colors line-clamp-1 mt-1">
                         {p.name}
                       </h3>
                     </Link>
 
                     {/* 위치 및 고시일자 */}
-                    <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-[#827A6D] mt-2">
+                    <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs sm:text-sm text-[#6B6255] mt-2.5">
                       <div className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5 text-blue-500" />
-                        <span className="text-[#4A4439]">{p.legal_dong} {p.address_jibun}</span>
+                        <MapPin className="w-4 h-4 text-blue-500 shrink-0" />
+                        <span className="text-[#332E27] font-medium">{p.legal_dong} {p.address_jibun}</span>
                       </div>
                       {p.approval_date && (
                         <div className="flex items-center gap-1">
-                          <Calendar className="w-3.5 h-3.5 text-[#827A6D]" />
+                          <Calendar className="w-4 h-4 text-[#827A6D] shrink-0" />
                           <span>고시일: {p.approval_date}</span>
                         </div>
                       )}
                     </div>
 
                     {/* 수치 요약 박스 */}
-                    <div className="grid grid-cols-3 gap-2 mt-4 p-3 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
+                    <div className="grid grid-cols-3 gap-2 mt-4 p-3.5 rounded-2xl bg-[#FDFBF7] border border-[#E6E0D2]">
                       <div>
-                        <span className="text-[10px] text-[#827A6D] block">계획 세대</span>
-                        <strong className="text-xs font-bold text-[#2B261F]">
+                        <span className="text-xs font-bold text-[#6B6255] block mb-0.5">계획 세대</span>
+                        <strong className="text-sm sm:text-base font-black text-[#2B261F]">
                           {p.total_households ? `${p.total_households.toLocaleString()}세대` : "계획중"}
                         </strong>
                       </div>
                       <div>
-                        <span className="text-[10px] text-[#827A6D] block">기존 가구</span>
-                        <strong className="text-xs font-bold text-[#4A4439]">
+                        <span className="text-xs font-bold text-[#6B6255] block mb-0.5">기존 가구</span>
+                        <strong className="text-sm sm:text-base font-black text-[#4A4439]">
                           {p.existing_households ? `${p.existing_households.toLocaleString()}가구` : "-"}
                         </strong>
                       </div>
                       <div>
-                        <span className="text-[10px] text-[#827A6D] block">전매 안전성</span>
-                        <strong className={`text-xs font-bold ${p.is_transferable ? "text-[#1B5E20]" : "text-[#8D3B00]"}`}>
+                        <span className="text-xs font-bold text-[#6B6255] block mb-0.5">전매 안전성</span>
+                        <strong className={`text-sm sm:text-base font-black ${p.is_transferable ? "text-[#1B5E20]" : "text-[#8D3B00]"}`}>
                           {p.is_transferable ? "지위양도 가능" : "전매주의"}
                         </strong>
                       </div>
@@ -588,22 +588,22 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
                   </div>
 
                   {/* 액션 버튼 그룹 */}
-                  <div className="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-[#EFECE4]">
+                  <div className="grid grid-cols-2 gap-2 mt-4 pt-3.5 border-t border-[#EFECE4]">
                     <Link
                       href={`/districts/${uid}/`}
-                      className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-xs transition-all active:scale-95 cursor-pointer text-center"
+                      className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xs transition-all active:scale-95 cursor-pointer text-center"
                       aria-label={`${p.name} 상세 분석 리포트 열람`}
                     >
-                      <FileText className="w-3.5 h-3.5" />
+                      <FileText className="w-4 h-4" />
                       <span>분석 리포트</span>
                     </Link>
                     <Link
                       href={`/?id=${uid}`}
-                      className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-[#2B261F] font-bold text-xs transition-all active:scale-95 cursor-pointer text-center"
+                      className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#F7F5EE] hover:bg-[#EFECE4] border border-[#E6E0D2] text-[#2B261F] font-bold text-sm transition-all active:scale-95 cursor-pointer text-center"
                       aria-label={`${p.name} 지도에서 위치 확인`}
                       title={`${p.name} 지도에서 위치 확인`}
                     >
-                      <Map className="w-3.5 h-3.5 text-blue-600" />
+                      <Map className="w-4 h-4 text-blue-600" />
                       <span>지도 보기</span>
                     </Link>
                   </div>
@@ -619,20 +619,20 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         </section>
 
         {/* F. 투자 유의사항 및 면책 고지 (Legal Disclaimer) */}
-        <section className="p-6 rounded-3xl bg-[#FDFBF7] border border-[#E6E0D2] text-xs text-[#827A6D] space-y-2.5">
-          <div className="flex items-center gap-2 text-[#2B261F] font-bold text-sm">
-            <ShieldAlert className="w-4 h-4 text-amber-600" />
+        <section className="p-6 rounded-3xl bg-[#FDFBF7] border border-[#E6E0D2] text-sm text-[#5C5346] space-y-3 leading-relaxed">
+          <div className="flex items-center gap-2 text-[#2B261F] font-black text-base">
+            <ShieldAlert className="w-5 h-5 text-amber-600 shrink-0" />
             <span>정비사업 데이터 법적 면책 고지 (Disclaimer)</span>
           </div>
-          <p className="leading-relaxed text-[#4A4439]">
+          <p className="text-[#332E27] font-normal leading-relaxed">
             본 리포트는 서울특별시 공공데이터(정보몽땅, 서울 열린데이터광장) 및 공공 고시 자료를 바탕으로 작성된 정비사업 참고용 정보이며, 법적 효력을 갖는 행정처분 문서가 아닙니다. 개별 조합원의 지위양도 승계 자격, 권리산정일 기준 분양 자격, 추가분담금 등은 매물의 권리관계(다물권, 1세대 1주택 보유기간 등)에 따라 상이할 수 있으므로, 실제 매매 계약 체결 전 반드시 관할 구청(도시계획과/정비사업과) 및 구역 조합 사무실을 직접 방문하여 공식 장부를 대조하시기 바랍니다. 본 플랫폼은 본 정보의 이용으로 인한 투자 결과에 대해 법적 책임을 지지 않습니다.
           </p>
-          <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px]">
-            <Link href="/terms/" className="text-blue-600 underline font-semibold hover:text-blue-700">
+          <div className="flex flex-wrap items-center gap-3 pt-1 text-xs sm:text-sm font-bold">
+            <Link href="/terms/" className="text-blue-600 underline hover:text-blue-700">
               서비스 이용약관 및 면책조항 전문 보기 →
             </Link>
             <span>•</span>
-            <Link href="/privacy/" className="text-blue-600 underline font-semibold hover:text-blue-700">
+            <Link href="/privacy/" className="text-blue-600 underline hover:text-blue-700">
               개인정보처리방침 전문 보기 →
             </Link>
           </div>
@@ -642,7 +642,7 @@ export default async function GuDistrictsPage({ params }: GuPageProps) {
         <div className="pt-2 text-center">
           <Link
             href="/districts/"
-            className="inline-flex items-center gap-2 py-3 px-6 rounded-2xl bg-[#FFFFFF] hover:bg-[#FDFBF7] border border-[#E6E0D2] text-xs sm:text-sm font-bold text-[#2B261F] shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 py-3.5 px-6 rounded-2xl bg-[#FFFFFF] hover:bg-[#FDFBF7] border border-[#E6E0D2] text-sm sm:text-base font-bold text-[#2B261F] shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span>← 서울시 25개 자치구 496개 전체 구역 색인으로 돌아가기</span>
           </Link>

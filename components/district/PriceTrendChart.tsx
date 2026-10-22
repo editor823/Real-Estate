@@ -85,23 +85,23 @@ export function PriceTrendChart({ districtName, guName = "서울", totalHousehol
   };
 
   return (
-    <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 space-y-3">
+    <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200 space-y-3.5">
       {/* 1. 상단 컨트롤 바 */}
       <div className="flex items-center justify-between gap-2 flex-wrap">
-        <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900">
+        <div className="flex items-center gap-1.5 text-sm font-black text-gray-900">
           <TrendingUp className="w-4 h-4 text-blue-600" />
           <span>주변 신축 시세 &amp; 예상 프리미엄</span>
         </div>
 
         {/* 평형 전환 토글 (25평 vs 34평) */}
-        <div className="flex items-center p-0.5 rounded-lg bg-gray-200/80 text-[11px] font-bold">
+        <div className="flex items-center p-1 rounded-xl bg-gray-200/80 text-xs font-bold">
           <button
             type="button"
             onClick={() => setSelectedPyeong("59")}
             className={cn(
-              "px-2 py-0.5 rounded-md transition-all cursor-pointer",
+              "px-2.5 py-1 rounded-lg transition-all cursor-pointer",
               selectedPyeong === "59"
-                ? "bg-white text-blue-600 shadow-2xs font-extrabold"
+                ? "bg-white text-blue-600 shadow-2xs font-black"
                 : "text-gray-600 hover:text-gray-900"
             )}
           >
@@ -111,9 +111,9 @@ export function PriceTrendChart({ districtName, guName = "서울", totalHousehol
             type="button"
             onClick={() => setSelectedPyeong("84")}
             className={cn(
-              "px-2 py-0.5 rounded-md transition-all cursor-pointer",
+              "px-2.5 py-1 rounded-lg transition-all cursor-pointer",
               selectedPyeong === "84"
-                ? "bg-white text-blue-600 shadow-2xs font-extrabold"
+                ? "bg-white text-blue-600 shadow-2xs font-black"
                 : "text-gray-600 hover:text-gray-900"
             )}
           >
@@ -123,53 +123,53 @@ export function PriceTrendChart({ districtName, guName = "서울", totalHousehol
       </div>
 
       {/* 2. 핵심 요약 카드 (시세 vs 조합원가 vs 예상 시세차익) */}
-      <div className="grid grid-cols-2 gap-2 bg-white p-3 rounded-xl border border-gray-200 shadow-2xs text-xs">
+      <div className="grid grid-cols-2 gap-2.5 bg-white p-3.5 rounded-2xl border border-gray-200 shadow-2xs">
         <div>
-          <span className="text-[10px] text-gray-500 block">주변 신축 완공 시세</span>
-          <strong className="text-gray-900 font-extrabold text-sm">
+          <span className="text-xs text-gray-600 font-bold block mb-0.5">주변 신축 완공 시세</span>
+          <strong className="text-gray-900 font-black text-base">
             {formatEok(marketPrice)}
           </strong>
-          <span className="text-[10px] text-emerald-600 block font-medium">최근 실거래가 반영</span>
+          <span className="text-xs text-emerald-600 block font-semibold mt-0.5">최근 실거래가 반영</span>
         </div>
 
         <div>
-          <span className="text-[10px] text-gray-500 block">조합원 예상 분양가</span>
-          <strong className="text-blue-600 font-extrabold text-sm">
+          <span className="text-xs text-gray-600 font-bold block mb-0.5">조합원 예상 분양가</span>
+          <strong className="text-blue-600 font-black text-base">
             {formatEok(unionPrice)}
           </strong>
-          <span className="text-[10px] text-blue-500 block font-medium">조합원 평균 혜택가</span>
+          <span className="text-xs text-blue-600 block font-semibold mt-0.5">조합원 평균 혜택가</span>
         </div>
       </div>
 
       {/* 3. 예상 프리미엄 뱃지 바 */}
-      <div className="p-2.5 rounded-xl bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200 flex items-center justify-between">
-        <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-bold text-emerald-950">
+      <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-sm font-bold text-emerald-950">
             입주 시 예상 안전마진 (프리미엄)
           </span>
         </div>
-        <div className="flex items-center gap-1 text-emerald-700 font-extrabold text-sm">
+        <div className="flex items-center gap-1 text-emerald-700 font-black text-base">
           <span>+{formatEok(estimatedPremium)}</span>
           <ArrowUpRight className="w-4 h-4" />
         </div>
       </div>
 
       {/* 4. 네이버 부동산 스타일 시세 변동 꺾은선 SVG 차트 */}
-      <div className="bg-white p-3 rounded-xl border border-gray-200 space-y-2">
-        <div className="flex items-center justify-between text-[11px]">
-          <span className="text-gray-500 font-medium">인근 대장 단지 실거래가 추이</span>
+      <div className="bg-white p-3.5 rounded-2xl border border-gray-200 space-y-2.5">
+        <div className="flex items-center justify-between text-xs sm:text-sm font-bold">
+          <span className="text-gray-700 font-bold">인근 대장 단지 실거래가 추이</span>
           {/* 기간 토글 */}
-          <div className="flex items-center gap-1 text-[10px] text-gray-500">
+          <div className="flex items-center gap-1 text-xs text-gray-600">
             {(["1Y", "3Y", "5Y"] as const).map((period) => (
               <button
                 key={period}
                 type="button"
                 onClick={() => setSelectedPeriod(period)}
                 className={cn(
-                  "px-1.5 py-0.5 rounded transition-colors cursor-pointer",
+                  "px-2 py-0.5 rounded-md transition-colors cursor-pointer font-bold",
                   selectedPeriod === period
-                    ? "bg-blue-100 text-blue-700 font-bold"
+                    ? "bg-blue-100 text-blue-700 font-black"
                     : "hover:bg-gray-100"
                 )}
               >
@@ -230,7 +230,7 @@ export function PriceTrendChart({ districtName, guName = "서울", totalHousehol
         </div>
 
         {/* X축 라벨 */}
-        <div className="flex items-center justify-between text-[10px] text-gray-400 pt-1">
+        <div className="flex items-center justify-between text-xs text-gray-500 font-semibold pt-1">
           <span>{trendPoints[0].label} ({formatEok(trendPoints[0].price)})</span>
           <span className="font-bold text-blue-600">
             {trendPoints[trendPoints.length - 1].label} ({formatEok(trendPoints[trendPoints.length - 1].price)})
