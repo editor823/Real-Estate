@@ -387,18 +387,25 @@ export function LeftFilterPanel({
         </div>
 
         {/* 하단 약관 & 정보 링크 */}
-        <div className="flex flex-col items-center gap-2 w-full pt-3 border-t border-gray-100">
+        <div className="flex flex-col items-center gap-1.5 w-full pt-3 border-t border-gray-100">
+          <Link
+            href="/about"
+            className="text-[10px] text-gray-600 hover:text-blue-600 font-bold p-1 hover:bg-gray-100 rounded-lg transition-colors"
+            title="서비스 소개 및 이용 가이드"
+          >
+            서비스소개
+          </Link>
           <button
             type="button"
             onClick={onOpenPrivacy}
-            className="text-[10px] text-gray-500 hover:text-gray-900 font-semibold p-1 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+            className="text-[10px] text-gray-500 hover:text-gray-900 font-medium p-1 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
             title="개인정보처리방침"
           >
             개인정보
           </button>
           <Link
             href="/terms"
-            className="text-[10px] text-gray-500 hover:text-gray-900 font-semibold p-1 hover:bg-gray-100 rounded-lg transition-colors"
+            className="text-[10px] text-gray-500 hover:text-gray-900 font-medium p-1 hover:bg-gray-100 rounded-lg transition-colors"
             title="이용약관"
           >
             이용약관

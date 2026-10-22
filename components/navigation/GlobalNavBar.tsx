@@ -25,6 +25,7 @@ export function GlobalNavBar() {
   const isDistrictsActive = pathname?.startsWith("/districts");
   const isSubscriptionActive = pathname?.startsWith("/subscription");
   const isCalculatorsActive = pathname?.startsWith("/calculators");
+  const isAboutActive = pathname?.startsWith("/about");
   const isMapActive = pathname === "/" && !isTimelineActive;
 
   return (
@@ -69,6 +70,21 @@ export function GlobalNavBar() {
           >
             <Map className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isMapActive ? "text-white" : "text-blue-600")} />
             <span>🗺️ <span className="hidden sm:inline">정비사업 </span>지도</span>
+          </Link>
+
+          {/* 메뉴 2: 서비스 소개 (랜딩 페이지) */}
+          <Link
+            href="/about"
+            onClick={() => setIsTimelineActive(false)}
+            className={cn(
+              "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer shrink-0",
+              isAboutActive
+                ? "bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            )}
+            aria-current={isAboutActive ? "page" : undefined}
+          >
+            <span>🏠 <span className="hidden sm:inline">서비스 </span>소개</span>
           </Link>
 
           {/* 메뉴 2: 구역별 분석 리포트 */}

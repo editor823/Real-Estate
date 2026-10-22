@@ -20,14 +20,12 @@ import {
 } from "lucide-react";
 
 interface HomeLandingSectionProps {
-  onScrollToTopMap: () => void;
   totalDistrictCount?: number;
 }
 
 export function HomeLandingSection({
-  onScrollToTopMap,
   totalDistrictCount = 1029,
-}: HomeLandingSectionProps) {
+}: HomeLandingSectionProps = {}) {
   return (
     <section className="w-full bg-slate-50 border-t border-slate-200 select-none">
       {/* 1. 서비스 소개 히어로 영역 */}
@@ -51,14 +49,13 @@ export function HomeLandingSection({
           </p>
 
           <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5">
-            <button
-              type="button"
-              onClick={onScrollToTopMap}
+            <Link
+              href="/"
               className="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-600/25 transition-all flex items-center gap-2 cursor-pointer active:scale-95"
             >
               <Map className="w-4 h-4" />
               <span>🗺️ 실시간 구역 지도로 탐색하기</span>
-            </button>
+            </Link>
 
             <Link
               href="/districts/"
@@ -105,14 +102,13 @@ export function HomeLandingSection({
                 서울·경기 1,029개 구역의 법정 경계 GeoJSON을 시각화합니다. 지하철 500m 역세권 및 초품아 300m 안심 학군 레이어를 원클릭으로 켜고 끌 수 있습니다.
               </p>
             </div>
-            <button
-              type="button"
-              onClick={onScrollToTopMap}
+            <Link
+              href="/"
               className="pt-2 text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1 cursor-pointer"
             >
               <span>지도에서 구역 찾기</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </Link>
           </div>
 
           {/* 카드 2: 구역 분석 리포트 */}
@@ -304,16 +300,15 @@ export function HomeLandingSection({
           </div>
         </div>
 
-        {/* 상단으로 다시 올라가기 플로팅 버튼 바 */}
+        {/* 실시간 구역 지도로 돌아가기 버튼 바 */}
         <div className="pt-6 text-center">
-          <button
-            type="button"
-            onClick={onScrollToTopMap}
+          <Link
+            href="/"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold shadow-md transition-all cursor-pointer"
           >
             <ArrowUp className="w-4 h-4" />
-            <span>화면 맨 위 실시간 지도로 돌아가기</span>
-          </button>
+            <span>실시간 구역 지도로 바로 이동하기</span>
+          </Link>
         </div>
       </div>
     </section>

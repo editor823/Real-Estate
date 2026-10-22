@@ -188,16 +188,12 @@ export default function MainPage() {
             서울·경기 {features.length}개 재개발·재건축 실시간 인허가 공간 지도 &amp; 분석 플랫폼
           </span>
         </div>
-        <button
-          type="button"
-          onClick={() => {
-            const landingElem = document.getElementById("home-landing-guide");
-            landingElem?.scrollIntoView({ behavior: "smooth" });
-          }}
+        <Link
+          href="/about"
           className="shrink-0 text-[11px] sm:text-xs font-bold text-blue-300 hover:text-white flex items-center gap-1 underline decoration-blue-400 cursor-pointer transition-colors"
         >
-          <span>서비스 소개 &amp; 가이드 보기 ↓</span>
-        </button>
+          <span>서비스 소개 &amp; 가이드 보기 →</span>
+        </Link>
       </div>
 
       {/* 2. 메인 지도 작업 영역 (기존 인터랙티브 지도 유지) */}
@@ -241,17 +237,13 @@ export default function MainPage() {
             <InteractiveLeafletMap features={filteredFeatures} />
           )}
 
-          {/* 데스크톱: 지도 하단 서비스 소개 가이드 스크롤 퀵버튼 */}
-          <button
-            type="button"
-            onClick={() => {
-              const landingElem = document.getElementById("home-landing-guide");
-              landingElem?.scrollIntoView({ behavior: "smooth" });
-            }}
+          {/* 데스크톱: 지도 하단 서비스 소개 가이드 퀵버튼 */}
+          <Link
+            href="/about"
             className="hidden sm:flex items-center gap-1.5 absolute bottom-4 right-14 z-[450] bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-2xl px-3 py-2 text-slate-800 text-xs font-bold hover:bg-slate-50 hover:text-blue-600 transition-all cursor-pointer"
           >
-            <span>📖 서비스 소개 및 가이드 보기 ↓</span>
-          </button>
+            <span>📖 서비스 소개 및 가이드 보기 →</span>
+          </Link>
         </section>
 
         {/* 모바일 화면 하단 플로팅 전환 바 (모바일 UX 최적화) */}
@@ -262,15 +254,12 @@ export default function MainPage() {
           >
             {isSidebarOpen ? "🗺️ 지도로 보기" : "📋 구역 목록 / 고시 피드"}
           </button>
-          <button
-            onClick={() => {
-              const landingElem = document.getElementById("home-landing-guide");
-              landingElem?.scrollIntoView({ behavior: "smooth" });
-            }}
+          <Link
+            href="/about"
             className="flex items-center gap-1 px-3.5 py-2.5 rounded-full bg-slate-900 text-white text-xs font-bold shadow-xl hover:bg-slate-800 transition-all active:scale-95 cursor-pointer"
           >
-            <span>소개 ↓</span>
-          </button>
+            <span>소개 →</span>
+          </Link>
         </div>
 
         {/* 구역 비교 하단 플로팅 바 & 비교 모달 */}
@@ -286,12 +275,7 @@ export default function MainPage() {
 
       {/* 3. 하단 풍부한 서비스 소개 및 구글 애드센스 승인용 랜딩 섹션 */}
       <div id="home-landing-guide">
-        <HomeLandingSection
-          totalDistrictCount={features.length}
-          onScrollToTopMap={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-        />
+        <HomeLandingSection totalDistrictCount={features.length} />
       </div>
 
       {/* 4. 글로벌 푸터 */}

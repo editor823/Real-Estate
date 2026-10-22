@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Building2, ShieldCheck, Database, Award, ArrowLeft, Mail, ExternalLink, Sparkles, CheckCircle2 } from "lucide-react";
 import { GlobalFooter } from "@/components/navigation/GlobalFooter";
+import { HomeLandingSection } from "@/components/home/HomeLandingSection";
 
 export const metadata: Metadata = {
-  title: "서비스 소개 및 데이터 편집 원칙 (E-E-A-T) | 서울 경기 부동산 정비사업 모니터링",
+  title: "서비스 소개 및 정비사업 로드맵 가이드 | 서울 경기 부동산 정비사업 모니터링",
   description:
-    "서울시 25개 자치구와 경기도 31개 시·군 1,029개 재개발·재건축·신속통합기획·모아타운 구역 모니터링 플랫폼의 운영 목적, 공공데이터 수집 출처, 신뢰도 검증 정책 및 관리자 정보를 투명하게 소개합니다.",
+    "서울시 25개 자치구와 경기도 31개 시·군 1,029개 재개발·재건축·신속통합기획·모아타운 구역 모니터링 플랫폼의 핵심 서비스, 8단계 로드맵, 공공데이터 수집 출처 및 신뢰도 검증 정책을 상세히 소개합니다.",
   alternates: {
     canonical: "https://seoul-redevelopment.pages.dev/about/",
   },
@@ -15,7 +16,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900 flex flex-col font-sans">
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-10 flex-1 space-y-10">
+      {/* 1. 비주얼 서비스 랜딩 섹션 (히어로, 4대 핵심 서비스 카드, 8단계 로드맵 가이드, 빅데이터 통계) */}
+      <HomeLandingSection totalDistrictCount={1029} />
+
+      {/* 2. 상세 운영 목적 및 E-E-A-T 신뢰도 검증 정책 섹션 */}
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-1 space-y-10 border-t border-slate-200">
         {/* 상단 헤더 섹션 */}
         <div className="border-b border-gray-200 pb-8 space-y-3">
           <div className="flex items-center gap-2">
